@@ -1,0 +1,25 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="BBuSic" extends="struts-default">
+		<interceptors>
+			<interceptor name="BBuSicInterceptor" class="action.BBuSicInterceptor"/>
+		</interceptors>
+
+		<action name="payInsertForm" class="action.payFormAction">
+			<result>/Buy/Pay_setting.jsp</result>
+		</action>
+	
+		<!-- 게시판 리스트 액션. -->
+		<action name="payInsert" class="action.payAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/Buy/TEST.jsp</result>
+		</action>
+	</package>
+</struts>
+
