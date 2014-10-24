@@ -21,5 +21,34 @@
 			<result>/Buy/TEST.jsp</result>
 		</action>
 	</package>
+		
+	<package name="PooSic" extends="struts-default">
+		<interceptors>
+			<interceptor name="input" class="member.action.MemberInterceptor" />
+		</interceptors>
+		
+		<action name="agreement" class="member.action.AgreementAction">
+			<result>/member/agreement.jsp</result>
+		</action>
+		<action name="inputForm" class="member.action.InputFormAction">
+			<result>/member/inputForm.jsp</result>
+		</action>
+		<action name="confirm" class="member.action.ConfirmAction">
+			<result>/member/confirm.jsp</result>
+		</action>
+		<action name="inputPro" class="member.action.InputProAction">
+			<interceptor-ref name="input"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/member/inputPro.jsp</result>
+		</action>
+		
+		
+		<action name="loginFrom" class="member.action.LoginFormAction">
+			<result>/member/loginFrom.jsp</result>
+		</action>
+		
+	</package>
 </struts>
 
