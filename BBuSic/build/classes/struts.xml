@@ -96,4 +96,17 @@
 			<result>/board/MelonChart_board.jsp</result>
 		</action>
 	</package>
+<<<<<<< HEAD
+=======
+	
+	
+
+<package name="Heo" extends="struts-default">
+	
+	</package>
+	<package name="Heo1" extends="struts-default">
+	
+	</package>
+	
+>>>>>>> 386e577e9ed603528764c753a843e7b449e2ef0d
 </struts>
