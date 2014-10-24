@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="musicSQL">
+	
+	<typeAlias alias="musicDTO" type="upload.dto.musicDTO"/>
+	
+	<resultMap class="musicDTO" id="musicRes">
+		<result property="num" column="num"/>
+		<result property="music_name" column="music_name"/>
+		<result property="music_path" column="music_path"/>
+		<result property="music_image" column="music_image"/>
+		<result property="genre" column="genre"/>
+		<result property="singger" column="singger"/>
+		<result property="album" column="album"/>
+		<result property="title" column="title"/>
+		<result property="hit" column="hit"/>
+	</resultMap>
+	
+	<!-- 공통적으로 사용할 select 절 정의 -->
+	<sql id="select-all">
+		SELECT * FROM bbu_board
+	</sql>
+	
+	<sql id="where-num">
+		WHERE num = #num#
+	</sql>
+	
+	<!-- select 쿼리문 정의 -->
+		<select id="selectLastNum" resultClass="musicDTO" parameterClass="int">
+			SELECT max(num) as num FROM BBU_BOARD 
+		</select>
+		
+		<select id="selectAll" resultMap="musicRes" parameterClass="musicDTO">
+			<include refid="select-all" />
+			ORDER BY hit DESC
+		</select>
+		
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertMusic" parameterClass="musicDTO">
+		INSERT INTO BBU_BOARD (NUM,
+							MUSIC_NAME,
+							MUSIC_PATH,
+							MUSIC_IMAGE,
+							GENRE,
+							SINGGER,
+							ALBUM,
+							TITLE,
+							HIT	
+							)
+					VALUES (BBU_SEQ.NEXTVAL,
+							#music_name#,
+							#music_path#,
+							#music_image#,
+							#genre#,
+							#singger#,
+							#album#,
+							#title#,
+							0
+							)
+	</insert>
+</sqlMap>
