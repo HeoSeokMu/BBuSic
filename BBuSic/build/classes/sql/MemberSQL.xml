@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+	<typeAlias alias="member" type="member.DTO.MemberDTO" />
+
+		<!-- 리절트 맵 정의 -select -->
+	  	<resultMap id="memberRes" class="member">
+		  	<result property="name" column="name"/>
+		  	<result property="birth" column="birth"/>
+		  	<result property="sex" column="sex"/>
+		  	<result property="email" column="email"/>
+		  	<result property="id" column="id"/>
+		  	<result property="passwd" column="passwd"/>
+		  	<result property="nickname" column="nickname"/>
+		  	<result property="regdate" column="regdate"/>
+		</resultMap>
+		
+		<!-- 공통으로 사용할 select 절 정의 -->
+		<sql id="select-all">
+			SELECT * FROM bbu_member
+		</sql>
+		
+		<!-- select 쿼리문 정의 -->
+		<select id="selectAll" resultMap="memberRes">
+			<include refid="select-all" />
+		</select>
+		
+		<select id="selectPasswd" resultClass="String" parameterClass="String" >
+			SELECT passwd FROM bbu_member WHERE id = #id#
+		</select>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertMember" parameterClass="member">
+		
+      		INSERT INTO bbu_member (name,
+      							birth,
+                         		sex,
+                         		email,
+                         		id,
+                         		passwd,
+                         		nickname,
+                         		regdate
+                         )
+                	 VALUES (#name#,
+                	 		#birth#,
+                         	#sex#,
+                         	#email#,
+                         	#id#,
+                         	#passwd#,
+                         	#nickname#,
+                         	#regdate#
+                         )
+		</insert>
+</sqlMap>
