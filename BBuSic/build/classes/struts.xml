@@ -5,6 +5,25 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
+	
+	<package name="BBuSic" extends="struts-default">
+		<interceptors>
+			<interceptor name="BBuSicInterceptor" class="action.BBuSicInterceptor"/>
+		</interceptors>
+
+		<action name="payInsertForm" class="action.payFormAction">
+			<result>/Buy/Pay_setting.jsp</result>
+		</action>
+	
+		<!-- 게시판 리스트 액션. -->
+		<action name="payInsert" class="action.payAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/Buy/TEST.jsp</result>
+		</action>
+	</package>
 		
 	<package name="PooSic" extends="struts-default">
 		<interceptors>
