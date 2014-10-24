@@ -86,4 +86,10 @@
 		</action>
 	</package>
 	
+	<package name="Ahn" extends="struts-default">
+
+
+		
+	</package>
+	
 </struts>
