@@ -64,6 +64,39 @@
 		<action name="loginFrom" class="member.action.LoginFormAction">
 			<result>/member/loginFrom.jsp</result>
 		</action>
-		
 	</package>
+	
+	<package name="board" extends="struts-default">
+		<interceptors>
+			<interceptor name="fileUploadDao"
+				class="upload.interceptor.FileUploadDAOInterceptor" />
+		</interceptors>
+
+		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/MusicUploadMain.jsp</result>
+		</action>
+		<action name="MusicUploadForm" class="upload.action.FileUploadAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/MusicUploadForm.jsp</result>
+		</action>
+		<action name="MusicUploadPro" class="upload.action.MusicUploadProAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<result>/file/MusicUploadPro.jsp</result>
+		</action>
+		<action name="ChartBoard" class="board.action.MelonChart_boardAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/MelonChart_board.jsp</result>
+		</action>
+	</package>
+	
 </struts>
