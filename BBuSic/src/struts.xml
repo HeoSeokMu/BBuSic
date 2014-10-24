@@ -86,8 +86,14 @@
 		</action>
 	</package>
 	
+
 	<package name="AAAA" extends="struts-default">
 		
+	</package>
+		
+
+	<package name="Heo" extends="struts-default">
+
 	</package>
 	
 </struts>
