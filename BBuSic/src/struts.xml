@@ -87,6 +87,7 @@
 	</package>
 	
 	<package name="Heo" extends="struts-default">
+	
 	</package>
 	
 </struts>
