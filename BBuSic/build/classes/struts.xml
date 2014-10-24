@@ -6,7 +6,7 @@
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
 	
-	<package name="BBuSic" extends="struts-default">
+	<package name="mu_bbu" extends="struts-default">
 		<interceptors>
 			<interceptor name="BBuSicInterceptor" class="action.BBuSicInterceptor"/>
 		</interceptors>
@@ -25,9 +25,9 @@
 		</action>
 	</package>
 		
-	<package name="PooSic" extends="struts-default">
+	<package name="jin_bbu" extends="struts-default">
 		<interceptors>
-			<interceptor name="input" class="member.action.MemberInterceptor" />
+			<interceptor name="DB" class="member.action.MemberInterceptor" />
 		</interceptors>
 		
 		<action name="agreement" class="member.action.AgreementAction">
@@ -40,20 +40,31 @@
 			<result>/member/confirm.jsp</result>
 		</action>
 		<action name="inputPro" class="member.action.InputProAction">
-			<interceptor-ref name="input"/>
+			<interceptor-ref name="DB"/>
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/member/inputPro.jsp</result>
 		</action>
 		
-		
-		<action name="loginFrom" class="member.action.LoginFormAction">
-			<result>/member/loginFrom.jsp</result>
+		<action name="loginForm" class="member.action.LoginFormAction">
+			<result>/member/loginForm.jsp</result>
 		</action>
+		<action name="loginPro" class="member.action.LoginProAction">
+			<interceptor-ref name="servletConfig"/>
+			<interceptor-ref name="DB"/>
+			<interceptor-ref name="params"/>
+			<result>/member/loginForm.jsp</result>
+		</action>
+		
+		
+		<action name="logout" class="member.action.LogoutAction">
+			<result>/member/loginForm.jsp</result>
+		</action>
+		
 	</package>
 	
-	<package name="sturts2" extends="struts-default">
+	<package name="gon_bbu" extends="struts-default">
 		<interceptors>
 			<interceptor name="fileUploadDao"
 				class="upload.interceptor.FileUploadDAOInterceptor" />
@@ -85,9 +96,4 @@
 			<result>/board/MelonChart_board.jsp</result>
 		</action>
 	</package>
-	
-	<package name="Heo" extends="struts-default">
-	
-	</package>
-	
 </struts>
