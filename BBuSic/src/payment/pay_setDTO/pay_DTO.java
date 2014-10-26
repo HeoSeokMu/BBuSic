@@ -1,4 +1,4 @@
-package pay_setDTO;
+package payment.pay_setDTO;
 
 public class pay_DTO {
 	private String category;

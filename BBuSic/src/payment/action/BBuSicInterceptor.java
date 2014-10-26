@@ -1,4 +1,4 @@
-package action;
+package payment.action;
 
 import java.io.Reader;
 

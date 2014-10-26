@@ -1,4 +1,4 @@
-package action;
+package payment.action;
 
 import com.opensymphony.xwork2.Action;
 

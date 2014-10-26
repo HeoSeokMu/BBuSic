@@ -1,8 +1,8 @@
-package action;
+package payment.action;
 
 import java.io.Reader;
 
-import pay_setDTO.pay_DTO;
+import payment.pay_setDTO.pay_DTO;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
