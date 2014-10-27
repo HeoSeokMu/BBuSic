@@ -3,6 +3,7 @@ package payment.pay_setDTO;
 public class pay_DTO {
 	private String category;
 	private String pay_name;
+	private String pay_benefit;
 	private int amount;
 	private int day30amount;
 	private int sale;
@@ -37,4 +38,11 @@ public class pay_DTO {
 	public void setSale(int sale) {
 		this.sale = sale;
 	}
+	public String getPay_benefit() {
+		return pay_benefit;
+	}
+	public void setPay_benefit(String pay_benefit) {
+		this.pay_benefit = pay_benefit;
+	}
+	
 }

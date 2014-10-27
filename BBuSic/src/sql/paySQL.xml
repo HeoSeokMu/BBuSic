@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
-<sqlMap>
-	<typeAlias alias="paySet" type="pay_setDTO.pay_DTO" />
+<sqlMap namespace="payment">
+	<typeAlias alias="pay" type="payment.pay_setDTO.pay_DTO" />
 
 		<!-- 리절트 맵 정의 -->
-	  	<resultMap id="payRes" class="paySet">
+	  	<resultMap id="payRes" class="pay">
 	  		<result property="category" column="category"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
 	  		<result property="pay_name" column="pay_name"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="pay_benefit" column="pay_benefit"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
 		  	<result property="amount" column="amount"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
 		  	<result property="day30amount" column="day30amount"/>
 		  	<result property="sale" column="sale"/>
 		</resultMap>
 		
 		<!-- insert 쿼리문 정의 -->
-		<insert id="insertPay" parameterClass="paySet">
+		<insert id="insertPay" parameterClass="pay">
       		INSERT INTO bbu_pay (
       							CATEGORY,
       							PAY_NAME,
+      							PAY_BENEFIT,
       							AMOUNT,
       							DAY30AMOUNT,
                          		SALE
@@ -25,6 +27,7 @@
                 	 VALUES (
                 	 		#category#,
                 	 		#pay_name#,
+                	 		#pay_benefit#,
                 	 		#amount#,
                          	#day30amount#,
                          	#sale#

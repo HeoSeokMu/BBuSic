@@ -6,23 +6,30 @@
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
 	
+	<package name="bbu_main" extends="struts-default">
+		<action name="melon" class="BBu_main.BBuMain">
+			<result>/main/main.jsp</result>
+		</action>
+	</package>
+	
 	<package name="mu_bbu" extends="struts-default">
 		<interceptors>
-			<interceptor name="BBuSicInterceptor" class="action.BBuSicInterceptor"/>
+			<interceptor name="BBuSicInterceptor" class="payment.action.BBuSicInterceptor"/>
 		</interceptors>
 
-		<action name="payInsertForm" class="action.payFormAction">
+		<action name="payInsertForm" class="payment.action.payFormAction">
 			<result>/Buy/Pay_setting.jsp</result>
 		</action>
 	
 		<!-- 게시판 리스트 액션. -->
-		<action name="payInsert" class="action.payAction">
+		<action name="payInsert" class="payment.action.payInsertAction">
 			<interceptor-ref name="BBuSicInterceptor"/>
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/Buy/TEST.jsp</result>
 		</action>
+		
 	</package>
 		
 	<package name="jin_bbu" extends="struts-default">
