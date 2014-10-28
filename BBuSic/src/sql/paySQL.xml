@@ -2,35 +2,96 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
 <sqlMap namespace="payment">
-	<typeAlias alias="pay" type="payment.pay_setDTO.pay_DTO" />
+	<typeAlias alias="payDTO" type="payment.pay_setDTO.pay_DTO" />
+	<typeAlias alias="cashDTO" type="payment.pay_setDTO.cash_DTO" />
 
-		<!-- 리절트 맵 정의 -->
-	  	<resultMap id="payRes" class="pay">
-	  		<result property="category" column="category"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
-	  		<result property="pay_name" column="pay_name"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
-	  		<result property="pay_benefit" column="pay_benefit"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
-		  	<result property="amount" column="amount"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
-		  	<result property="day30amount" column="day30amount"/>
-		  	<result property="sale" column="sale"/>
-		</resultMap>
-		
-		<!-- insert 쿼리문 정의 -->
-		<insert id="insertPay" parameterClass="pay">
-      		INSERT INTO bbu_pay (
-      							CATEGORY,
-      							PAY_NAME,
-      							PAY_BENEFIT,
-      							AMOUNT,
-      							DAY30AMOUNT,
-                         		SALE
-                         )
-                	 VALUES (
-                	 		#category#,
-                	 		#pay_name#,
-                	 		#pay_benefit#,
-                	 		#amount#,
-                         	#day30amount#,
-                         	#sale#
-                         )
-		</insert>
+	<!-- 리절트 맵 정의 -->
+	<resultMap id="payRes" class="payDTO">
+		<result property="category" column="category" />	<!-- property는 set메서드 column은 db의 컬럼 -->
+		<result property="pay_name" column="pay_name" />	<!-- property는 set메서드 column은 db의 컬럼 -->
+		<result property="pay_benefit" column="pay_benefit" />		<!-- property는 set메서드 column은 db의 컬럼 -->
+		<result property="amount" column="amount" />		<!-- property는 set메서드 column은 db의 컬럼 -->
+		<result property="day30amount" column="day30amount" />
+		<result property="sale" column="sale" />
+	</resultMap>
+
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="select-all">
+		SELECT * FROM BBU_PAY
+	</sql>
+
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no">
+		WHERE no = #no#
+		<!-- #no#이 ?를 코드로써 채워줘야 할 부분 의미한다. -->
+	</sql>
+
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertPay" parameterClass="payDTO">
+		INSERT INTO BBU_PAY (
+			CATEGORY,
+			PAY_NAME,
+			PAY_BENEFIT,
+			AMOUNT,
+			DAY30AMOUNT,
+			SALE
+		)
+		VALUES (
+			#category#,
+			#pay_name#,
+			#pay_benefit#,
+			#amount#,
+			#day30amount#,
+			#sale#
+		)
+	</insert>
+
+	<select id="selectPay" resultMap="payRes" parameterClass="int">
+		<include refid="select-all" />
+		ORDER BY no DESC
+	</select>
+
+	<select id="selectCategory" resultMap="payRes" parameterClass="int">
+		SELECT DISTINCT CATEGORY FROM BBY_PAY
+	</select>
+
+	<!-- resultClass 는 결과가 하나니까 String or int라 써도 된다. -->
+	<select id="selectLastNo" resultClass="payDTO" parameterClass="int">
+		SELECT max(no) as no FROM sBOARD
+		<!-- as no 는 컬럼명이 no로 표시된다. -->
+	</select>
+
+	<!-- parameterClass가 없어도 자동으로 받아주는 경우도 있다. -->
+	<select id="selectPassword" resultMap="payRes">
+		<include refid="select-all" />
+		<include refid="where-no" />
+		AND password = #password#
+	</select>
+
+	<!-- update 쿼리문 정의 -->
+	<update id="updateBoard" parameterClass="payDTO">
+		UPDATE sBOARD SET SUBJECT = #subject#,
+		NAME = #name#,
+		PASSWORD = #password#,
+		CONTENT = #content#
+		<include refid="where-no" />
+	</update>
+
+	<update id="updateFile" parameterClass="payDTO">
+		UPDATE sBOARD SET FILE_ORGNAME = #file_orgname#
+		,FILE_SAVNAME = #file_savname#
+		<include refid="where-no" />
+	</update>
+
+	<update id="updateReadHit" parameterClass="payDTO">
+		UPDATE sBOARD SET READHIT = readHit + 1
+		<include refid="where-no" />
+	</update>
+
+
+	<!-- delete 쿼리문 정의 -->
+	<delete id="deleteBoard" parameterClass="payDTO">
+		DELETE FROM sBOARD
+		<include refid="where-no" />
+	</delete>
 </sqlMap>

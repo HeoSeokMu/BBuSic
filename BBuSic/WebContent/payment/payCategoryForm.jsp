@@ -18,8 +18,7 @@
 				document.getElementById("payBuy").innerHTML = xmlhttp.responseText;
 			}
 		};
-		var BaBo = abc;
-		xmlhttp.open("GET", "payBuy.action", true);
+		xmlhttp.open("GET", "payBuyAction.action?type="+abc, true);
 		xmlhttp.send();
 	}
 </script>
