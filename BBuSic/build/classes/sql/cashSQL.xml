@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sqlMap namespace="payment">
+	<typeAlias alias="cash" type="payment.pay_setDTO.cash_DTO" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="cashRes" class="cash">
+	  		<result property="cash_id" column="cash_id"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="cash" column="cash"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+		</resultMap>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertCash" parameterClass="cash">
+      		INSERT INTO bbu_cash (
+      							CATEGORY,
+      							PAY_NAME,
+      							PAY_BENEFIT,
+      							AMOUNT,
+      							DAY30AMOUNT,
+                         		SALE
+                         )
+                	 VALUES (
+                	 		#category#,
+                	 		#pay_name#,
+                	 		#pay_benefit#,
+                	 		#amount#,
+                         	#day30amount#,
+                         	#sale#
+                         )
+		</insert>
+</sqlMap>

@@ -11,13 +11,13 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class payAction implements Action, Preparable, ModelDriven, BBuSicAware {
+public class payBuyAction implements Action, Preparable, ModelDriven, BBuSicAware {
 	
 	pay_DTO payDTO;
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
-	public payAction() {
+	public payBuyAction() {
 		try{
 			System.out.println("try 실행");
 			reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml 파일의 설정내용을 가져온다.
@@ -34,11 +34,12 @@ public class payAction implements Action, Preparable, ModelDriven, BBuSicAware {
 	public String execute() throws Exception {
 		System.out.println(payDTO.getCategory());
 		System.out.println(payDTO.getPay_name());
+		System.out.println(payDTO.getPay_benefit());
 		System.out.println(payDTO.getAmount());
 		System.out.println(payDTO.getDay30amount());
 		System.out.println(payDTO.getSale());
 		
-		sqlMapper.insert("insertPay", payDTO);
+		sqlMapper.insert("payment.insertPay", payDTO);
 		
 		return SUCCESS;
 	}

@@ -18,7 +18,11 @@
 		</interceptors>
 
 		<action name="payInsertForm" class="payment.action.payFormAction">
-			<result>/Buy/Pay_setting.jsp</result>
+			<result>/payment/Pay_setting.jsp</result>
+		</action>
+		
+		<action name="payBuy" class="payment.action.payFormAction">
+			<result>/payment/Pay_setting.jsp</result>
 		</action>
 	
 		<!-- 게시판 리스트 액션. -->
@@ -27,7 +31,7 @@
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
-			<result>/Buy/TEST.jsp</result>
+			<result>/payment/TEST.jsp</result>
 		</action>
 		
 	</package>
