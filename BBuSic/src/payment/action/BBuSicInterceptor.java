@@ -17,9 +17,9 @@ public class BBuSicInterceptor implements Interceptor{
 		try{
 			System.out.println("try 실행");
 			reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml 파일의 설정내용을 가져온다.
-			if(reader != null) { System.out.println("reader pass"); } 	// sqlMapConfig.xml의 내용을 적용한 sqlMapper 객체 생성.
+			if(reader != null) { System.out.println("BBuSicInterceptor reader pass"); } 	// sqlMapConfig.xml의 내용을 적용한 sqlMapper 객체 생성.
 			sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	
-			if(sqlMapper != null) { System.out.println("sqlMapper pass"); }
+			if(sqlMapper != null) { System.out.println("BBuSicInterceptor sqlMapper pass"); }
 			reader.close();	
 		} catch(Exception e) {
 			System.out.println("catch() 실행");
