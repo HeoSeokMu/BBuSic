@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap>
+<sqlMap namespace="member">
 
 	<typeAlias alias="member" type="member.DTO.MemberDTO" />
 
@@ -16,9 +16,22 @@
 		  	<result property="regdate" column="regdate"/>
 		</resultMap>
 		
+		<resultMap class="member" id="memberId">
+			<result property="id" column="id"/>
+		</resultMap>
+		
+		<resultMap class="member" id="memberNick">
+			<result property="nickname" column="nickname"/>
+		</resultMap>
+		
 		<!-- 공통으로 사용할 select 절 정의 -->
 		<sql id="select-all">
 			SELECT * FROM bbu_member
+		</sql>
+		
+		<!-- 공통으로 사용할 where-no 절 정의 -->
+		<sql id="where-id">
+			WHERE id = #id#
 		</sql>
 		
 		<!-- select 쿼리문 정의 -->
@@ -26,8 +39,21 @@
 			<include refid="select-all" />
 		</select>
 		
-		<select id="selectPasswd" resultClass="String" parameterClass="String" >
+		<select id="selectMember" resultMap="memberRes" parameterClass="String">
+			<include refid="select-all" />
+			<include refid="where-id" />
+		</select>
+		
+		<select id="selectPasswd" resultClass="String" parameterClass="String">
 			SELECT passwd FROM bbu_member WHERE id = #id#
+		</select>
+		
+		<select id="selectId" resultMap="memberId">
+			SELECT id FROM bbu_member
+		</select>
+		
+		<select id="selectNick" resultMap="memberNick">
+			SELECT nickname FROM bbu_member
 		</select>
 		
 		<!-- insert 쿼리문 정의 -->
@@ -52,4 +78,21 @@
                          	#regdate#
                          )
 		</insert>
+		
+		<update id="updateMember" parameterClass="member">
+    		UPDATE bbu_member SET NICKNAME = #nickname#,
+                     		     EMAIL = #email#
+			<include refid="where-id" />
+		</update>
+		
+		<update id="updatePasswd" parameterClass="member">
+    		UPDATE bbu_member SET NICKNAME = #nickname#,
+                     		     EMAIL = #email#
+			<include refid="where-id" />
+		</update>
+		
+	<!-- delete 쿼리문 정의 -->
+ 		<delete id="deleteMember" parameterClass="String">
+			DELETE FROM bbu_member WHERE id = #id#
+  		</delete>
 </sqlMap>

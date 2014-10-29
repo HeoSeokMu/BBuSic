@@ -6,20 +6,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>   ${session.aaa }
-
+<head>
 	<script language="JavaScript">
-		function checkIt() {
-			var userinput = eval("document.userinput");
-			if (!userinput.service.value) {
+		function checkIt() {			
+			if (!userinput.service.checked) {
 				alert("멜론 이용약관과 서비스상품약관에 동의해 주세요.");
 				return false;
 				}
-			if (!userinput.collect.value) {
+			if (!userinput.collect.checked) {
 				alert("멜론 개인정보수집 및 이용에 동의해 주세요.");
 				return false;
 				}
 		}
+		
+		function bothCheck(){
+			if (document.userinput.both.checked) {
+				document.userinput.collect.checked=true;
+				document.userinput.service.checked=true;
+			} else {
+				document.userinput.collect.checked=false;
+				document.userinput.service.checked=false;
+			}
+		}
+		
 	</script>
 <title>회원가입</title>
 <body bgcolor="${bodyback_c}">
@@ -30,7 +39,8 @@
 				<td><h2>약관동의</h2></td>
 			</tr>
 			<tr align="left">
-				<td width="200"><input type="checkbox" /> 이용약관, 개인정보 수집 및 이용에
+				<td width="200"><input type="checkbox" name="both" onclick="bothCheck()"/> 이용약관, 개인정보 수집 및 이용에
+				
 					모두 동의합니다.</td>
 			</tr>
 

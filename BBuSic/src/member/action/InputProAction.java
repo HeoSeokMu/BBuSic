@@ -2,7 +2,6 @@ package member.action;
 
 import java.util.Calendar;
 
-import payment.pay_setDTO.cash_DTO;
 import member.DTO.MemberDTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -15,19 +14,10 @@ public class InputProAction implements MemberAware, Action, Preparable, ModelDri
 	Calendar today = Calendar.getInstance();
 	public static SqlMapClient sqlMapper;
 	MemberDTO mDTO;
-	cash_DTO cashDTO;
 	
 	public String execute() throws Exception {
-		/*
-		cashDTO = new cash_DTO();
-		
-		cashDTO.setCash_id(mDTO.getId());
-		cashDTO.setCash(0);
-		*/
-		
 		mDTO.setRegdate(today.getTime());
-		sqlMapper.insert("insertMember", mDTO);
-		//sqlMapper.insert("payment_cash.insertCash", cashDTO);
+		sqlMapper.insert("member.insertMember", mDTO);
 		return SUCCESS;
 	}
 
