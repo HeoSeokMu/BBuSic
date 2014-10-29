@@ -98,17 +98,13 @@
 	
 	<!-- 안명곤 작업 -->
 	<package name="gon_bbu" extends="struts-default">
-		<interceptors>
-			<interceptor name="fileUploadDao" class="upload.interceptor.FileUploadDAOInterceptor" />
-		</interceptors>
-	
 		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/file/MusicUploadMain.jsp</result>
 		</action>
-		<action name="MusicUploadForm" class="upload.action.FileUploadAction">
+		<action name="MusicUploadForm" class="upload.action.MusicUploadFormAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
@@ -121,11 +117,44 @@
 			<interceptor-ref name="params" />
 			<result>/file/MusicUploadPro.jsp</result>
 		</action>
-		<action name="ChartBoard" class="board.action.MelonChart_boardAction">
+		<!--다운로드-->
+		<!--차트-->
+		<action name="ChartMain" class="board.action.ChartMainAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/ChartMain.jsp</result>
+		</action>
+		<action name="ChartBoard" class="board.action.Chart_BoardAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/MelonChart_board.jsp</result>
+		</action>
+		<action name="NewChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/NewChart_board.jsp</result>
+		</action>
+		<action name="GenreChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/GenreChart_board.jsp</result>
+		</action>
+		<!--검색-->
+		<action name="Search" class="search.action.SearchAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/Search.jsp</result>
+		</action>
+		<action name="SearchResult" class="search.action.SearchResult_boardAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/SearchResult_board.jsp</result>
 		</action>
 	</package>
 </struts>

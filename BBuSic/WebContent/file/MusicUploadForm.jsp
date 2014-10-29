@@ -1,25 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 
 <html>
 <body>
 	<form method="post" action="MusicUploadPro.action" enctype="Multipart/form-data">
 		<table border="1" width="400">
 			<tr>
-				<td rowspan="5" width="200">
-					<img src="../images/sample.png" id="music_image" width="100"><br />
-					<input type="file" name="upload" value="music_path" id="이미지 선택">
-				</td>
-				
-				<td align="center">파일</td>
-				<td><input type="file" name="upload" value="music_path"></td>
+				<td align="center">음악파일</td>
+				<td><input type="file" name="uploadMusic" value="music_path"></td>
+			</tr>
+			<tr>
+				<td align="center">이미지파일</td>
+				<td><input type="file" name="uploadImage" value="music_path"></td>
 			</tr>
 			<tr>
 				<td align="center" width="200">장르</td>
 				<td>	
-					 <select name="music">
-								<option value="발라드">발라드</option>
-								<option value="댄스">댄스</option>			
+					 <select name="genre">
+								<option value="balad">발라드</option>
+								<option value="dance">댄스</option>
 							</select>
 				</td>
 			</tr>
