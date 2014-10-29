@@ -15,15 +15,18 @@ import com.opensymphony.xwork2.Preparable;
 
 public class payBuyAction implements Action, BBuSicAware {
 	
-	public static SqlMapClient sqlMapper;
+	public SqlMapClient sqlMapper;
 	private String type; 
-	private List categorylist = new ArrayList();
+	private List<String> categorylist = new ArrayList<String>();
 	private List<pay_DTO> paylist = new ArrayList<pay_DTO>();
 	
 	public String execute() throws Exception {
+		String category = "";
 		
-		categorylist = sqlMapper.queryForList("selectCategory");
-		paylist = sqlMapper.queryForList("selectCategory");
+		categorylist = sqlMapper.queryForList("payment.selectCategory");
+		System.out.println("categorylist size : "+categorylist.size());
+		paylist = sqlMapper.queryForList("payment.selectPay");
+		System.out.println("paylist size : "+paylist.size());
 		
 		return SUCCESS;
 	}
@@ -42,4 +45,11 @@ public class payBuyAction implements Action, BBuSicAware {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public List<String> getCategorylist() {
+		return categorylist;
+	}
+	public List<pay_DTO> getPaylist() {
+		return paylist;
+	}	
 }

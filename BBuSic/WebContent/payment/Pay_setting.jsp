@@ -1,19 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<?xml version="1.0" encoding="UTF-8" ?>
 
-<form action="payInsert.action" method="post">
-	<table border="1">
-		<tr>
-			<th colspan="2">»óÇ°¸í</th><th>ÇýÅÃ</th><th>Á¤±â±Ç ±Ý¾×</th><th>30ÀÏ±Ç ±Ý¾×</th><th>¼¼ÀÏ</th>
-		</tr>
-		<tr>
-			<td><input type="text" name="category"/></td>
-			<td><input type="text" name="pay_name"/></td>
-			<td><input type="text" name="pay_benefit"/></td>
-			<td><input type="text" name="amount"/></td>
-			<td><input type="text" name="day30amount"/></td>
-			<td><input type="text" name="sale"/></td>
-		</tr>
-	</table>
-	<input type="submit" value="µî·Ï"/>
-</form>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<haed>
+		<title>payë“±ë¡</title>
+	</haed>
+	
+	<body>
+		<form action="payInsert.action" method="post">
+			<table border="1">
+				<tr>
+					<th colspan="2">ìƒí’ˆëª…</th><th>í˜œíƒ</th><th>ì •ê¸°ê¶Œ ê¸ˆì•¡</th><th>30ì¼ê¶Œ ê¸ˆì•¡</th><th>ì„¸ì¼</th>
+				</tr>
+				<tr>
+					<td><input type="text" name="category"/></td>
+					<td><input type="text" name="pay_name"/></td>
+					<td><input type="text" name="pay_benefit"/></td>
+					<td><input type="text" name="amount"/></td>
+					<td><input type="text" name="day30amount"/></td>
+					<td><input type="text" name="sale"/></td>
+				</tr>
+			</table>
+			<input type="submit" value="ë“±ë¡"/>
+		</form>
+	</body>
+</html>
