@@ -5,6 +5,7 @@
 	<typeAlias alias="payDTO" type="payment.pay_setDTO.pay_DTO" />
 	<typeAlias alias="cashDTO" type="payment.pay_setDTO.cash_DTO" />
 
+<<<<<<< HEAD
 	<!-- 리절트 맵 정의 -->
 	<resultMap id="payRes" class="payDTO">
 		<result property="category" column="category" />	<!-- property는 set메서드 column은 db의 컬럼 -->
@@ -94,4 +95,53 @@
 		DELETE FROM sBOARD
 		<include refid="where-no" />
 	</delete>
+=======
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="payRes" class="payDTO">
+	  		<result property="category" column="category"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="pay_name" column="pay_name"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="pay_benefit" column="pay_benefit"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
+		  	<result property="amount" column="amount"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
+		  	<result property="day30amount" column="day30amount"/>
+		  	<result property="sale" column="sale"/>
+		</resultMap>
+		
+		<resultMap id="cashRes" class="cashDTO">
+	  		<result property="cash_id" column="cash_id"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="cash" column="cash"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+		</resultMap>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertPay" parameterClass="payDTO">
+      		INSERT INTO bbu_pay (
+      							CATEGORY,
+      							PAY_NAME,
+      							PAY_BENEFIT,
+      							AMOUNT,
+      							DAY30AMOUNT,
+                         		SALE
+                         )
+                	 VALUES (
+                	 		#category#,
+                	 		#pay_name#,
+                	 		#pay_benefit#,
+                	 		#amount#,
+                         	#day30amount#,
+                         	#sale#
+                         )
+		</insert>
+		
+			
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertCash" parameterClass="cashDTO">
+      		INSERT INTO bbu_cash (
+      							CASH_ID,
+      							CASH
+                         )
+                	 VALUES (
+                	 		#cash_id#,
+                	 		#cash#
+                         )
+		</insert>
+>>>>>>> 2159cc5294d41bc08570bd2b9ca83281bd403e3a
 </sqlMap>
