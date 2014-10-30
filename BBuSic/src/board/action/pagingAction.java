@@ -12,12 +12,14 @@ public class pagingAction {
 	private int startPage;	 // 시작 페이지
 	private int endPage;	 // 마지막 페이지
 	private String category; // 해당 차트
+	private String genre;	 // 해당 장르
 	
 	private StringBuffer pagingHtml;
 
 	// 페이징 생성자
 	public pagingAction(int currentPage, int totalCount, int blockCount,
 			int blockPage, String category) {
+		System.out.println("blockCount : " + blockCount);
 
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
@@ -25,12 +27,14 @@ public class pagingAction {
 		this.totalCount = totalCount;
 
 		// 전체 페이지 수    							  11	/	   10
+		// 차트 연산								17		/		50	//  0 -> 1
 		totalPage = (int) Math.ceil((double) totalCount / blockCount); // 2
 		if (totalPage == 0) {
 			totalPage = 1;
 		}
 
 		// 현재 페이지가 전체 페이지 수보다 크면 전체 페이지 수로 설정 (currentPage=1, totalPage =2)
+		// 차트연산 		1 > 1 (X) 
 		if (currentPage > totalPage) {
 			currentPage = totalPage;
 		}
@@ -47,32 +51,36 @@ public class pagingAction {
 		if (endPage > totalPage) {
 			endPage = totalPage;
 		}
-						 
-		if(category == "chart") {
+		
+		pagingHtml = new StringBuffer();
+		
+		if(category.equals("chart")) {
+			System.out.println("chart paging pass");
 			//페이지 번호.현재 페이지는 빨간색으로 강조하고 링크를 제거.
 			for (int i = startPage; i <= endPage; i++) {
 				if (i > totalPage) {
 					break;
 				}
-				if (i == currentPage) {
+				if (i == currentPage) {	// 현재 페이지 강조
 					pagingHtml.append("&nbsp;<b> <font color='red'>");
 					pagingHtml.append((startCount+1)*i+"-"+(endCount+1)*i);
 					pagingHtml.append("</font></b>");
 				} else {
 					pagingHtml
-							.append("&nbsp;<a href='ChartBoard.action?currentPage=");
+							.append("&nbsp;<a href='ChartBoard.action?category=chart&currentPage=");
 					pagingHtml.append(i);
 					pagingHtml.append("'>");
-					pagingHtml.append( ((startCount+1)+blockCount)+"-"+(endCount+1)*i);
+					pagingHtml.append( ((startCount+1)+blockCount)+"위  ~ "+(endCount+1)*i+"위");
 					pagingHtml.append("</a>");
 				}
 				pagingHtml.append("&nbsp;");
 			}
-		} else if(category == "new"){
+		} else if(category.equals("new")){
 			// 이전 block 페이지
-			pagingHtml = new StringBuffer();
+			System.out.println("new paging pass");
+			
 			if (currentPage > blockPage) {
-				pagingHtml.append("<a href=NewChartBoard.action?currentPage=" + (startPage - 1) + ">");
+				pagingHtml.append("<a href=NewChartBoard.action?category=chart&currentPage=" + (startPage - 1) + ">");
 				pagingHtml.append("이전");
 				pagingHtml.append("</a>");
 			}
@@ -90,7 +98,7 @@ public class pagingAction {
 					pagingHtml.append("</font></b>");
 				} else {
 					pagingHtml
-							.append("&nbsp;<a href='NewChartBoard.action?currentPage=");
+							.append("&nbsp;<a href='NewChartBoard.action?category=new&currentPage=");
 					pagingHtml.append(i);
 					pagingHtml.append("'>");
 					pagingHtml.append(i);
@@ -102,17 +110,18 @@ public class pagingAction {
 			pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
 
 			// 다음 block 페이지
-			if (totalPage - startPage >= blockPage) {
-				pagingHtml.append("<a href=NewChartBoard.action?currentPage="
+			if (totalPage - startPage >= blockPage) {	
+				pagingHtml.append("<a href=NewChartBoard.action?category=new&currentPage="
 						+ (endPage + 1) + ">");
 				pagingHtml.append("다음");
 				pagingHtml.append("</a>");
 			}
 		} else{		//genre
+			System.out.println("genre paging pass");
 			// 이전 block 페이지
 						pagingHtml = new StringBuffer();
 						if (currentPage > blockPage) {
-							pagingHtml.append("<a href=GenreChartBoard.action?currentPage=" + (startPage - 1) + ">");
+							pagingHtml.append("<a href=GenreChartBoard.action?category=genre&currentPage=" + (startPage - 1) + ">");
 							pagingHtml.append("이전");
 							pagingHtml.append("</a>");
 						}
@@ -130,7 +139,7 @@ public class pagingAction {
 								pagingHtml.append("</font></b>");
 							} else {
 								pagingHtml
-										.append("&nbsp;<a href='GenreChartBoard.action?currentPage=");
+										.append("&nbsp;<a href='GenreChartBoard.action?category=genre&currentPage=");
 								pagingHtml.append(i);
 								pagingHtml.append("'>");
 								pagingHtml.append(i);
@@ -143,7 +152,7 @@ public class pagingAction {
 
 						// 다음 block 페이지
 						if (totalPage - startPage >= blockPage) {
-							pagingHtml.append("<a href=GenreChartBoard.action?currentPage="
+							pagingHtml.append("<a href=GenreChartBoard.action?category=genre&currentPage="
 									+ (endPage + 1) + ">");
 							pagingHtml.append("다음");
 							pagingHtml.append("</a>");
@@ -237,5 +246,13 @@ public class pagingAction {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 }
