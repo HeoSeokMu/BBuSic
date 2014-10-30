@@ -9,97 +9,125 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>회원정보수정</title>
+<title>회원가입</title>
+	<script language="JavaScript">
+	
+		function checkIt() {	
+			var userinput = eval("document.userinput");
+			userinput.birth.value=userinput.year.value +"/"+ userinput.month.value +"/"+ userinput.date.value;
+			
+			if (!userinput.id.value) {
+				alert("ID를 입력하세요");
+				return false;
+			}
 
+			if (!userinput.passwd.value) {
+				alert("비밀번호를 입력하세요");
+				return false;
+			}
+			if (userinput.passwd.value != userinput.passwd2.value) {
+				alert("비밀번호를 동일하게 입력하세요");
+				return false;
+			}
 
-<script language="JavaScript">
-   <!-- 
-    function checkIt() {
-        var userinput = eval("document.userinput");
-               
-        if(!userinput.passwd.value ) {
-            alert("비밀번호를 입력하세요");
-            return false;
-        }
-        if(userinput.passwd.value != userinput.passwd2.value)
-        {
-            alert("비밀번호를 동일하게 입력하세요");
-            return false;
-        }
-       
-        if(!userinput.username.value) {
-            alert("사용자 이름을 입력하세요");
-            return false;
-        }
-        if(!userinput.jumin1.value  || !userinput.jumin2.value )
-        {
-            alert("주민등록번호를 입력하세요");
-            return false;
-        }
-    }
--->
-</script>
-</head>
-<body bgcolor="${bodyback_c}">
-<form method="post" action="modifyPro.jsp" name="userinput" onsubmit="return checkIt()">
+			if (!userinput.sex.value) {
+				alert("성별을 선택하세요");
+				return false;
+			}
+			
+			if (!userinput.email.value) {
+				alert("이메일을 입력하세요");
+				return false;
+			}
+			
+			if (!userinput.name.value) {
+				alert("사용자 이름을 입력하세요");
+				return false;
+			}
+			
+			if (!userinput.nickname.value) {
+				alert("닉네임을 입력하세요");
+				return false;
+			}
+			
+			if(!userinput.check.value){
+				alert("아이디 중복체크를 해주세요");
+				return false;
+			}
+		}
+		
+		function reCheck(){
+			if(!document.userinput.id_check.value) {
+				document.userinput.id_check.value == null;
+			}
+		}
+		
+		 function openConfirmNick(userinput) {
+		        // 아이디를 입력했는지 검사
+		        if (userinput.nickname.value == "") {
+		            alert("닉네임을 입력하세요");
+		            return;
+		        }
+		        
+		        if (userinput.nickname.value == ${mDTO.nickname}) {
+		            alert("변경사항이 없습니다.");
+		            return;
+		        }
+		        
+		        // url과 사용자 입력 id를 조합합니다.
+		        url = "/PooSic/confirmNick.action?nickname=" + userinput.nickname.value;
+		        
+		        // 새로운 윈도우를 엽니다.
+		        open(url, "confirmNick", 
+		        "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+		    }
+		
+	</script>
+	<body>
+		<center>
+		<form method="post" action="modifyPro.action" name="userinput" onSubmit="return checkIt()">
+			<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
+				<tr>
+					<td colspan="2" height="39" align="center" bgcolor="${value_c}">
+						<font size="+1"><b>회원가입</b></font>
+					</td>
+				</tr>
 
-  <table width="600" border="1" cellspacing="0" cellpadding="3"  align="center">
-    <tr > 
-      <td  colspan="2" height="39" bgcolor="${title_c}" align="center">
-	     <font size="+1" ><b>회원 정보수정</b></font></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="normal" align="center">회원의 정보를 수정합니다.</td>
-    </tr>
-     <tr> 
-      <td width="200" bgcolor="${value_c}"><b>아이디 입력</b></td>
-      <td width="400" bgcolor="${value_c}">&nbsp;</td>
-    <tr>  
-
-    <tr> 
-      <td  width="200"> 사용자 ID</td>
-      <td  width="400">${}</td>
-    </tr>
-    
-     <tr> 
-      <td width="200"> 비밀번호</td>
-      <td width="400"> 
-        <input type="password" name="passwd" size="10" maxlength="10" value="${}">
-      </td>
-    <tr>  
-    <tr> 
-      <td  width="200" bgcolor="${value_c}"><b>개인정보 입력</b></td>
-      <td width="400" bgcolor="${value_c}">&nbsp;</td>
-    <tr>  
-    <tr> 
-      <td   width="200">사용자 이름</td>
-      <td  width="400"> 
-        <input type="text" name="name" size="15" maxlength="20" value="${}">
-      </td>
-    </tr>
-    <tr> 
-      <td width="200">주민등록번호</td>
-      <td width="400"> 
-        ${}-${}
-      </td>
-    </tr>
-   <tr> 
-      <td width="200">E-Mail</td>
-      <td width="400">
-      </td>
-    </tr>
-    <tr> 
-      <td width="200">Blog</td>
-      <td width="400"> 
-      </td>
-    </tr>      
-    <tr> 
-      <td colspan="2" align="center" bgcolor="${value_c}"> 
-       <input type="submit" name="modify" value="수   정" >
-       <input type="button" value="취  소" onclick="javascript:window.location='main.jsp'">      
-      </td>
-    </tr>
-  </table>
-</form>
-</body>
+				<tr>
+					<td width="200">아이디</td>
+					<td width="400">
+						<c:out value="${mDTO.id}"/>
+						<input type="hidden" name="id" value="${mDTO.id}"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="200">닉네임</td>
+					<td width="200">
+						<input type="text" name="nickname" value="${mDTO.nickname}"/>
+						<input type="button" name="confirm_nick" value="중복확인" onclick="openConfirmNick(this.form)"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="200">성별</td>
+					<td width="400">
+						<c:out value="${mDTO.sex}"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="200">생년월일</td>
+					<td width="400">
+						<c:out value="${mDTO.birth}"/>
+					</td>
+				</tr>
+				<tr>
+					<td width="200">이메일</td>
+					<td width="400">
+						<input type="text" name="email" value="${mDTO.email}"/>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" name="soaka" value="정보수정"/>
+		</form>
+		</center>
+	</body>
 </html>

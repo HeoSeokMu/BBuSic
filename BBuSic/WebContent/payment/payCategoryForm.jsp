@@ -1,40 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<script type="text/javascript">
-	function loadXMLDoc(abc) {
-
-		alert("aaa");
-		var xmlhttp;
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari 
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5 
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("payBuy").innerHTML = xmlhttp.responseText;
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title></title>
+		<script type="text/javascript">
+			function loadXMLDoc(abc) {
+		
+				alert("aaa");
+				var xmlhttp;
+				if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari 
+					xmlhttp = new XMLHttpRequest();
+				} else {// code for IE6, IE5 
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("payBuy").innerHTML = xmlhttp.responseText;
+					}
+				};
+				xmlhttp.open("GET", "payBuyAction.action?type="+abc, true);
+				xmlhttp.send();
 			}
-		};
-		xmlhttp.open("GET", "payBuyAction.action?type="+abc, true);
-		xmlhttp.send();
-	}
-</script>
-
-<!-- 
-<marquee>Ω≈¿∫ ¿ß¥Î«œ¥Ÿ!!</marquee>
- -->
-<div id="payCategory">
-	<h2>∏·∑– ªÛ«∞ ±∏∏≈</h2>
-	<input type="button" name="pay_all" value="¿¸√º ªÛ«∞ ∫∏±‚" onclick="loadXMLDoc(payAll)"/>
-	<input type="button" name="pay_3mon" value="3∞≥ø˘ «“¿Œ ∆Ø∞°" onclick="loadXMLDoc(pay3Mon)"/>
-	<input type="button" name="pay_3mon" value="¡¶»ﬁ ªÛ«∞" onclick="loadXMLDoc(payCooper)"/>
-	<input type="button" name="pay_3mon" value="ƒÌ∆˘ µÓ∑œ" onclick="loadXMLDoc(payCoopon)"/>
-	<input type="button" name="pay_3mon" value="∏·∑– ƒ≥Ω¨ √Ê¿¸" onclick="loadXMLDoc(payCash)"/>
-</div>
-
-<div id="payBuy">
+		</script>
+	</head>
 	
-</div>
+	<body>
+		<!-- 
+		<marquee>Ïã†ÏùÄ ÏúÑÎåÄÌïòÎã§!!</marquee>
+		 -->
+		<div id="payCategory">
+			<h2>Î©úÎ°† ÏÉÅÌíà Íµ¨Îß§</h2>
+			<input type="button" name="pay_all" value="Ï†ÑÏ≤¥ ÏÉÅÌíà Î≥¥Í∏∞" onclick="loadXMLDoc(payAll)"/>
+			<input type="button" name="pay_3mon" value="3Í∞úÏõî Ìï†Ïù∏ ÌäπÍ∞Ä" onclick="loadXMLDoc(pay3Mon)"/>
+			<input type="button" name="pay_3mon" value="Ï†úÌú¥ ÏÉÅÌíà" onclick="loadXMLDoc(payCooper)"/>
+			<input type="button" name="pay_3mon" value="Ïø†Ìè∞ Îì±Î°ù" onclick="loadXMLDoc(payCoopon)"/>
+			<input type="button" name="pay_3mon" value="Î©úÎ°† Ï∫êÏâ¨ Ï∂©Ï†Ñ" onclick="loadXMLDoc(payCash)"/>
+		</div>
+		
+		<div id="payBuy">
+			
+		</div>
+	</body>
+</html>

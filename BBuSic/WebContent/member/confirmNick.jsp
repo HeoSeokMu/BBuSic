@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head><title>ID 중복확인</title>
+<head><title>NICKNAME 중복확인</title>
 
 
 <body bgcolor="${bodyback_c}">
@@ -16,16 +16,16 @@
 <c:if test="${check == 1}">
 <table width="270" border="0" cellspacing="0" cellpadding="5">
   <tr bgcolor="${title_c}">
-    <td height="39" >${id}이미 사용중인 아이디입니다.</td>
+    <td height="39" >${nickname}이미 사용중인 닉네임입니다.</td>
   </tr>
 </table>
-<form name="checkForm" method="post" action="confirmId.action">
+<form name="checkForm" method="post" action="confirmNick.action">
 <table width="270" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td bgcolor="${value_c}" align="center">
-       다른 아이디를 선택하세요.<p>
-       <input type="text" size="10" maxlength="12" name="id">
-       <input type="submit" value="ID중복확인">
+       다른 닉네임를 선택하세요.<p>
+       <input type="text" size="10" maxlength="12" name="nickname">
+       <input type="submit" value="중복확인">
     </td>
   </tr>
 </table>
@@ -36,8 +36,8 @@
 <table width="270" border="0" cellspacing="0" cellpadding="5">
   <tr bgcolor="${title_c}">
     <td align="center">
-      <p>입력하신 ${id} 는 사용하실 수 있는 ID입니다. </p>
-      <input type="button" value="닫기" onclick="setid()">
+      <p>입력하신 ${nickname} 는 사용하실 수 있는 닉네임입니다. </p>
+      <input type="button" value="닫기" onclick="setnick()">
     </td>
   </tr>
 </table>
@@ -47,10 +47,10 @@
 </html>
 <script language="javascript">
 <!--
-	function setid(){
-    	opener.document.userinput.id.value="${id}";
+	function setnick(){
+    	opener.document.userinput.nickname.value="${nickname}";
     	opener.document.userinput.check.value="1";
-		self.close();
+		window.close();
 	}
 		-->
 </script>

@@ -11,7 +11,7 @@
 		<init-param>
 			<description>struts2 UTF-8 설정</description>
 			<param-name>struts.i18n.encoding</param-name>
-			<param-value>UTF-8</param-value>
+			<param-value>EUC-KR</param-value>
 		</init-param>
 		
 	</filter>

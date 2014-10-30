@@ -1,7 +1,5 @@
 package member.action;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -13,37 +11,36 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class ModifyFormAction implements Action, MemberAware, Preparable, ModelDriven, SessionAware{
-
+public class ModifyProAction implements Action, MemberAware, Preparable, ModelDriven, SessionAware{
+	
 	private SqlMapClient sqlMapper;
 	MemberDTO mDTO;
 	private Map session;
 	private String id;
 	
 	public String execute() throws Exception {
-		id = (String) session.get("memId");	
+		id = (String) session.get("memId");
+		sqlMapper.update("member.updateMember", mDTO);
 		mDTO = (MemberDTO) sqlMapper.queryForObject("member.selectMember", id);
-		System.out.println("mDTO : " + mDTO.getId());
 		return SUCCESS;
 	}
 	
-	public void prepare() throws Exception {
-		this.mDTO = new MemberDTO();
-	}
-
-	public Object getModel() {
-		return mDTO;
-	}
-
 	public void setSqlMapper(SqlMapClient sqlMapper) {
 		this.sqlMapper = sqlMapper;
 	}
 
+	public void prepare() throws Exception {
+		mDTO = new MemberDTO();
+	}
+	
+	public Object getModel() {
+		return mDTO;
+	}
+	public MemberDTO getmDTO(){
+		return mDTO;
+	}
+	
 	public void setSession(Map session) {
 		this.session = session;
-	}
-
-	public MemberDTO getmDTO() {
-		return mDTO;
 	}
 }

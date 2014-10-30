@@ -17,7 +17,7 @@ public class LoginProAction implements Action, SessionAware, MemberAware{
 	
 	public String execute() throws Exception {
 		System.out.println("id : " + id);
-		passwd2 = (String)sqlMapper.queryForObject("selectPasswd", id);
+		passwd2 = (String)sqlMapper.queryForObject("member.selectPasswd", id);
 		
 		System.out.println("passwd : " + passwd + " / " + passwd2);
 		

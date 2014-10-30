@@ -35,6 +35,7 @@
 	</c:if>
 
 </head>
+${memId}
 <body onLoad="focusIt();" bgcolor="${bodyback_c}">
 	<c:if test="${session.memId == null}">
 		<table width=500 cellpadding="0" cellspacing="0" align="center" border="1">
@@ -58,7 +59,7 @@
 				<tr>
 					<td colspan="3" bgcolor="${title_c}" align="center">
 						<input type="submit" name="Submit" value="로그인"/>
-						<input type="button" value="회원가입" onclick="javascript:window.location='Agreement.action'"/>
+						<input type="button" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
 					</td>	
 				</tr>
 			</form>
@@ -77,8 +78,9 @@
 			<tr>
 				<td width="300" bgcolor="${bodyback_c}" height="20">하하하</td>
 				<td rowspan="3" bgcolor="${value_c}" align="center"> ${session.memId} 님이 방문하셨습니다 <br/>
-						<input type="button" value="로그아웃" onclick="javascript:window.location=logout.action"/>
-						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.jsp'"/>
+						<input type="button" value="로그아웃" onclick="javascript:window.location='logout.action'"/>
+						<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
+						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
 						<input type="button" value="게시판" onclick="javascript:window.location='../board/list.jsp'"/>
 						<input type="button" value="피자" onclick="javascript:window.location='../dominoOrder/addressChoiceForm.jsp'"/>
 					</form>

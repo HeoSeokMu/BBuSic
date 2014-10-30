@@ -35,7 +35,7 @@
 				<tr>
 					<td width="200">이메일</td>
 					<td width="400">
-					<input type="text" name="confirmEmail" value="${birth}" size="20" maxlength="25"/>
+					<input type="text" name="confirmEmail" value="${email}" size="20" maxlength="25"/>
 					<input type="button" name="send" value="인증번호 발송"/><br/>
 					<input type="text" name="confirmNumber" size="15" maxlength="15"/>
 					<input type="button" name="confirm" value="인증하기"/>
