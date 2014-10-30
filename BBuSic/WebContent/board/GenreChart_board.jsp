@@ -39,8 +39,32 @@
 		                f.elements[i].checked = false; 
 		         	}
 				}
+			}			
+		}
+		
+		/* 팝업 스크립트 */
+		function list_add(a){
+			var params = "";
+			var chkNo = document.getElementsByName("chkNo");
+			alert(chkNo);
+			if(a == "s"){
+				var countChk = 0;
+				for (var i = 0; i < chkNo.length; i++) {					
+					if(chkNo[i].checked){
+						alert(chkNo[i].value);
+						params+= "chkNo="+i +"&";
+						countChk+=1;
+					}				
+				}
+				if(countChk == 0){ //서버로 넘어가기전에 사전에 막기위해 사용.
+					alert("선택해라!!!");
+					return false;
+				}
+			}else{
+				params = "chkNo="+a;
 			}
-			
+			open("Chart_BoardAction.action?"+params, "confirm", 
+		       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400");
 		}
 	</script>
 	</head>
@@ -52,7 +76,7 @@
 	<hr width="950px" size="1" color="gray" align="left" />
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="">
+		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 	
@@ -110,7 +134,7 @@
 	<hr width="950px" size="1" color="gray" align="left" />
 
 	<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="">
+		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 	

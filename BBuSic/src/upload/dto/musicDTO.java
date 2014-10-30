@@ -12,7 +12,15 @@ public class musicDTO {
 	private String album;
 	private String title;
 	private int hit;
+	private int[] chkNo;
 	
+	
+	public int[] getChkNo() {
+		return chkNo;
+	}
+	public void setChkNo(int[] chkNo) {
+		this.chkNo = chkNo;
+	}
 	public int getNum() {
 		return num;
 	}
