@@ -56,16 +56,12 @@
 			<interceptor-ref name="params"/>
 			<result>/member/inputPro.jsp?id=${id}</result>
 		</action>
-		
-		<action name="popupLogin" class="member.action.popupLoginAction">
-			<result>/member/popupLoginForm.jsp</result>
-		</action>
  	
 		<action name="popupLoginPro" class="member.action.LoginProAction">
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB1"/>
 			<interceptor-ref name="params"/>
-			<result>/member/popupLoginForm.jsp</result>
+			<result>/payment/payBuyListForm.jsp</result>
 		</action>
 	</package>	
 		
@@ -168,6 +164,17 @@
 	
 	<!-- 안명곤 작업 -->
 	<package name="gon_bbu" extends="struts-default">
+		<!-- 팝업 -->
+		<interceptors>
+			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
+		</interceptors>
+		<action name="Chart_BoardAction" class="board.action.Chart_BoardAction" method="popupEx">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/MusicListForm.jsp</result>
+		</action>
 		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -196,18 +203,21 @@
 			<result>/board/ChartMain.jsp</result>
 		</action>
 		<action name="ChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/MelonChart_board.jsp</result>
 		</action>
 		<action name="NewChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/NewChart_board.jsp</result>
 		</action>
 		<action name="GenreChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />

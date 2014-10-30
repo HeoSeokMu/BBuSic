@@ -1,11 +1,5 @@
 package payment.action;
 
-import java.util.Map;
-
-import member.DTO.MemberDTO;
-
-import org.apache.struts2.interceptor.SessionAware;
-
 import payment.pay_setDTO.cash_DTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;

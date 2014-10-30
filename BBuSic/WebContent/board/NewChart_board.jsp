@@ -35,6 +35,29 @@
 		}
 		
 	}
+	
+	/* 팝업 스크립트 */
+	function list_add(a){
+		var params = "";
+		var chkNo = document.getElementsByName("chkNo");
+		if(a == "s"){
+			var countChk = 0;
+			for (var i = 0; i < chkNo.length; i++) {					
+				if(chkNo[i].checked){
+					params+= "chkNo="+i +"&";
+					countChk+=1;
+				}				
+			}
+			if(countChk == 0){ //서버로 넘어가기전에 사전에 막기위해 사용.
+				alert("선택해라!!!");
+				return false;
+			}
+		}else{
+			params = "chkNo="+a;
+		}
+		open("Chart_BoardAction.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400");
+	}
 </script>
 
 <html>
@@ -57,7 +80,7 @@ center {
 		<hr width="950px" size="1" color="gray" align="left" />
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="">
+		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
@@ -87,24 +110,26 @@ center {
 		</c:if>
 
 		<c:if test="${totalCount > 0}">
-			<c:forEach var="list" items="${list}" varStatus="num">
+			<c:forEach var="list" items="${list}" varStatus="checkValue">
 				<table>
-					<tr align="center" height="70px">
-						<td width="29px" height="10px"><input type="checkbox" name="checkbox" value=></td>
+					<tr align="center" height="70px">																	
+						<td width="29px" height="10px"><input type="checkbox" name="chkNo" value="${checkValue.index}"></td>
 						<td width="29px">위</td>
 						<!--이미지-->
 						<td width="80px"><img src="${list.music_image}" width="50px" height="50px"></td>
 						<!--곡정보-->
-						<td width="630px" align="left"><input type="image" name="m_play_btt" src="/music/board/images/m_play_button.png">
-							<input type="image" name="m_add_btt" src="/music/board/images/m_add_button.png"> &nbsp;
-							<input type="image" name="m_page_btt" src="/music/board/images/m_page_button.png">
+						<td width="630px" align="left">
+							<input type="image" name="m_play_btt" 
+											src="/BBuSic/board/images/m_play_button.png" onclick="list_add(${checkValue.index });">
+							<input type="image" name="m_add_btt" src="/BBuSic/board/images/m_add_button.png"> &nbsp;
+							<input type="image" name="m_page_btt" src="/BBuSic/board/images/m_page_button.png">
 							<div style="text-align: center">
 								${list.title}<br /> ${list.singger} | ${list.album}
 							</div></td>
 						<!--좋아요-->
-						<td width="82px"><input type="image" name="m_like_btt" src="/music/board/images/m_like_button.png"> ${list.hit}</td>
+						<td width="82px"><input type="image" name="m_like_btt" src="/BBuSic/board/images/m_like_button.png"> ${list.hit}</td>
 						<!--다운로드-->
-						<td td width="70px"><input type="image" name="m_download_img" src="/music/board/images/m_download_button.png"></td>
+						<td td width="70px"><input type="image" name="m_download_img" src="/BBuSic/board/images/m_download_button.png"></td>
 					</tr>
 				</table>
 				<hr width="950px" size="1" color="gray" align="left" />
@@ -114,7 +139,7 @@ center {
 		<hr width="950px" size="1" color="gray" align="left" />
 		<!-- 전체선택 -->
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="">
+		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
