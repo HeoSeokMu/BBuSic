@@ -8,7 +8,7 @@
 				<td>${musicList2.title }</td>
 				<td>
 					<audio auto="false"  controls="true" >
-							<source src="/BBuSic/Upload/${musicList2.music_name}">			
+							<source src="/BBuSic/upload/${musicList2.music_name}">			
 					</audio> 
 				</td>	
 			</tr>	
