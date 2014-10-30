@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=euc-kr"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,34 +13,34 @@
 			enctype="Multipart/form-data">
 			<table border="1" width="400">
 				<tr>
-					<td align="center">ìŒì•…íŒŒì¼</td>
+					<td align="center">À½¾ÇÆÄÀÏ</td>
 					<td><input type="file" name="uploadMusic" value="music_path" /></td>
 				</tr>
 				<tr>
-					<td align="center">ì´ë¯¸ì§€íŒŒì¼</td>
+					<td align="center">ÀÌ¹ÌÁöÆÄÀÏ</td>
 					<td><input type="file" name="uploadImage" value="image_path" /></td>
 				</tr>
 				<tr>
-					<td align="center" width="200">ìž¥ë¥´</td>
+					<td align="center" width="200">Àå¸£</td>
 					<td><select name="genre">
-							<option value="balad">ë°œë¼ë“œ</option>
-							<option value="dance">ëŒ„ìŠ¤</option>
+							<option value="balad">¹ß¶óµå</option>
+							<option value="dance">´í½º</option>
 					</select></td>
 				</tr>
 				<tr>
-					<td align="center">ê°€ìˆ˜</td>
-					<td><input type="text" name="singger"></td>
+					<td align="center">°¡¼ö</td>
+					<td><input type="text" name="singger" /></td>
 				</tr>
 				<tr>
-					<td align="center">ì•¨ë²”</td>
-					<td><input type="text" name="album"></td>
+					<td align="center">¾Ù¹ü</td>
+					<td><input type="text" name="album" /></td>
 				</tr>
 				<tr>
-					<td align="center">ì œëª©</td>
-					<td><input type="text" name="title"></td>
+					<td align="center">Á¦¸ñ</td>
+					<td><input type="text" name="title" /></td>
 				</tr>
 				<tr>
-					<td colspan="3" align="center"><input type="submit" value="ì „ì†¡" /></td>
+					<td colspan="3" align="center"><input type="submit" value="Àü¼Û" /></td>
 				</tr>
 			</table>
 		</form>
