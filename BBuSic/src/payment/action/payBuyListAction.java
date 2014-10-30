@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class payBuyAction implements Action, BBuSicAware {
+public class payBuyListAction implements Action, BBuSicAware {
 	
 	public SqlMapClient sqlMapper;
 	private String type; 
@@ -36,11 +36,9 @@ public class payBuyAction implements Action, BBuSicAware {
 		this.sqlMapper = sqlMapper;
 	}
 
-
 	public String getType() {
 		return type;
 	}
-
 
 	public void setType(String type) {
 		this.type = type;

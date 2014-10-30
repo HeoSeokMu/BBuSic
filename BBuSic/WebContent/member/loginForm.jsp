@@ -66,14 +66,10 @@ ${memId}
 		</table>
 	</c:if>
 
-
-
-
-
-
-
-
 	<c:if test="${session.memId != null}">
+		<%
+			response.sendRedirect("");		
+		%>
 		<table width="500" cellpadding="0" cellspacing="0" align="center" border="1">
 			<tr>
 				<td width="300" bgcolor="${bodyback_c}" height="20">하하하</td>

@@ -15,8 +15,9 @@
 	<package name="mu_bbu" extends="struts-default">
 		<interceptors>
 			<interceptor name="BBuSicInterceptor" class="payment.action.BBuSicInterceptor"/>
+			
+			<interceptor name="DB1" class="member.action.MemberInterceptor" />
 			<!-- 
-			<interceptor name="DB" class="member.action.MemberInterceptor" />
 			<interceptor name="fileUploadDao" class="upload.interceptor.FileUploadDAOInterceptor" />
 			 -->
 		</interceptors>
@@ -26,13 +27,16 @@
 			<result>/payment/Pay_setting.jsp</result>
 		</action>
 		
-		<action name="payBuy" class="payment.action.payFormAction">
-			<result>/payment/Pay_setting.jsp</result>
+		<action name="payBuyList" class="payment.action.payBuyListAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<result>/payment/payBuyListForm.jsp</result>
 		</action>
 		
-		<action name="payCategory" class="payment.action.payBuyAction">
-			<interceptor-ref name="BBuSicInterceptor"/>
-			<result>/payment/payBuyForm.jsp</result>
+		<action name="payBuyOption" class="payment.action.payBuyOptionAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/payment/payBuyOptionForm.jsp</result>
 		</action>
 	
 		<!-- 게시판 리스트 액션. -->
@@ -52,6 +56,17 @@
 			<interceptor-ref name="params"/>
 			<result>/member/inputPro.jsp?id=${id}</result>
 		</action>
+		
+		<action name="popupLogin" class="member.action.popupLoginAction">
+			<result>/member/popupLoginForm.jsp</result>
+		</action>
+ 	
+		<action name="popupLoginPro" class="member.action.LoginProAction">
+			<interceptor-ref name="servletConfig"/>
+			<interceptor-ref name="DB1"/>
+			<interceptor-ref name="params"/>
+			<result>/member/popupLoginForm.jsp</result>
+		</action>
 	</package>	
 		
 	<!-- 김정진 작업 -->
@@ -60,7 +75,6 @@
 			<interceptor name="DB" class="member.action.MemberInterceptor" />
 		</interceptors>	
 		
-			
 		<action name="agreement" class="member.action.AgreementAction">
 			<result>/member/agreement.jsp</result>
 		</action>

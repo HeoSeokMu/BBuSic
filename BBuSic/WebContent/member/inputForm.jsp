@@ -76,7 +76,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/PooSic/confirmId.action?id=" + userinput.id.value;
+		        url = "/BBuSic/confirmId.action?id=" + userinput.id.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmId", 
@@ -91,7 +91,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/PooSic/confirmNick.action?nickname=" + userinput.id.value;
+		        url = "/BBuSic/confirmNick.action?nickname=" + userinput.id.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmNick", 
