@@ -11,6 +11,6 @@
 	<form name="picform" method="get">
 		<div style="width:490;height:390;overflow-y:scroll;white-space:nowrap;">	    		
 	    			<input type="button" value="노래 올리기" onclick="p_up();">   	
-	    	
+	    </div>	
 	</form>
 </body>
