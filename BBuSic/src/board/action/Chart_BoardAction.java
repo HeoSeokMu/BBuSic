@@ -1,24 +1,23 @@
 package board.action;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
 import upload.dto.musicDTO;
+import BBusic.Aware.musicAware;
 import board.action.pagingAction;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 
-public class Chart_BoardAction implements Action{
+public class Chart_BoardAction implements Action, Preparable, ModelDriven, musicAware{
 	
-	public static Reader reader;			//파일 스트림을 위한 reader.
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
-	private List<musicDTO> list = new ArrayList<musicDTO>();;
+	private static List<musicDTO> list = new ArrayList<musicDTO>();
+	private static List<musicDTO> musicList2 = new ArrayList<musicDTO>();
 	
 	private int currentPage = 1;	//현재 페이지
 	private int totalCount;			// 총 게시물의 수
@@ -29,17 +28,12 @@ public class Chart_BoardAction implements Action{
 	private String category;		// 해당 차트
 	private String genre;			// 장르
 	
-	//생성자
-	public Chart_BoardAction() throws IOException {
-		
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml 파일의 설정내용을 가져온다.
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	// sqlMapConfig.xml의 내용을 적용한 sqlMapper 객체 생성.
-		reader.close();
-		
-	}
+	private musicDTO mdto;
 	
+		
 	@Override
 	public String execute() throws Exception {
+		System.out.println("execute"+sqlMapper);
 		if(category == "chart"){
 			System.out.println("ifcategory : " + category);
 			System.out.println("ifgenre : " + genre);
@@ -62,7 +56,6 @@ public class Chart_BoardAction implements Action{
 				if(category.equals("chart")){
 					
 					list = sqlMapper.queryForList("musicSQL.selectAll");
-					System.out.println("list Size : "+list.size());
 					
 					blockCount = 50;
 					blockPage = 2;
@@ -91,6 +84,17 @@ public class Chart_BoardAction implements Action{
 				
 		return SUCCESS;
 	}
+	
+	/* 팝업 메서드 */
+	public String popupEx() throws Exception {
+		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
+			for (int i = 0; i < cNo.length; i++) {				
+				System.out.println(cNo[i]);
+				musicList2.add(i, list.get(cNo[i]));
+			}
+		return SUCCESS;
+	}
+	
 	
 	public List<musicDTO> getList() {
 		return list;
@@ -140,14 +144,6 @@ public class Chart_BoardAction implements Action{
 		this.page = page;
 	}
 
-	public static SqlMapClient getSqlMapper() {
-	      return sqlMapper;
-	}
-	
-   public void setSqlMapper(SqlMapClient sqlMapper) {
-	   Chart_BoardAction.sqlMapper = sqlMapper;
-   }
-
 	public String getPagingHtml() {
 		return pagingHtml;
 	}
@@ -171,5 +167,30 @@ public class Chart_BoardAction implements Action{
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	public static List<musicDTO> getMusicList2() {
+		return musicList2;
+	}
+
+	public static void setMusicList2(List<musicDTO> musicList2) {
+		Chart_BoardAction.musicList2 = musicList2;
+	}
+
+	@Override
+	public Object getModel() {
+		return mdto;
+	}
+
+	@Override
+	public void prepare() throws Exception {
+		mdto = new musicDTO();
+	}
+
+	
+	public void setSqlMapper(SqlMapClient sqlMapper) {
+		this.sqlMapper = sqlMapper; 
+		
+	}
+	
 	
 }

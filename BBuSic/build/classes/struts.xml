@@ -154,6 +154,17 @@
 	
 	<!-- 안명곤 작업 -->
 	<package name="gon_bbu" extends="struts-default">
+		<!-- 팝업 -->
+		<interceptors>
+			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
+		</interceptors>
+		<action name="Chart_BoardAction" class="board.action.Chart_BoardAction" method="popupEx">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/MusicListForm.jsp</result>
+		</action>
 		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -182,18 +193,21 @@
 			<result>/board/ChartMain.jsp</result>
 		</action>
 		<action name="ChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/MelonChart_board.jsp</result>
 		</action>
 		<action name="NewChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/NewChart_board.jsp</result>
 		</action>
 		<action name="GenreChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
