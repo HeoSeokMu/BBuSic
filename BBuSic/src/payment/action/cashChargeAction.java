@@ -6,8 +6,7 @@ import payment.pay_setDTO.pay_DTO;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 
-
-public class payBuyListAction implements Action, BBuSicAware {
+public class cashChargeAction implements Action, BBuSicAware {
 	
 	public SqlMapClient sqlMapper;
 	private String type; 

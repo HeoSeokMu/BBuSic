@@ -61,7 +61,12 @@
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB1"/>
 			<interceptor-ref name="params"/>
-			<result>/payment/payBuyListForm.jsp</result>
+			<result name="success" type="redirect">payBuyList.action</result>
+		</action>
+		
+		<action name="cashCharge" class="payment.action.cashChargeAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<result>/payment/cashChargeForm.jsp</result>
 		</action>
 	</package>	
 		
@@ -93,7 +98,6 @@
 <!--  				<param name="cash_id">${id}</param> -->
  			</result>
 		</action>
-		
 		
 		
 		<action name="loginForm" class="member.action.LoginFormAction">
