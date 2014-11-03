@@ -100,17 +100,17 @@ center {
 						<!--이미지-->
 						<td width="80px"><img src="${list.music_image}" width="50px" height="50px"></td>
 						<!--곡정보-->
-						<td width="250px" align="left"><input type="image" name="m_play_btt" src="/music/board/images/m_play_button.png">
-							<input type="image" name="m_add_btt" src="/music/board/images/m_add_button.png"> &nbsp;
-							<input type="image" name="m_page_btt" src="/music/board/images/m_page_button.png">
+						<td width="250px" align="left"><input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png">
+							<input type="image" name="m_add_btt" src="http://localhost:8000/BBuSic/board/images/m_add_button.png"> &nbsp;
+							<input type="image" name="m_page_btt" src="http://localhost:8000/BBuSic/board/images/m_page_button.png">
 								${list.title}
 						</td>
 						<td width="152px">${list.singger}</td>
 						<td width="146px">${list.album}</td>
 						<!--좋아요-->
-						<td width="82px"><input type="image" name="m_like_btt" src="/music/board/images/m_like_button.png"> ${list.hit}</td>
+						<td width="82px"><input type="image" name="m_like_btt" src="http://localhost:8000/BBuSic/board/images/m_like_button.png"> ${list.hit}</td>
 						<!--다운로드-->
-						<td td width="70px"><input type="image" name="m_download_img" src="/music/board/images/m_download_button.png"></td>
+						<td td width="70px"><input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png"></td>
 					</tr>
 				</table>
 				<hr width="850px" size="1" color="gray" align="left" />

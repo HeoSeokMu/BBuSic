@@ -109,7 +109,6 @@
 	</head>
 	
 	<body>
-		<center>
 		<table border="1">
 			<tr>
 				<td colspan="2">
@@ -146,6 +145,5 @@
 				</td>
 			</tr>
 		</table>
-		</center>
 	</body>
 </html>

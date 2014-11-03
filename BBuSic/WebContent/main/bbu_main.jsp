@@ -69,17 +69,9 @@
 	<div id="box">
 		<div id="header">
 			<ul class="menu">
-<<<<<<< HEAD
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png"  border="0" alt="chart" class="rollover"></a></li>
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  border="0" alt="new" class="rollover"></a></li>
-				<li><a href="#">
-					<img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png"  border="0" alt="genre" class="rollover"></a>
-=======
-				<li><a href="#"><img src="bbu_main_img/chart.png" name="chart" border="0" alt="chart" class="rollover"></a></li>
-				<li><a href="#"><img src="bbu_main_img/new.png" name="new" border="0" alt="new" class="rollover"></a></li>
-				<li><a href="#">
-					<img src="bbu_main_img/genre.png" name="genre" border="0" alt="genre" class="rollover"></a>
->>>>>>> 691fc3e9f4d398deb88b5eeb1da1e9b9140f8f03
+				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" class="rollover" border="0"></a>
 					<ul class="sub">
 						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" class="rollover" border="0"></a></li>
 						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" class="rollover" border="0"></a></li>

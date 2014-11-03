@@ -21,8 +21,8 @@
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("payBuy").innerHTML = xmlhttp.responseText;
 					}
-				};
-				xmlhttp.open("GET", "payBuyAction.action?type="+abc, true);
+				};				
+				xmlhttp.open("GET", "payBuyAction.action?type="+abc, true);				
 				xmlhttp.send();
 			}
 		</script>
