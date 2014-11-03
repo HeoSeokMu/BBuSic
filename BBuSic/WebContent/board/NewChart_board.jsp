@@ -114,7 +114,7 @@ center {
 				<table>
 					<tr align="center" height="70px">																	
 						<td width="29px" height="10px"><input type="checkbox" name="chkNo" value="${checkValue.index}"></td>
-						<td width="29px">위</td>
+						<td width="29px">${checkValue.count}</td>
 						<!--이미지-->
 						<td width="80px"><img src="${list.music_image}" width="50px" height="50px"></td>
 						<!--곡정보-->

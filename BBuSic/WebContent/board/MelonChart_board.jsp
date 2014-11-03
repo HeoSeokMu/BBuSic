@@ -84,7 +84,7 @@ center {
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px"/>
 		<input type="button" name="h_download_btt" value="다운" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
 		<input type="button" name="h_collect_btt" value="담기" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
-		<input type="button" name="h_listen_top100_btt" value="TOP100위 듣기" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
+		<input type="button" name="h_listen_top100_btt" value="TOP50위 듣기" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
 
 		<hr width="950px" size="1" align="left">
 		<table align="left">
@@ -92,7 +92,7 @@ center {
 				<td width="29px" height="10px">
 					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
 				</td>
-				<td width="29px"><g>순위</g></td>
+				<td width="60px"><g>순위</g></td>
 				<td width="80px"></td>
 				<td width="630px"><g>곡정보</g></td>
 				<td width="82px"><g>좋아요</g></td>
@@ -117,7 +117,7 @@ center {
 					<tr align="center" height="70px">
 						<td width="29px" height="10px"><input type="checkbox"
 							name="chkNo" value="${i}"></td>
-						<td width="29px">위</td>
+						<td width="35px">${checkValue.count}위</td>
 						<!--이미지-->
 						<td width="80px"><img src="${i.music_image}" width="50px"
 							height="50px"></td>
@@ -149,7 +149,7 @@ center {
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
 		<input type="button" name="h_download_btt" value="다운" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
 		<input type="button" name="h_collect_btt" value="담기" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
-		<input type="button" name="h_listen_top100_btt" value="TOP100위 듣기" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
+		<input type="button" name="h_listen_top100_btt" value="TOP50위 듣기" onClick="" style="color:#ffffff;border-color:#E7EFF7;background-color:#CC3D3D;font-size:8pt;font-family:Tahoma;height:20px" />
 
 		<hr width="950px" size="1" align="left" />
 		<br>
