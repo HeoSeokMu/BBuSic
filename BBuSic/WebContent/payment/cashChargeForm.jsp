@@ -198,6 +198,12 @@
 				</td>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="6">
+				돈내놔 : &nbsp;
+				<input type="text" value="cash"/>
+			</td>
+		</tr>
 		
 		</table>	
 		<div class="mw_layer">

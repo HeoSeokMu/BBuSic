@@ -3,6 +3,19 @@
 
 <style type="text/css">
 	html, body { width:100%; height:100%;  margin:0px; padding:0px; }
+	li {list-style:none;}
+	ui, li, h1, h2, h3, h4, h5, ol, dl, dt, dd, p, body {margin:0; padding:0;}
+	
+	#header {width:100%; position:fixed; left:0; top:0; z-index:100;}
+	#header h1 {position:absolute; width:141px; cursor:pointer; left:50%; margin-left:-70px; top:10px; text-align:center; z-index:3;}
+	#header .header_left {height:0; font-size:0; line-height:0; z-index:1; width:50%; position:absolute; left:-150px; top:35px; border:13px solid #fff; border-right:13px solid transparent;}
+	#header .header_right {height:0; font-size:0; line-height:0; z-index:1; width:50%; position:absolute; right:-150px; top:35px; border:13px solid #fff; border-left:13px solid transparent;}
+	#header ul {position:absolute; width:1024px; white-space:nowrap; text-align:center; z-index:2; left:50%; top:35px; margin-left:-460px;}
+	#header ul li {display:block; position:relative; float:left; width:200px; font-size:18px; line-height:26px; height:26px; overflow:hidden; text-align:center;}
+	#header ul li span {cursor:pointer; position:absolute; top:0; left:45px; width:100px; font-weight:bold; display:block; overflow:hidden; color:#888;}
+	#header ul li b {display:block; color:#000; width:100px; font-weight:bold;}
+	#header ul li.about {width:100px;}
+	
 	#box { width:800px; height:auto; margin:0px auto; }
 	#box div { float:left; }
 	
@@ -38,7 +51,34 @@
         xmlhttp.send(); 
     } 
 </script>
+<!-- 
+<div id="header">
+	<h1>메롱</h1>
+	<div calss=""></div>
+	<div calss=""></div>
+	<ul>
+		<li class="realtime_chart"><span>실시간 차트</span></li>
+		<li class="new_chart"><span>최신 차트</span></li>
+		<li class="genre_chart"><span>장르 차트</span></li>
+		<li class="payment"><span>상품 구매</span></li>
+	</ul>
+</div>
 
+<div id="container">
+	<div id="realtime_chart">
+	</div>
+	
+	<div id="new_chart">
+	</div>
+
+	<div id="genre_chart">
+	</div>
+	
+	<div id="payment">
+	</div>
+</div>
+ -->
+ 
 <div id="box">
 	<div id="box1"> 
 		<input type="button" value="상품구매" onclick="loadXMLDoc(Buy)">
@@ -46,7 +86,6 @@
 		<input type="button" value="이벤트" onclick="loadXMLDoc(Event)">
 		<input type="button" value="고객센터" onclick="loadXMLDoc(Customer)">
 	</div>
-
 	<div id="box2">
     	<div id="box2_1"> 2번 </div>
     	<div id="box2_2"> 3번 </div>

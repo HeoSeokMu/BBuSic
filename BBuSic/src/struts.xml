@@ -56,16 +56,17 @@
 			<interceptor-ref name="params"/>
 			<result>/member/inputPro.jsp?id=${id}</result>
 		</action>
-		
-		<action name="popupLogin" class="member.action.popupLoginAction">
-			<result>/member/popupLoginForm.jsp</result>
-		</action>
  	
 		<action name="popupLoginPro" class="member.action.LoginProAction">
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB1"/>
 			<interceptor-ref name="params"/>
-			<result>/member/popupLoginForm.jsp</result>
+			<result name="success" type="redirect">payBuyList.action</result>
+		</action>
+		
+		<action name="cashCharge" class="payment.action.cashChargeAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<result>/payment/cashChargeForm.jsp</result>
 		</action>
 	</package>	
 		
@@ -97,7 +98,6 @@
 <!--  				<param name="cash_id">${id}</param> -->
  			</result>
 		</action>
-		
 		
 		
 		<action name="loginForm" class="member.action.LoginFormAction">
