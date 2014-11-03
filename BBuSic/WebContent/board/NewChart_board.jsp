@@ -77,14 +77,14 @@ center {
 
 <body>
 	<form method="post" name="chartForm">
-		<hr width="950px" size="1" color="gray" align="left" />
+		<hr width="850px" size="1" color="gray" align="left" />
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
-		<hr width="950px" size="1" align="left">
+		<hr width="850px" size="1" align="left">
 		<table align="left">
 			<tr align="center">
 				<td width="29px" height="10px">
@@ -92,12 +92,12 @@ center {
 				</td>
 				<td width="29px"><g>순위</g></td>
 				<td width="80px"></td>
-				<td width="630px"><g>곡정보</g></td>
+				<td width="530px"><g>곡정보</g></td>
 				<td width="82px"><g>좋아요</g></td>
 				<td width="70px"><g>다운</g></td>
 			</tr>
 		</table>
-		<hr width="950px" size="3" color="#CC3D3D" align="left" />
+		<hr width="850px" size="3" color="#CC3D3D" align="left" />
 
 		<c:set var="count" value="0" />
 		<c:if test="${totalCount < 1}">
@@ -114,36 +114,37 @@ center {
 				<table>
 					<tr align="center" height="70px">																	
 						<td width="29px" height="10px"><input type="checkbox" name="chkNo" value="${checkValue.index}"></td>
-						<td width="29px">위</td>
+						<td width="29px">${checkValue.count}</td>
 						<!--이미지-->
 						<td width="80px"><img src="${list.music_image}" width="50px" height="50px"></td>
 						<!--곡정보-->
-						<td width="630px" align="left">
+						<td width="530px" align="left">
 							<input type="image" name="m_play_btt" 
 											src="/BBuSic/board/images/m_play_button.png" onclick="list_add(${checkValue.index });">
 							<input type="image" name="m_add_btt" src="/BBuSic/board/images/m_add_button.png"> &nbsp;
 							<input type="image" name="m_page_btt" src="/BBuSic/board/images/m_page_button.png">
-							<div style="text-align: center">
+								<p align="center">
 								${list.title}<br /> ${list.singger} | ${list.album}
-							</div></td>
+								</p>
+						</td>
 						<!--좋아요-->
 						<td width="82px"><input type="image" name="m_like_btt" src="/BBuSic/board/images/m_like_button.png"> ${list.hit}</td>
 						<!--다운로드-->
 						<td td width="70px"><input type="image" name="m_download_img" src="/BBuSic/board/images/m_download_button.png"></td>
 					</tr>
 				</table>
-				<hr width="950px" size="1" color="gray" align="left" />
+				<hr width="850px" size="1" color="gray" align="left" />
 			</c:forEach>
 		</c:if>
 
-		<hr width="950px" size="1" color="gray" align="left" />
+		<hr width="850px" size="1" color="gray" align="left" />
 		<!-- 전체선택 -->
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
-		<hr width="950px" size="1" align="left" />
+		<hr width="850px" size="1" align="left" />
 		<br>
 		<div style="text-align: center">
 			<s:property value="pagingHtml" escape="false" />

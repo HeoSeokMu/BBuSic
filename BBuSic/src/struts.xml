@@ -5,6 +5,7 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
+	<constant name="struts.multipart.maxSize" value="100000000" />
 	
 	<package name="bbu_main" extends="struts-default">
 		<action name="bbusic" class="BBu_main.BBuMain">
@@ -15,7 +16,6 @@
 	<package name="mu_bbu" extends="struts-default">
 		<interceptors>
 			<interceptor name="BBuSicInterceptor" class="payment.action.BBuSicInterceptor"/>
-			
 			<interceptor name="DB1" class="member.action.MemberInterceptor" />
 			<!-- 
 			<interceptor name="fileUploadDao" class="upload.interceptor.FileUploadDAOInterceptor" />

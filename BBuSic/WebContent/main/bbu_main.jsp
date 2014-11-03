@@ -46,6 +46,21 @@
 			$("img[name=cash]").click(function(){
 				$("#content").load("cashCharge.action");
 			});
+			$("img[name=chart]").click(function(){
+				$("#content").load("ChartBoard.action?category=chart");
+			});
+			$("img[name=new]").click(function(){
+				$("#content").load("NewChartBoard.action?category=new");
+			});
+			$("img[name=dance]").click(function(){
+				$("#content").load("GenreChartBoard.action?category=genre&genre=dance");
+			});
+			$("img[name=balad]").click(function(){
+				$("#content").load("GenreChartBoard.action?category=genre&genre=balad");
+			});
+			$("img[name=genre]").click(function(){
+				$("#content").load("GenreChartBoard.action?category=genre");
+			});
 		});
 	</script>
 
@@ -54,10 +69,17 @@
 	<div id="box">
 		<div id="header">
 			<ul class="menu">
+<<<<<<< HEAD
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png"  border="0" alt="chart" class="rollover"></a></li>
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  border="0" alt="new" class="rollover"></a></li>
 				<li><a href="#">
 					<img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png"  border="0" alt="genre" class="rollover"></a>
+=======
+				<li><a href="#"><img src="bbu_main_img/chart.png" name="chart" border="0" alt="chart" class="rollover"></a></li>
+				<li><a href="#"><img src="bbu_main_img/new.png" name="new" border="0" alt="new" class="rollover"></a></li>
+				<li><a href="#">
+					<img src="bbu_main_img/genre.png" name="genre" border="0" alt="genre" class="rollover"></a>
+>>>>>>> 691fc3e9f4d398deb88b5eeb1da1e9b9140f8f03
 					<ul class="sub">
 						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" class="rollover" border="0"></a></li>
 						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" class="rollover" border="0"></a></li>
