@@ -54,20 +54,20 @@
 	<div id="box">
 		<div id="header">
 			<ul class="menu">
-				<li><a href="#"><img src="bbu_main_img/chart.png"  border="0" alt="chart" class="rollover"></a></li>
-				<li><a href="#"><img src="bbu_main_img/new.png"  border="0" alt="new" class="rollover"></a></li>
+				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png"  border="0" alt="chart" class="rollover"></a></li>
+				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  border="0" alt="new" class="rollover"></a></li>
 				<li><a href="#">
-					<img src="bbu_main_img/genre.png"  border="0" alt="genre" class="rollover"></a>
+					<img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png"  border="0" alt="genre" class="rollover"></a>
 					<ul class="sub">
-						<li><a href="#"><img src="bbu_main_img/dance.png" name="dance" class="rollover" border="0"></a></li>
-						<li><a href="#"><img src="bbu_main_img/balad.png" name="balad" class="rollover" border="0"></a></li>
+						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" class="rollover" border="0"></a></li>
+						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" class="rollover" border="0"></a></li>
 					</ul>
 				</li>
 				<li>
-					<a href="#"><img src="bbu_main_img/payment.png" name="payment" class="rollover" border="0"></a>
+					<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment" class="rollover" border="0"></a>
 					<ul class="sub">
-						<li><a href="#"><img src="bbu_main_img/bbu_payment.png" name="payment" class="rollover" border="0"></a></li>
-						<li><a href="#"><img src="bbu_main_img/cash.png" name="cash" class="rollover" border="0"></a></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" class="rollover" border="0"></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" class="rollover" border="0"></li>
 					</ul>
 				</li>
 			</ul>

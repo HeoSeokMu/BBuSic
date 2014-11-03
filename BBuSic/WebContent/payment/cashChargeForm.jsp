@@ -105,150 +105,47 @@
 		
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript">
-			function buy(name, benefit, amount, sale) {
-				if(${session.memId != null}) {
-					window.location = "payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
-									  "&amount="+amount+"&sale="+sale;
-				} else {
-					jQuery(function($) {
-						var layerWindow = $('.mw_layer');
-						var layer = $('#layer');
-				
-						// Show Hide
-						$('.button01').click(function() {
-							layerWindow.addClass('open');
-						});
-						
-						$('.button02').click(function() {
-							layerWindow.addClass('open');
-						});
-						
-						$('#layer .close').click(function() {
-							layerWindow.removeClass('open');
-						});
-						
-						// ESC Event
-						$(document).keydown(function(event) {
-							if (event.keyCode != 27)
-								return true;
-							if (layerWindow.hasClass('open')) {
-								layerWindow.removeClass('open');
-							}
-							return false;
-						});
-				
-						// Hide Window
-						layerWindow.find('>.bg').mousedown(function(event) {
-							layerWindow.removeClass('open');
-							return false;
-						});
-					});
-				}
-			}
-			
-			
-			function focusIt() {
-				document.inform.id.focus();
-			}
-
-			function checkIt() {
-				inputForm = eval("document.inform");
-				if (!inputForm.id.value) {
-					alert("아이디를 입력하세요..");
-					inputForm.id.focus();
-					return false;
-				}
-				if (!inputForm.passwd.value) {
-					alert("패스워드를 입력하세요..");
-					inputForm.passwd.focus();
-					return false;
-				}
-				return ture;
-				window.close();
-			}
-			
 		</script>
-		
-		<c:if test="${check == 1}">
-		<script>
-			alert("패스워드가 틀렸습니다.");
-		</script>
-	</c:if>
 	</head>
 	
 	<body>
 		<center>
 		<table border="1">
-			
-		<c:forEach var="pay" items="${paylist}">
 			<tr>
-				<td>${pay.category}</td>
-				<td>${pay.pay_name}</td>
-				<td>${pay.pay_benefit}</td>
-				<td>정기결제<br/>T멤버십 30% 차감시<br/>30일권</td>
-				<td>
-					<fmt:formatNumber value="${pay.amount}"/><br/>
-					<fmt:formatNumber value="${pay.amount - (pay.amount*(pay.sale/100))}"/><br/>
-					<fmt:formatNumber value="${pay.day30amount}"/>
-				</td>
-				<td>
-					<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
-					<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
-					<input type="button" value="선물" class="button02" onclick=""/>
+				<td colspan="2">
+					멜론캐쉬는 멜론상품(클럽형, 티켓형, 곡, 뮤직비디오 등) 결제 시 사용 가능합니다.
+					결제금액과 멜론캐쉬는 1:1 배율로써 충전금액 3,000원을 선택하시면 멜론캐쉬 3,000원이 충전됩니다.
+					실제 결제금액은 부가가치세 10% 포함된 금액으로, 3,300원입니다.
 				</td>
 			</tr>
-		</c:forEach>
-		<tr>
-			<td colspan="6">
-				돈내놔 : &nbsp;
-				<input type="text" value="cash"/>
-			</td>
-		</tr>
-		
-		</table>	
-		<div class="mw_layer">
-			<div class="bg"></div>
-			<div id="layer">
-				<form name="inform" method="post" action="popupLoginPro.action"	onSubmit="return checkIt();">
-					<table width=200 align="center">
+			<tr height="20px">
+			</tr>
+			<tr>
+				<td>
+					<table border="1" width="100%">
 						<tr>
-							<td colspan="2" bgcolor="#7eb813" class="trTitle">
-								<font color="#ffffff" size="5"> <b>로그인</b> </font>
-							</td>
+							<td>뿌숑캐쉬 잔액</td><td>${cash}</td>
 						</tr>
 						<tr>
-							<td>
-								<table class="tablepadding">
-									<tr>
-										<td>
-											<input type="text" name="id" class="input" placeholder="아이디" maxlength="10"/>
-										</td>
-										<td rowspan="2">
-											<input type="submit" class="login" name="Submit" value="로그인"/>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="password" name="passwd" placeholder="패스워드" class="input" maxlength="10"/>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2" class="lineX">
-											<input type="checkbox" name="checkbox" value="on"/><font >자동로그인</font>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="3">
-											<input type="button" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
-										</td>	
-									</tr>
-								</table>
+							<td>충전금액선택</td>
+							<td>	
+								<select name="money_sel">
+									<option value="1000">1000</option>
+									<option value="3000">3000</option>
+									<option value="5000">5000</option>
+									<option value="9000">9000</option>
+									<option value="10000">10000</option>
+									<option value="30000">30000</option>
+								</select>
+								&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="chargeMoney_sel" value="sel_in"/>&nbsp;선택입력&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="chargeMoney_sel" value="self_in"/>&nbsp;직접입력(1000원 단위로 입력가능)
 							</td>
 						</tr>
 					</table>
-				</form>
-			</div>
-		</div>
+				</td>
+			</tr>
+		</table>
 		</center>
 	</body>
 </html>

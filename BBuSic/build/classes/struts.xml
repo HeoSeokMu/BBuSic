@@ -7,8 +7,8 @@
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
 	
 	<package name="bbu_main" extends="struts-default">
-		<action name="melon" class="BBu_main.BBuMain">
-			<result>/main/main.jsp</result>
+		<action name="bbusic" class="BBu_main.BBuMain">
+			<result>/main/bbu_main.jsp</result>
 		</action>
 	</package>
 	
@@ -61,7 +61,7 @@
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB1"/>
 			<interceptor-ref name="params"/>
-			<result name="success" type="redirect">payBuyList.action</result>
+			<result name="success" type="redirect">bbusic.action</result>
 		</action>
 		
 		<action name="cashCharge" class="payment.action.cashChargeAction">
