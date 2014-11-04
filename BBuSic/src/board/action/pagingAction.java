@@ -54,6 +54,49 @@ public class pagingAction {
 		
 		pagingHtml = new StringBuffer();
 		
+		if(category.equals("singgerPage")){
+			System.out.println("singgerPage paging pass");
+			
+			if (currentPage > blockPage) {
+				pagingHtml.append("<a href=SinggerPage.action?category=genre&currentPage=" + (startPage - 1) + ">");
+				pagingHtml.append("이전");
+				pagingHtml.append("</a>");
+			}
+
+			pagingHtml.append("&nbsp;|&nbsp;");
+
+			//페이지 번호.현재 페이지는 빨간색으로 강조하고 링크를 제거.
+			for (int i = startPage; i <= endPage; i++) {
+				if (i > totalPage) {
+					break;
+				}
+				if (i == currentPage) {
+					pagingHtml.append("&nbsp;<b> <font color='red'>");
+					pagingHtml.append(i);
+					pagingHtml.append("</font></b>");
+				} else {
+					pagingHtml
+							.append("&nbsp;<a href='SinggerPage.action?category=genre&currentPage=");
+					pagingHtml.append(i);
+					pagingHtml.append("'>");
+					pagingHtml.append(i);
+					pagingHtml.append("</a>");
+				}
+
+				pagingHtml.append("&nbsp;");
+			}
+			pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
+
+			// 다음 block 페이지
+			if (totalPage - startPage >= blockPage) {
+				pagingHtml.append("<a href=SinggerPage.action?category=genre&currentPage="
+						+ (endPage + 1) + ">");
+				pagingHtml.append("다음");
+				pagingHtml.append("</a>");
+			}
+			
+		}
+		
 		if(category.equals("chart")) {
 			System.out.println("chart paging pass");
 			//페이지 번호.현재 페이지는 빨간색으로 강조하고 링크를 제거.
@@ -119,9 +162,9 @@ public class pagingAction {
 		} else{		//genre
 			System.out.println("genre paging pass");
 			// 이전 block 페이지
-						pagingHtml = new StringBuffer();
+			
 						if (currentPage > blockPage) {
-							pagingHtml.append("<a href=GenreChartBoard.action?category=genre&currentPage=" + (startPage - 1) + ">");
+							pagingHtml.append("<a href=GenreChartBoard.action?category=singgerPage&currentPage=" + (startPage - 1) + ">");
 							pagingHtml.append("이전");
 							pagingHtml.append("</a>");
 						}
@@ -139,7 +182,7 @@ public class pagingAction {
 								pagingHtml.append("</font></b>");
 							} else {
 								pagingHtml
-										.append("&nbsp;<a href='GenreChartBoard.action?category=genre&currentPage=");
+										.append("&nbsp;<a href='GenreChartBoard.action?category=singgerPage&currentPage=");
 								pagingHtml.append(i);
 								pagingHtml.append("'>");
 								pagingHtml.append(i);
@@ -152,7 +195,7 @@ public class pagingAction {
 
 						// 다음 block 페이지
 						if (totalPage - startPage >= blockPage) {
-							pagingHtml.append("<a href=GenreChartBoard.action?category=genre&currentPage="
+							pagingHtml.append("<a href=GenreChartBoard.action?category=singgerPage&currentPage="
 									+ (endPage + 1) + ">");
 							pagingHtml.append("다음");
 							pagingHtml.append("</a>");

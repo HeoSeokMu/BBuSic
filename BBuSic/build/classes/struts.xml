@@ -8,15 +8,14 @@
 	<constant name="struts.multipart.maxSize" value="100000000" />
 	
 	<package name="bbu_main" extends="struts-default">
-		<action name="melon" class="BBu_main.BBuMain">
-			<result>/main/main.jsp</result>
+		<action name="bbusic" class="BBu_main.BBuMain">
+			<result>/main/bbu_main.jsp</result>
 		</action>
 	</package>
 	
 	<package name="mu_bbu" extends="struts-default">
 		<interceptors>
 			<interceptor name="BBuSicInterceptor" class="payment.action.BBuSicInterceptor"/>
-			
 			<interceptor name="DB1" class="member.action.MemberInterceptor" />
 			<!-- 
 			<interceptor name="fileUploadDao" class="upload.interceptor.FileUploadDAOInterceptor" />
@@ -62,7 +61,12 @@
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB1"/>
 			<interceptor-ref name="params"/>
-			<result>/payment/payBuyListForm.jsp</result>
+			<result name="success" type="redirect">bbusic.action</result>
+		</action>
+		
+		<action name="cashCharge" class="payment.action.cashChargeAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<result>/payment/cashChargeForm.jsp</result>
 		</action>
 	</package>	
 		
@@ -94,7 +98,6 @@
 <!--  				<param name="cash_id">${id}</param> -->
  			</result>
 		</action>
-		
 		
 		
 		<action name="loginForm" class="member.action.LoginFormAction">

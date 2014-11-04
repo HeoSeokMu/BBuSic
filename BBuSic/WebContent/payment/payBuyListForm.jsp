@@ -107,6 +107,10 @@
 		<script type="text/javascript">
 			function buy(name, benefit, amount, sale) {
 				if(${session.memId != null}) {
+					jQuery(function($) {
+						
+					}
+					
 					window.location = "payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
 									  "&amount="+amount+"&sale="+sale;
 				} else {
@@ -146,7 +150,6 @@
 				}
 			}
 			
-			
 			function focusIt() {
 				document.inform.id.focus();
 			}
@@ -166,7 +169,6 @@
 				return ture;
 				window.close();
 			}
-			
 		</script>
 		
 		<c:if test="${check == 1}">
@@ -177,6 +179,7 @@
 	</head>
 	
 	<body>
+		<center>
 		<table border="1">
 			
 		<c:forEach var="pay" items="${paylist}">
@@ -191,7 +194,7 @@
 					<fmt:formatNumber value="${pay.day30amount}"/>
 				</td>
 				<td>
-					<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
+	 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
 					<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
 					<input type="button" value="선물" class="button02" onclick=""/>
 				</td>
@@ -242,5 +245,6 @@
 				</form>
 			</div>
 		</div>
+		</center>
 	</body>
 </html>
