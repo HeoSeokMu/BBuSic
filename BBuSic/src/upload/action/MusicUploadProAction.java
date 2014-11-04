@@ -26,7 +26,7 @@ public class MusicUploadProAction extends ActionSupport{
 	private String music_name;
 	private String music_image;
 	private String genre;
-	private String singger;
+	private String singer;
 	private String album;
 	private String title;
 	private String hit;
@@ -39,7 +39,7 @@ public class MusicUploadProAction extends ActionSupport{
 	private File uploadImage;
 	private String uploadImageContentType;
 	private String uploadImageFileName;
-	private String fileUploadPath="D:/Upload/";
+	private String fileUploadPath="D:/upload/";
 		
 	// »ý¼ºÀÚ
 	public MusicUploadProAction() throws IOException {
@@ -61,7 +61,7 @@ public class MusicUploadProAction extends ActionSupport{
 		paramClass.setGenre(getGenre());
 		paramClass.setAlbum(getAlbum());
 		paramClass.setTitle(getTitle());
-		paramClass.setSingger(getSingger());
+		paramClass.setSinger(getSinger());
 		paramClass.setRealname_music(uploadMusicFileName);
 		paramClass.setRealname_image(uploadImageFileName);
 		
@@ -145,12 +145,12 @@ public class MusicUploadProAction extends ActionSupport{
 		this.genre = genre;
 	}
 
-	public String getSingger() {
-		return singger;
+	public String getSinger() {
+		return singer;
 	}
 
-	public void setSingger(String singger) {
-		this.singger = singger;
+	public void setSinger(String singer) {
+		this.singer =singer;
 	}
 
 	public String getAlbum() {

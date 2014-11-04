@@ -5,6 +5,7 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
+	<constant name="struts.multipart.maxSize" value="100000000" />
 	
 	<package name="bbu_main" extends="struts-default">
 		<action name="melon" class="BBu_main.BBuMain">
@@ -175,6 +176,27 @@
 			<interceptor-ref name="params"/>
 			<result>/board/MusicListForm.jsp</result>
 		</action>
+		<!--다운로드-->
+		<action name="downloadAction" class="download.action.downloadAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/DownLoadForm.jsp</result>
+		</action>
+		<action name="downloadAction2" class="download.action.downloadAction" method="downLoad">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="staticParams"/>
+			<param name="dir">d:/Upload</param>
+			<result  type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment; filename=${fileName}</param>
+				<param name="bufferSize">10240000</param>
+			</result>						
+		</action>
 		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -193,8 +215,7 @@
 			<interceptor-ref name="fileUpload" />
 			<interceptor-ref name="params" />
 			<result>/file/MusicUploadPro.jsp</result>
-		</action>
-		<!--다운로드-->
+		</action>		
 		<!--차트-->
 		<action name="ChartMain" class="board.action.ChartMainAction">
 			<interceptor-ref name="prepare" />

@@ -58,6 +58,29 @@
 		open("Chart_BoardAction.action?"+params, "confirm", 
 	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400");
 	}
+	
+	/* 다운로드 스크립트 */
+	function music_down(a){
+		var params = "";
+		var chkNo = document.getElementsByName("chkNo");
+		if(a == "s"){
+			var countChk = 0;
+			for (var i = 0; i < chkNo.length; i++) {					
+				if(chkNo[i].checked){
+					params+= "chkNo="+i +"&";
+					countChk+=1;
+				}				
+			}
+			if(countChk == 0){ //서버로 넘어가기전에 사전에 막기위해 사용.
+				alert("선택해라!!!");
+				return false;
+			}
+		}else{
+			params = "chkNo="+a;
+		}
+		open("downloadAction.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
+	}
 </script>
 
 <html>
@@ -81,7 +104,7 @@ center {
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="">
+		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
 		<hr width="950px" size="1" align="left">
@@ -124,12 +147,13 @@ center {
 							<input type="image" name="m_add_btt" src="/BBuSic/board/images/m_add_button.png"> &nbsp;
 							<input type="image" name="m_page_btt" src="/BBuSic/board/images/m_page_button.png">
 							<div style="text-align: center">
-								${list.title}<br /> ${list.singger} | ${list.album}
+								${list.title}<br /> ${list.singer} | ${list.album}
 							</div></td>
 						<!--좋아요-->
 						<td width="82px"><input type="image" name="m_like_btt" src="/BBuSic/board/images/m_like_button.png"> ${list.hit}</td>
 						<!--다운로드-->
-						<td td width="70px"><input type="image" name="m_download_img" src="/BBuSic/board/images/m_download_button.png"></td>
+						<td td width="70px"><input type="image" name="m_download_img" 
+							src="/BBuSic/board/images/m_download_button.png" onclick="music_down(${checkValue.index });"></td>
 					</tr>
 				</table>
 				<hr width="950px" size="1" color="gray" align="left" />
@@ -140,7 +164,7 @@ center {
 		<!-- 전체선택 -->
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="">
+		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
 		<hr width="950px" size="1" align="left" />

@@ -129,7 +129,7 @@ center {
 							type="image" name="m_page_btt"
 							src="/music/board/images/m_page_button.png">
 							<div style="text-align: center">
-								${i.title}<br /> ${i.singger} | ${i.album}
+								${i.title}<br /> ${i.singer} | ${i.album}
 							</div></td>
 						<!--ÁÁ¾Æ¿ä-->
 						<td width="82px"><input type="image" name="m_like_btt"

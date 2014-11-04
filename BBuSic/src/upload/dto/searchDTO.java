@@ -2,7 +2,7 @@ package upload.dto;
 
 public class searchDTO {
 	private String genre;
-	private String singger;
+	private String singer;
 	private String album;
 	private String title;
 	public String getGenre() {
@@ -11,11 +11,11 @@ public class searchDTO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getSingger() {
-		return singger;
+	public String getsinger() {
+		return singer;
 	}
-	public void setSingger(String singger) {
-		this.singger = singger;
+	public void setsinger(String singer) {
+		this.singer = singer;
 	}
 	public String getAlbum() {
 		return album;

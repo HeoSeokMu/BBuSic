@@ -115,7 +115,7 @@
 							&nbsp;
 							<input type="image" name="m_page_btt" src="../board/images/m_page_button.png">
 							&nbsp; ${music_name}<br />
-							${singger} <p>|</p> ${album}
+							${singer} <p>|</p> ${album}
 						</td>
 						<!--ÁÁ¾Æ¿ä-->
 						<td>

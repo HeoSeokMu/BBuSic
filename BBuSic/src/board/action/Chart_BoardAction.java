@@ -69,7 +69,6 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 					page = new pagingAction(currentPage, totalCount, blockCount, blockPage, category); // pagingAction 按眉 积己.
 				}
 				
-				System.out.println("list : " + list);
 				setPagingHtml(page.getPagingHtml().toString());  // 其捞瘤 HTML 积己.
 				//paging
 					
