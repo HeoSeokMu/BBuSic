@@ -1,33 +1,25 @@
 package payment.action;
 
-import payment.pay_setDTO.cash_DTO;
+import payment.pay_setDTO.payMyInfo_DTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class cashInsertAction implements Action, Preparable, ModelDriven, BBuSicAware{
+public class payMyInfo_InsertAction implements Action, BBuSicAware{
 	
-	cash_DTO cDTO;
+	payMyInfo_DTO m_DTO;
 	private SqlMapClient sqlMapper;
 	private String id;
 	
 	@Override
 	public String execute() throws Exception {
-		cDTO.setCash_id(id);
-		sqlMapper.insert("payment_cash.insertCash", cDTO);
+		m_DTO = new payMyInfo_DTO();
+		m_DTO.setMy_id(id);
+		m_DTO.setPay_name("보유중인 상품이 없습니다.");
+		sqlMapper.insert("payment_my.insertMyInfo", m_DTO);
 		return SUCCESS;
-	}
-	
-	@Override
-	public void prepare() throws Exception {
-		cDTO = new cash_DTO();
-	}
-	
-	@Override
-	public Object getModel() {
-		return cDTO;
 	}
 	
 	@Override

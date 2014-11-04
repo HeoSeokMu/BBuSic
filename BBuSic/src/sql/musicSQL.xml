@@ -11,7 +11,7 @@
 		<result property="music_name" column="music_name"/>
 		<result property="music_image" column="music_image"/>
 		<result property="genre" column="genre"/>
-		<result property="singger" column="singger"/>
+		<result property="singer" column="singer"/>
 		<result property="album" column="album"/>
 		<result property="title" column="title"/>
 		<result property="hit" column="hit"/>
@@ -21,7 +21,7 @@
 	
 	<resultMap id="musicSearchRes" class="searchDTO">
 		<result property="genre" column="genre"/>
-		<result property="singger" column="singger"/>
+		<result property="singer" column="singer"/>
 		<result property="album" column="album"/>
 		<result property="title" column="title"/>
 	</resultMap>
@@ -56,7 +56,7 @@
 		<select id="search_Test" resultMap="musicSearchRes" parameterClass="searchDTO">
 			<include refid="select-all" />
 			where genre like '%' || #genre# || '%'
-			or singger like '%' || #singger# || '%'
+			or singer like '%' || #singer# || '%'
 			or album like '%' || #album# || '%'
 			or title like '%' || #title# || '%'
 			ORDER BY num DESC
@@ -69,7 +69,7 @@
 							MUSIC_NAME,
 							MUSIC_IMAGE,
 							GENRE,
-							SINGGER,
+							SINGER,
 							ALBUM,
 							TITLE,
 							HIT,
@@ -80,7 +80,7 @@
 							#music_name#,
 							#music_image#,
 							#genre#,
-							#singger#,
+							#singer#,
 							#album#,
 							#title#,
 							0,
