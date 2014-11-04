@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="musicSQL">
+	
+	<typeAlias alias="musicDTO" type="upload.dto.musicDTO"/>
+	<typeAlias alias="searchDTO" type="upload.dto.searchDTO"/>
+	
+	<resultMap id="musicRes" class="musicDTO">
+		<result property="num" column="num"/>
+		<result property="music_name" column="music_name"/>
+		<result property="music_image" column="music_image"/>
+		<result property="genre" column="genre"/>
+		<result property="singger" column="singger"/>
+		<result property="album" column="album"/>
+		<result property="title" column="title"/>
+		<result property="hit" column="hit"/>
+		<result property="realname_music" column="realname_music" />
+		<result property="realname_image" column="realname_image" />
+	</resultMap>
+	
+	<resultMap id="musicSearchRes" class="searchDTO">
+		<result property="genre" column="genre"/>
+		<result property="singger" column="singger"/>
+		<result property="album" column="album"/>
+		<result property="title" column="title"/>
+	</resultMap>
+	
+	<!-- 공통적으로 사용할 select 절 정의 -->
+	<sql id="select-all">
+		SELECT * FROM bbu_board
+	</sql>
+	
+	<sql id="where-num">
+		WHERE num = #num#
+	</sql>
+	
+	<!-- select 쿼리문 정의 -->
+		<select id="selectLastNum" resultClass="int">
+			SELECT max(num) FROM bbu_BOARD 
+		</select>
+		
+		<select id="selectAll" resultMap="musicRes" parameterClass="musicDTO">
+			<include refid="select-all" />
+			ORDER BY hit DESC
+		</select>
+		<select id="newSelectAll" resultMap="musicRes" parameterClass="musicDTO">
+			<include refid="select-all" />
+			ORDER BY num DESC
+		</select>
+		<select id="genreSelectAll" resultMap="musicRes" parameterClass="String">
+			<include refid="select-all" />
+			 where genre = #genre# ORDER BY num DESC
+		</select>
+		
+		<select id="search_Test" resultMap="musicSearchRes" parameterClass="searchDTO">
+			<include refid="select-all" />
+			where genre like '%' || #genre# || '%'
+			or singger like '%' || #singger# || '%'
+			or album like '%' || #album# || '%'
+			or title like '%' || #title# || '%'
+			ORDER BY num DESC
+		</select>
+		
+		
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertMusic" parameterClass="musicDTO">
+		INSERT INTO BBU_BOARD (NUM,
+							MUSIC_NAME,
+							MUSIC_IMAGE,
+							GENRE,
+							SINGGER,
+							ALBUM,
+							TITLE,
+							HIT,
+							REALNAME_MUSIC,
+							REALNAME_IMAGE
+							)
+					VALUES (bbu_seq.NEXTVAL,
+							#music_name#,
+							#music_image#,
+							#genre#,
+							#singger#,
+							#album#,
+							#title#,
+							0,
+							#realname_music#,
+							#realname_image#
+							)
+	</insert>
+</sqlMap>
