@@ -5,7 +5,7 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
-	<constant name="struts.multipart.maxSize" value="100000000" />
+	<constant name="struts.multipart.maxSize" value="102400000" />
 	
 	<package name="bbu_main" extends="struts-default">
 		<action name="bbusic" class="BBu_main.BBuMain">
@@ -191,7 +191,7 @@
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<interceptor-ref name="staticParams"/>
-			<param name="dir">d:/Upload</param>
+			<param name="dir">localhost:8000/BBuSic/upload</param>
 			<result  type="stream">
 				<param name="inputName">inputStream</param>
 				<param name="contentDisposition">attachment; filename=${fileName}</param>

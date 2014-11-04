@@ -107,11 +107,11 @@
 		<script type="text/javascript">
 			function buy(name, benefit, amount, sale) {
 				if(${session.memId != null}) {
-					
+					<%--
 					jQuery(function($) {
 						
 					}
-					
+					--%>
 					window.location = "payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
 									  "&amount="+amount+"&sale="+sale;
 				} else {
