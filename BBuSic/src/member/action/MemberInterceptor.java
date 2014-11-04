@@ -17,7 +17,6 @@ public class MemberInterceptor implements Interceptor {
 		try {
 			reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 			sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
-			if(sqlMapper != null) { System.out.println("sqlMapper pass"); }
 			reader.close();
 		} catch (IOException e) {
 			System.out.println("catch");

@@ -16,10 +16,7 @@ public class LoginProAction implements Action, SessionAware, MemberAware{
 	private SqlMapClient sqlMapper;
 	
 	public String execute() throws Exception {
-		System.out.println("id : " + id);
 		passwd2 = (String)sqlMapper.queryForObject("member.selectPasswd", id);
-		
-		System.out.println("passwd : " + passwd + " / " + passwd2);
 		
 		if(passwd.equals(passwd2)){
 			session.put("memId", id);

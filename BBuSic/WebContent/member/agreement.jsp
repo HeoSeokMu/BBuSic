@@ -31,24 +31,30 @@
 		
 	</script>
 <title>회원가입</title>
-<body bgcolor="${bodyback_c}">
+<style>
+	.next{
+		background-color:#7eb813;
+		color:#ffffff;
+		border:1px #dddddd dashed;
+		width:70px;
+		height:40px;
+		text-align:center;
+		padding:3px;
+	}
+</style>
+<body>
 	<center>
 	<form method="post" action="inputForm.action" name="userinput" onSubmit="return checkIt()">
-		<table>
-			<tr align="left">
-				<td><h2>약관동의</h2></td>
-			</tr>
-			<tr align="left">
-				<td width="200"><input type="checkbox" name="both" onclick="bothCheck()"/> 이용약관, 개인정보 수집 및 이용에
-				
-					모두 동의합니다.</td>
-			</tr>
-
+		<h2>약관동의</h2>
+		<HR width=70% size=3 color=silver>
+		<input type="checkbox" name="both" onclick="bothCheck()"/> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.
+		<HR width=70% size=1 color=silver>
+		<table cellspacing="8px">
 			<tr>
-				<td width="200"><h5>멜론 이용약관</h5></td>
+				<td width="200" align="left" ><strong>멜론 이용약관</strong></td>
 			</tr>
 			<tr>
-				<td width="900"><textarea cols="100" rows="10">1.총칙
+				<td width="900"><textarea cols="107" rows="10">1.총칙
 제1조 (목적)
 이 약관은 회원이 주식회사 로엔엔터테인먼트(이하 “회사”라 합니다)에서 제공하는 유무선 인터넷 음악서비스인 MelOn(멜론)서비스(이하 ‘서비스'라 합니다)를 이용함에 있어 회원과 회사간의 권리, 의무 및 책임사항, 서비스 이용조건 및 절차 등 기본적인 사항을 규정함을 목적으로 합니다.
 제2조 (약관의 효력 및 변경)
@@ -250,10 +256,10 @@
 (시행일) 이 약관은 2014년 02월 27일부터 시행합니다.</textarea></td>
 			</tr>
 			<tr>
-				<td><h5>멜론 서비스상품약관</h5></td>
+				<td align="left"><strong>멜론 서비스상품약관</strong></td>
 			</tr>
 			<tr>
-				<td width="900"><textarea cols="100" rows="10">1. 총칙
+				<td width="900"><textarea cols="107" rows="10">1. 총칙
 제1조 (목적)
 이 약관은 주식회사 로엔엔터테인먼트(이하 ‘회사’라 합니다)가 제공하는 유무선 인터넷 음악서비스인 MelOn(멜론)의 유료서비스를 이용함에 있어 회사와 회원간 제반 법률관계 및 기타 관련 사항을 규정함을 목적으로 합니다.
 제2조 (용어의 정의)
@@ -515,13 +521,15 @@ IE 6.0 이상
 (시행일) 이 약관은 2014년 02월 27일부터 시행합니다.</textarea>
 			</tr>
 			<tr>
-				<td width="200"><input type="checkbox" name="service" />멜론 이용약관과 멜론 서비스상품약관에 동의합니다.</td>
+				<td width="200" align="left" ><input type="checkbox" name="service" />멜론 이용약관과 멜론 서비스상품약관에 동의합니다.</td>
 			</tr>
 			<tr>
-				<td><h5>개인정보 수집 및 이용</h5></td>
 			</tr>
 			<tr>
-				<td width="900"><textarea cols="100" rows="10">
+				<td align="left" ><strong>개인정보 수집 및 이용</strong></td>
+			</tr>
+			<tr>
+				<td width="900"><textarea cols="107" rows="10">
 			회원 가입 및 서비스 이용과정에서 필요 최소한의 범위로 개인정보를 수집하며, 그 수집 항목 및 목적을 사전에 고지합니다. 서비스를 이용하고자 하는 고객이 서비스이용약관 및 본 개인정보취급방침을 읽고 필수항목을 입력한 후 “가입완료” 버튼을 누르거나, “확인” 내지 “동의합니다”에 체크하는 경우 개인정보의 처리에 동의한 것으로 봅니다. 
 
 기본적인 서비스 제공을 위한 정보(필수정보)와 회원의 기호와 필요에 따른 서비스를 제공하기 위해 추가적으로 제공이 요구되는 정보(선택정보)로 구분하여 회원의 개인정보를 수집하고 있습니다. 회원 가입시 필수정보의 제공에 동의하지 않을 경우, 멜론의 상품ㆍ서비스 제공을 받기 어렵다는 점을 설명해드리고 있으며, 선택정보 제공에 동의하지 않는 경우에는 서비스 이용 제한이 없음을 안내 드립니다. 
@@ -617,10 +625,10 @@ MP3 Player : 모델명, Serial 번호(멜론 DRM 지원기기 및 스마트 OS �
 			</textarea>
 			</tr>
 			<tr>
-				<td width="200"><input type="checkbox" name="collect" />개인정보 수집 및 이용에 모두 동의합니다.</td>
+				<td width="200" align="left"><input type="checkbox" name="collect" />개인정보 수집 및 이용에 모두 동의합니다.</td>
 			</tr>
 		</table>
-		<input type="submit" name="confirm" value="다음단계"/>
+		<input type="submit" class="next" name="confirm" value="다음단계"/>
 		</form>
 	</center>
 </body>

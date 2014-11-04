@@ -65,8 +65,11 @@ public class MusicUploadProAction extends ActionSupport{
 		paramClass.setRealname_music(uploadMusicFileName);
 		paramClass.setRealname_image(uploadImageFileName);
 		
-		lastNum = (int) sqlMapper.queryForObject("musicSQL.selectLastNum");
-		
+		if(sqlMapper.queryForObject("musicSQL.selectLastNum")==null){
+			lastNum = 0;
+		}else{
+			lastNum = (int) sqlMapper.queryForObject("musicSQL.selectLastNum");
+		}
 		System.out.println("lastNum"+lastNum);
 		
 		String music_name = "music_" + (lastNum + 1);
