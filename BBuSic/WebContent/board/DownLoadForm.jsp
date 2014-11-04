@@ -38,11 +38,11 @@
 				<td align="center">
 					<input type="button" value="다음" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
 				</td>				
-			</tr>			
+			</tr>					
+		</c:forEach>
 			<tr>
 				<td><input type="text" value="d:/Upload" readOnly></td>
 			</tr>
-		</c:forEach>
 			<tr>
 				<td colspan="6" align="center"><input type="button" value="다음" onClick="downLoad('s')"></td>							
 			</tr>
