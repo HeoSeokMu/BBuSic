@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -10,10 +10,6 @@
 	</head>
 	
 	<body>
-		<c:if test="${session.memId == null}">
-			<input type="button" value="로그인하기" onclick="popup()"/>
-		</c:if>
-		
 		<c:if test="${session.memId != null}">
 			상품구매<br/>
 			<form action="" method="post">

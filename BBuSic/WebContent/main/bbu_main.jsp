@@ -11,12 +11,12 @@
 		ul.sub li {}
 		
 		
-		#box { width:1000px; height:auto; margin:0px auto; }
-		#box div { float:left; }
+		#box { width:1200px; height:auto; margin:0px auto; }
+		#box div { float:left; position:}
 		
 		#header { width:100%; height:200px;}
 		#box2 { width:80%; height:auto; }
-		#box2_1 { width:100%; height:300px; background-color:#ddddff; }
+		#box2_1 { width:100%; height:auto; background-color:#ddddff; overflow-x:hidden; overflow-y:hidden; }
 		#box2_2 { width:100%; height:100px; background-color:yellow; }
 		#box3 { width:20%; height:300px; background-color:#ddffdd; }
 		#box4 { width:100%; height:100px;  background-color:green;}
@@ -65,7 +65,7 @@
 	</script>
 
 </head>
-<body>
+<body style="overflow: hidden;">
 	<div id="box">
 		<div id="header">
 			<ul class="menu">

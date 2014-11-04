@@ -54,9 +54,6 @@ center {
 
 <body>
 	<form method="post" name="chartForm">
-		
-		<br /><br />
-	
 		<hr width="850px" size="1" color="gray" align="left" />
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
