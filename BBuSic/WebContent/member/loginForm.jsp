@@ -1,12 +1,40 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="/view/color.jspf"%>
+
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>로그인</title>
+
+<style>
+	.login{
+		background-color:#7eb813;
+		color:#ffffff;
+		border:1px #dddddd dashed;
+		width:70px;
+		height:60px;
+		text-align:center;
+		padding:3px;
+	}
+	.trTitle {
+		height:15px;
+	}
+	.input{
+		size: 15px;
+	}
+	
+	.lineX {
+		border-bottom: 1px solid #dddddd;
+	}
+	.tablepadding {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+</style>
 </head>
 
 <script language="javascript">
@@ -26,6 +54,8 @@
 			inputForm.passwd.focus();
 			return false;
 		}
+		return ture;
+		window.close();
 	}
 </script>
 	<c:if test="${check == 1}">
@@ -33,43 +63,45 @@
 			alert("패스워드가 틀렸습니다.");
 		</script>
 	</c:if>
-
 </head>
-${memId}
-<body onLoad="focusIt();" bgcolor="${bodyback_c}">
+
+<body onLoad="focusIt();">
 	<c:if test="${session.memId == null}">
-		<table width=500 cellpadding="0" cellspacing="0" align="center" border="1">
-			<form name="inform" method="post" action="loginPro.action"	onSubmit="return checkIt();">
+		<form name="inform" method="post" action="loginPro.action"	onSubmit="return checkIt();">
+			<table width=200 align="center">
 				<tr>
-					<td width="300" bgcolor="${bodyback_c}" height="20">&nbsp;</td>
-					<td bgcolor="${title_c}" width="100" align="right">아이디</td>
-					<td width="100" bgcolor="${value_c}">
-					<input type="text" name="id" size="15" maxlength="10"/></td>
-				</tr>
-				<tr>
-					<td rowspan="2" bgcolor="${bodyback_c}" width="300">메인입니다. 
-						<input type="checkbox" name="checkbox" value="on"/>자동로그인
+					<td>
+						<table class="tablepadding">
+							<tr>
+								<td>
+									<input type="text" name="id" value="${id}" class="input" placeholder="아이디" maxlength="10"/>
+								</td>
+								<td rowspan="2">
+									<input type="submit" class="login" name="Submit" value="로그인"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="password" name="passwd" placeholder="패스워드" class="input" maxlength="10"/>
+								</td>
+							</tr>
+							<tr>
+									<td colspan="2" class="lineX">
+									<font size="1">
+									<input type="checkbox" name="checkbox" value="on"/><font >자동로그인</font>
+									&nbsp;<a href="findId.Form" title="아이디/비밀번호 찾기">아이디/비밀번호 찾기</a>
+									&nbsp;<a href="agreement.action" title="회원가입" ><strong>회원가입</strong></a>
+									</font>
+								</td>
+							</tr>
+						</table>
 					</td>
-					<td bgcolor="${title_c}" width="100" align="right">패스워드
-					</td>
-					<td width="100" bgcolor="${value_c}">
-						<input type="password" name="passwd" size="15" maxlength="10"/>
-					</td>
 				</tr>
-				<tr>
-					<td colspan="3" bgcolor="${title_c}" align="center">
-						<input type="submit" name="Submit" value="로그인"/>
-						<input type="button" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
-					</td>	
-				</tr>
-			</form>
-		</table>
+			</table>
+		</form>
 	</c:if>
 
 	<c:if test="${session.memId != null}">
-		<%
-			response.sendRedirect("");		
-		%>
 		<table width="500" cellpadding="0" cellspacing="0" align="center" border="1">
 			<tr>
 				<td width="300" bgcolor="${bodyback_c}" height="20">하하하</td>
@@ -77,15 +109,14 @@ ${memId}
 						<input type="button" value="로그아웃" onclick="javascript:window.location='logout.action'"/>
 						<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
 						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
-						<input type="button" value="게시판" onclick="javascript:window.location='../board/list.jsp'"/>
+						<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
 						<input type="button" value="피자" onclick="javascript:window.location='../dominoOrder/addressChoiceForm.jsp'"/>
-					</form>
 				</td>
 			</tr>
 			<tr>
 				<td rowspan="2" bgcolor="${bodyback_c}" width="300">메인입니다.</td>
 			</tr>
 		</table>
-		</c:if>
+	</c:if>
 </body>
 </html>
