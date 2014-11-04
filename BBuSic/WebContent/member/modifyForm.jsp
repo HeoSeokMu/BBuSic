@@ -14,9 +14,24 @@
 	
 		function checkIt() {	
 			var userinput = eval("document.userinput");
+			userinput.birth.value=userinput.year.value +"/"+ userinput.month.value +"/"+ userinput.date.value;
+			
+			if (!userinput.id.value) {
+				alert("ID를 입력하세요");
+				return false;
+			}
 
 			if (!userinput.passwd.value) {
 				alert("비밀번호를 입력하세요");
+				return false;
+			}
+			if (userinput.passwd.value != userinput.passwd2.value) {
+				alert("비밀번호를 동일하게 입력하세요");
+				return false;
+			}
+
+			if (!userinput.sex.value) {
+				alert("성별을 선택하세요");
 				return false;
 			}
 			
@@ -25,8 +40,18 @@
 				return false;
 			}
 			
+			if (!userinput.name.value) {
+				alert("사용자 이름을 입력하세요");
+				return false;
+			}
+			
 			if (!userinput.nickname.value) {
 				alert("닉네임을 입력하세요");
+				return false;
+			}
+			
+			if(!userinput.check.value){
+				alert("아이디 중복체크를 해주세요");
 				return false;
 			}
 		}

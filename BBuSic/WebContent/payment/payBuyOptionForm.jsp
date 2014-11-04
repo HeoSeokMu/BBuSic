@@ -10,11 +10,10 @@
 	</head>
 	
 	<body>
-<!--	
 		<c:if test="${session.memId == null}">
 			<input type="button" value="로그인하기" onclick="popup()"/>
 		</c:if>
--->
+		
 		<c:if test="${session.memId != null}">
 			상품구매<br/>
 			<form action="" method="post">
@@ -102,8 +101,6 @@
 						</td>
 					</tr>
 				</table>
-				<input type="submit" value="결제하기"></input>
-				<input type="button" value="취소" onclick="javascript:window.history.go(-1); return false;"></input>
 			</form>
 		</c:if>
 	</body>

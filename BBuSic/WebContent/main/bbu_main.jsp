@@ -70,8 +70,12 @@
 		<div id="header">
 			<ul class="menu">
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" alt="chart" class="rollover"></a></li>
+<<<<<<< HEAD
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png"  name="chart" border="0" alt="chart" class="rollover"></a></li>
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" alt="new" class="rollover"></a></li>
+=======
+				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png" name="new" border="0" alt="new" class="rollover"></a></li>
+>>>>>>> ab1d166345afff199caad9a7fbe91fe76aec726b
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" class="rollover" border="0"></a>
 					<ul class="sub">
 						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" class="rollover" border="0"></a></li>

@@ -10,7 +10,6 @@ public class ConfirmAction implements Action, Preparable, ModelDriven{
 	MemberDTO mDTO;
 	
 	public String execute() throws Exception {
-		System.out.println(mDTO.getEmail());
 		return SUCCESS;
 	}
 	

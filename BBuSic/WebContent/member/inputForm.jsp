@@ -10,17 +10,6 @@
 
 <head>
 <title>회원가입</title>
-<style>
-	.next{
-		background-color:#7eb813;
-		color:#ffffff;
-		border:1px #dddddd dashed;
-		width:70px;
-		height:40px;
-		text-align:center;
-		padding:3px;
-	}
-</style>
 	<script language="JavaScript">
 	
 		function checkIt() {	
@@ -61,25 +50,21 @@
 				return false;
 			}
 			
-			if(userinput.id_check.value != "check"){
-				alert("아이디 중복체크를 해주세요");
-				return false;
-			}
-			if(userinput.nick_check.value != "check"){
+			if(!userinput.check.value){
 				alert("아이디 중복체크를 해주세요");
 				return false;
 			}
 		}
 		
 		function idCheck(){
-			if(document.userinput.id_check.value == "check"){
-				document.userinput.id_check.value = "no";
+			if(!document.userinput.id_check.value) {
+				document.userinput.id_check.value == null;
 			}
 		}
 		
 		function nickCheck(){
-			if(document.userinput.nick_check.value == "check") {
-				document.userinput.nick_check.value = "no";
+			if(!document.userinput.nick_check.value) {
+				document.userinput.nick_check.value == null;
 			}
 		}
 		
@@ -91,7 +76,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/PooSic/confirmId.action?id=" + userinput.id.value;
+		        url = "/BBuSic/confirmId.action?id=" + userinput.id.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmId", 
@@ -106,7 +91,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/PooSic/confirmNick.action?nickname=" + userinput.id.value;
+		        url = "/BBuSic/confirmNick.action?nickname=" + userinput.id.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmNick", 
@@ -117,19 +102,22 @@
 	<body>
 		<center>
 		<form method="post" action="confirm.action" name="userinput" onSubmit="return checkIt()">
-			
-						<h2>정보입력</h2>
-
 			<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
 				<tr>
-					<td width="200" align="left">이름</td>
-					<td width="400" align="left">
+					<td colspan="2" height="39" align="center" bgcolor="${value_c}">
+						<font size="+1"><b>회원가입</b></font>
+					</td>
+				</tr>
+
+				<tr>
+					<td width="200">이름</td>
+					<td width="400">
 						<input type="text" name="name" size="10" maxlength="13"/>
 					</td>
 				</tr>
 				<tr>
-					<td width="200" align="left">생년월일</td>
-					<td width="200" align="left">
+					<td width="200">생년월일</td>
+					<td width="200">
 						<select name="year">
 								<c:forEach var="for" begin="1900" end="2014" step="1">
 									<option><c:out value="${for}" /></option>
@@ -149,44 +137,47 @@
 				</tr>
 				<input type="hidden" name="birth"/>
 				<tr>
-					<td width="200" align="left">성별</td>
-					<td width="400" align="left">
+					<td width="200">성별</td>
+					<td width="400">
 						<input type="radio" name="sex"value="남자"/> 남자 
 						<input type="radio" name="sex" value="여자"/> 여자
 					</td>
 				</tr>
 				<tr>
-					<td width="200" align="left">이메일</td>
-					<td width="400" align="left">
+					<td width="200">이메일</td>
+					<td width="400">
 						<input type="text" name="email" size="40" maxlength="30"/>
 					</td>
 				</tr>
 				<tr>
-					<td width="200" align="left">아이디</td>
-					<td width="400" align="left">
+					<td width="200">아이디</td>
+					<td width="400">
 						<input type="text" name="id" size="20" maxlength="10" onkeydown="idCheck()"/>
 						<input type="button" name="confirm_id" value="중복체크" OnClick="openConfirmid(this.form)"/>
-						<input type="hidden" name="id_check" value = "no"/>
+						<input type="hidden" name="id_check" />
 					</td>
 				</tr>
 				<tr>
-					<td width="200" align="left">비밀번호</td>
-					<td width="400" align="left">
+					<td width="200">비밀번호</td>
+					<td width="400">
 						<input type="passwd" name="passwd" size="20" maxlength="10"/><br/>
 						<input type="passwd2" name="passwd2" size="20" maxlength="10"/>
 					</td>
 				</tr>
 				<tr>
-					<td width="200" align="left">닉네임</td>
-					<td width="400" align="left">
+					<td width="200">닉네임</td>
+					<td width="400">
 						<input type="text" name="nickname" size="20" maxlength="10" onkeydown="nickCheck()"/>
-						<input type="button" name="confirm_nick" value="중복체크" onclick="openConfirmNick(this.form)"/>
-						<input type="hidden" name="nick_check" check = "no"/>
+						<input type="button" name="confirm_nick" onclick="openConfirmNick(this.form)"/>
+						<input type="hidden" name="nick_check"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center" bgcolor="${value_c}">
+						<input type="submit" name="confirm" value="다음단계"/>
 					</td>
 				</tr>
 			</table>
-			<br/>
-			<input type="submit" class="next" name="confirm" value="다음단계"/>
 		</form>
 		</center>
 	</body>
