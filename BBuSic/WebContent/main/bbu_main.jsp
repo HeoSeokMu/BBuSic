@@ -10,21 +10,12 @@
 		ul li { display:inline; list-style-type: none; float:left; }
 		ul.sub li {}
 		
-		
 		#box { width:1200px; height:auto; margin:0px auto; }
-<<<<<<< HEAD
 		#box div { float:left; position:}
-		
-		#header { width:100%; height:200px;}
-		#box2 { width:80%; height:auto; }
-		#box2_1 { width:100%; height:auto; background-color:#ddddff; overflow-x:hidden; overflow-y:hidden; }
-=======
-		#box div { float:left; }
 		
 		#header { width:100%; height:200px;}
 		#box2 { width:75%; height:auto; }
 		#box2_1 { width:100%; height:300px; background-color:#ddddff; }
->>>>>>> 4e100ca3af130a511d885c77ab3a62838936e77f
 		#box2_2 { width:100%; height:100px; background-color:yellow; }
 		#box3 { width:25%; height:300px; background-color:#ddffdd; }
 		#box4 { width:100%; height:100px;  background-color:green;}
@@ -71,19 +62,15 @@
 			});
 		});
 	</script>
-
 </head>
+
 <body style="overflow: hidden;">
 	<div id="box">
 		<div id="header">
 			<ul class="menu">
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" alt="chart" class="rollover"></a></li>
-<<<<<<< HEAD
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png"  name="chart" border="0" alt="chart" class="rollover"></a></li>
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" alt="new" class="rollover"></a></li>
-=======
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png" name="new" border="0" alt="new" class="rollover"></a></li>
->>>>>>> ab1d166345afff199caad9a7fbe91fe76aec726b
+
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" class="rollover" border="0"></a>
 					<ul class="sub">
 						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" class="rollover" border="0"></a></li>

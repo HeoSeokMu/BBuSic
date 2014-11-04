@@ -5,10 +5,12 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
-	<constant name="struts.multipart.maxSize" value="100000000" />
+	<constant name="struts.multipart.maxSize" value="102400000" />
 	
 	<package name="bbu_main" extends="struts-default">
 		<action name="bbusic" class="BBu_main.BBuMain">
+			<interceptor-ref name="chain"/>
+			<interceptor-ref name="params"/>
 			<result>/main/bbu_main.jsp</result>
 		</action>
 	</package>
@@ -105,7 +107,9 @@
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB"/>
 			<interceptor-ref name="params"/>
-			<result>/member/loginForm.jsp</result>
+			<result name="success" type="chain">
+	          <param name="actionName">bbusic</param>
+	        </result>
 		</action>
 		
 		<action name="logout" class="member.action.LogoutAction">

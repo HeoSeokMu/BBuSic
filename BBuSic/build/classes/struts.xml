@@ -110,7 +110,6 @@
 			<result name="success" type="chain">
 	          <param name="actionName">bbusic</param>
 	        </result>
-
 		</action>
 		
 		<action name="logout" class="member.action.LogoutAction">
@@ -166,24 +165,6 @@
 			<result>/member/modifyForm.jsp</result>
 		</action>
 		
-		<action name="passwdForm" class="member.action.PasswdFormAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="params"/>
-			<result>/member/passwdForm.jsp</result>
-		</action>
-		<action name="passwdPro" class="member.action.PasswdProAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/member/passwdForm.jsp</result>
-		</action>
-		
-		<action name="sendEmail" class="member.action.SendEmailAction">
-			<result>/member/confirm.jsp</result>
-		</action>
 		
 	</package>
 	
@@ -214,7 +195,7 @@
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<interceptor-ref name="staticParams"/>
-			<param name="dir">localhost:8000/BBuSic/upload</param>
+			<param name="dir">d:/Upload</param>
 			<result  type="stream">
 				<param name="inputName">inputStream</param>
 				<param name="contentDisposition">attachment; filename=${fileName}</param>
