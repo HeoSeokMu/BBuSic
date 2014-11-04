@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="payment_cash">
+	<typeAlias alias="cashDTO" type="payment.pay_setDTO.cash_DTO" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="cashRes" class="cashDTO">
+	  		<result property="cash_id" column="cash_id"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="cash" column="cash"/>	<!-- property는 set메서드 column은 db의 컬럼 -->
+		</resultMap>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertCash" parameterClass="cashDTO">
+      		INSERT INTO bbu_cash (
+      							CASH_ID,
+      							CASH
+                         )
+                	 VALUES (
+                	 		#cash_id#,
+                	 		#cash#
+                         )
+		</insert>
+</sqlMap>

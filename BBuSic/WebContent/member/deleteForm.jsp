@@ -20,7 +20,7 @@
 			document.myform.passwd.focus();
 			return false;
 		}
-		if(document.myform.passwd.value != ${passwd}){
+		if(document.myform.passwd.value != "${passwd}"){
 			alert("비밀번호가 다릅니다.");
 			document.myform.passwd.focus();
 			return false;

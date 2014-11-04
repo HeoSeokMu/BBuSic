@@ -49,7 +49,7 @@
 <!--
 	function setnick(){
     	opener.document.userinput.nickname.value="${nickname}";
-    	opener.document.userinput.check.value="1";
+    	opener.document.userinput.nick_check.value="check";
 		window.close();
 	}
 		-->

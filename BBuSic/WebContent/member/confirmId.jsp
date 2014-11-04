@@ -37,7 +37,7 @@
   <tr bgcolor="${title_c}">
     <td align="center">
       <p>입력하신 ${id} 는 사용하실 수 있는 ID입니다. </p>
-      <input type="button" value="닫기" onclick="setid()">
+      <input type="button" value="닫기" onclick="setid();">
     </td>
   </tr>
 </table>
@@ -49,7 +49,7 @@
 <!--
 	function setid(){
     	opener.document.userinput.id.value="${id}";
-    	opener.document.userinput.check.value="1";
+    	opener.document.userinput.id_check.value="check";
 		self.close();
 	}
 		-->

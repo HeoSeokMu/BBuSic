@@ -66,10 +66,14 @@ ${memId}
 		</table>
 	</c:if>
 
+
+
+
+
+
+
+
 	<c:if test="${session.memId != null}">
-		<%
-			response.sendRedirect("");		
-		%>
 		<table width="500" cellpadding="0" cellspacing="0" align="center" border="1">
 			<tr>
 				<td width="300" bgcolor="${bodyback_c}" height="20">하하하</td>
@@ -77,7 +81,7 @@ ${memId}
 						<input type="button" value="로그아웃" onclick="javascript:window.location='logout.action'"/>
 						<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
 						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
-						<input type="button" value="게시판" onclick="javascript:window.location='../board/list.jsp'"/>
+						<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
 						<input type="button" value="피자" onclick="javascript:window.location='../dominoOrder/addressChoiceForm.jsp'"/>
 					</form>
 				</td>

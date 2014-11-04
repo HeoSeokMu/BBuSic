@@ -50,21 +50,25 @@
 				return false;
 			}
 			
-			if(!userinput.check.value){
+			if(userinput.id_check.value != "check"){
+				alert("아이디 중복체크를 해주세요");
+				return false;
+			}
+			if(userinput.nick_check.value != "check"){
 				alert("아이디 중복체크를 해주세요");
 				return false;
 			}
 		}
 		
 		function idCheck(){
-			if(!document.userinput.id_check.value) {
-				document.userinput.id_check.value == null;
+			if(document.userinput.id_check.value == "check"){
+				document.userinput.id_check.value = "no";
 			}
 		}
 		
 		function nickCheck(){
-			if(!document.userinput.nick_check.value) {
-				document.userinput.nick_check.value == null;
+			if(document.userinput.nick_check.value == "check") {
+				document.userinput.nick_check.value = "no";
 			}
 		}
 		
@@ -76,7 +80,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/BBuSic/confirmId.action?id=" + userinput.id.value;
+		        url = "/PooSic/confirmId.action?id=" + userinput.id.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmId", 
@@ -91,7 +95,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/BBuSic/confirmNick.action?nickname=" + userinput.id.value;
+		        url = "/PooSic/confirmNick.action?nickname=" + userinput.id.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmNick", 
@@ -154,7 +158,7 @@
 					<td width="400">
 						<input type="text" name="id" size="20" maxlength="10" onkeydown="idCheck()"/>
 						<input type="button" name="confirm_id" value="중복체크" OnClick="openConfirmid(this.form)"/>
-						<input type="hidden" name="id_check" />
+						<input type="hidden" name="id_check" value = "no"/>
 					</td>
 				</tr>
 				<tr>
@@ -168,8 +172,8 @@
 					<td width="200">닉네임</td>
 					<td width="400">
 						<input type="text" name="nickname" size="20" maxlength="10" onkeydown="nickCheck()"/>
-						<input type="button" name="confirm_nick" onclick="openConfirmNick(this.form)"/>
-						<input type="hidden" name="nick_check"/>
+						<input type="button" name="confirm_nick" value="중복체크" onclick="openConfirmNick(this.form)"/>
+						<input type="hidden" name="nick_check" check = "no"/>
 					</td>
 				</tr>
 				<tr>
