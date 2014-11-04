@@ -7,9 +7,9 @@
 	function checkAll(checkFlag, blockCount){
 		var f = document.chartForm;
 		for(var i=1; i< blockCount; i++){
-			 if(f.elements[i].name == 'checkbox'){ 
-                 f.elements[i].checked = checkFlag; 
-         } 
+			 if(f.elements[i].name == 'chkNo'){ 
+	             f.elements[i].checked = checkFlag; 
+	     } 
 		}
 	}
 	
@@ -20,7 +20,7 @@
 			f.c_all.checked = true;
 			
 			for(var i=1; i< blockCount; i++){
-				if(f.elements[i].name == 'checkbox'){ 
+				if(f.elements[i].name == 'chkNo'){ 
 	                f.elements[i].checked = true; 
 	         	}
 			}
@@ -28,12 +28,58 @@
 			f.c_all.checked = false;
 			
 			for(var i=1; i< blockCount; i++){
-				if(f.elements[i].name == 'checkbox'){ 
+				if(f.elements[i].name == 'chkNo'){ 
 	                f.elements[i].checked = false; 
 	         	}
 			}
 		}
 		
+	}
+	
+	/* 팝업 스크립트 */
+	function list_add(a){
+		var params = "";
+		var chkNo = document.getElementsByName("chkNo");
+		if(a == "s"){
+			var countChk = 0;
+			for (var i = 0; i < chkNo.length; i++) {					
+				if(chkNo[i].checked){
+					params+= "chkNo="+i +"&";
+					countChk+=1;
+				}				
+			}
+			if(countChk == 0){ //서버로 넘어가기전에 사전에 막기위해 사용.
+				alert("선택해라!!!");
+				return false;
+			}
+		}else{
+			params = "chkNo="+a;
+		}
+		open("Chart_BoardAction.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400");
+	}
+	
+	/* 다운로드 스크립트 */
+	function music_down(a){
+		var params = "";
+		var chkNo = document.getElementsByName("chkNo");
+		if(a == "s"){
+			var countChk = 0;
+			for (var i = 0; i < chkNo.length; i++) {					
+				if(chkNo[i].checked){
+					params+= "chkNo="+i +"&";
+					countChk+=1;
+				}				
+			}
+			if(countChk == 0){ //서버로 넘어가기전에 사전에 막기위해 사용.
+				alert("선택해라!!!");
+				return false;
+			}
+		}else{
+			params = "chkNo="+a;
+		}
+		open("downloadAction.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
 </script>
 
@@ -54,29 +100,36 @@ center {
 
 <body>
 	<form method="post" name="chartForm">
+<<<<<<< HEAD
 		<hr width="850px" size="1" color="gray" align="left" />
+=======
+		
+		<br /><br />
+	
+		<hr width="1100px" size="1" color="gray" align="left" />
+>>>>>>> 4e100ca3af130a511d885c77ab3a62838936e77f
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
-		<hr width="850px" size="1" align="left">
+		<hr width="1100px" size="1" align="left">
 		<table align="left">
 			<tr align="center">
-				<td width="29px" height="10px">
+				<td width="30px" height="10px">
 					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
 				</td>
-				<td width="29px"><g>NO</g></td>
-				<td width="80px"></td>
-				<td width="250px"><g>곡명</g></td>
-				<td width="152px">아티스트</td>
-				<td width="146px">앨범</td>
-				<td width="82px"><g>좋아요</g></td>
-				<td width="70px"><g>다운</g></td>
+				<td width="25px"><g>NO</g></td>
+				<td width="70px"></td>
+				<td width="300px"><g>곡명</g></td>
+				<td width="200px">아티스트</td>
+				<td width="150px">앨범</td>
+				<td width="80px"><g>좋아요</g></td>
+				<td width="80px"><g>다운</g></td>
 			</tr>
 		</table>
-		<hr width="850px" size="3" color="#CC3D3D" align="left" />
+		<hr width="1100px" size="3" color="#CC3D3D" align="left" />
 
 		<c:set var="count" value="0" />
 		<c:if test="${totalCount < 1}">
@@ -89,42 +142,41 @@ center {
 		</c:if>
 
 		<c:if test="${totalCount > 0}">
-			<c:forEach var="list" items="${list}" varStatus="status">
+			<c:forEach var="list" items="${list}" varStatus="checkValue">
 				<table>
 					<tr align="center" height="25px">
-						<td width="29px" height="25px"><input type="checkbox" name="checkbox" value=></td>
-						<td width="29px">${status.count}</td>
+						<td width="30px" height="25px"><input type="checkbox" name="chkNo" value="${list}"></td>
+						<td width="25px">${(currentPage-1) * 10 + (checkValue.index + 1)}</td>
 						<!--이미지-->
-						<td width="80px"><img src="${list.music_image}" width="50px" height="50px"></td>
+						<td width="70px"><input type="image" onClick=""/></td>
 						<!--곡정보-->
-						<td width="250px" align="left"><input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png">
-							<input type="image" name="m_add_btt" src="http://localhost:8000/BBuSic/board/images/m_add_button.png"> &nbsp;
-							<input type="image" name="m_page_btt" src="http://localhost:8000/BBuSic/board/images/m_page_button.png">
+						<td width="300px" align="left"><input type="image" name="m_play_btt" src="/music/board/images/m_play_button.png">
+							<input type="image" name="m_add_btt" src="/music/board/images/m_add_button.png"> &nbsp;
+							<input type="image" name="m_page_btt" src="/music/board/images/m_page_button.png">
 								${list.title}
 						</td>
-						<td width="152px">${list.singger}</td>
-						<td width="146px">${list.album}</td>
+						<td width="200px"><a href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a></td>
+						<td width="150px"><a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a></td>
 						<!--좋아요-->
-						<td width="82px"><input type="image" name="m_like_btt" src="http://localhost:8000/BBuSic/board/images/m_like_button.png"> ${list.hit}</td>
+						<td width="80px"><input type="image" name="m_like_btt" src="/music/board/images/m_like_button.png"> ${list.hit}</td>
 						<!--다운로드-->
-						<td td width="70px"><input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png"></td>
+						<td td width="80px"><input type="image" name="m_download_img" src="/music/board/images/m_download_button.png"></td>
 					</tr>
 				</table>
-				<hr width="850px" size="1" color="gray" align="left" />
+				<hr width="1100px" size="1" color="gray" align="left" />
 			</c:forEach>
 		</c:if>
 
-		<hr width="850px" size="1" color="gray" align="left" />
+		<hr width="1100px" size="1" color="gray" align="left" />
 		<!-- 전체선택 -->
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
 		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
-		<hr width="850px" size="1" align="left" />
-		<br />
-			<s:property value="pagingHtml" escape="false" />
-
+		<hr width="1100px" size="1" align="left" />
+		<br>
+		<p align="center"><s:property value="pagingHtml" escape="false" /></p>
 	</form>
 </body>
 </html>

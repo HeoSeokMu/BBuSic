@@ -8,13 +8,20 @@ public class musicDTO {
 	private String realname_image;
 	private String realname_music;
 	private String genre;
-	private String singger;
+	private String singer;
 	private String album;
 	private String title;
 	private int hit;
 	private int[] chkNo;
+	private int[] chkNo2;
 	
 	
+	public int[] getChkNo2() {
+		return chkNo2;
+	}
+	public void setChkNo2(int[] chkNo2) {
+		this.chkNo2 = chkNo2;
+	}
 	public int[] getChkNo() {
 		return chkNo;
 	}
@@ -39,11 +46,11 @@ public class musicDTO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getSingger() {
-		return singger;
+	public String getSinger() {
+		return singer;
 	}
-	public void setSingger(String singger) {
-		this.singger = singger;
+	public void setSinger(String singer) {
+		this.singer = singer;
 	}
 	public String getAlbum() {
 		return album;

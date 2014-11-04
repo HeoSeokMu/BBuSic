@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td align="center">°¡¼ö</td>
-					<td><input type="text" name="singger" /></td>
+					<td><input type="text" name="singer" /></td>
 				</tr>
 				<tr>
 					<td align="center">¾Ù¹ü</td>

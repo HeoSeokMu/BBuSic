@@ -107,6 +107,7 @@
 		<script type="text/javascript">
 			function buy(name, benefit, amount, sale) {
 				if(${session.memId != null}) {
+					
 					jQuery(function($) {
 						$('.button01').each()(function(){
 							$('.button01').click()(function(){
