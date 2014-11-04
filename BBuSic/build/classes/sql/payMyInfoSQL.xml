@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="payment_my">
+	<typeAlias alias="mDTO" type="payment.pay_setDTO.payMyInfo_DTO" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="myRes" class="mDTO">
+	  		<result property="my_id" column="my_id"/>						<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="cash" column="cash"/>							<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="download_count" column="download_count"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="pay_name" column="pay_name"/>					<!-- property는 set메서드 column은 db의 컬럼 -->
+		</resultMap>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertMyInfo" parameterClass="mDTO">
+      		INSERT INTO bbu_payMyInfo (
+      							MY_ID,
+      							CASH,
+      							DOWNLOAD_COUNT,
+      							PAY_NAME
+                         )
+                	 VALUES (
+                	 		#my_id#,
+                	 		#cash#,
+                	 		#download_count#,
+                	 		#pay_name#
+                         )
+		</insert>
+</sqlMap>
