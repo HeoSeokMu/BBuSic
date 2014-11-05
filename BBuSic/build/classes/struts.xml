@@ -5,6 +5,9 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
+
+	<constant name="struts.multipart.maxSize" value="20971520" />
+
 	<constant name="struts.multipart.maxSize" value="102400000" />
 	
 	<package name="bbu_main" extends="struts-default">

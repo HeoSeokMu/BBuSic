@@ -5,6 +5,9 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
+
+	<constant name="struts.multipart.maxSize" value="20971520" />
+
 	<constant name="struts.multipart.maxSize" value="102400000" />
 	
 	<package name="bbu_main" extends="struts-default">
@@ -204,6 +207,7 @@
 				<param name="bufferSize">10240000</param>
 			</result>						
 		</action>
+		<!-- 업로드 부분-->
 		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -222,7 +226,13 @@
 			<interceptor-ref name="fileUpload" />
 			<interceptor-ref name="params" />
 			<result>/file/MusicUploadPro.jsp</result>
-		</action>		
+		</action>
+		<action name="" class="board.action.ChartMainAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/ChartMain.jsp</result>
+		</action>
 		<!--차트-->
 		<action name="ChartMain" class="board.action.ChartMainAction">
 			<interceptor-ref name="prepare" />

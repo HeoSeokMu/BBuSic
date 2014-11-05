@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
@@ -8,8 +7,8 @@
 		var f = document.chartForm;
 		for(var i=1; i< blockCount; i++){
 			 if(f.elements[i].name == 'chkNo'){ 
-                 f.elements[i].checked = checkFlag; 
-         } 
+	             f.elements[i].checked = checkFlag; 
+	     } 
 		}
 	}
 	
@@ -56,7 +55,7 @@
 			params = "chkNo="+a;
 		}
 		open("Chart_BoardAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400"); 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400");
 	}
 	
 	/* 다운로드 스크립트 */
@@ -85,38 +84,63 @@
 
 <html>
 <head>
-<title>뿌숑뮤직</title>
-<style type="text/css">
-g {
-	color: black;
-	font-size: 10pt;
-}
-
-center {
-	text-align: center
-}
-</style>
+	<title></title>
+	<style type="text/css">
+		g {
+			color: black;
+			font-size: 10pt;
+			}
+	</style>
 </head>
-
 <body>
+	<table border="1">
+		<tr height="30px">
+			<td rowspan="6" width="300px"><img name="" /></td>
+			<td>${singer}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${year}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${birth}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${maingenre}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${entertain}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${hit}</td>
+		</tr>
+	</table>
+	
+	<br />
+	
 	<form method="post" name="chartForm">
+		<br />
+		<p>${singer} 의 곡들</p>
+		<br /><br />
+	
 		<hr width="880px" size="1" color="gray" align="left" />
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
+		<input type="button" name="h_listen_btt" value="듣기" onClick="">
+		<input type="button" name="h_download_btt" value="다운" onClick="">
 
 		<hr width="880px" size="1" align="left">
 		<table align="left">
 			<tr align="center">
-				<td width="25px" height="10px">
+				<td width="30px" height="10px">
 					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
 				</td>
-				<td width="30px"><g>NO</g></td>
-				<td width="80px"></td>
-				<td width="520px"><g>곡정보</g></td>
-				<td width="120px"><g>좋아요</g></td>
-				<td width="70px"><g>다운</g></td>
+				<td width="25px"><g>NO</g></td>
+				<td width="70px"></td>
+				<td width="300px"><g>곡명</g></td>
+				<td width="125px"><g>아티스트</g></td>
+				<td width="125px"><g>앨범</g></td>
+				<td width="105px"><g>좋아요</g></td>
+				<td width="80px"><g>다운</g></td>
 			</tr>
 		</table>
 		<hr width="880px" size="3" color="#CC3D3D" align="left" />
@@ -124,7 +148,7 @@ center {
 		<c:set var="count" value="0" />
 		<c:if test="${totalCount < 1}">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<table border="0">
+	<table>
 				<tr>
 					<td align="left">게시물이 존재하지 않습니다.</td>
 				</tr>
@@ -134,34 +158,37 @@ center {
 		<c:if test="${totalCount > 0}">
 			<c:forEach var="list" items="${list}" varStatus="checkValue">
 				<table>
-					<tr align="center" height="70px">																	
-						<td width="25px" height="10px">
-							<input type="checkbox" name="chkNo" value="${checkValue.index}">
-							</td>
-						<!-- No -->
-						<td width="30px">
+					<tr align="center" height="25px">
+						<td width="30px" height="25px">
+							<input type="checkbox" name="chkNo" value="${list}">
+						</td>
+						<td width="25px">
 							${(currentPage-1) * 10 + (checkValue.index + 1)}
 						</td>
 						<!--이미지-->
-						<td width="80px">
-							<img src="${list.music_image}" width="50px" height="50px">
+						<td width="70px">
+							<input type="image" onClick=""/>
 						</td>
 						<!--곡정보-->
-						<td width="100px" align="center">
-							<input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png" onclick="list_add(${checkValue.index });">
+						<td width="300px" align="left">
+							<input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png">
 							<input type="image" name="m_add_btt" src="http://localhost:8000/BBuSic/board/images/m_add_button.png"> &nbsp;
 							<input type="image" name="m_page_btt" src="http://localhost:8000/BBuSic/board/images/m_page_button.png">
+							${list.title}
 						</td>
-						<td width="420px" align="left">
-							${list.title}<br /> ${list.singer} | ${list.album}
+						<td width="125px">
+							<a href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a>
+						</td>
+						<td width="125px">
+							<a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
 						</td>
 						<!--좋아요-->
-						<td width="120px">
+						<td width="105px">
 							<input type="image" name="m_like_btt" src="http://localhost:8000/BBuSic/board/images/m_like_button.png"> ${list.hit}
 						</td>
 						<!--다운로드-->
-						<td td width="70px">
-							<input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png" onclick="music_down(${checkValue.index });">
+						<td td width="80px">
+							<input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png">
 						</td>
 					</tr>
 				</table>
@@ -172,12 +199,12 @@ center {
 		<hr width="880px" size="1" color="gray" align="left" />
 		<!-- 전체선택 -->
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
+		<input type="button" name="h_listen_btt" value="듣기" onClick="">
+		<input type="button" name="h_download_btt" value="다운" onClick="">
 
 		<hr width="880px" size="1" align="left" />
 		<br>
-			<p align="center"><s:property value="pagingHtml" escape="false" /></p>
+		<p align="center"><s:property value="pagingHtml" escape="false" /></p>
 	</form>
 </body>
 </html>
