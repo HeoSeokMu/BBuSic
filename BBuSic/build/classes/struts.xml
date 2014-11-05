@@ -5,11 +5,10 @@
     
 <struts>
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
-<<<<<<< HEAD
+
 	<constant name="struts.multipart.maxSize" value="20971520" />
-=======
+
 	<constant name="struts.multipart.maxSize" value="102400000" />
->>>>>>> 8a9939986b1853e267934ccd27c597e1f34856eb
 	
 	<package name="bbu_main" extends="struts-default">
 		<action name="bbusic" class="BBu_main.BBuMain">
