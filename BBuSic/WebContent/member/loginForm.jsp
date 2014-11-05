@@ -63,14 +63,10 @@
 		</script>
 	</c:if>
 </head>
-
 <body onLoad="focusIt();">
 	<c:if test="${session.memId == null}">
 		<form name="inform" method="post" action="loginPro.action"	onSubmit="return checkIt();">
-			<table width=200 align="center">
-				<tr>
-					<td>
-						<table class="tablepadding">
+						<table class="tablepadding" align="center" cellspacing="10">
 							<tr>
 								<td>
 									<input type="text" name="id" value="${id}" class="input" placeholder="아이디" maxlength="10"/>
@@ -88,34 +84,38 @@
 									<td colspan="2" class="lineX">
 									<font size="1">
 									<input type="checkbox" name="checkbox" value="on"/><font >아이디저장</font>
-									&nbsp;<a href="findId.Form" title="아이디/비밀번호 찾기">아이디/비밀번호 찾기</a>
-									&nbsp;<a href="agreement.action" title="회원가입" ><strong>회원가입</strong></a>
+									&nbsp;<a href="findId.Form" title="아이디/비밀번호 찾기" style="color: gray">아이디/비밀번호 찾기</a>
+									&nbsp;<a href="agreement.action" title="회원가입" style="color: gray"><strong>회원가입</strong></a>
 									</font>
 								</td>
 							</tr>
 						</table>
-					</td>
-				</tr>
-			</table>
 		</form>
 	</c:if>
 
 	<c:if test="${session.memId != null}">
-		<table width="500" cellpadding="0" cellspacing="0" align="center" border="1">
+		<table class="tablepadding" align="center" cellspacing="10">
 			<tr>
-				<td width="300" bgcolor="${bodyback_c}" height="20">하하하</td>
-				<td rowspan="3" bgcolor="${value_c}" align="center"> ${session.memId} 님이 방문하셨습니다 <br/>
-						<input type="button" value="로그아웃" onclick="javascript:window.location='logout.action'"/>
-						<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
-						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
-						<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
-						<input type="button" value="피자" onclick="javascript:window.location='../dominoOrder/addressChoiceForm.jsp'"/>
+				<td>
+					<strong><a href="javascript:window.location='information.action'" style="color: black;"><c:out value="${session.memId}"/></a>님</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:window.location='information.action'" style="color: gray">내정보</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:window.location='logout.action'" style="color: gray">로그아웃</a>
+					<br/>
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="2" bgcolor="${bodyback_c}" width="300">메인입니다.</td>
+				<td align="center">보유중인 상품이 없습니다.
+					<a href="#"><img value="상품구매" name="payment" /></a><br/>
+				</td>
+			</tr>
+			<tr>
+				<td>쿠폰 0</td><br/>
 			</tr>
 		</table>
+		
+						<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
+						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
+						<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
 	</c:if>
 </body>
 </html>
