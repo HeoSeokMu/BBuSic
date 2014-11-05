@@ -100,14 +100,13 @@ center {
 
 <body>
 	<form method="post" name="chartForm">
-		<hr width="850px" size="1" color="gray" align="left" />
+		<hr width="880px" size="1" color="gray" align="left" />
 		<br /><br />
-<<<<<<< HEAD
 	
 		<hr width="880px" size="1" color="gray" align="left" />
-=======
-		<hr width="1100px" size="1" color="gray" align="left" />
->>>>>>> 8a9939986b1853e267934ccd27c597e1f34856eb
+
+		<hr width="880px" size="1" color="gray" align="left" />
+
 
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="">
