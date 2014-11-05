@@ -182,7 +182,6 @@ center {
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="듣기" onClick="">
 		<input type="button" name="h_download_btt" value="다운" onClick="">
-		<input type="button" name="h_collect_btt" value="담기" onClick="">
 
 		<hr width="880px" size="1" align="left" />
 		<br>

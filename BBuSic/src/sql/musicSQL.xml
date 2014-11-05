@@ -5,6 +5,7 @@
 	
 	<typeAlias alias="musicDTO" type="upload.dto.musicDTO"/>
 	<typeAlias alias="searchDTO" type="upload.dto.searchDTO"/>
+	<typeAlias alias="singerDTO" type="upload.dto.singerDTO"/>
 	
 	<resultMap id="musicRes" class="musicDTO">
 		<result property="num" column="num"/>
@@ -25,6 +26,8 @@
 		<result property="album" column="album"/>
 		<result property="title" column="title"/>
 	</resultMap>
+	
+	
 	
 	<!-- 공통적으로 사용할 select 절 정의 -->
 	<sql id="select-all">
@@ -87,5 +90,21 @@
 							#realname_music#,
 							#realname_image#
 							)
+	</insert>
+	<insert id="insertSinger" parameterClass="singerDTO">
+		INSERT INTO SINGER_INFO (SINGER,
+								YEAR,
+								BIRTH,
+								MAINGENRE,
+								ENTERTAIN,
+								P_HIT
+								)
+						VALUES (#singer#,
+								#year#,
+								#birth#,
+								#maingenre#,
+								#entertain#,
+								#p_hit#
+								)
 	</insert>
 </sqlMap>
