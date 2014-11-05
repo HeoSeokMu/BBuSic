@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
@@ -85,29 +84,45 @@
 
 <html>
 <head>
-<title>»Ñ¼õ¹ÂÁ÷</title>
-<style type="text/css">
-g {
-	color: black;
-	font-size: 10pt;
-}
-
-center {
-	text-align: center
-}
-</style>
+	<title></title>
+	<style type="text/css">
+		g {
+			color: black;
+			font-size: 10pt;
+			}
+	</style>
 </head>
-
 <body>
+	<table border="1">
+		<tr height="30px">
+			<td rowspan="6" width="300px"><img name="" /></td>
+			<td>${singer}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${year}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${birth}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${maingenre}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${entertain}</td>
+		</tr>
+		<tr height="30px">
+			<td width="530px">${hit}</td>
+		</tr>
+	</table>
+	
+	<br />
+	
 	<form method="post" name="chartForm">
-		<hr width="850px" size="1" color="gray" align="left" />
+		<br />
+		<p>${singer} ÀÇ °îµé</p>
 		<br /><br />
-<<<<<<< HEAD
 	
 		<hr width="880px" size="1" color="gray" align="left" />
-=======
-		<hr width="1100px" size="1" color="gray" align="left" />
->>>>>>> 8a9939986b1853e267934ccd27c597e1f34856eb
 
 		<input type="button" name="h_selectall_btt" value="ÀüÃ¼¼±ÅÃ" width="50px" onClick="checkAll2(${blockCount})">
 		<input type="button" name="h_listen_btt" value="µè±â" onClick="">

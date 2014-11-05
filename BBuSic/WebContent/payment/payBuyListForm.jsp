@@ -109,11 +109,19 @@
 				if(${session.memId != null}) {
 					
 					jQuery(function($) {
-						
-					}
-					
+						$('.button01').each()(function(){
+							$('.button01').click()(function(){
+								$("#content").load("payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
+										  		   "&amount="+amount+"&sale="+sale);
+							});
+						});
+					});
+				
+					<!--
 					window.location = "payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
 									  "&amount="+amount+"&sale="+sale;
+					-->
+					
 				} else {
 					jQuery(function($) {
 						var layerWindow = $('.mw_layer');
@@ -180,72 +188,69 @@
 	</head>
 	
 	<body>
-		<center>
-		<table border="1">
+			<table border="1">
+			<c:forEach var="pay" items="${paylist}">
+				<tr>
+					<td>${pay.category}</td>
+					<td>${pay.pay_name}</td>
+					<td>${pay.pay_benefit}</td>
+					<td>정기결제<br/>T멤버십 30% 차감시<br/>30일권</td>
+					<td>
+						<fmt:formatNumber value="${pay.amount}"/><br/>
+						<fmt:formatNumber value="${pay.amount - (pay.amount*(pay.sale/100))}"/><br/>
+						<fmt:formatNumber value="${pay.day30amount}"/>
+					</td>
+					<td>
+		 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
+						<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
+						<input type="button" value="선물" class="button02" onclick=""/>
+					</td>
+				</tr>
+			</c:forEach>
 			
-		<c:forEach var="pay" items="${paylist}">
-			<tr>
-				<td>${pay.category}</td>
-				<td>${pay.pay_name}</td>
-				<td>${pay.pay_benefit}</td>
-				<td>정기결제<br/>T멤버십 30% 차감시<br/>30일권</td>
-				<td>
-					<fmt:formatNumber value="${pay.amount}"/><br/>
-					<fmt:formatNumber value="${pay.amount - (pay.amount*(pay.sale/100))}"/><br/>
-					<fmt:formatNumber value="${pay.day30amount}"/>
-				</td>
-				<td>
-	 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
-					<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
-					<input type="button" value="선물" class="button02" onclick=""/>
-				</td>
-			</tr>
-		</c:forEach>
-		
-		</table>	
-		<div class="mw_layer">
-			<div class="bg"></div>
-			<div id="layer">
-				<form name="inform" method="post" action="popupLoginPro.action"	onSubmit="return checkIt();">
-					<table width=200 align="center">
-						<tr>
-							<td colspan="2" bgcolor="#7eb813" class="trTitle">
-								<font color="#ffffff" size="5"> <b>로그인</b> </font>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<table class="tablepadding">
-									<tr>
-										<td>
-											<input type="text" name="id" class="input" placeholder="아이디" maxlength="10"/>
-										</td>
-										<td rowspan="2">
-											<input type="submit" class="login" name="Submit" value="로그인"/>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="password" name="passwd" placeholder="패스워드" class="input" maxlength="10"/>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2" class="lineX">
-											<input type="checkbox" name="checkbox" value="on"/><font >자동로그인</font>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="3">
-											<input type="button" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
-										</td>	
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
-				</form>
+			</table>	
+			<div class="mw_layer">
+				<div class="bg"></div>
+				<div id="layer">
+					<form name="inform" method="post" action="popupLoginPro.action"	onSubmit="return checkIt();">
+						<table width=200 align="center">
+							<tr>
+								<td colspan="2" bgcolor="#7eb813" class="trTitle">
+									<font color="#ffffff" size="5"> <b>로그인</b> </font>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="tablepadding">
+										<tr>
+											<td>
+												<input type="text" name="id" class="input" placeholder="아이디" maxlength="10"/>
+											</td>
+											<td rowspan="2">
+												<input type="submit" class="login" name="Submit" value="로그인"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="password" name="passwd" placeholder="패스워드" class="input" maxlength="10"/>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="lineX">
+												<input type="checkbox" name="checkbox" value="on"/><font >자동로그인</font>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3">
+												<input type="button" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
+											</td>	
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
 			</div>
-		</div>
-		</center>
 	</body>
 </html>
