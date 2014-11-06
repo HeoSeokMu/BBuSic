@@ -26,7 +26,13 @@
 		function checkIt() {	
 			var userinput = eval("document.userinput");
 			userinput.birth.value=userinput.year.value +"/"+ userinput.month.value +"/"+ userinput.date.value;
+			idform = /^[a-zA-Z0-9_-]{6,20}$/;
 			
+			 if(!idform.test(userinput.id.value)){
+		         alert("ID는 6~20자리여야하며 영문과 숫자, 특수문자( _ - )만 사용가능합니다.");
+		         return false;
+		      }
+			 
 			if (!userinput.id.value) {
 				alert("ID를 입력하세요");
 				return false;
@@ -66,7 +72,7 @@
 				return false;
 			}
 			if(userinput.nick_check.value != "check"){
-				alert("아이디 중복체크를 해주세요");
+				alert("닉네임 중복체크를 해주세요");
 				return false;
 			}
 		}
@@ -91,7 +97,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/PooSic/confirmId.action?id=" + userinput.id.value;
+		        url = "/BBuSic/confirmId.action?id=" + userinput.id.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmId", 
@@ -106,7 +112,7 @@
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/PooSic/confirmNick.action?nickname=" + userinput.id.value;
+		        url = "/BBuSic/confirmNick.action?nickname=" + userinput.nickname.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmNick", 

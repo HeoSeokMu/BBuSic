@@ -15,7 +15,7 @@ public class MemberDTO {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim();
 	}
 	public String getBirth() {
 		return birth;
@@ -33,7 +33,7 @@ public class MemberDTO {
 		return email;
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.trim();
 	}
 	public String getId() {
 		return id;

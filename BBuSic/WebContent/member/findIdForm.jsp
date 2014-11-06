@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
@@ -27,9 +27,8 @@
 		function checkIt() {
 			
 			var userinput = eval("document.userinput");
-			
 			if (!userinput.name.value) {
-				alert("이름를 입력하세요.");
+				alert("이름을 입력하세요.");
 				return false;
 			}
 		
@@ -42,18 +41,18 @@
 	<body>
 		<center>
 		<h2>아이디 찾기</h2>
-		<form method="get" name="userinput" action="findIdPro.action" onsubmit="return checkIt();">
+		<form method="post" name="userinput" action="findIdPro.action" onsubmit="return checkIt();">
 			<table width="400" border="1" cellspacing="0" cellpadding="3" align="center">
 				<tr>
-				<td width="200">아이디</td>
-				<td width="400" align="left">
-				<input type="text" name="id" maxlength="15"/>
+				<td width="150">이름</td>
+				<td width="200" align="left">
+				<input type="text" name="name" size="20"/>
 				</td>
 			</tr>
 				<tr>
-					<td width="200">이메일</td>
-					<td width="400" align="left">
-						<input type="text" name="email" maxlength="25"/>
+					<td width="150">이메일</td>
+					<td width="200" align="left">
+						<input type="text" name="email" size="30"/>
 					</td>
 				</tr>
 		    </table>

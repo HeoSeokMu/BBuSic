@@ -12,6 +12,7 @@ import javax.mail.internet.*;
 import member.DTO.MemberDTO;
 
 public class SendEmailAction implements Action, ModelDriven, Preparable{
+	private String check;
 	MemberDTO mDTO;
 	private int num= (int) (Math.random()*8999)+1000;
 	private String host = "smtp.gmail.com";//smtp 서버
@@ -51,6 +52,7 @@ public class SendEmailAction implements Action, ModelDriven, Preparable{
 		msg.setContent(body,"text/html;charset=euc-kr"); // 내용 설정 (HTML 형식)
 
 		Transport.send(msg); // 메일 보내기
+		check="check";
 		} catch ( MessagingException ex ) {
 		    System.out.print("메일 발송에 실패 하였습니다.");
 		    ex.printStackTrace();
@@ -71,5 +73,9 @@ public class SendEmailAction implements Action, ModelDriven, Preparable{
 	
 	public int getNum(){
 		return num;
+	}
+	
+	public String getCheck(){
+		return check;
 	}
 }
