@@ -32,10 +32,14 @@ public class MusicUploadProAction extends ActionSupport{
 	private String hit;
 	private String realname_image;
 	private String realname_music;
+	private String minute;
 	
 	private File uploadMusic;
 	private String uploadMusicContentType;
 	private String uploadMusicFileName;
+	private File uploadMusic_minute;
+	private String uploadMusic_minuteContentType;
+	private String uploadMusic_minuteFileName;
 	private File uploadImage;
 	private String uploadImageContentType;
 	private String uploadImageFileName;
@@ -76,18 +80,25 @@ public class MusicUploadProAction extends ActionSupport{
 		String music_ext = getUploadMusicFileName().substring(
 				getUploadMusicFileName().lastIndexOf(".") + 1,
 				getUploadMusicFileName().length());
+		String minute_name = "minute_" + (lastNum + 1);
+		String minute_ext = getUploadMusic_minuteFileName().substring(
+				getUploadMusic_minuteFileName().lastIndexOf(".") + 1,
+				getUploadMusic_minuteFileName().length());
 		String image_name = "image_" + (lastNum + 1);
 		String image_ext = getUploadImageFileName().substring(
 				getUploadImageFileName().lastIndexOf(".") + 1,
 				getUploadImageFileName().length());
 		
 		File destFile1 = new File(fileUploadPath + music_name + "." + music_ext );
-		File destFile2 = new File(fileUploadPath + image_name + "." + image_ext );
+		File destFile2 = new File(fileUploadPath + minute_name + "." + minute_ext );
+		File destFile3 = new File(fileUploadPath + image_name + "." + image_ext ); 
 		
 		FileUtils.copyFile(getUploadMusic(), destFile1);
-		FileUtils.copyFile(getUploadImage(), destFile2);
+		FileUtils.copyFile(getUploadMusic_minute(), destFile2);
+		FileUtils.copyFile(getUploadImage(), destFile3);
 		
 		paramClass.setMusic_name(music_name + "." + music_ext);
+		paramClass.setMinute(minute_name + "." + minute_ext);
 		paramClass.setMusic_image(image_name + "." + image_ext);
 		paramClass.setNum(lastNum);
 		
@@ -250,6 +261,39 @@ public class MusicUploadProAction extends ActionSupport{
 
 	public void setFileUploadPath(String fileUploadPath) {
 		this.fileUploadPath = fileUploadPath;
+	}
+
+	public String getMinute() {
+		return minute;
+	}
+
+	public void setMinute(String minute) {
+		this.minute = minute;
+	}
+
+	public File getUploadMusic_minute() {
+		return uploadMusic_minute;
+	}
+
+	public void setUploadMusic_minute(File uploadMusic_minute) {
+		this.uploadMusic_minute = uploadMusic_minute;
+	}
+
+	public String getUploadMusic_minuteContentType() {
+		return uploadMusic_minuteContentType;
+	}
+
+	public void setUploadMusic_minuteContentType(
+			String uploadMusic_minuteContentType) {
+		this.uploadMusic_minuteContentType = uploadMusic_minuteContentType;
+	}
+
+	public String getUploadMusic_minuteFileName() {
+		return uploadMusic_minuteFileName;
+	}
+
+	public void setUploadMusic_minuteFileName(String uploadMusic_minuteFileName) {
+		this.uploadMusic_minuteFileName = uploadMusic_minuteFileName;
 	}
 	
 	

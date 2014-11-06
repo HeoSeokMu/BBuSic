@@ -17,6 +17,10 @@
 					<td><input type="file" name="uploadMusic" value="music_path" /></td>
 				</tr>
 				<tr>
+					<td align="center">1분 미리듣기 파일</td>
+					<td><input type="file" name="uploadMusic_minute" value="music_path_minute" /></td>
+				</tr>
+				<tr>
 					<td align="center">이미지파일</td>
 					<td><input type="file" name="uploadImage" value="image_path" /></td>
 				</tr>
