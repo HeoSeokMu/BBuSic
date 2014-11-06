@@ -10,6 +10,7 @@
 	  		<result property="cash" column="cash"/>							<!-- property는 set메서드 column은 db의 컬럼 -->
 	  		<result property="download_count" column="download_count"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
 	  		<result property="pay_name" column="pay_name"/>					<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="pay_benefit" column="pay_name"/>					<!-- property는 set메서드 column은 db의 컬럼 -->
 		</resultMap>
 		
 		<!-- insert 쿼리문 정의 -->
@@ -29,4 +30,8 @@
                 	 		#benefit#
                          )
 		</insert>
+		
+		<select id="selectMyInfo">
+			SELECT * FROM bbu_myinfo
+		</select>
 </sqlMap>

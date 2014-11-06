@@ -143,50 +143,58 @@
 	</head>
 	
 	<body>
-		<form name="cashCharge" action="" method="post">
-			<table border="1">
-				<tr>
-					<td colspan="2">
-						멜론캐쉬는 멜론상품(클럽형, 티켓형, 곡, 뮤직비디오 등) 결제 시 사용 가능합니다.
-						결제금액과 멜론캐쉬는 1:1 배율로써 충전금액 3,000원을 선택하시면 멜론캐쉬 3,000원이 충전됩니다.
-						실제 결제금액은 부가가치세 10% 포함된 금액으로, 3,300원입니다.
-					</td>
-				</tr>
-				<tr height="20px">
-				</tr>
-				<tr>
-					<td>
-						<table border="1" width="100%">
-							<tr>
-								<td>뿌숑캐쉬 잔액</td><td>${cash}</td>
-							</tr>
-							<tr>
-								<td height="100px">충전금액선택</td>
-								<td width="300px" align="left">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<select name="money_sel" onchange="money_set()">
-										<option value="0">0</option>
-										<option value="1000">1000</option>
-										<option value="3000">3000</option>
-										<option value="5000">5000</option>
-										<option value="9000">9000</option>
-										<option value="10000">10000</option>
-										<option value="30000">30000</option>
-									</select>
-									<input type="text" name="chargeMoney_in" value="0" style="display:none;" onchange="money_setIn()"/>
-									&nbsp;&nbsp;&nbsp;
-								</td>
-								<td>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="chargeMoney_sel" value="sel_in" onchange="moneySel()" checked>&nbsp;선택입력&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="chargeMoney_sel" value="self_in" onchange="moneySel()"/>&nbsp;직접입력(1000원 단위로 입력가능)
-									<input type="text" name="money_in"/>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</form>
+		<c:if test="${session.memId == null}">
+			<script type="text/javascript">
+				document.window.alert("로그인을 해주세요");
+				document.window.location="bbusic.action";
+			</script>
+		</c:if>
+		<c:if test="${session.memId != null}">
+			<form name="cashCharge" action="" method="post">
+				<table border="1">
+					<tr>
+						<td colspan="2">
+							멜론캐쉬는 멜론상품(클럽형, 티켓형, 곡, 뮤직비디오 등) 결제 시 사용 가능합니다.
+							결제금액과 멜론캐쉬는 1:1 배율로써 충전금액 3,000원을 선택하시면 멜론캐쉬 3,000원이 충전됩니다.
+							실제 결제금액은 부가가치세 10% 포함된 금액으로, 3,300원입니다.
+						</td>
+					</tr>
+					<tr height="20px">
+					</tr>
+					<tr>
+						<td>
+							<table border="1" width="100%">
+								<tr>
+									<td>뿌숑캐쉬 잔액</td><td>${cash}</td>
+								</tr>
+								<tr>
+									<td height="100px">충전금액선택</td>
+									<td width="300px" align="left">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<select name="money_sel" onchange="money_set()">
+											<option value="0">0</option>
+											<option value="1000">1000</option>
+											<option value="3000">3000</option>
+											<option value="5000">5000</option>
+											<option value="9000">9000</option>
+											<option value="10000">10000</option>
+											<option value="30000">30000</option>
+										</select>
+										<input type="text" name="chargeMoney_in" value="0" style="display:none;" onchange="money_setIn()"/>
+										&nbsp;&nbsp;&nbsp;
+									</td>
+									<td>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="chargeMoney_sel" value="sel_in" onchange="moneySel()" checked>&nbsp;선택입력&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="chargeMoney_sel" value="self_in" onchange="moneySel()"/>&nbsp;직접입력(1000원 단위로 입력가능)
+										<input type="text" name="money_in"/>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</c:if>
 	</body>
 </html>

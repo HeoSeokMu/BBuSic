@@ -104,12 +104,12 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="center">보유중인 상품이 없습니다.
+				<td align="center">${pay_benefit}
 					<a href="#"><img value="상품구매" name="payment" /></a><br/>
 				</td>
 			</tr>
 			<tr>
-				<td>쿠폰 0</td><br/>
+				<td>캐쉬 ${cash}</td><br/>
 			</tr>
 		</table>
 		

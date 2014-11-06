@@ -44,7 +44,7 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 			rDTO.setLogin_result("½ÇÆÐ");
 			check = 1;
 		}
-		sqlMapper.insert("login.record", rDTO);
+		//sqlMapper.insert("login.record", rDTO);
 		return SUCCESS;
 	}
 

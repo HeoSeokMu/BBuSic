@@ -108,19 +108,8 @@
 			function buy(name, benefit, amount, sale) {
 				if(${session.memId != null}) {
 					
-					jQuery(function($) {
-						$('.button01').each()(function(){
-							$('.button01').click()(function(){
-								$("#content").load("payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
-										  		   "&amount="+amount+"&sale="+sale);
-							});
-						});
-					});
-				
-					<!--
 					window.location = "payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
 									  "&amount="+amount+"&sale="+sale;
-					-->
 					
 				} else {
 					jQuery(function($) {

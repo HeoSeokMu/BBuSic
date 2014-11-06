@@ -17,6 +17,7 @@ public class payInsertAction implements Action, Preparable, ModelDriven, BBuSicA
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
+	/*
 	public payInsertAction() {
 		try{
 			System.out.println("try 실행");
@@ -29,7 +30,7 @@ public class payInsertAction implements Action, Preparable, ModelDriven, BBuSicA
 			System.out.println("catch() 실행");
 		}
 	}
-	
+	*/
 	
 	public String execute() throws Exception {
 		System.out.println(payDTO.getCategory());

@@ -78,42 +78,22 @@
 	<div id="box">
 		<div id="header">
 			<ul class="menu">
+				<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" onclick="link(this.name, 'ChartBoard.action?category=chart')" class="rollover"/></li>
+				<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" onclick="link(this.name, 'NewChartBoard.action?category=new')" class="rollover"/></li>
 
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" onclick="link(this.name, 'ChartBoard.action?category=chart')" class="rollover"></a></li>
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" onclick="link(this.name, 'NewChartBoard.action?category=new')" class="rollover"></a></li>
-
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre')" class="rollover"></a>
+				<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre')" class="rollover"/>
 					<ul class="sub">
-						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=dance')" class="rollover"></a></li>
-						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=balad')" class="rollover"></a></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=dance')" class="rollover"/></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=balad')" class="rollover"/></li>
 					</ul>
 				</li>
 				<li>
-					<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment" class="rollover" border="0"></a>
+					<img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/>
 					<ul class="sub">
-						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" onclick="link(this.name, 'payBuyList.action')" class="rollover"></li>
-						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" onclick="link(this.name, 'cashCharge.action')" class="rollover"></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" onclick="link(this.name, 'payBuyList.action')" class="rollover"/></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" onclick="link(this.name, 'cashCharge.action')" class="rollover"/></li>
 					</ul>
 				</li>
- 
-<%--			
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" alt="chart" class="rollover"></a></li>
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" alt="new" class="rollover"></a></li>
-
-				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" class="rollover" border="0"></a>
-					<ul class="sub">
-						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" class="rollover" border="0"></a></li>
-						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" class="rollover" border="0"></a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment" class="rollover" border="0"></a>
-					<ul class="sub">
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" class="rollover" border="0"></li>
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" class="rollover" border="0"></li>
-					</ul>
-				</li>
---%>
 			</ul>
 		</div>
 	</div>

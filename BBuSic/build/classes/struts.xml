@@ -66,9 +66,16 @@
 		</action>
 		
 		<action name="cashCharge" class="payment.action.cashChargeAction">
-			<interceptor-ref name="BBuSicInterceptor"/>
 			<result>/payment/cashChargeForm.jsp</result>
 		</action>
+<!-- 		
+		<action name="payMyInfo" class="payment.action.payMyInfo_selectAction">
+			<interceptor-ref name="chain"/>
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="params"/>
+			<result>/member/loginForm.jsp?pay_name=${pay_name}&cash=${cash}&pay_benefit=${pay_benefit}</result>
+		</action>
+ -->
 	</package>	
 		
 	<!-- 김정진 작업 -->
@@ -109,7 +116,8 @@
 			<interceptor-ref name="DB"/>
 			<interceptor-ref name="params"/>
 			<result name="success" type="chain">
-	          <param name="actionName">bbusic</param>
+<!-- 			<param name="actionName">payMyInfo</param>  -->
+	          	<param name="actionName">bbusic</param>
 	        </result>
 		</action>
 		
