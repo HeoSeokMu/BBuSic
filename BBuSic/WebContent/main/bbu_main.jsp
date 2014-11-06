@@ -39,6 +39,7 @@
 				$(">ul", this).slideUp("fast");
 			});
 			
+<%--			
 			$("img[name=payment]").click(function(){
 				$("#content").load("payBuyList.action");
 			});
@@ -60,7 +61,16 @@
 			$("img[name=genre]").click(function(){
 				$("#content").load("GenreChartBoard.action?category=genre");
 			});
+		--%>
 		});
+			
+		function link(name, root) {
+			$("img[name="+name+"]").click(function(){
+				$("#content").load(root);
+			});
+		}
+				
+		
 	</script>
 </head>
 
@@ -68,6 +78,25 @@
 	<div id="box">
 		<div id="header">
 			<ul class="menu">
+
+				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" onclick="link(this.name, 'ChartBoard.action?category=chart')" class="rollover"></a></li>
+				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" onclick="link(this.name, 'NewChartBoard.action?category=new')" class="rollover"></a></li>
+
+				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre')" class="rollover"></a>
+					<ul class="sub">
+						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=dance')" class="rollover"></a></li>
+						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=balad')" class="rollover"></a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment" class="rollover" border="0"></a>
+					<ul class="sub">
+						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" onclick="link(this.name, 'payBuyList.action')" class="rollover"></li>
+						<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" onclick="link(this.name, 'cashCharge.action')" class="rollover"></li>
+					</ul>
+				</li>
+ 
+<%--			
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" alt="chart" class="rollover"></a></li>
 				<li><a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" alt="new" class="rollover"></a></li>
 
@@ -84,6 +113,7 @@
 						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" class="rollover" border="0"></li>
 					</ul>
 				</li>
+--%>
 			</ul>
 		</div>
 	</div>

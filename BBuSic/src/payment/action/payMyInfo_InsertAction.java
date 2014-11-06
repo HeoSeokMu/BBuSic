@@ -18,6 +18,7 @@ public class payMyInfo_InsertAction implements Action, BBuSicAware{
 		m_DTO = new payMyInfo_DTO();
 		m_DTO.setMy_id(id);
 		m_DTO.setPay_name("보유중인 상품이 없습니다.");
+		m_DTO.setBenefit("없음");
 		sqlMapper.insert("payment_my.insertMyInfo", m_DTO);
 		return SUCCESS;
 	}

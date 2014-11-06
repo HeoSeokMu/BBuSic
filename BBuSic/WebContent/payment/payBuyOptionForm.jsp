@@ -18,9 +18,9 @@
 						<th>상품명</th><th>제공 서비스</th><th>판매가(부가세 10% 별도)</th><th>이용안내</th>
 					</tr>
 					<tr>
-						<td><input type="hidden" name="pay_name"  value=""/>${pay_name}</td>
-						<td><input type="hidden" name="pay_benefit"  value=""/>${pay_benefit}</td>
-						<td><input type="hidden" name="amount"  value=""/>${amount}</td>
+						<td><input type="hidden" name="pay_name"  value="${pay_name}"/>${pay_name}</td>
+						<td><input type="hidden" name="pay_benefit"  value="${pay_benefit}"/>${pay_benefit}</td>
+						<td><input type="hidden" name="amount"  value="${amount}"/>${amount}</td>
 						<td><input type="button" name="an"  value="이용안내"/></td>
 					</tr>
 					<c:if test="${ sale != 0 }">
@@ -97,6 +97,8 @@
 						</td>
 					</tr>
 				</table>
+				<input type="submit" value="결제하기"/>
+				<input type="button" value="취소하기" onclick="javascript:window.history.go(-1) return false;"/>
 			</form>
 		</c:if>
 	</body>

@@ -18,13 +18,15 @@
       							MY_ID,
       							CASH,
       							DOWNLOAD_COUNT,
-      							PAY_NAME
+      							PAY_NAME,
+      							BENEFIT
                          )
                 	 VALUES (
                 	 		#my_id#,
                 	 		#cash#,
                 	 		#download_count#,
                 	 		#pay_name#
+                	 		#benefit#
                          )
 		</insert>
 </sqlMap>
