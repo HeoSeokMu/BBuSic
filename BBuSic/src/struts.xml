@@ -232,12 +232,6 @@
 			<result>/board/ChartMain.jsp</result>
 		</action>
 		<!--보드-->
-		<action name="ChartMain" class="board.action.ChartMainAction">
-			<interceptor-ref name="prepare" />
-			<interceptor-ref name="modelDriven" />
-			<interceptor-ref name="params" />
-			<result>/board/ChartMain.jsp</result>
-		</action>
 		<action name="ChartBoard" class="board.action.Chart_BoardAction">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
