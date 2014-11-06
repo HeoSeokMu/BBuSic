@@ -2,7 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="login">
 
-	<typeAlias alias="login" type="member.DTO.MemberDTO" />
+	<typeAlias alias="login" type="member.DTO.LoginRecDTO" />
 
 		<!-- 리절트 맵 정의 -select -->
 	  	<resultMap id="memberRes" class="login">

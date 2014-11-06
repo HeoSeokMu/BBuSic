@@ -3,45 +3,45 @@ package member.action;
 
 import java.util.Calendar;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
 import member.DTO.LoginRecDTO;
 
-import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class LoginProAction implements Action, SessionAware, MemberAware, ServletRequestAware, ModelDriven, Preparable{
+public class LoginProAction extends ActionSupport implements SessionAware, MemberAware, ServletRequestAware, ModelDriven, Preparable{
 	private int check;
 	private Map session;
 	private String id;
 	private String passwd;
 	private String passwd2;
 	private LoginRecDTO rDTO;
-	private SqlMapClient sqlMapper;
+	public static SqlMapClient sqlMapper;
 	private HttpServletRequest req;
 	Calendar today = Calendar.getInstance();
+	private String arg0;
 
 	public String execute() throws Exception {
 		passwd2 = (String)sqlMapper.queryForObject("member.selectPasswd", id);
-		rDTO.setIp(req.getRemoteAddr());
-		rDTO.setLogin_date(today.getTime());
+		System.out.println(req);
+		//rDTO.setIp(req.getRemoteAddr());
+		//rDTO.setLogin_date(today.getTime());
 		
 		if(passwd.equals(passwd2)){
 			session.put("memId", id);
-			rDTO.setLogin_result("성공");
+			//rDTO.setLogin_result("성공");
 			check = 0;
 		}else{
-			rDTO.setLogin_result("실패");
+			//rDTO.setLogin_result("실패");
 			check = 1;
 		}
-		sqlMapper.insert("login.record", rDTO);
+		//sqlMapper.insert("login.record", rDTO);
 		return SUCCESS;
 	}
 
@@ -76,5 +76,4 @@ public class LoginProAction implements Action, SessionAware, MemberAware, Servle
 	public Object getModel() {
 		return rDTO;
 	}
-
 }
