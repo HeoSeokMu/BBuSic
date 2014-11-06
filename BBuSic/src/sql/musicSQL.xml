@@ -65,6 +65,10 @@
 			ORDER BY num DESC
 		</select>
 		
+		<select id="selectWithSinger" resultMap="musicRes" parameterClass="String">
+			<include refid="select-all" />
+			 where singer = #singer# ORDER BY num asc
+		</select>
 		
 	<!-- insert 쿼리문 정의 -->
 	<insert id="insertMusic" parameterClass="musicDTO">
@@ -77,7 +81,8 @@
 							TITLE,
 							HIT,
 							REALNAME_MUSIC,
-							REALNAME_IMAGE
+							REALNAME_IMAGE,
+							MINUTE
 							)
 					VALUES (bbu_seq.NEXTVAL,
 							#music_name#,
@@ -88,7 +93,8 @@
 							#title#,
 							0,
 							#realname_music#,
-							#realname_image#
+							#realname_image#,
+							#minute#
 							)
 	</insert>
 	<insert id="insertSinger" parameterClass="singerDTO">

@@ -7,6 +7,14 @@
 	<title></title>
 </head>
 <body>
-	
+	<table border="1">
+		<tr><td colspan="7"> member's face</td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		</tr>
+	</table>
 </body>
 </html>

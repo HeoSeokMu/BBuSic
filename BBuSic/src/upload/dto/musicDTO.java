@@ -12,6 +12,7 @@ public class musicDTO {
 	private String album;
 	private String title;
 	private int hit;
+	private String minute;
 	private int[] chkNo;
 	private int[] chkNo2;
 	
@@ -87,6 +88,12 @@ public class musicDTO {
 	}
 	public void setRealname_music(String realname_music) {
 		this.realname_music = realname_music;
+	}
+	public String getMinute() {
+		return minute;
+	}
+	public void setMinute(String minute) {
+		this.minute = minute;
 	}
 	
 	
