@@ -7,8 +7,6 @@
 	<constant name="struts.multipart.saveDir" value="/d:/save" />
 
 	<constant name="struts.multipart.maxSize" value="20971520" />
-
-	<constant name="struts.multipart.maxSize" value="102400000" />
 	
 	<package name="bbu_main" extends="struts-default">
 		<action name="bbusic" class="BBu_main.BBuMain">
@@ -234,12 +232,6 @@
 			<result>/board/ChartMain.jsp</result>
 		</action>
 		<!--보드-->
-		<action name="ChartMain" class="board.action.ChartMainAction">
-			<interceptor-ref name="prepare" />
-			<interceptor-ref name="modelDriven" />
-			<interceptor-ref name="params" />
-			<result>/board/ChartMain.jsp</result>
-		</action>
 		<action name="ChartBoard" class="board.action.Chart_BoardAction">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
@@ -266,8 +258,15 @@
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
-			<result>/board/GenreChart_board.jsp</result>
+			<result>/board/SingerPage.jsp</result>
 		</action>
+		<!--<action name="AlbumPage" class="board.action.AlbumPageAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/AlbumPage.jsp</result>
+		</action>-->
 		<!--검색-->
 		<action name="Search" class="search.action.SearchAction">
 			<interceptor-ref name="prepare" />
