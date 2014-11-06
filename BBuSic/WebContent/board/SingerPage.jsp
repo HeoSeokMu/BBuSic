@@ -167,7 +167,7 @@
 						</td>
 						<!--이미지-->
 						<td width="70px">
-							<input type="image" onClick=""/>
+							<input type="image" src="http://localhost:8000/BBuSic/upload/${music_image}"/>
 						</td>
 						<!--곡정보-->
 						<td width="300px" align="left">
