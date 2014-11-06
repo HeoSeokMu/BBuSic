@@ -15,7 +15,7 @@ import member.DTO.LoginRecDTO;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class LoginProAction extends ActionSupport implements SessionAware, MemberAware, ServletRequestAware, ModelDriven, Preparable{
+public class LoginProAction extends ActionSupport implements SessionAware, MemberAware, ServletRequestAware{
 	private int check;
 	private Map session;
 	private String id;
@@ -28,20 +28,23 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 	private String arg0;
 
 	public String execute() throws Exception {
+		rDTO = new LoginRecDTO();
 		passwd2 = (String)sqlMapper.queryForObject("member.selectPasswd", id);
 		System.out.println(req);
-		//rDTO.setIp(req.getRemoteAddr());
-		//rDTO.setLogin_date(today.getTime());
+		System.out.println(req.getRemoteAddr());
+		rDTO.setIp(req.getRemoteAddr());
+		rDTO.setLogin_date(today.getTime());
+		rDTO.setId(id);
 		
 		if(passwd.equals(passwd2)){
 			session.put("memId", id);
-			//rDTO.setLogin_result("성공");
+			rDTO.setLogin_result("성공");
 			check = 0;
 		}else{
-			//rDTO.setLogin_result("실패");
+			rDTO.setLogin_result("실패");
 			check = 1;
 		}
-		//sqlMapper.insert("login.record", rDTO);
+		sqlMapper.insert("login.record", rDTO);
 		return SUCCESS;
 	}
 
@@ -67,13 +70,5 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 
 	public void setServletRequest(HttpServletRequest req) {
 		this.req = req;
-	}
-
-	public void prepare() throws Exception {
-		rDTO = new LoginRecDTO();
-	}
-
-	public Object getModel() {
-		return rDTO;
 	}
 }
