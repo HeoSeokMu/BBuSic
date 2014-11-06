@@ -62,6 +62,13 @@
 			}
 		}
 		
+		function checkCK(){
+			if("${check}"=="check") {
+				alert("정보수정이 완료되었습니다.");
+				return;
+			}
+		}
+		
 		 function openConfirmNick(userinput) {
 		        // 아이디를 입력했는지 검사
 		        if (userinput.nickname.value == "") {
@@ -69,13 +76,13 @@
 		            return;
 		        }
 		        
-		        if (userinput.nickname.value == ${mDTO.nickname}) {
+		        if (userinput.nickname.value == "${mDTO.nickname}") {
 		            alert("변경사항이 없습니다.");
 		            return;
 		        }
 		        
 		        // url과 사용자 입력 id를 조합합니다.
-		        url = "/PooSic/confirmNick.action?nickname=" + userinput.nickname.value;
+		        url = "/BBuSic/confirmNick.action?nickname=" + userinput.nickname.value;
 		        
 		        // 새로운 윈도우를 엽니다.
 		        open(url, "confirmNick", 
@@ -83,7 +90,7 @@
 		    }
 		
 	</script>
-	<body>
+	<body onload="return checkCK()">
 		<center>
 		<form method="post" action="modifyPro.action" name="userinput" onSubmit="return checkIt()">
 			<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">

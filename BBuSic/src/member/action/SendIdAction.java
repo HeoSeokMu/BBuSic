@@ -11,19 +11,24 @@ import javax.mail.internet.*;
 
 import member.DTO.MemberDTO;
 
-public class SendEmailAction implements Action, ModelDriven, Preparable{
+public class SendIdAction implements Action, ModelDriven, Preparable {
+	private String subId;
+	private String date;
 	private String check;
+	private String id;
 	MemberDTO mDTO;
-	private int num= (int) (Math.random()*8999)+1000;
 	private String host = "smtp.gmail.com";//smtp 서버
 	private String from = "BBuSic.com";
 	private String fromName = "BBUSIC";
 	private String to1;										//*보낼 이메일
 	private String subject = "이메일 인증메일 입니다.";			//*제목
-	private String body="본인 인증 번호는 : "+ num +"입니다.";		//*내용
+	private String body;//="회원님의 아이디는 : "+ id +"입니다.";		//*내용
 	
 	public String execute() throws Exception {
 		to1 = mDTO.getEmail();
+		id = mDTO.getId();
+		body = "회원님의 아이디는 : "+ id +"입니다.";
+		
 		try{
 		    // 프로퍼티 값 인스턴스 생성과 기본세션(SMTP 서버 호스트 지정)
 		Properties props = new Properties();
@@ -71,11 +76,24 @@ public class SendEmailAction implements Action, ModelDriven, Preparable{
 		return mDTO;
 	}
 	
-	public int getNum(){
-		return num;
-	}
-	
 	public String getCheck(){
 		return check;
 	}
+
+	public String getSubId() {
+		return subId;
+	}
+
+	public void setSubId(String subId) {
+		this.subId = subId;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 }

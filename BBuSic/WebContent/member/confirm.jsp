@@ -31,7 +31,6 @@
 				alert("인증되었습니다.");
 				document.myform.check.value = "check";
 			}
-			
 		}
 		
 		function checkNum(){
@@ -40,6 +39,14 @@
 				return false;
 			}
 		}
+		
+		function checkCK(){
+			if("${check}" == "check"){
+				alert("이메일을 발송했습니다. 인증번호를 기입해주세요.");
+				return false;
+			}
+		}
+		
 	</script>
 </head>
 <style>
@@ -53,8 +60,9 @@
 		padding:3px;
 	}
 </style>
-<body>
+<body onload="return checkCK()">
 	<center>
+	<div ></div>
 	<h2>가입인증</h2>
 	<table>
 		<tr>

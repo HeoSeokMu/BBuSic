@@ -167,8 +167,26 @@
 			<interceptor-ref name="params"/>
 			<result>/member/modifyForm.jsp</result>
 		</action>
+
+		<action name="findIdForm" class="member.action.FindIdFormAction">
+			<result>/member/findIdForm.jsp</result>
+		</action>
+		<action name="findIdPro" class="member.action.FindIdProAction">
+			<interceptor-ref name="DB"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/member/findIdPro.jsp</result>
+		</action>
 		
+		<action name="sendEmail" class="member.action.SendEmailAction">
+			<result>/member/confirm.jsp</result>
+		</action>
 		
+		<action name="sendID" class="member.action.SendIdAction">
+			<result>/member/findIdPro.jsp</result>
+		</action>
+				
 	</package>
 	
 	<!-- 안명곤 작업 -->
