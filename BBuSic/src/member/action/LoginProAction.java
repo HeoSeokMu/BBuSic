@@ -29,7 +29,6 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 	public static SqlMapClient sqlMapper;
 	private HttpServletRequest req;
 	Calendar today = Calendar.getInstance();
-	private String arg0;
 
 	public String execute() throws Exception {
 		rDTO = new LoginRecDTO();
@@ -60,7 +59,6 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 			rDTO.setLogin_result("½ÇÆÐ");
 			check = 1;
 		}
-		
 		sqlMapper.insert("login.record", rDTO);
 		return SUCCESS;
 	}

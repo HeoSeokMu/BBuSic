@@ -14,7 +14,7 @@
 		#box div { float:left; position:}
 		
 		#header { width:100%; height:200px;}
-		#box2 { width:75%; height:auto; }
+		#box2 { width:75%; height:auto;}
 		#box2_1 { width:100%; height:300px; background-color:#ddddff; }
 		#box2_2 { width:100%; height:100px; background-color:yellow;}
 		#box3 { width:25%; height:300px; background-color:#ddffdd; }
