@@ -104,7 +104,7 @@ center {
 			
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})"/>
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
-		<input type="button" name="h_download_btt" value="다운" onClick="" />
+		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')" />
 		<input type="button" name="h_listen_top100_btt" value="TOP50위 듣기" onClick=""/>
 
 		<hr width="880px" size="1" align="left">
@@ -137,7 +137,7 @@ center {
 				<table>
 					<tr align="center" height="70px">
 						<td width="25px" height="10px">
-							<input type="checkbox" name="chkNo" value="${list}">
+							<input type="checkbox" name="chkNo" value="${checkValue.index}">
 						</td>
 						<td width="30px">
 							${(currentPage-1) * 50 + (checkValue.index + 1)}위
@@ -161,7 +161,7 @@ center {
 						</td>
 						<!--다운로드-->
 						<td td width="70px">
-							<input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png">
+							<input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png" onclick="music_down(${checkValue.index });">
 						</td>
 					</tr>
 				</table>
@@ -173,7 +173,7 @@ center {
 		<!-- 전체선택 -->
 		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})"/>
 		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
-		<input type="button" name="h_download_btt" value="다운" onClick=""/>
+		<input type="button" name="h_download_btt" value="다운" onclick="music_down(${checkValue.index });"/>
 		<input type="button" name="h_collect_btt" value="담기" onClick=""/>
 		<input type="button" name="h_listen_top100_btt" value="TOP100위 듣기" onClick=""/>
 
