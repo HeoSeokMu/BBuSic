@@ -49,7 +49,7 @@
 <!--
 	function setid(){
     	opener.document.userinput.id.value="${id}";
-    	opener.document.userinput.check.value="1";
+    	opener.document.userinput.id_check.value="check";
 		self.close();
 	}
 		-->

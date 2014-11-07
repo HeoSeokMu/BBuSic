@@ -26,12 +26,6 @@
 		function checkIt() {	
 			var userinput = eval("document.userinput");
 			userinput.birth.value=userinput.year.value +"/"+ userinput.month.value +"/"+ userinput.date.value;
-			idform = /^[a-zA-Z0-9_-]{6,20}$/;
-			
-			 if(!idform.test(userinput.id.value)){
-		         alert("ID는 6~20자리여야하며 영문과 숫자, 특수문자( _ - )만 사용가능합니다.");
-		         return false;
-		      }
 			 
 			if (!userinput.id.value) {
 				alert("ID를 입력하세요");
@@ -91,6 +85,12 @@
 		
 		 function openConfirmid(userinput) {
 		        // 아이디를 입력했는지 검사
+		        idform = /^[a-zA-Z0-9_-]{6,20}$/;
+		        if(!idform.test(userinput.id.value)){
+			         alert("ID는 6~20자리여야하며 영문과 숫자, 특수문자( _ - )만 사용가능합니다.");
+			         return false;
+			      }
+		        
 		        if (userinput.id.value == "") {
 		            alert("아이디를 입력하세요");
 		            return;
@@ -171,7 +171,7 @@
 					<td width="200" align="left">아이디</td>
 					<td width="400" align="left">
 						<input type="text" name="id" size="20" maxlength="10" onkeydown="idCheck()"/>
-						<input type="button" name="confirm_id" value="중복체크" OnClick="openConfirmid(this.form)"/>
+						<input type="button" name="confirm_id" value="중복체크" OnClick="return openConfirmid(this.form)"/>
 						<input type="hidden" name="id_check" value = "no"/>
 					</td>
 				</tr>
