@@ -5,7 +5,7 @@ public class payMyInfo_DTO {
 	private int cash;
 	private int download_count;
 	private String pay_name;
-	private String benefit;
+	private String pay_benefit;
 	
 	public String getMy_id() {
 		return my_id;
@@ -31,10 +31,10 @@ public class payMyInfo_DTO {
 	public void setPay_name(String pay_name) {
 		this.pay_name = pay_name;
 	}
-	public String getBenefit() {
-		return benefit;
+	public String getPay_benefit() {
+		return pay_benefit;
 	}
-	public void setBenefit(String benefit) {
-		this.benefit = benefit;
+	public void setPay_benefit(String pay_benefit) {
+		this.pay_benefit = pay_benefit;
 	}
 }
