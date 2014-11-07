@@ -175,21 +175,6 @@
 			<interceptor-ref name="params"/>
 			<result>/member/modifyForm.jsp</result>
 		</action>
-		
-		<action name="passwdForm" class="member.action.PasswdFormAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="params"/>
-			<result>/member/passwdForm.jsp</result>
-		</action>
-		<action name="passwdPro" class="member.action.PasswdProAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/member/passwdForm.jsp</result>
-		</action>
 
 		<action name="findIdForm" class="member.action.FindIdFormAction">
 			<result>/member/findIdForm.jsp</result>

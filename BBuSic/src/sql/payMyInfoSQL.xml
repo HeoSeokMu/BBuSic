@@ -31,7 +31,7 @@
                          )
 		</insert>
 		
-		<select id="selectMyInfo">
-			SELECT * FROM bbu_myinfo
+		<select id="selectMyInfo_id" resultMap="myRes">
+			SELECT * FROM bbu_paymyinfo WHERE my_id = #my_id#
 		</select>
 </sqlMap>

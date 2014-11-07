@@ -99,23 +99,23 @@
 				<td>
 					<strong><a href="javascript:window.location='information.action'" style="color: black;"><c:out value="${session.memId}"/></a>님</strong>&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="javascript:window.location='information.action'" style="color: gray">내정보</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="javascript:window.location='logout.action'" style="color: gray">로그아웃</a>
+<!-- 					<a href="javascript:window.location='logout.action'" style="color: gray">로그아웃</a> -->
+					<input type="button" value="로그아웃" onclick="javascript:window.location='logout.action'"/>
 					<br/>
 				</td>
 			</tr>
 			<tr>
-				<td align="center">${pay_benefit}
+				<td align="center">${myinfo_DTO.pay_name}
 					<a href="#"><img value="상품구매" name="payment" /></a><br/>
 				</td>
 			</tr>
 			<tr>
-				<td>캐쉬 ${cash}</td><br/>
+				<td>캐쉬 ${myinfo_DTO.cash}</td><br/>
 			</tr>
 		</table>
-		
-						<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
-						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
-						<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
+		<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
+		<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
+		<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
 	</c:if>
 </body>
 </html>
