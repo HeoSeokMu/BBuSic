@@ -53,10 +53,10 @@
 				$("#content").load("NewChartBoard.action?category=new");
 			});
 			$("img[name=dance]").click(function(){
-				$("#content").load("GenreChartBoard.action?category=genre&genre=dance");
+				$("#content").load("GenreChartBoard.action?category=genre&type=dance");
 			});
 			$("img[name=balad]").click(function(){
-				$("#content").load("GenreChartBoard.action?category=genre&genre=balad");
+				$("#content").load("GenreChartBoard.action?category=genre&type=balad");
 			});
 			$("img[name=genre]").click(function(){
 				$("#content").load("GenreChartBoard.action?category=genre");
@@ -83,8 +83,8 @@
 
 				<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre')" class="rollover"/>
 					<ul class="sub">
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=dance')" class="rollover"/></li>
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=balad')" class="rollover"/></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&type=dance')" class="rollover"/></li>
+						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&type=balad')" class="rollover"/></li>
 					</ul>
 				</li>
 				<li>

@@ -2,28 +2,22 @@ package board.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.struts2.interceptor.SessionAware;
-
-import payment.pay_setDTO.payMyInfo_DTO;
 import upload.dto.musicDTO;
 import BBusic.Aware.musicAware;
 import board.action.pagingAction;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class Chart_BoardAction implements Action, Preparable, ModelDriven, musicAware,SessionAware{
+public class Chart_BoardAction implements Action, Preparable, ModelDriven, musicAware{
 	
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
 	private static List<musicDTO> list = new ArrayList<musicDTO>();
 	private static List<musicDTO> musicList2 = new ArrayList<musicDTO>();
-	
 	
 	private int currentPage = 1;	//현재 페이지
 	private int totalCount;			// 총 게시물의 수
@@ -32,18 +26,24 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	private pagingAction page; 		// 페이징 클래스
 	private String pagingHtml; 		// 페이징을 구현한 HTML
 	private String category;		// 해당 차트
-	private String genre;			// 장르
+	private String type;			// 장르
 	
 	private musicDTO mdto;
-	private Map session;
-	private String id;
-	private String benefit;
+	
 		
 	@Override
-	public String execute() throws Exception {					
+	public String execute() throws Exception {
+		System.out.println("execute"+sqlMapper);
+		if(category == "genre"){
+			System.out.println("ifcategory : " + category);
+			System.out.println("iftype : " + type);
+		}else{
+			System.out.println("elsecategory : " + category);
+			System.out.println("elsetype : " + type);
+		}
 				if(category.equals("genre")) {
-					if(genre != null){
-						list = sqlMapper.queryForList("musicSQL.genreSelectAll", genre);
+					if(type != null){
+						list = sqlMapper.queryForList("musicSQL.genreSelectAll", type);
 					}else{
 						list = sqlMapper.queryForList("musicSQL.newSelectAll");
 					}
@@ -68,7 +68,7 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 					setCurrentPage(currentPage);
 					page = new pagingAction(currentPage, totalCount, blockCount, blockPage, category); // pagingAction 객체 생성.
 				}
-		
+				
 				setPagingHtml(page.getPagingHtml().toString());  // 페이지 HTML 생성.
 				//paging
 					
@@ -81,43 +81,20 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 				// 전체 리스트에서 현재 페이지만큼의 리스트만 가져온다.
 				list = list.subList(page.getStartCount(), lastCount);
 				
-		return SUCCESS;	
-}
+		return SUCCESS;
+	}
 	
 	/* 팝업 메서드 */
-	public String popupEx() throws Exception {		
+	public String popupEx() throws Exception {
 		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
-		session =ActionContext.getContext().getSession();
-		id = (String) session.get("memId");
-		try{
-		benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", id);
-		}catch(Exception e){}
-		
-		for (int i = 0; i < cNo.length; i++) {		
-			musicList2.add(i, list.get(cNo[i]));				
-		}
-		
+			for (int i = 0; i < cNo.length; i++) {				
+				System.out.println(cNo[i]);
+				musicList2.add(i, list.get(cNo[i]));
+			}
 		return SUCCESS;
 	}
 	
 	
-	
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getBenefit() {
-		return benefit;
-	}
-
-	public void setBenefit(String benefit) {
-		this.benefit = benefit;
-	}
-
 	public List<musicDTO> getList() {
 		return list;
 	}
@@ -174,12 +151,12 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		this.pagingHtml = pagingHtml;
 	}
 
-	public String getGenre() {
-		return genre;
+	public String getType() {
+		return type;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getCategory() {
@@ -213,13 +190,6 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		this.sqlMapper = sqlMapper; 
 		
 	}
-
-	@Override
-	public void setSession(Map session) {
-		this.session=session;
-		
-	}
-
 	
 	
 }
