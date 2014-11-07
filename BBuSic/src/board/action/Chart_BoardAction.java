@@ -89,13 +89,14 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
 		session =ActionContext.getContext().getSession();
 		id = (String) session.get("memId");
-		
 		try{
-			benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", id);
-		}catch(Exception e){}		
-			for (int i = 0; i < cNo.length; i++) {		
-				musicList2.add(i, list.get(cNo[i]));				
-			}
+		benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", id);
+		}catch(Exception e){}
+		
+		for (int i = 0; i < cNo.length; i++) {		
+			musicList2.add(i, list.get(cNo[i]));				
+		}
+		
 		return SUCCESS;
 	}
 	

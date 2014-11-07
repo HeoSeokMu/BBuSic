@@ -71,6 +71,9 @@
 			 where singer = #singer# ORDER BY num asc
 		</select>
 		
+		<select id="benefit" resultMap="musicRes" parameterClass="String">
+			select my_id from bbu_paymyinfo where pay_benefit like '#무제한 듣기#' and my_id='#id#'
+		</select>
 	<!-- insert 쿼리문 정의 -->
 	<insert id="insertMusic" parameterClass="musicDTO">
 		INSERT INTO BBU_BOARD (NUM,
