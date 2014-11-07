@@ -113,10 +113,9 @@
 				<td>캐쉬 ${myinfo_DTO.cash}</td><br/>
 			</tr>
 		</table>
-		
-						<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
-						<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
-						<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
+		<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>
+		<input type="button" value="회원정보변경" onclick="javascript:window.location='modify.action'"/>
+		<input type="button" value="비밀번호 변경" onclick="javascript:window.location='passwdForm.action'"/>
 	</c:if>
 </body>
 </html>
