@@ -18,6 +18,7 @@
 		<result property="hit" column="hit"/>
 		<result property="realname_music" column="realname_music" />
 		<result property="realname_image" column="realname_image" />
+		<result property="minute" column="minute" />
 	</resultMap>
 	
 	<resultMap id="musicSearchRes" class="searchDTO">

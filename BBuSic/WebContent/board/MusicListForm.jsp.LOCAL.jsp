@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <body>
 
-<<<<<<< HEAD
 	<form method="get" name="vv">
 		<table border="1">
 				<c:forEach var="musicList2" items="${musicList2}" varStatus="aa">				
@@ -27,22 +26,3 @@
 		</table>		
 	</form>
 </body>
-=======
-<table border="1">
-	<c:forEach var="musicList2" items="${musicList2}">
-			<tr>		
-				<td>${musicList2.title }</td>
-				<td>
-					<audio auto="false"  controls="true" >
-					if(benefit == "¹«Á¦ÇÑ µè±â") {
-							<source src="/BBuSic/upload/${musicList2.real_musicname}">
-							
-					} else {
-						<source src="/BBuSic/upload/${musicList2.minute}">
-					}		
-					</audio> 
-				</td>	
-			</tr>	
-	</c:forEach>
-</table>
->>>>>>> 5c1fc6ebb830a922956631b154b2eaccf78272c0
