@@ -66,20 +66,17 @@
 	</table>
 	<br/>
 	<form method="post" action="sendEmail.action" name="userinput" onSubmit="return checkIt()">
-		<input type="hidden" name="name" value="${name}" />
-		<input type="hidden" name="birth" value="${birth}" />
-		<input type="hidden" name="sex" value="${sex}" />
-		<input type="hidden" name="id" value="${id}" />
-		<input type="hidden" name="passwd" value="${passwd}" />
-		<input type="hidden" name="nickname" value="${nickname}" />
+		<input type="hidden" name="pay_name" value="${pay_name}" />
+		<input type="hidden" name="pay_benefit" value="${pay_benefit}" />
+		<input type="hidden" name="pay_benefit" value="${amount}" />
 		<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">	
 			<tr>
 				<td width="200">이메일</td>
 				<td width="400" align="left">
-				<input type="text" name="email" value="${email}" size="20" maxlength="25"/>
-				<input type="submit" name="send" value="인증번호 발송"/><br/>
-				<input type="text" name="confirmNumber" size="15" maxlength="15"/>
-				<input type="button" value="인증하기" onclick="return checkConfirm(this.form)"/>
+					<input type="text" name="email" value="${email}" size="20" maxlength="25"/>
+					<input type="submit" name="send" value="인증번호 발송"/><br/>
+					<input type="text" name="confirmNumber" size="15" maxlength="15"/>
+					<input type="button" value="인증하기" onclick="return checkConfirm(this.form)"/>
 				</td>
 			</tr>
 		</table>
