@@ -8,7 +8,12 @@
 				<td>${musicList2.title }</td>
 				<td>
 					<audio auto="false"  controls="true" >
-							<source src="/BBuSic/upload/${musicList2.music_name}">			
+					if(benefit == "¹«Á¦ÇÑ µè±â") {
+							<source src="/BBuSic/upload/${musicList2.real_musicname}">
+							
+					} else {
+						<source src="/BBuSic/upload/${musicList2.minute}">
+					}		
 					</audio> 
 				</td>	
 			</tr>	

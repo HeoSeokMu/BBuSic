@@ -145,9 +145,9 @@
 	<body>
 		<c:if test="${session.memId == null}">
 			<script type="text/javascript">
-				document.window.alert("로그인을 해주세요");
-				document.window.location="bbusic.action";
+				alert("로그인을 해주세요");
 			</script>
+			<meta http-equiv="Refresh" content="2;url=bbusic.action">
 		</c:if>
 		<c:if test="${session.memId != null}">
 			<form name="cashCharge" action="" method="post">
