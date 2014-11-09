@@ -1,16 +1,15 @@
 package payment.action;
 
-
-import payment.pay_setDTO.pay_DTO;
+import payment.pay_setDTO.payMyInfo_DTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class payInsertAction implements Action, Preparable, ModelDriven, BBuSicAware {
+public class payMyInfo_selectAction implements Action, Preparable, ModelDriven, BBuSicAware {
 	
-	pay_DTO payDTO;
+	payMyInfo_DTO myInfo_DTO;
 	public static SqlMapClient sqlMapper;
 	
 	/*
@@ -29,27 +28,21 @@ public class payInsertAction implements Action, Preparable, ModelDriven, BBuSicA
 	*/
 	
 	public String execute() throws Exception {
-		System.out.println(payDTO.getCategory());
-		System.out.println(payDTO.getPay_name());
-		System.out.println(payDTO.getPay_benefit());
-		System.out.println(payDTO.getAmount());
-		System.out.println(payDTO.getDay30amount());
-		System.out.println(payDTO.getSale());
-		
-		sqlMapper.insert("payment.insertPay", payDTO);
+				
+		sqlMapper.insert("payment_my.selectMyInfo", myInfo_DTO);
 		
 		return SUCCESS;
 	}
 	
 	@Override
 	public void prepare() throws Exception {
-		payDTO = new pay_DTO();
+		myInfo_DTO = new payMyInfo_DTO();
 	}
 	
 	@Override
 	public Object getModel() {
 		// TODO Auto-generated method stub
-		return payDTO;
+		return myInfo_DTO;
 	}
 	
 	@Override
