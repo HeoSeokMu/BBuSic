@@ -15,7 +15,6 @@ public class musicDTO {
 	private String minute;
 	private int[] chkNo;
 	
-	
 	public int[] getChkNo() {
 		return chkNo;
 	}

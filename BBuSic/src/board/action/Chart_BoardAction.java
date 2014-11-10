@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import payment.pay_setDTO.payMyInfo_DTO;
 import upload.dto.musicDTO;
+import upload.dto.musicDTO2;
 import BBusic.Aware.musicAware;
 import board.action.pagingAction;
 
@@ -35,6 +36,7 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	private String genre;			// 장르
 	
 	private musicDTO mdto;
+	private musicDTO2 mdto2;
 	private Map session;
 	private String id;
 	private String benefit;
@@ -89,9 +91,17 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
 		session =ActionContext.getContext().getSession();
 		id = (String) session.get("memId");
+		
+		String limit = "무제한 듣기";
+		mdto2 = new musicDTO2();
+		mdto2.setLimit(limit);
+		mdto2.setId(id);
 		try{
-		benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", id);
-		}catch(Exception e){}
+			benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", mdto2);
+			benefit = benefit.substring(0, 6);			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		for (int i = 0; i < cNo.length; i++) {		
 			musicList2.add(i, list.get(cNo[i]));				

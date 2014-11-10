@@ -6,6 +6,7 @@
 	<typeAlias alias="musicDTO" type="upload.dto.musicDTO"/>
 	<typeAlias alias="searchDTO" type="upload.dto.searchDTO"/>
 	<typeAlias alias="singerDTO" type="upload.dto.singerDTO"/>
+	<typeAlias alias="musicDTO2" type="upload.dto.musicDTO2"/>
 	
 	<resultMap id="musicRes" class="musicDTO">
 		<result property="num" column="num"/>
@@ -28,6 +29,10 @@
 		<result property="title" column="title"/>
 	</resultMap>
 	
+	<resultMap id="musicRes2" class="musicDTO2">
+		<result property="id" column="id"/>
+		<result property="limit" column="limit"/>
+	</resultMap>
 	
 	
 	<!-- 공통적으로 사용할 select 절 정의 -->
@@ -71,8 +76,8 @@
 			 where singer = #singer# ORDER BY num asc
 		</select>
 		
-		<select id="benefit" resultMap="musicRes" parameterClass="String">
-			select my_id from bbu_paymyinfo where pay_benefit like '#무제한 듣기#' and my_id='#id#'
+		<select id="benefit" resultClass="String" parameterClass="musicDTO2" >
+			select pay_benefit from bbu_paymyinfo where pay_benefit like '%' || #limit# || '%'  and my_id = #id#
 		</select>
 	<!-- insert 쿼리문 정의 -->
 	<insert id="insertMusic" parameterClass="musicDTO">

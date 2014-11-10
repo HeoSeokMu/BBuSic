@@ -204,6 +204,7 @@
 			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
 		</interceptors>
 		<action name="Chart_BoardAction" class="board.action.Chart_BoardAction" method="popupEx">
+			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>

@@ -9,9 +9,9 @@
 						<tr>		
 							<td>${musicList2.title }</td>
 							<td>
-								<c:if test="${benefit != null}">
+								<c:if test="${benefit == '¹«Á¦ÇÑ µè±â'}">
 									<audio auto="false"  controls="true" id="myAudio${aa.index}" >
-											<source src="/BBuSic/upload/${musicList2.realname_music}">									
+											<source src="/BBuSic/upload/${musicList2.music_name}">									
 									</audio>
 								</c:if>
 								<c:if test="${benefit == null}">
@@ -20,8 +20,7 @@
 									</audio>
 								</c:if>
 							</td>	
-						</tr>
-											
+						</tr>											
 				</c:forEach>
 		</table>		
 	</form>
