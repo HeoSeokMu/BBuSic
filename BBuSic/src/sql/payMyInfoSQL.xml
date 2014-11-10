@@ -34,4 +34,8 @@
 		<select id="selectMyInfo_id" resultMap="myRes">
 			SELECT * FROM bbu_paymyinfo WHERE my_id = #my_id#
 		</select>
+		
+		<update id="updateChargeCash" parameterClass="mDTO">
+			UPDATE bbu_paymyinfo SET cash=cash+#cash# WHERE my_id = #my_id#
+		</update>
 </sqlMap>

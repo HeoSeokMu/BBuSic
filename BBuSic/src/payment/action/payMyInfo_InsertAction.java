@@ -4,8 +4,6 @@ import payment.pay_setDTO.payMyInfo_DTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ModelDriven;
-import com.opensymphony.xwork2.Preparable;
 
 public class payMyInfo_InsertAction implements Action, BBuSicAware{
 	
@@ -18,7 +16,7 @@ public class payMyInfo_InsertAction implements Action, BBuSicAware{
 		m_DTO = new payMyInfo_DTO();
 		m_DTO.setMy_id(id);
 		m_DTO.setPay_name("보유중인 상품이 없습니다.");
-		m_DTO.setBenefit("없음");
+		m_DTO.setPay_benefit("없음");
 		sqlMapper.insert("payment_my.insertMyInfo", m_DTO);
 		return SUCCESS;
 	}

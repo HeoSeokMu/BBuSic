@@ -6,92 +6,29 @@
 
 <head>
 <title>뿌숑뮤직 메인</title>
-	<style>
-		ul li { display:inline; list-style-type: none; float:left; }
-		ul.sub li {}
-		
-		#box { width:1200px; height:auto; margin:0px auto; }
-		#box div { float:left; position:}
-		
-		#header { width:100%; height:200px;}
-		#box2 { width:75%; height:auto;}
-		#box2_1 { width:100%; height:300px; background-color:#ddddff; }
-		#box2_2 { width:100%; height:100px; background-color:yellow;}
-		#box3 { width:25%; height:300px; background-color:#ddffdd; }
-		#box4 { width:100%; height:100px;  background-color:green;}
-	</style>
+	<link rel="stylesheet" href="css/Mainpage_Frame.css"></link>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-	
-	<script type="text/javascript">
-		$(function() {
-			$("img.rollover").mouseover(function(){
-				$(this).attr("src", $(this).attr("src").replace(/^(.+)(\.[a-z]+)$/, "$1_on$2"));
-			}).mouseout(function() {
-				$(this).attr("src", $(this).attr("src").replace(/^(.+)_on(\.[a-z]+)$/, "$1$2"));
-			}).each(function(){
-				$("<img>").attr("src", $(this).attr("src").replace(/^(.+)(\.[a-z]+)$/, "$1_on$2"));
-			});
-			
-			$("ul.sub").hide();
-			$("ul.menu li").hover(function(){
-				$(">ul:not(:animated)", this).slideDown("fast");
-			}, function() {
-				$(">ul", this).slideUp("fast");
-			});
-			
-<%--			
-			$("img[name=payment]").click(function(){
-				$("#content").load("payBuyList.action");
-			});
-			$("img[name=cash]").click(function(){
-				$("#content").load("cashCharge.action");
-			});
-			$("img[name=chart]").click(function(){
-				$("#content").load("ChartBoard.action?category=chart");
-			});
-			$("img[name=new]").click(function(){
-				$("#content").load("NewChartBoard.action?category=new");
-			});
-			$("img[name=dance]").click(function(){
-				$("#content").load("GenreChartBoard.action?category=genre&genre=dance");
-			});
-			$("img[name=balad]").click(function(){
-				$("#content").load("GenreChartBoard.action?category=genre&genre=balad");
-			});
-			$("img[name=genre]").click(function(){
-				$("#content").load("GenreChartBoard.action?category=genre");
-			});
-		--%>
-		});
-			
-		function link(name, root) {
-			$("img[name="+name+"]").click(function(){
-				$("#content").load(root);
-			});
-		}
-				
-		
-	</script>
+	<script src="js/header_jquery.js"></script>
 </head>
 
 <body style="overflow: hidden;">
 	<div id="box">
 		<div id="header">
 			<ul class="menu">
-				<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" onclick="link(this.name, 'ChartBoard.action?category=chart')" class="rollover"/></li>
-				<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" onclick="link(this.name, 'NewChartBoard.action?category=new')" class="rollover"/></li>
+				<li><a href="ChartBoard.action?category=chart"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+				<li><a href="NewChartBoard.action?category=new"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
 
-				<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre')" class="rollover"/>
+				<li><a href="GenreChartBoard.action?category=genre"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
 					<ul class="sub">
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=dance')" class="rollover"/></li>
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" onclick="link(this.name, 'GenreChartBoard.action?category=genre&genre=balad')" class="rollover"/></li>
+						<li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+						<li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
 					</ul>
 				</li>
 				<li>
-					<img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/>
+					<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
 					<ul class="sub">
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" onclick="link(this.name, 'payBuyList.action')" class="rollover"/></li>
-						<li><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" onclick="link(this.name, 'cashCharge.action')" class="rollover"/></li>
+						<li><a href="payBuyList.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+						<li><a href="cashCharge.action?my_id=${session.memId}&cash=${myinfo_DTO.cash}"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
 					</ul>
 				</li>
 			</ul>

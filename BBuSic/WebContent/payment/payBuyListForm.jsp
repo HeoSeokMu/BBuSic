@@ -8,102 +8,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title></title>
-		
-		<style>
-			.button01 {
-				background-color:#000000;
-				color:#ffffff;
-				width:100%;
-				height:40px;
-				border:1px #dddddd dashed;
-				text-align:center;
-				padding:3px;
-			}
-			
-			.button02 {
-				background-color:#000000;
-				color:#ffffff;
-				border:1px #dddddd dashed;
-				text-align:center;
-				padding:3px;
-			}
-			
-			.login{
-				background-color:#7eb813;
-				color:#ffffff;
-				border:1px #dddddd dashed;
-				width:70px;
-				height:60px;
-				text-align:center;
-				padding:3px;
-			}
-			.trTitle {
-				height:15px;
-			}
-			.input{
-				size: 15px;
-			}
-			
-			.lineX {
-				border-bottom: 1px solid #dddddd;
-			}
-			.tablepadding {
-				padding-left: 15px;
-				padding-right: 15px;
-			}
-			
-			/* UI Object */
-			html,body {
-				height: 100%;
-				margin: 0
-			}
-			
-			.mw_layer {
-				display: none;
-				position: fixed;
-				_position: absolute;
-				top: 0;
-				left: 0;
-				z-index: 10000;
-				width: 100%;
-				height: 100%
-			}
-			
-			.mw_layer.open {
-				display: block
-			}
-			
-			.mw_layer .bg {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: #000;
-				opacity: .5;
-				filter: alpha(opacity = 50)
-			}
-			
-			#layer {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				width: 400px;
-				height: 180px;
-				margin: -150px 0 0 -194px;
-				padding: 28px 28px 0 28px;
-				border: 2px solid #555;
-				background: #fff;
-				font-size: 12px;
-				font-family: Tahoma, Geneva, sans-serif;
-				color: #767676;
-				line-height: normal;
-				white-space: normal
-			}
-			/* //UI Object */
-		</style>
+		<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+		<link rel="stylesheet" href="css/popup_login.css"></link>
+		<link rel="stylesheet" href="css/button.css"></link>
 		
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/header_jquery.js"></script>
 		<script type="text/javascript">
 			function buy(name, benefit, amount, sale) {
 				if(${session.memId != null}) {
@@ -164,82 +74,114 @@
 					inputForm.passwd.focus();
 					return false;
 				}
+				
 				return ture;
-				window.close();
 			}
 		</script>
 		
-		<c:if test="${check == 1}">
-		<script>
-			alert("패스워드가 틀렸습니다.");
-		</script>
-	</c:if>
 	</head>
 	
-	<body>
-			<table border="1">
-			<c:forEach var="pay" items="${paylist}">
-				<tr>
-					<td>${pay.category}</td>
-					<td>${pay.pay_name}</td>
-					<td>${pay.pay_benefit}</td>
-					<td>정기결제<br/>T멤버십 30% 차감시<br/>30일권</td>
-					<td>
-						<fmt:formatNumber value="${pay.amount}"/><br/>
-						<fmt:formatNumber value="${pay.amount - (pay.amount*(pay.sale/100))}"/><br/>
-						<fmt:formatNumber value="${pay.day30amount}"/>
-					</td>
-					<td>
-		 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
-						<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
-						<input type="button" value="선물" class="button02" onclick=""/>
-					</td>
-				</tr>
-			</c:forEach>
-			
-			</table>	
-			<div class="mw_layer">
-				<div class="bg"></div>
-				<div id="layer">
-					<form name="inform" method="post" action="popupLoginPro.action"	onSubmit="return checkIt();">
-						<table width=200 align="center">
-							<tr>
-								<td colspan="2" bgcolor="#7eb813" class="trTitle">
-									<font color="#ffffff" size="5"> <b>로그인</b> </font>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<table class="tablepadding">
-										<tr>
-											<td>
-												<input type="text" name="id" class="input" placeholder="아이디" maxlength="10"/>
-											</td>
-											<td rowspan="2">
-												<input type="submit" class="login" name="Submit" value="로그인"/>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<input type="password" name="passwd" placeholder="패스워드" class="input" maxlength="10"/>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="2" class="lineX">
-												<input type="checkbox" name="checkbox" value="on"/><font >자동로그인</font>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="3">
-												<input type="button" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
-											</td>	
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
-					</form>
-				</div>
+	<body style="overflow: hidden;">
+		<div id="box">
+			<div id="header">
+				<ul class="menu">
+					<li><a href="ChartBoard.action?category=chart"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+					<li><a href="NewChartBoard.action?category=new"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+	
+					<li><a href="GenreChartBoard.action?category=genre"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+						<ul class="sub">
+							<li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+							<li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+						<ul class="sub">
+							<li><a href="payBuyList.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+							<li><a href="cashCharge.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+						</ul>
+					</li>
+				</ul>
 			</div>
+		</div>
+		
+		<div id="box">
+			<div id="box2">
+		    	<div id="content">
+		    		<table border="1">
+						<c:forEach var="pay" items="${paylist}">
+							<tr>
+								<td>${pay.category}</td>
+								<td>${pay.pay_name}</td>
+								<td>${pay.pay_benefit}</td>
+								<td>정기결제<br/>T멤버십 30% 차감시<br/>30일권</td>
+								<td>
+									<fmt:formatNumber value="${pay.amount}"/><br/>
+									<fmt:formatNumber value="${pay.amount - (pay.amount*(pay.sale/100))}"/><br/>
+									<fmt:formatNumber value="${pay.day30amount}"/>
+								</td>
+								<td>
+					 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
+									<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
+									<input type="button" value="선물" class="button02" onclick=""/>
+								</td>
+							</tr>
+						</c:forEach>
+						
+					</table>	
+					<div class="mw_layer">
+						<div class="bg"></div>
+						<div id="layer">
+							<form name="inform" method="post" action="popupLoginPro.action"	onSubmit="return checkIt();">
+								<table width=200 align="center">
+									<tr>
+										<td colspan="2" bgcolor="#7eb813" class="trTitle">
+											<font color="#ffffff" size="5"> <b>로그인</b> </font>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<table class="tablepadding">
+												<tr>
+													<td>
+														<input type="text" name="id" class="input" placeholder="아이디" maxlength="10"/>
+													</td>
+													<td rowspan="2">
+														<input type="submit" class="login" name="Submit" value="로그인"/>
+													</td>
+												</tr>
+												<c:if test="${check == 1}">
+													<tr>
+														<td>
+															<font color="red">아이디 or 패스워드가 틀렸습니다.</font>
+														</td>
+													</tr>
+												</c:if>
+												<tr>
+													<td>
+														<input type="password" name="passwd" placeholder="패스워드" class="input" maxlength="10"/>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2" class="lineX">
+														<input type="checkbox" name="checkbox" value="on"/><font >자동로그인</font>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="3">
+														<input type="button" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
+													</td>	
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</form>
+						</div>
+					</div>
+	    		</div>
+			</div>
+			<div id="box3"> 5번 </div>
+		</div>
 	</body>
 </html>

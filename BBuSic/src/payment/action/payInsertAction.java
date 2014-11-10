@@ -1,12 +1,9 @@
 package payment.action;
 
-import java.io.Reader;
 
 import payment.pay_setDTO.pay_DTO;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -14,7 +11,6 @@ import com.opensymphony.xwork2.Preparable;
 public class payInsertAction implements Action, Preparable, ModelDriven, BBuSicAware {
 	
 	pay_DTO payDTO;
-	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	/*

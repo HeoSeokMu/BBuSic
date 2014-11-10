@@ -13,7 +13,7 @@
 			enctype="Multipart/form-data">
 			<table border="1" width="400">
 				<tr>
-					<td align="center">음악파일</td>
+					<td align="center" width="200">음악파일</td>
 					<td><input type="file" name="uploadMusic" value="music_path" /></td>
 				</tr>
 				<tr>
@@ -25,7 +25,7 @@
 					<td><input type="file" name="uploadImage" value="image_path" /></td>
 				</tr>
 				<tr>
-					<td align="center" width="200">장르</td>
+					<td align="center">장르</td>
 					<td><select name="genre">
 							<option value="balad">발라드</option>
 							<option value="dance">댄스</option>
@@ -44,7 +44,9 @@
 					<td><input type="text" name="title" /></td>
 				</tr>
 				<tr>
-					<td colspan="3" align="center"><input type="submit" value="전송" /></td>
+					<td colspan="2" align="center">
+						<input type="submit" value="전송" />
+					</td>
 				</tr>
 			</table>
 		</form>

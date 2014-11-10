@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+.button01 {
+	background-color:#000000;
+	color:#ffffff;
+	width:100%;
+	height:40px;
+	border:1px #dddddd dashed;
+	text-align:center;
+	padding:3px;
+}
+
+.button02 {
+	background-color:#000000;
+	color:#ffffff;
+	border:1px #dddddd dashed;
+	text-align:center;
+	padding:3px;
+}
