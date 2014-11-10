@@ -1,7 +1,10 @@
 package payment.action;
 
-import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
+import payment.pay_setDTO.cashCharge_DTO;
 import payment.pay_setDTO.payMyInfo_DTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -11,14 +14,50 @@ import com.opensymphony.xwork2.Preparable;
 
 public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSicAware {
 	
+	cashCharge_DTO cash_DTO;
 	payMyInfo_DTO myinfo_DTO;
 	public static SqlMapClient sqlMapper;
 	
 	public String execute() throws Exception {
 		System.out.println("cashUpdateAction ===============================");
-		System.out.println(myinfo_DTO.getMy_id());
-		System.out.println(myinfo_DTO.getCash());
+		System.out.println(cash_DTO.getCash_id());
+		System.out.println(cash_DTO.getCash());
+		System.out.println(cash_DTO.getDelete_cash());
+		System.out.println(cash_DTO.getContent());
 		
+		// 유효기간 설정
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.MONTH, date.get(Calendar.MONTH));
+		date.set(Calendar.DATE, date.getActualMaximum(Calendar.DATE));
+		Date expirationDate = date.getTime();
+		
+		// 캐쉬 충전일자
+		Calendar today = Calendar.getInstance();
+		Date cashuseDate = today.getTime();
+		
+		long l =  expirationDate.getTime() - cashuseDate.getTime();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		System.out.println("날짜 : " + sdf.format(cashuseDate));
+		System.out.println("유효기간 : " + sdf.format(expirationDate));
+		
+		//long minute = (l / 1000) / 60; 	// 분
+		//long hour = (l / 1000) / (60*60); // 시간
+		//long day = (l / 1000) / (60*60*24); // 일
+		//long month = (l / 1000) / (60*60*24*lastday); // 월
+		/*
+		if(day1 > 0) {
+			System.out.println("prev : "+sdf.format(prev)+" / "+"t2 : "+sdf.format(t2.getTime()));
+		}
+		*/
+		myinfo_DTO = new payMyInfo_DTO();
+		myinfo_DTO.setMy_id(cash_DTO.getCash_id());
+		myinfo_DTO.setCash(cash_DTO.getDelete_cash());
+		
+		cash_DTO.setCashuse_date(cashuseDate);
+		cash_DTO.setExpiration_date(expirationDate);
+		
+		sqlMapper.update("payment_cash.insertCashInfo", cash_DTO);
 		sqlMapper.update("payment_my.updateChargeCash", myinfo_DTO);
 		
 		return SUCCESS;
@@ -26,12 +65,12 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 
 	@Override
 	public void prepare() throws Exception {
-		myinfo_DTO = new payMyInfo_DTO(); 
+		cash_DTO = new cashCharge_DTO(); 
 	}
 	
 	@Override
 	public Object getModel() {
-		return myinfo_DTO;
+		return cash_DTO;
 	}
 	
 	@Override

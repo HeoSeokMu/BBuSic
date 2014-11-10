@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="payment_cash">
+	<typeAlias alias="cDTO" type="payment.pay_setDTO.cashCharge_DTO" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="cashRes" class="cDTO">
+	  		<result property="cash_id" column="cash_id"/>						<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="cashuse_date" column="cashuse_date"/>				<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="content" column="content"/>						<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="cash" column="cash"/>								<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="sub_cash" column="sub_cash"/>						<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="expiration_date" column="expiration_date"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="delete_cash" column="delete_cash"/>				<!-- property는 set메서드 column은 db의 컬럼 -->
+		</resultMap>
+		
+		<!-- insert 쿼리문 정의 -->
+		<insert id="insertCashInfo" parameterClass="cDTO">
+      		INSERT INTO bbu_cashuse (
+      							CASH_ID,
+      							CASHUSE_DATE,
+      							CONTENT,
+      							CASH,
+      							SUB_CASH,
+      							EXPIRATION_DATE,
+      							DELETE_CASH
+                         )
+                	 VALUES (
+                	 		#cash_id#,
+                	 		#cashuse_date#,
+                	 		#content#,
+                	 		#cash#,
+                	 		#sub_cash#,
+                	 		#expiration_date#,
+                	 		#delete_cash#
+                         )
+		</insert>
+		
+		<select id="selectCash_use" resultMap="cashRes">
+			SELECT * FROM bbu_cashuse WHERE CASH_ID = #cash_id#
+		</select>
+		
+		<update id="updateChargeCash" parameterClass="cDTO">
+			UPDATE bbu_cashue SET DELETE_CASH = DELETE_CASH + #delete_cash# WHERE CASH_ID = #cash_id#
+		</update>
+</sqlMap>

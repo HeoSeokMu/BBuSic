@@ -2,6 +2,7 @@ package board.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import upload.dto.musicDTO;
 import upload.dto.musicDTO2;
@@ -10,6 +11,7 @@ import board.action.pagingAction;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
@@ -30,14 +32,10 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	private String type;			// 장르
 	
 	private musicDTO mdto;
-<<<<<<< HEAD
 	private musicDTO2 mdto2;
 	private Map session;
 	private String id;
 	private String benefit;
-=======
-	
->>>>>>> e0b40a327a473fe10b905df29dc9d4d307715a3d
 		
 	@Override
 	public String execute() throws Exception {
@@ -95,7 +93,7 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	/* 팝업 메서드 */
 	public String popupEx() throws Exception {
 		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
-<<<<<<< HEAD
+
 		session =ActionContext.getContext().getSession();
 		id = (String) session.get("memId");
 		
@@ -114,12 +112,10 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 			musicList2.add(i, list.get(cNo[i]));				
 		}
 		
-=======
-			for (int i = 0; i < cNo.length; i++) {				
-				System.out.println(cNo[i]);
-				musicList2.add(i, list.get(cNo[i]));
-			}
->>>>>>> e0b40a327a473fe10b905df29dc9d4d307715a3d
+		for (int i = 0; i < cNo.length; i++) {				
+			System.out.println(cNo[i]);
+			musicList2.add(i, list.get(cNo[i]));
+		}
 		return SUCCESS;
 	}
 	
