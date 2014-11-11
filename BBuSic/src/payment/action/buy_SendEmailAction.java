@@ -10,9 +10,9 @@ public class buy_SendEmailAction implements Action{
 	private String check;
 	private String email;
 	
-	private String my_id;
-	private String money_in;
-	private String cash;
+	private String cash_id;
+	private int money_in;
+	private int cash;
 	
 	private int num= (int) (Math.random()*8999)+1000;
 	private String host = "smtp.gmail.com";//smtp ¼­¹ö
@@ -24,7 +24,7 @@ public class buy_SendEmailAction implements Action{
 	
 	public String execute() throws Exception {
 		System.out.println("buy_SendEmailAction ===============================");
-		System.out.println("my_id : "+my_id);
+		System.out.println("my_id : "+cash_id);
 		System.out.println("money_in : "+money_in);
 		System.out.println("cash : "+cash);
 		to1 = email;
@@ -69,23 +69,23 @@ public class buy_SendEmailAction implements Action{
 		return SUCCESS;
 	}
 
-	public String getMy_id() {
-		return my_id;
+	public String getCash_id() {
+		return cash_id;
 	}
-	public void setMy_id(String my_id) {
-		this.my_id = my_id;
+	public void setCash_id(String cash_id) {
+		this.cash_id = cash_id;
 	}
-	public String getMoney_in() {
+	public int getMoney_in() {
 		return money_in;
 	}
-	public void setMoney_in(String money_in) {
+	public void setMoney_in(int money_in) {
 		this.money_in = money_in;
 	}
-	public String getCash() {
+	public int getCash() {
 		return cash;
 	}
 
-	public void setCash(String cash) {
+	public void setCash(int cash) {
 		this.cash = cash;
 	}
 

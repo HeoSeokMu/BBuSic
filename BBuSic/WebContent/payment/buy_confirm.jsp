@@ -57,29 +57,44 @@
 				return false;
 			}
 		}
+		
+		function checkCK(){
+			if("${check}" == "check"){
+				alert("이메일을 발송했습니다. 인증번호를 기입해주세요.");
+				return false;
+			}
+		}
 	</script>
 </head>
 
-<body style="overflow: hidden;">
+<body style="overflow: hidden;" onload="return checkCK()">
 	<div id="box">
 		<div id="header">
-			<ul class="menu">
-				<li><a href="ChartBoard.action?category=chart"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
-				<li><a href="NewChartBoard.action?category=new"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
-						<li><a href="GenreChartBoard.action?category=genre"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
-					<ul class="sub">
-						<li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
-						<li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
-					<ul class="sub">
-						<li><a href="payBuyList.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
-						<li><a href="cashCharge.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
-					</ul>
-				</li>
-			</ul>
+			<div id="header_1">
+				<ul class="menu">
+					<li><a href="ChartBoard.action?category=chart"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+					<li><a href="NewChartBoard.action?category=new"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+	
+					<li><a href="GenreChartBoard.action?category=genre"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+						<ul class="sub">
+							<li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+							<li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+						<ul class="sub">
+							<li><a href="payBuyList.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+							<li><a href="cashCharge.action?cash_id=${session.memId}&cash=${myinfo_DTO.cash}"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div id="header_2">
+				<center>
+					<a href="bbusic.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+				</center>
+			</div>
 		</div>
 	</div>
 		
@@ -100,12 +115,10 @@
 					<form method="post" action="buy_SendEmail.action" name="userinput" onsubmit="return checkIt();">
 						<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
 							<tr>
+								<td>사용자 아이디</td>
 								<td>
-									사용자 아이디
-								</td>
-								<td>
-									<input type="hidden" name="my_id" value="${my_id}" />
-									${my_id}
+									<input type="hidden" name="cash_id" value="${cash_id}" />
+									${cash_id}
 								</td>
 							</tr>
 							<tr>
@@ -131,8 +144,10 @@
 					</form>
 					<br/>
 					<form method="post" action="cashUpdate.action" name="myform" onsubmit="return checkNum();">
-						<input type="text" name="my_id" value="${my_id}"/>
+						<input type="text" name="cash_id" value="${cash_id}"/>
 						<input type="text" name="cash" value="${cash}"/>
+						<input type="text" name="content" value="캐쉬충전"/>
+						<input type="text" name="delete_cash" value="${cash}"/>
 						<input type="submit" class="next" name="confirm" value="인증완료"/>
 					</form>
 				</center>

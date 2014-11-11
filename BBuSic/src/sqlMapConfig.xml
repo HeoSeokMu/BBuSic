@@ -34,6 +34,7 @@
 	<!-- sql 파일이 추가될 때는 아래에 추가시키면 된다. -->
 	<sqlMap resource="/sql/paySQL.xml"/>
 	<sqlMap resource="/sql/payMyInfoSQL.xml"/>
+	<sqlMap resource="/sql/cashSQL.xml"/>
 	<sqlMap resource="/sql/musicSQL.xml"/>
 	<sqlMap resource="/sql/MemberSQL.xml"/>
 	<sqlMap resource="/sql/RecordSQL.xml"/>

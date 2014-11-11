@@ -93,6 +93,10 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	/* 팝업 메서드 */
 	public String popupEx() throws Exception {
 		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0dd606efad5d4721a3390680216d4987a05887af
 		session =ActionContext.getContext().getSession();
 		id = (String) session.get("memId");
 		
@@ -110,6 +114,14 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		for (int i = 0; i < cNo.length; i++) {		
 			musicList2.add(i, list.get(cNo[i]));				
 		}
+<<<<<<< HEAD
+=======
+		
+		for (int i = 0; i < cNo.length; i++) {				
+			System.out.println(cNo[i]);
+			musicList2.add(i, list.get(cNo[i]));
+		}
+>>>>>>> 0dd606efad5d4721a3390680216d4987a05887af
 		return SUCCESS;
 	}
 	

@@ -99,31 +99,16 @@
 				<td>
 					<strong><a href="javascript:window.location='information.action'" style="color: black;"><c:out value="${session.memId}"/></a>님</strong>&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="javascript:window.location='information.action'" style="color: gray">내정보</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- 					<a href="javascript:window.location='logout.action'" style="color: gray">로그아웃</a> -->
-					<input type="button" value="로그아웃" onclick="javascript:window.location='logout.action'"/>
+					<a href="javascript:window.location='logout.action'" style="color: gray">로그아웃</a>
 					<br/>
 				</td>
 			</tr>
 			<tr>
-				<td align="center">
-				<c:if test="${myinfo_DTO.pay_name != null}">
-					<c:out value="${myinfo_DTO.pay_name}"></c:out>
-				</c:if>
-				<c:if test="${pay_name != null}">
-					<c:out value="${pay_name}"></c:out>
-				</c:if>
-					<a href="#"><img value="상품구매" name="payment" /></a><br/>
+				<td align="center"> ${myinfo_DTO.pay_name} <a href="#"><img value="상품구매" name="payment" /></a><br/>
 				</td>
 			</tr>
 			<tr>
-				<td>캐쉬 
-					<c:if test="${myinfo_DTO.cash != null}">
-						<c:out value="${myinfo_DTO.cash}"></c:out>
-					</c:if>
-					<c:if test="${cash != null}">
-						<c:out value="${cash}"></c:out>
-					</c:if>
-				</td>
+				<td>캐쉬 ${myinfo_DTO.cash} </td>
 			</tr>
 		</table>
 		<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>

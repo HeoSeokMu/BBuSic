@@ -6,7 +6,9 @@ ul.sub li {}
 #box { width:1200px; height:auto; margin:0px auto;}
 #box div { float:left; }
 		
-#header { width:100%; height:200px; background-color:#ddddff;}
+#header { width:100%; height:200px; }
+#header_1 { width:73%; height:200px; }
+#header_2 { width:27%; height:200px; }
 #box2 { width:75%; height:auto;}
 #box2_1 { width:100%; height:300px; background-color:#ddddff; }
 #box2_2 { width:100%; height:100px; background-color:yellow;}

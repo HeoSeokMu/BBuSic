@@ -8,7 +8,10 @@
 	<typeAlias alias="singerDTO" type="upload.dto.singerDTO"/>
 
 	<typeAlias alias="musicDTO2" type="upload.dto.musicDTO2"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0dd606efad5d4721a3390680216d4987a05887af
 	<typeAlias alias="albumDTO" type="upload.dto.albumDTO"/>
 	<typeAlias alias="lyricsDTO" type="upload.dto.lyricsDTO"/>
 
@@ -34,12 +37,19 @@
 		<result property="title" column="title"/>
 	</resultMap>
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0dd606efad5d4721a3390680216d4987a05887af
 	<resultMap id="musicRes2" class="musicDTO2">
 		<result property="id" column="id"/>
 		<result property="limit" column="limit"/>
 	</resultMap>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 0dd606efad5d4721a3390680216d4987a05887af
 	<resultMap id="singerRes" class="singerDTO">
 		<result property="singer" column="singer"/>
 		<result property="year" column="year"/>
@@ -56,6 +66,10 @@
 		<result property="publisher" column="publisher"/>
 		<result property="entertain" column="entertain"/>
 		<result property="genre" column="genre"/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0dd606efad5d4721a3390680216d4987a05887af
 	</resultMap>
 	
 	<resultMap id="lyricsRes" class="lyricsDTO">
@@ -111,9 +125,17 @@
 			SELECT singer FROM album_info where singer = #singer#
 		</select>
 		
+<<<<<<< HEAD
 		<select id="benefit" resultClass="String" parameterClass="musicDTO2" >
 			select pay_benefit from bbu_paymyinfo where pay_benefit like '%' || #limit# || '%'  and my_id = #id#
 		</select>
+=======
+
+		<select id="benefit" resultClass="String" parameterClass="musicDTO2" >
+			select pay_benefit from bbu_paymyinfo where pay_benefit like '%' || #limit# || '%'  and my_id = #id#
+		</select>
+
+>>>>>>> 0dd606efad5d4721a3390680216d4987a05887af
 		<select id="AlbumChk" resultClass="String" parameterClass="String">
 			SELECT album FROM album_info where album = #album#
 		</select>
