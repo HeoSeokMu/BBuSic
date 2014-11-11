@@ -225,6 +225,14 @@
 			<interceptor-ref name="params"/>
 			<result>/board/MusicListForm.jsp</result>
 		</action>
+		<!-- 팝업 리스트 삭제 -->
+		<action name="deleteListAction" class="board.action.Chart_BoardAction" method="deleteListAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/MusicListForm.jsp</result>
+		</action>
 		<!--다운로드-->
 		<action name="downloadAction" class="download.action.downloadAction">
 			<interceptor-ref name="ibatis"/>
