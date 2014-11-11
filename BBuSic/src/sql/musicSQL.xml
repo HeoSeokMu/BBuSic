@@ -112,10 +112,6 @@
 			select pay_benefit from bbu_paymyinfo where pay_benefit like '%' || #limit# || '%'  and my_id = #id#
 		</select>
 
-		<select id="benefit" resultClass="String" parameterClass="musicDTO2" >
-			select pay_benefit from bbu_paymyinfo where pay_benefit like '%' || #limit# || '%'  and my_id = #id#
-		</select>
-
 		<select id="AlbumChk" resultClass="String" parameterClass="String">
 			SELECT album FROM album_info where album = #album#
 		</select>

@@ -30,7 +30,7 @@
 		<table border="1" bordercolor="red">
 				<c:forEach var="musicList2" items="${musicList2}" varStatus="checkValue">						
 						<tr>	
-							<td><input type="checkbox" name="chkNo2" value="${checkValue.index}"></td>
+							<td>${musicList2.realname_music }</td>
 							<td>${musicList2.title }</td>
 							<c:if test="${benefit == '무제한 듣기'}">
 								<td>
@@ -39,10 +39,9 @@
 									</audio>
 									</td>
 									<td align="center">
-										<input type="button" value="다음" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
-									</td>
-							</c:if>
-															
+									<input type="button" value="다운" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
+								</td>										
+							</c:if>														
 							<c:if test="${benefit == null}">
 								<td>
 									<audio auto="false"  controls="true" id="myAudio${aa.index}" >
@@ -53,10 +52,9 @@
 						</tr>											
 				</c:forEach>
 				<tr>
-					<td colspan="2">
-						<input type="submit" value="목록삭제">&nbsp;&nbsp;&nbsp;
+					<td colspan="4">
+						<input type="submit" value="목록삭제">&nbsp;&nbsp;
 						<input type="button" value="닫기" onclick="window.close()">&nbsp;&nbsp;&nbsp;
-						<input type="button" value="다운" onClick="downLoad('s')">
 					</td>
 				</tr>
 		</table>		
