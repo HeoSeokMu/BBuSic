@@ -23,6 +23,17 @@
 			.table1{border:3px solid blue; border-collapse: collapse;}
 			table{border-collapse: collapse;}
 		</style>
+		
+		<script type="text/javascript">
+			function idCheck() {
+				if(${session.memId == null}) {
+					alert("로그인을 해주세요");
+					window.location = "bbusic.action";
+					return false;
+				}
+			}
+		
+		</script>
 	</head>
 	
 	<body style="overflow: hidden;">

@@ -1,16 +1,11 @@
 package payment.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import payment.pay_setDTO.cashCharge_DTO;
-
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 
 public class cashChargeAction implements Action, BBuSicAware {
 	
-	private int cash;
+	private int delete_cash;
 	private String my_id;
 	public SqlMapClient sqlMapper;
 	
@@ -19,7 +14,7 @@ public class cashChargeAction implements Action, BBuSicAware {
 		System.out.println("cashChargeAction ===================================================");
 		System.out.println("my_id : "+my_id);
 		if(my_id.equals(" ") || my_id != null) {
-			cash = (int)sqlMapper.queryForObject("payment_cash.selectCash_use", my_id);
+			delete_cash = (int)sqlMapper.queryForObject("payment_cash.selectCash_use", my_id);
 		}
 		return SUCCESS;
 	}
@@ -37,7 +32,7 @@ public class cashChargeAction implements Action, BBuSicAware {
 		this.sqlMapper = sqlMapper;
 	}
 
-	public int getCash() {
-		return cash;
+	public int getDelete_cash() {
+		return delete_cash;
 	}
 }

@@ -29,7 +29,7 @@
 		function checkIt(){
 			if(!document.userinput.email.value){
 				alert("이메일을 입력하지 않으셨습니다.");
-				document.userinput.email.focus();
+				document.userinput.eamil.focus();
 				return false;
 			}
 		}
@@ -48,7 +48,6 @@
 				alert("인증되었습니다.");
 				document.myform.check.value = "check";
 			}
-			
 		}
 		
 		function checkNum(){
@@ -61,6 +60,14 @@
 		function checkCK(){
 			if("${check}" == "check"){
 				alert("이메일을 발송했습니다. 인증번호를 기입해주세요.");
+				return false;
+			}
+		}
+		
+		function idCheck() {
+			if(${session.memId == null}) {
+				alert("로그인을 해주세요");
+				window.location = "bbusic.action";
 				return false;
 			}
 		}
@@ -128,7 +135,7 @@
 								<td>
 									<input type="hidden" name="money_in" value="${money_in}" />
 									<fmt:formatNumber value="${money_in + (money_in * 0.1)}"/> 원
-									<input type="hidden" name="cash" value="${money_in}" />
+									<input type="hidden" name="delete_cash" value="${delete_cash}" />
 								</td>
 							</tr>
 							<tr>
@@ -145,9 +152,9 @@
 					<br/>
 					<form method="post" action="cashUpdate.action" name="myform" onsubmit="return checkNum();">
 						<input type="text" name="cash_id" value="${cash_id}"/>
-						<input type="text" name="cash" value="${cash}"/>
+						<input type="text" name="money_in" value="${money_in}"/>
 						<input type="text" name="content" value="캐쉬충전"/>
-						<input type="text" name="delete_cash" value="${cash}"/>
+						<input type="text" name="delete_cash" value="${delete_cash}"/>
 						<input type="submit" class="next" name="confirm" value="인증완료"/>
 					</form>
 				</center>

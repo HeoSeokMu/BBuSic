@@ -18,6 +18,6 @@
 			FROM bbu_member mem, bbu_cashuse cash, bbu_buyinfo buy
 			WHERE mem.id = #id# and cash.cash_id = #id# and buy.buy_id = #id#
 			GROUP BY mem.id, cash.delete_cash, cash.cashuse_date, buy.pay_name, buy.pay_benefit, buy.download_count
-			HAVING max(cash.cashuse_date) = (select max(cash.cashuse_date) from bbu_cashuse cash)
+			HAVING max(cash.cashuse_date) = (select max(cash.cashuse_date) from bbu_cashuse cash where cash.cash_id = #id#)
 		</select>
 </sqlMap>

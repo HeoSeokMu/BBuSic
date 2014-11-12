@@ -39,7 +39,7 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 
 	public String execute() throws Exception {
 		rDTO = new LoginRecDTO();
-		
+		System.out.println(id);
 		passwd2 = (String)sqlMapper.queryForObject("member.selectPasswd", id);
 		System.out.println(req);
 		System.out.println(req.getRemoteAddr());

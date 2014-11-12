@@ -38,10 +38,12 @@
 		</insert>
 		
 		<select id="selectCash_use" resultClass="int" parameterClass="String">
-			SELECT distinct delete_cash FROM bbu_cashuse WHERE CASH_ID = #my_id#
+			SELECT distinct delete_cash FROM bbu_cashuse WHERE CASH_ID = #cash_id#
+			GROUP BY cashuse_date, delete_cash
+			HAVING max(cashuse_date) = (SELECT max(cashuse_date) FROM bbu_cashuse where cash_id = #cash_id#)
 		</select>
 		
 		<update id="updateChargeCash_delete" parameterClass="cDTO">
-			UPDATE bbu_cashuse SET DELETE_CASH = DELETE_CASH + #delete_cash# WHERE CASH_ID = #cash_id#
+			UPDATE bbu_cashuse SET DELETE_CASH = #delete_cash# WHERE CASH_ID = #cash_id#
 		</update>
 </sqlMap>

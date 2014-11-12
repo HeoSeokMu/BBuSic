@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.Action;
 
 public class buy_SendEmailFormAction implements Action{
 	
-	private int cash;
+	private int delete_cash;
 	private String cash_id;
 	private int money_in;
 	
@@ -14,17 +14,17 @@ public class buy_SendEmailFormAction implements Action{
 		
 		System.out.println("buy_SendEmailFormAction =============");
 		System.out.println("cash_id : "+ cash_id);
-		System.out.println("cash : "+cash);
+		System.out.println("delete_cash : "+delete_cash);
 		System.out.println("money_in : "+money_in);
 		return SUCCESS;
 	}
 
-	public int getCash() {
-		return cash;
+	public int getDelete_cash() {
+		return delete_cash;
 	}
 
-	public void setCash(int cash) {
-		this.cash = cash;
+	public void setDelete_cash(int delete_cash) {
+		this.delete_cash = delete_cash;
 	}
 
 	public String getCash_id() {

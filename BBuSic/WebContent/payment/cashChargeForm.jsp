@@ -55,6 +55,14 @@
 			function moneySet_Text() {
 				cashCharge.money_in.value = cashCharge.moneyIn_Text.value;
 			}
+			
+			function idCheck() {
+				if(${session.memId == null}) {
+					alert("로그인을 해주세요");
+					window.location = "bbusic.action";
+					return false;
+				}
+			}
 		</script>
 	</head>
 	
@@ -116,7 +124,7 @@
 									<td>
 										<table border="1" width="100%">
 											<tr>
-												<td>뿌숑캐쉬 잔액</td><td>${cash}</td>
+												<td>뿌숑캐쉬 잔액</td><td>${delete_cash}</td>
 											</tr>
 											<tr>
 												<td height="100px">충전금액선택</td>
@@ -140,7 +148,7 @@
 													<input type="radio" name="chargeMoney_sel" value="self_in" onchange="moneyIn_sel()"/>&nbsp;직접입력(1000원 단위로 입력가능)
 													<input type="hidden" name="money_in" value="0"/>
 													<input type="hidden" name="cash_id" value="${my_id}"/>
-													<input type="hidden" name="delete_cash" value="${cash}"/>
+													<input type="hidden" name="delete_cash" value="${delete_cash}"/>
 												</td>
 											</tr>
 										</table>

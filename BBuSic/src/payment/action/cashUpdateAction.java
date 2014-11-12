@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import payment.pay_setDTO.cashCharge_DTO;
-import payment.pay_setDTO.payMyInfo_DTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
@@ -15,6 +14,8 @@ import com.opensymphony.xwork2.Preparable;
 public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSicAware {
 	
 	cashCharge_DTO cash_DTO;
+	private int money_in;
+	
 	public static SqlMapClient sqlMapper;
 	
 	public String execute() throws Exception {
@@ -52,10 +53,10 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 		cash_DTO.setCashuse_date(cashuseDate);
 		cash_DTO.setExpiration_date(expirationDate);
 		
-		System.out.println("인서트 전 캐쉬 : "+cash_DTO.getCash()+ " / 인서트 전 델리트 캐쉬 : " + cash_DTO.getDelete_cash());
-		sqlMapper.insert("payment_cash.insertCashInfo", cash_DTO);
+		cash_DTO.setDelete_cash(money_in + cash_DTO.getDelete_cash());
 		sqlMapper.update("payment_cash.updateChargeCash_delete", cash_DTO);
-		
+		cash_DTO.setCash(money_in);
+		sqlMapper.insert("payment_cash.insertCashInfo", cash_DTO);
 		
 		return SUCCESS;
 	}
@@ -77,5 +78,13 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 
 	public cashCharge_DTO getCash_DTO() {
 		return cash_DTO;
+	}
+
+	public int getMoney_in() {
+		return money_in;
+	}
+
+	public void setMoney_in(int money_in) {
+		this.money_in = money_in;
 	}
 }

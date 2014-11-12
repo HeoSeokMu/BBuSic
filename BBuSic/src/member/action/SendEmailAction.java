@@ -59,7 +59,9 @@ public class SendEmailAction implements Action, ModelDriven, Preparable{
 		} catch ( Exception e ) {
 			System.out.print("메일 발송에 실패 하였습니다.");
 			e.printStackTrace();
-			}
+		}
+		
+		System.out.println("인증번호 : "+num);
 		return SUCCESS;
 	}
 
