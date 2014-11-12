@@ -217,6 +217,9 @@
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/member/resetPasswdPro.jsp</result>
+		</action>
+		<action name="test" class="member.action.testAction">
+			<result>/member/test.jsp</result>
 		</action>		
 	</package>
 	
