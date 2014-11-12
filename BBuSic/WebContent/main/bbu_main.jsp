@@ -13,35 +13,42 @@
 
 <body style="overflow: hidden;">
 	<div id="box">
-		<div id="header">
-			<ul class="menu">
-				<li><a href="ChartBoard.action?category=chart"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
-				<li><a href="NewChartBoard.action?category=new"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+      <div id="header">
+         <div id="header_1">
+            <ul class="menu">
+               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+   
+               <li><a href="GenreChartBoard.action?category=genre"><img src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+                  <ul class="sub">
+                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+                  <ul class="sub">
+                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+         <div id="header_2">
+            <center>
+               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+            </center>
+         </div>
+      </div>
+   </div>
 
-				<li><a href="GenreChartBoard.action?category=genre"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
-					<ul class="sub">
-						<li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
-						<li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
-					<ul class="sub">
-						<li><a href="payBuyList.action"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
-						<li><a href="cashCharge.action?my_id=${session.memId}&cash=${myinfo_DTO.cash}"><img src="http://localhost:8000/BBuSic/main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<div id="box">
-		<div id="box2">
-	    	<div id="content"> 2번 </div>
-<!--    	<div id="box2_2"> 3번 </div>  -->
-		</div>
-		<div id="box3"> <jsp:include page="/member/loginForm.jsp" /></div>
-		<div id="box4"> 5번 </div>
-	</div>
+   <div id="box">
+      <div id="box2">
+          <div id="content"> 2번 </div>
+<!--       <div id="box2_2"> 3번 </div>  -->
+      </div>
+      <div id="box3"> <jsp:include page="/member/loginForm.jsp"/></div>
+      <div id="box4"> 5번 </div>
+   </div>
 </body>
 </html>

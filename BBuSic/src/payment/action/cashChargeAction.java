@@ -4,27 +4,27 @@ import com.opensymphony.xwork2.Action;
 
 public class cashChargeAction implements Action {
 	
-	private String cash;
-	private String my_id;
+	private int cash;
+	private String cash_id;
 	
 	public String execute() throws Exception {
 			
 		return SUCCESS;
 	}
 
-	public String getCash() {
+	public int getCash() {
 		return cash;
 	}
 
-	public void setCash(String cash) {
+	public void setCash(int cash) {
 		this.cash = cash;
 	}
 
-	public String getMy_id() {
-		return my_id;
+	public String getCash_id() {
+		return cash_id;
 	}
 
-	public void setMy_id(String my_id) {
-		this.my_id = my_id;
+	public void setCash_id(String cash_id) {
+		this.cash_id = cash_id;
 	}
 }

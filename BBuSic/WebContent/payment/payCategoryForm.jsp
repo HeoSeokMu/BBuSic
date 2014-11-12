@@ -8,7 +8,7 @@
 	<head>
 		<title></title>
 		<script type="text/javascript">
-			function loadXMLDoc(abc) {
+			function loadXMLDoc() {
 		
 				alert("aaa");
 				var xmlhttp;
@@ -22,7 +22,7 @@
 						document.getElementById("payBuy").innerHTML = xmlhttp.responseText;
 					}
 				};				
-				xmlhttp.open("GET", "payBuyAction.action?type="+abc, true);				
+				xmlhttp.open("GET", "payBuyList.action?", true);				
 				xmlhttp.send();
 			}
 		</script>
@@ -34,7 +34,7 @@
 		 -->
 		<div id="payCategory">
 			<h2>멜론 상품 구매</h2>
-			<input type="button" name="pay_all" value="전체 상품 보기" onclick="loadXMLDoc(payAll)"/>
+			<input type="button" name="pay_all" value="전체 상품 보기" onclick="loadXMLDoc()"/>
 			<input type="button" name="pay_3mon" value="3개월 할인 특가" onclick="loadXMLDoc(pay3Mon)"/>
 			<input type="button" name="pay_3mon" value="제휴 상품" onclick="loadXMLDoc(payCooper)"/>
 			<input type="button" name="pay_3mon" value="쿠폰 등록" onclick="loadXMLDoc(payCoopon)"/>

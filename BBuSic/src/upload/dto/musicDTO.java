@@ -16,13 +16,14 @@ public class musicDTO {
 	private int[] chkNo;
 	private int[] chkNo2;
 	
-	
+
 	public int[] getChkNo2() {
 		return chkNo2;
 	}
 	public void setChkNo2(int[] chkNo2) {
 		this.chkNo2 = chkNo2;
 	}
+
 	public int[] getChkNo() {
 		return chkNo;
 	}

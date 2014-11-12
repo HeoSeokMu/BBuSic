@@ -2,13 +2,16 @@ package board.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import upload.dto.musicDTO;
+import upload.dto.musicDTO2;
 import BBusic.Aware.musicAware;
 import board.action.pagingAction;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
@@ -29,7 +32,10 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	private String type;			// 장르
 	
 	private musicDTO mdto;
-	
+	private musicDTO2 mdto2;
+	private Map session;
+	private String id;
+	private String benefit;
 		
 	@Override
 	public String execute() throws Exception {
@@ -87,13 +93,40 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	/* 팝업 메서드 */
 	public String popupEx() throws Exception {
 		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
-			for (int i = 0; i < cNo.length; i++) {				
-				System.out.println(cNo[i]);
-				musicList2.add(i, list.get(cNo[i]));
-			}
+
+		session =ActionContext.getContext().getSession();
+		id = (String) session.get("memId");
+		
+		String limit = "무제한 듣기";
+		mdto2 = new musicDTO2();
+		mdto2.setLimit(limit);
+		mdto2.setId(id);
+		benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", mdto2);
+		if(benefit !=null){			
+			benefit = benefit.substring(0, 6);			
+		}else{
+			
+		}
+		
+		for (int i = 0; i < cNo.length; i++) {		
+			musicList2.add(i, list.get(cNo[i]));				
+		}
 		return SUCCESS;
 	}
 	
+	public String getBenefit() {
+		return benefit;
+	}
+
+	public void setBenefit(String benefit) {
+		this.benefit = benefit;
+	}
+
+	/* 팝업 리스트 삭제 */
+	public String deleteListAction() throws Exception{		
+		musicList2.clear();
+		return SUCCESS;
+	}
 	
 	public List<musicDTO> getList() {
 		return list;

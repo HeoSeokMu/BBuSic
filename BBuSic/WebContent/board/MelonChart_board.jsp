@@ -96,8 +96,43 @@ center {
 	text-align: center
 }
 </style>
+	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/header_jquery.js"></script>
 </head>
-
+<div id="box">
+	      <div id="header">
+	         <div id="header_1">
+	            <ul class="menu">
+	               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+	               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+	   
+	               <li><a href="GenreChartBoard.action?category=genre"><img src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+	                  <ul class="sub">
+	                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+	                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+	                  </ul>
+	               </li>
+	               <li>
+	                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+	                  <ul class="sub">
+	                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+	                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+	                  </ul>
+	               </li>
+	            </ul>
+	         </div>
+	         <div id="header_2">
+	            <center>
+	               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+	            </center>
+	         </div>
+	      </div>
+	   </div>
+	
+	   <div id="box">
+	      <div id="box2">
+	          <div id="content"> 2번 </div>
 <body>
 	<form method="post" name="chartForm">
 		<hr width="880px" size="1" color="gray" align="left" />
@@ -148,20 +183,20 @@ center {
 						</td>
 						<!--곡정보-->
 						<td width="100px" align="center">
-							<input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png" onclick="list_add(${checkValue.index});">
-							<input type="image" name="m_add_btt" src="http://localhost:8000/BBuSic/board/images/m_add_button.png"> &nbsp;
-							<input type="image" name="m_page_btt" src="http://localhost:8000/BBuSic/board/images/m_page_button.png">
+							<input type="image" name="m_play_btt" src="main/bbu_main_img/m_play_button.png" onclick="list_add(${checkValue.index});">
+							<input type="image" name="m_add_btt" src="main/bbu_main_img/m_add_button.png"> &nbsp;
+							<input type="image" name="m_page_btt" src="main/bbu_main_img/m_page_button.png">
 						</td>
 						<td width="420px" align="left">
 							${list.title}<br /> ${list.singer} | ${list.album}
 						</td>
 						<!--좋아요-->
 						<td width="120px">
-							<input type="image" name="m_like_btt" src="http://localhost:8000/BBuSic/board/images/m_like_button.png">${list.hit}
+							<input type="image" name="m_like_btt" src="main/bbu_main_img/m_like_button.png">${list.hit}
 						</td>
 						<!--다운로드-->
 						<td td width="70px">
-							<input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png" onclick="music_down(${checkValue.index });">
+							<input type="image" name="m_download_img" src="main/bbu_main_img/m_download_button.png" onclick="music_down(${checkValue.index });">
 						</td>
 					</tr>
 				</table>
@@ -180,7 +215,10 @@ center {
 		<hr width="880px" size="1" align="left" />
 		<br>
 			<p align="center"><s:property value="pagingHtml" escape="false" /></p>
-
 	</form>
+						 </div>
+      <div id="box3"> <jsp:include page="/member/loginForm.jsp"/></div>
+      <div id="box4"> 5번 </div>
+   </div>
 </body>
 </html>
