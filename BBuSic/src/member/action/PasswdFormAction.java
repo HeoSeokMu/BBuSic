@@ -16,7 +16,7 @@ public class PasswdFormAction implements Action, MemberAware, SessionAware{
 	
 	public String execute() throws Exception {
 		id = (String) session.get("memId");
-		passwd = (String) sqlMapper.queryForObject("member.selectPasswd", id);
+		passwd = (String)sqlMapper.queryForObject("member.selectPasswd", id);
 		return SUCCESS;
 	}
 	

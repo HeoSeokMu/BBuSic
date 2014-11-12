@@ -1,7 +1,9 @@
 package member.action;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ import member.DTO.LoginRecDTO;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-import payment.pay_setDTO.payMyInfo_DTO;
+import payment.pay_setDTO.*;
 
 public class LoginProAction extends ActionSupport implements SessionAware, MemberAware, ServletRequestAware{
 	private int check;
@@ -25,7 +27,12 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 	private String passwd;
 	private String passwd2;
 	private LoginRecDTO rDTO;
+	
+	//////////////////////////////////////////
 	payMyInfo_DTO myinfo_DTO;
+	List<payMyInfo_DTO> myinfo = new ArrayList<payMyInfo_DTO>();
+	/////////////////////////////////////////
+	
 	public static SqlMapClient sqlMapper;
 	private HttpServletRequest req;
 	Calendar today = Calendar.getInstance();
@@ -46,8 +53,8 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 			
 			// 결제관련 소스 추가 /////////////////////////////////////////////////
 			myinfo_DTO = new payMyInfo_DTO();
-			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo_id", id);
-			System.out.println("myinfoID : "+myinfo_DTO.getMy_id());
+			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
+			System.out.println("myinfoID : "+myinfo_DTO.getId());
 			System.out.println("myinfoCash : "+myinfo_DTO.getCash());
 			System.out.println("myinDownC : "+myinfo_DTO.getDownload_count());
 			System.out.println("myinfoPay_N : "+myinfo_DTO.getPay_name());

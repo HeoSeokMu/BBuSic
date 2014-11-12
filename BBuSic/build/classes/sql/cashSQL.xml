@@ -37,11 +37,11 @@
                          )
 		</insert>
 		
-		<select id="selectCash_use" resultMap="cashRes">
-			SELECT * FROM bbu_cashuse WHERE CASH_ID = #cash_id#
+		<select id="selectCash_use" resultClass="int" parameterClass="String">
+			SELECT distinct delete_cash FROM bbu_cashuse WHERE CASH_ID = #my_id#
 		</select>
 		
-		<update id="updateChargeCash" parameterClass="cDTO">
-			UPDATE bbu_cashue SET DELETE_CASH = DELETE_CASH + #delete_cash# WHERE CASH_ID = #cash_id#
+		<update id="updateChargeCash_delete" parameterClass="cDTO">
+			UPDATE bbu_cashuse SET DELETE_CASH = DELETE_CASH + #delete_cash# WHERE CASH_ID = #cash_id#
 		</update>
 </sqlMap>

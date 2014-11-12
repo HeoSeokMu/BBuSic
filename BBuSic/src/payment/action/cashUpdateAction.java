@@ -15,7 +15,6 @@ import com.opensymphony.xwork2.Preparable;
 public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSicAware {
 	
 	cashCharge_DTO cash_DTO;
-	payMyInfo_DTO myinfo_DTO;
 	public static SqlMapClient sqlMapper;
 	
 	public String execute() throws Exception {
@@ -50,15 +49,13 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 			System.out.println("prev : "+sdf.format(prev)+" / "+"t2 : "+sdf.format(t2.getTime()));
 		}
 		*/
-		myinfo_DTO = new payMyInfo_DTO();
-		myinfo_DTO.setMy_id(cash_DTO.getCash_id());
-		myinfo_DTO.setCash(cash_DTO.getDelete_cash());
-		
 		cash_DTO.setCashuse_date(cashuseDate);
 		cash_DTO.setExpiration_date(expirationDate);
 		
-		sqlMapper.update("payment_cash.insertCashInfo", cash_DTO);
-		sqlMapper.update("payment_my.updateChargeCash", myinfo_DTO);
+		System.out.println("인서트 전 캐쉬 : "+cash_DTO.getCash()+ " / 인서트 전 델리트 캐쉬 : " + cash_DTO.getDelete_cash());
+		sqlMapper.insert("payment_cash.insertCashInfo", cash_DTO);
+		sqlMapper.update("payment_cash.updateChargeCash_delete", cash_DTO);
+		
 		
 		return SUCCESS;
 	}
@@ -78,7 +75,7 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 		this.sqlMapper = sqlMapper;
 	}
 
-	public payMyInfo_DTO getMyinfo_DTO() {
-		return myinfo_DTO;
+	public cashCharge_DTO getCash_DTO() {
+		return cash_DTO;
 	}
 }

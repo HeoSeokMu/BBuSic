@@ -51,13 +51,15 @@
 			<result>/payment/TEST.jsp</result>
 		</action>
 		
+		<!-- 
 		<action name="payMyInfoInsert" class="payment.action.payMyInfo_InsertAction">
 			<interceptor-ref name="chain"/>
 			<interceptor-ref name="BBuSicInterceptor"/>
 			<interceptor-ref name="params"/>
 			<result>/member/inputPro.jsp?id=${id}</result>
 		</action>
- 	
+ 		-->
+ 		 
 		<action name="popupLoginPro" class="member.action.LoginProAction">
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB1"/>
@@ -68,8 +70,7 @@
 		</action>
 		
 		<action name="cashCharge" class="payment.action.cashChargeAction">
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="BBuSicInterceptor"/>
 			<interceptor-ref name="params"/>
 			<result>/payment/cashChargeForm.jsp</result>
 		</action>
@@ -90,7 +91,6 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/cashCharge_Update.jsp</result>
 		</action>
-		
 	</package>	
 		
 	<!-- 김정진 작업 -->
@@ -116,10 +116,7 @@
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
- 			<result name="success" type="chain">
- 				<param name="actionName">payMyInfoInsert</param>
-<!--  				<param name="cash_id">${id}</param> -->
- 			</result>
+ 			<result>/member/inputPro.jsp</result>
 		</action>
 		
 		
