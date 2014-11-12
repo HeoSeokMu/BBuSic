@@ -214,8 +214,7 @@ center {
 								<hr width="880px" size="1" color="gray" align="left" />
 							</c:forEach>
 						</c:if>
-				
-						<hr width="880px" size="1" color="gray" align="left" />
+						
 						<!-- 전체선택 -->
 						<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 						<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
@@ -226,8 +225,7 @@ center {
 						<p align="center"><s:property value="pagingHtml" escape="false" /></p>
 					</form>
 					 </div>
-      <div id="box3"> <jsp:include page="/member/loginForm.jsp"/></div>
-      <div id="box4"> 5번 </div>
+      <div id="box3"> 5번 </div>
    </div>
 </body>
 </html>
