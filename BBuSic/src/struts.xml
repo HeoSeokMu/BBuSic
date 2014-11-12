@@ -204,11 +204,20 @@
 		<action name="sendEmail" class="member.action.SendEmailAction">
 			<result>/member/confirm.jsp</result>
 		</action>
-		
 		<action name="sendID" class="member.action.SendIdAction">
 			<result>/member/findIdPro.jsp</result>
 		</action>
-				
+		
+		<action name="resetPasswdForm" class="member.action.resetPasswdFormAction">
+			<result>/member/"resetPasswdForm".jsp</result>
+		</action>
+		<action name="resetPasswdPro" class="member.action.resetPasswdProAction">
+			<interceptor-ref name="DB"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/member/resetPasswdPro.jsp</result>
+		</action>		
 	</package>
 	
 	<!-- 안명곤 작업 -->
