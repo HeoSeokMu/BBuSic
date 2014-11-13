@@ -32,10 +32,13 @@
 			}
 			
 			function money_Check() {
+				moneyIn = /^[a-zA-Z0-9!@#$%^&*_-.]{6,20}$/;
+				
 				if(!cashCharge.money_in.value) {
 					alert("값 입력");
 					return false;
 				}
+				
 				if(cashCharge.money_in.value < 1000) {
 					alert("1000원 이상 입력해주세요");
 					return false;
@@ -50,7 +53,6 @@
 			function moneySet_Sel() {
 				cashCharge.money_in.value = cashCharge.moneyIn_Sel.value;
 			}
-			
 			
 			function moneySet_Text() {
 				cashCharge.money_in.value = cashCharge.moneyIn_Text.value;
