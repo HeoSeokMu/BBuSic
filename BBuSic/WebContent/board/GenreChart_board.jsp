@@ -96,99 +96,136 @@ center {
 	text-align: center
 }
 </style>
+	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/header_jquery.js"></script>
 </head>
-
-<body>
-	<form method="post" name="chartForm">
-		<hr width="880px" size="1" color="gray" align="left" />
-		<br /><br />
+	<div id="box">
+	      <div id="header">
+	         <div id="header_1">
+	            <ul class="menu">
+	               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+	               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+	   
+	               <li><a href="GenreChartBoard.action?category=genre"><img src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+	                  <ul class="sub">
+	                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+	                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+	                  </ul>
+	               </li>
+	               <li>
+	                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+	                  <ul class="sub">
+	                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+	                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+	                  </ul>
+	               </li>
+	            </ul>
+	         </div>
+	         <div id="header_2">
+	            <center>
+	               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+	            </center>
+	         </div>
+	      </div>
+	   </div>
 	
-		<hr width="880px" size="1" color="gray" align="left" />
-
-		<hr width="880px" size="1" color="gray" align="left" />
-
-
-		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
-
-		<hr width="880px" size="1" align="left">
-		<table align="left">
-			<tr align="center">
-				<td width="30px" height="10px">
-					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
-				</td>
-				<td width="25px"><g>NO</g></td>
-				<td width="70px"></td>
-				<td width="300px"><g>곡명</g></td>
-				<td width="125px"><g>아티스트</g></td>
-				<td width="125px"><g>앨범</g></td>
-				<td width="105px"><g>좋아요</g></td>
-				<td width="80px"><g>다운</g></td>
-			</tr>
-		</table>
-		<hr width="880px" size="3" color="#CC3D3D" align="left" />
-
-		<c:set var="count" value="0" />
-		<c:if test="${totalCount < 1}">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<table>
-				<tr>
-					<td align="left">게시물이 존재하지 않습니다.</td>
-				</tr>
-			</table>
-		</c:if>
-
-		<c:if test="${totalCount > 0}">
-			<c:forEach var="list" items="${list}" varStatus="checkValue">
-				<table>
-					<tr align="center" height="25px">
-						<td width="30px" height="25px">
-							<input type="checkbox" name="chkNo" value="${checkValue.index}">
-						</td>
-						<td width="25px">
-							${(currentPage-1) * 10 + (checkValue.index + 1)}
-						</td>
-						<!--이미지-->
-						<td width="70px">
-							<input type="image" onClick=""/>
-						</td>
-						<!--곡정보-->
-						<td width="300px" align="left">
-							<input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png" onclick="list_add(${checkValue.index });">
-							<input type="image" name="m_add_btt" src="http://localhost:8000/BBuSic/board/images/m_add_button.png"> &nbsp;
-							<input type="image" name="m_page_btt" src="http://localhost:8000/BBuSic/board/images/m_page_button.png">
-							${list.title}
-						</td>
-						<td width="125px">
-							<a href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a>
-						</td>
-						<td width="125px">
-							<a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
-						</td>
-						<!--좋아요-->
-						<td width="105px">
-							<input type="image" name="m_like_btt" src="http://localhost:8000/BBuSic/board/images/m_like_button.png"> ${list.hit}
-						</td>
-						<!--다운로드-->
-						<td td width="80px">
-							<input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png" onclick="music_down(${checkValue.index });">
-						</td>
-					</tr>
-				</table>
-				<hr width="880px" size="1" color="gray" align="left" />
-			</c:forEach>
-		</c:if>
-
-		<hr width="880px" size="1" color="gray" align="left" />
-		<!-- 전체선택 -->
-		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
-
-		<hr width="880px" size="1" align="left" />
-		<br>
-		<p align="center"><s:property value="pagingHtml" escape="false" /></p>
-	</form>
+	   <div id="box">
+	      <div id="box2">
+	          <div id="content"> 2번 </div>
+				<body>
+					<form method="post" name="chartForm">
+						<hr width="880px" size="1" color="gray" align="left" />
+						<br /><br />
+					
+						<hr width="880px" size="1" color="gray" align="left" />
+				
+						<hr width="880px" size="1" color="gray" align="left" />
+				
+				
+						<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
+						<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
+						<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
+				
+						<hr width="880px" size="1" align="left">
+						<table align="left">
+							<tr align="center">
+								<td width="30px" height="10px">
+									<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
+								</td>
+								<td width="25px"><g>NO</g></td>
+								<td width="70px"></td>
+								<td width="300px"><g>곡명</g></td>
+								<td width="125px"><g>아티스트</g></td>
+								<td width="125px"><g>앨범</g></td>
+								<td width="105px"><g>좋아요</g></td>
+								<td width="80px"><g>다운</g></td>
+							</tr>
+						</table>
+						<hr width="880px" size="3" color="#CC3D3D" align="left" />
+				
+						<c:set var="count" value="0" />
+						<c:if test="${totalCount < 1}">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<table>
+								<tr>
+									<td align="left">게시물이 존재하지 않습니다.</td>
+								</tr>
+							</table>
+						</c:if>
+				
+						<c:if test="${totalCount > 0}">
+							<c:forEach var="list" items="${list}" varStatus="checkValue">
+								<table>
+									<tr align="center" height="25px">
+										<td width="30px" height="25px">
+											<input type="checkbox" name="chkNo" value="${checkValue.index}">
+										</td>
+										<td width="25px">
+											${(currentPage-1) * 10 + (checkValue.index + 1)}
+										</td>
+										<!--이미지-->
+										<td width="70px">
+											<input type="image" onClick=""/>
+										</td>
+										<!--곡정보-->
+										<td width="300px" align="left">
+											<input type="image" name="m_play_btt" src="main/bbu_main_img/m_play_button.png" onclick="list_add(${checkValue.index });">
+											<input type="image" name="m_add_btt" src="main/bbu_main_img/m_add_button.png"> &nbsp;
+											<input type="image" name="m_page_btt" src="main/bbu_main_img/m_page_button.png">
+											${list.title}
+										</td>
+										<td width="125px">
+											<a href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a>
+										</td>
+										<td width="125px">
+											<a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
+										</td>
+										<!--좋아요-->
+										<td width="105px">
+											<input type="image" name="m_like_btt" src="main/bbu_main_img/m_like_button.png"> ${list.hit}
+										</td>
+										<!--다운로드-->
+										<td td width="80px">
+											<input type="image" name="m_download_img" src="main/bbu_main_img/m_download_button.png" onclick="music_down(${checkValue.index });">
+										</td>
+									</tr>
+								</table>
+								<hr width="880px" size="1" color="gray" align="left" />
+							</c:forEach>
+						</c:if>
+						
+						<!-- 전체선택 -->
+						<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
+						<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
+						<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
+				
+						<hr width="880px" size="1" align="left" />
+						<br>
+						<p align="center"><s:property value="pagingHtml" escape="false" /></p>
+					</form>
+					 </div>
+      <div id="box3"> 5번 </div>
+   </div>
 </body>
 </html>

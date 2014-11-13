@@ -24,8 +24,13 @@
 </style>
 <script language="JavaScript">
 	function checkIt() {
-
 		var userinput = eval("document.userinput");
+		
+		if (!userinput.id.value) {
+			alert("아이디을 입력하세요.");
+			return false;
+		}
+		
 		if (!userinput.name.value) {
 			alert("이름을 입력하세요.");
 			return false;
@@ -39,20 +44,28 @@
 </script>
 <body>
 	<center>
-		<h2>아이디 찾기</h2>
-		<form method="post" name="userinput" action="findIdPro.action"
+		<h2>비밀번호 재설정</h2>
+		<form method="post" name="userinput" action="resetPasswdPro.action"
 			onsubmit="return checkIt();">
 			<table width="400" border="1" cellspacing="0" cellpadding="3"
 				align="center">
 				<tr>
+					<td width="150">아이디</td>
+					<td width="200" align="left">
+						<input type="text" name="id" size="20" />
+					</td>
+				</tr>
+				<tr>
 					<td width="150">이름</td>
-					<td width="200" align="left"><input type="text" name="name"
-						size="20" /></td>
+					<td width="200" align="left">
+						<input type="text" name="name" size="20" />
+					</td>
 				</tr>
 				<tr>
 					<td width="150">이메일</td>
-					<td width="200" align="left"><input type="text" name="email"
-						size="30" /></td>
+					<td width="200" align="left">
+						<input type="text" name="email" size="30" />
+					</td>
 				</tr>
 			</table>
 			<br /> <input type="submit" class="next" value="확인" />
