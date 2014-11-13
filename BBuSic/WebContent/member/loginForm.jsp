@@ -104,11 +104,17 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="center"> ${myinfo_DTO.pay_name} <a href="#"><img value="상품구매" name="payment" /></a><br/>
+				<td align="center">
+	 								<c:if test="${myinfo_DTO.pay_name == null}">보유한 상품이 없습니다.</c:if>
+					   				<c:if test="${myinfo_DTO.pay_name != null}">${myinfo_DTO.pay_name}</c:if>
+					<a href="#"><img value="상품구매" name="payment" /></a><br/>
 				</td>
 			</tr>
 			<tr>
-				<td>캐쉬 ${myinfo_DTO.cash} </td>
+				<td>캐쉬 
+	 					<c:if test="${myinfo_DTO.cash == null}">0</c:if>
+					   	<c:if test="${myinfo_DTO.cash != null}">${myinfo_DTO.cash}</c:if>
+				</td>
 			</tr>
 		</table>
 		<input type="button" value="회원탈퇴" onclick="javascript:window.location='deleteForm.action'"/>

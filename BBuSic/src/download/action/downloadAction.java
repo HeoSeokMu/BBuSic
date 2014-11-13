@@ -22,12 +22,13 @@ public class downloadAction implements Action,Preparable,ModelDriven,musicAware{
 	private static List<musicDTO> musicList2 = new ArrayList<musicDTO>();
 	private static List<File> listFile = new ArrayList<File>();
 	private musicDTO mdto;
+	private int blockCount = 10;	
 	
 	String dir;	  //struts.xml에서 넘어오는 값으로 세팅	
 	String fileName;
 	InputStream inputStream; //이 변수명은 struts.xml의  <param name="inputName">으로 정의됨
 	
-
+	/*다운로드 폼에 목록 띄우는 execute()*/
 	@Override
 	public String execute() throws Exception {				
 		list = sqlMapper.queryForList("musicSQL.selectAll"); //디비의 모든 노래를 list 에 담는다.	
@@ -39,7 +40,8 @@ public class downloadAction implements Action,Preparable,ModelDriven,musicAware{
 		}
 	return SUCCESS;	
 	}
-		
+	
+	/*다운로드 메서드*/
 	public String downLoad() throws Exception{				
 		int[] cNo2 = mdto.getChkNo2();
 		
@@ -54,7 +56,7 @@ public class downloadAction implements Action,Preparable,ModelDriven,musicAware{
 				inputStream = new FileInputStream(dir + "/" + fileName);
 			}
 		}else{
-		inputStream = new FileInputStream(dir + "/" + fileName);
+			inputStream = new FileInputStream(dir + "/" + fileName);
 		}
 		return SUCCESS;
 	}
@@ -85,13 +87,9 @@ public class downloadAction implements Action,Preparable,ModelDriven,musicAware{
 		return inputStream;
 	}
 
-
-
 	public void setDir(String dir) {
 		this.dir = dir;
 	}
-
-
 
 	public static List<musicDTO> getList() {
 		return list;

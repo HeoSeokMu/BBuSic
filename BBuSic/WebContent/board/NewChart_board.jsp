@@ -56,7 +56,7 @@
 			params = "chkNo="+a;
 		}
 		open("Chart_BoardAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800, height=400"); 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400"); 
 	}
 	
 	/* 다운로드 스크립트 */
@@ -79,7 +79,7 @@
 			params = "chkNo="+a;
 		}
 		open("downloadAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=700, height=400");
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
 </script>
 

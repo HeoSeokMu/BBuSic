@@ -15,7 +15,7 @@
 	function checkIt() {
 		if ("${check}"=="check") {
 			alert("이메일을 전송하였습니다. 아이디를 확인해주세요.");
-			return false;
+			return false;0
 		}
 	}
 </script>
