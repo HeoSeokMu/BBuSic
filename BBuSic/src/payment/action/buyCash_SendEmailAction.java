@@ -66,8 +66,8 @@ public class buyCash_SendEmailAction implements Action{
 			System.out.print("메일 발송에 실패 하였습니다.");
 			e.printStackTrace();
 		}
-		System.out.println("본인인증 : " + num);
-		System.out.println("check : "+ check);
+		System.out.println("본인인증  : " + num);
+		System.out.println("check : " + check);
 		
 		return SUCCESS;
 	}

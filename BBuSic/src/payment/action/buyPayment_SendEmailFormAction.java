@@ -5,7 +5,7 @@ import com.opensymphony.xwork2.Action;
 public class buyPayment_SendEmailFormAction implements Action{
 	
 	private int delete_cash;
-	private String cash_id;
+	private String buy_id;
 	private int money_in;
 	
 	@Override
@@ -13,7 +13,7 @@ public class buyPayment_SendEmailFormAction implements Action{
 		// TODO Auto-generated method stub
 		
 		System.out.println("buyPayment_SendEmailFormAction =============");
-		System.out.println("cash_id : "+ cash_id);
+		System.out.println("cash_id : "+ buy_id);
 		System.out.println("delete_cash : "+delete_cash);
 		System.out.println("money_in : "+money_in);
 		return SUCCESS;
@@ -27,12 +27,12 @@ public class buyPayment_SendEmailFormAction implements Action{
 		this.delete_cash = delete_cash;
 	}
 
-	public String getCash_id() {
-		return cash_id;
+	public String getBuy_id() {
+		return buy_id;
 	}
 
-	public void setCash_id(String cash_id) {
-		this.cash_id = cash_id;
+	public void setBuy_id(String buy_id) {
+		this.buy_id = buy_id;
 	}
 
 	public int getMoney_in() {

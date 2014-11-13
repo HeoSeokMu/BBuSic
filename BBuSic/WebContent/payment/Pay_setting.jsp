@@ -21,6 +21,7 @@
 					<td><input type="text" name="amount"/></td>
 					<td><input type="text" name="day30amount"/></td>
 					<td><input type="text" name="sale"/></td>
+					<td><input type="text" name="download_count"/></td>
 				</tr>
 			</table>
 			<input type="submit" value="등록"/>

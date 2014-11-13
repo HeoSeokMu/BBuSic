@@ -72,7 +72,7 @@
 		    	<div id="content">
 		    		<c:if test="${session.memId != null}">
 		    			<center>
-						<form action="" method="post">
+						<form action="buyPayment_SendEmailForm.action" method="post">
 							<table width="90%">
 								<tr><td align="left">상품구매</td></tr>
 								<tr>
@@ -124,6 +124,44 @@
 									<td colspan="4">
 										<input type="checkbox" name="Yac_chk1"/> 뿌숑 유료 이용약관 및 안내 내용, DCF파일 지원기기를 확인하였으며 상기 내용에 동의합니다.<br/> 
 										<input type="checkbox" name="Yac_chk2"/> 매월 구매일 뿌숑상품 이용금액이 정기결제 되는 것에 동의합니다.
+									</td>
+								</tr>
+								<tr>
+									<td height="50"></td>
+								</tr>
+								<tr>
+									<td>
+										<table>
+											<tr>
+												<td colspan="2">결제 금액 확인</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>총 결제 금액</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>뿌숑 캐쉬 사용</td>
+												<td>
+													<input type="text" name="delete_cash"/> 원&nbsp;&nbsp;현재 보유 뿌숑 캐쉬 ${delete_cash}
+													<input type="radio" name="cashMethod" value="in"/>&nbsp;직접 입력
+													&nbsp;&nbsp;
+													<input type="radio" name="cashMethod" value="미ㅣ"/>&nbsp;전체 사용 
+												</td>
+											</tr>
+											<tr>
+												<td>총 할인 금액</td>
+												<td>
+													<font color="red"></font> 원
+												</td>
+											</tr>
+											<tr>
+												<td>최종 결제 금액</td>
+												<td>
+													<font color="red"></font>
+												</td>
+											</tr>
+										</table>
 									</td>
 								</tr>
 								<tr>

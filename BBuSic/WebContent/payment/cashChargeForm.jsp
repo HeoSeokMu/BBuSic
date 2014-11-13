@@ -32,10 +32,15 @@
 			}
 			
 			function money_Check() {
-				var moneyIn = /^[0-9]*$;
+				moneyIn = /^[0-9]*$/;
+				
+				if(moneyIn.test(money_in.value)) {
+					alert("숫자만 입력이 가능합니다.");
+					return false;
+				}
 				
 				if(!cashCharge.money_in.value) {
-					alert("값 입력");
+					alert("값을 입력해주세요.");
 					return false;
 				}
 				
