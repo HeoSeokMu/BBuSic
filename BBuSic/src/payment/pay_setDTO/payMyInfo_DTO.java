@@ -1,23 +1,23 @@
 package payment.pay_setDTO;
 
 public class payMyInfo_DTO {
-	private String my_id;
-	private int cash;
+	private String id;
+	private int delete_cash;
 	private int download_count;
 	private String pay_name;
 	private String pay_benefit;
 	
-	public String getMy_id() {
-		return my_id;
+	public String getId() {
+		return id;
 	}
-	public void setMy_id(String my_id) {
-		this.my_id = my_id;
+	public void setId(String my_id) {
+		this.id = my_id;
 	}
 	public int getCash() {
-		return cash;
+		return delete_cash;
 	}
-	public void setCash(int cash) {
-		this.cash = cash;
+	public void setCash(int delete_cash) {
+		this.delete_cash = delete_cash;
 	}
 	public int getDownload_count() {
 		return download_count;

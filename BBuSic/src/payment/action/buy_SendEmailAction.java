@@ -12,13 +12,12 @@ public class buy_SendEmailAction implements Action{
 	
 	private String cash_id;
 	private int money_in;
-	private int cash;
+	private int delete_cash;
 	
 	private int num= (int) (Math.random()*8999)+1000;
 	private String host = "smtp.gmail.com";//smtp 서버
 	private String from = "BBuSic.com";
 	private String fromName = "BBUSIC";
-	private String to1;										//*보낼 이메일
 	private String subject = "이메일 인증메일 입니다.";			//*제목
 	private String body="본인 인증 번호는 : "+ num +"입니다.";		//*내용
 	
@@ -26,8 +25,8 @@ public class buy_SendEmailAction implements Action{
 		System.out.println("buy_SendEmailAction ===============================");
 		System.out.println("my_id : "+cash_id);
 		System.out.println("money_in : "+money_in);
-		System.out.println("cash : "+cash);
-		to1 = email;
+		System.out.println("email : "+email);
+		
 		try{
 		    // 프로퍼티 값 인스턴스 생성과 기본세션(SMTP 서버 호스트 지정)
 			Properties props = new Properties();
@@ -36,6 +35,8 @@ public class buy_SendEmailAction implements Action{
 			props.put("mail.smtp.starttls.enable","true");
 			props.put("mail.transport.protocol", "smtp");
 			props.put("mail.smtp.host", host);
+			props.put("mail.smtp.connectiontimeout", "1000");
+			props.put("mail.smtp.timeout", "1000");
 			props.setProperty("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
 			props.put("mail.smtp.port", "465");
 			props.put("mail.smtp.auth", "true");
@@ -50,7 +51,7 @@ public class buy_SendEmailAction implements Action{
 	
 			Message msg = new MimeMessage(mailSession);
 			msg.setFrom(new InternetAddress(from, MimeUtility.encodeText(fromName,"UTF-8","B")));//보내는 사람 설정
-			InternetAddress[] address1 = {new InternetAddress(to1)};
+			InternetAddress[] address1 = {new InternetAddress(email)};		// 보낼 이메일
 			msg.setRecipients(Message.RecipientType.TO, address1);//받는 사람설정1
 			msg.setSubject(subject);// 제목 설정
 			msg.setSentDate(new java.util.Date());// 보내는 날짜 설정
@@ -65,6 +66,7 @@ public class buy_SendEmailAction implements Action{
 			System.out.print("메일 발송에 실패 하였습니다.");
 			e.printStackTrace();
 		}
+		System.out.println("본인인증 : " + num);
 		
 		return SUCCESS;
 	}
@@ -81,12 +83,12 @@ public class buy_SendEmailAction implements Action{
 	public void setMoney_in(int money_in) {
 		this.money_in = money_in;
 	}
-	public int getCash() {
-		return cash;
+	public int getDelete_cash() {
+		return delete_cash;
 	}
 
-	public void setCash(int cash) {
-		this.cash = cash;
+	public void setDelete_cash(int delete_cash) {
+		this.delete_cash = delete_cash;
 	}
 
 	public int getNum(){
