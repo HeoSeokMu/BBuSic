@@ -2,7 +2,7 @@ package payment.action;
 
 import com.opensymphony.xwork2.Action;
 
-public class buy_SendEmailFormAction implements Action{
+public class buyMusic_SendEmailFormAction implements Action{
 	
 	private int delete_cash;
 	private String cash_id;
@@ -12,7 +12,7 @@ public class buy_SendEmailFormAction implements Action{
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		
-		System.out.println("buy_SendEmailFormAction =============");
+		System.out.println("buyMusic_SendEmailFormAction =============");
 		System.out.println("cash_id : "+ cash_id);
 		System.out.println("delete_cash : "+delete_cash);
 		System.out.println("money_in : "+money_in);

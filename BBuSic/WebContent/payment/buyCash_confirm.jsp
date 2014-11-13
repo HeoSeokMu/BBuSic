@@ -8,7 +8,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Insert title here</title>
+	<title>뿌숑뮤직 캐쉬충전</title>
 	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
 	<style>
 		.next{
@@ -33,7 +33,7 @@
 				return false;
 			}
 		}
-		
+	
 		function checkConfirm(userinput){
 			if(!userinput.confirmNumber.value){
 				alert("인증번호를 입력하지 않으셨습니다.");
@@ -49,14 +49,14 @@
 				document.myform.check.value = "check";
 			}
 		}
-		
+	
 		function checkNum(){
 			if(document.myform.check.value != "check"){
 				alert("인증번호를 확인하세요");
 				return false;
 			}
 		}
-		
+	
 		function checkCK(){
 			if("${check}" == "check"){
 				alert("이메일을 발송했습니다. 인증번호를 기입해주세요.");
@@ -151,10 +151,10 @@
 					</form>
 					<br/>
 					<form method="post" action="cashUpdate.action" name="myform" onsubmit="return checkNum();">
-						<input type="text" name="cash_id" value="${cash_id}"/>
-						<input type="text" name="money_in" value="${money_in}"/>
-						<input type="text" name="content" value="캐쉬충전"/>
-						<input type="text" name="delete_cash" value="${delete_cash}"/>
+						<input type="hidden" name="cash_id" value="${cash_id}"/>
+						<input type="hidden" name="money_in" value="${money_in}"/>
+						<input type="hidden" name="content" value="캐쉬충전"/>
+						<input type="hidden" name="delete_cash" value="${delete_cash}"/>
 						<input type="submit" class="next" name="confirm" value="인증완료"/>
 					</form>
 				</center>

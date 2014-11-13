@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>뿌숑뮤직 상품구매</title>
 		<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
 		<link rel="stylesheet" href="css/popup_login.css"></link>
 		<link rel="stylesheet" href="css/button.css"></link>
@@ -113,7 +113,7 @@
 											<li><font color="green">PC에서 제공하는 음악/어학 다운로드의 잔여 곡/어학은 다음 달로 이월되지 않습니다.</font></li>
 											<li><font color="green">무제한 다운로드</font>를 제공하는 상품의 속성 상 <font color="green">중도 해지 및 이에 따른 환불은 불가능</font>하며, <font color="green">해지 신청 시 다음 결제예정일에 자동 해지완료</font>됩니다.</li>
 											<li>결제취소는 결제 후 7일 내 서비스 미 이용 시 가능하며, 고객센터(1566-7727)나 이메일 문의로 신청하세요.</li>
-											<li>일부 음원은 음원권리권자와의 계약 또는 요청에 의해 서비스가 제한될 수 있습니다.<br/></li>
+											<li>일부 음원은 음원권리권자와의 계약 또는 요청에 의해 서비스가 제한될 수 있습니다.</li>
 											<li><b>매월 정기 결제 시 SMS 등을 통한 별도의 <font color="green">거래내역 통지는 생략됩니다.</font></b><br/><br/></li>
 										</ul>
 										</font>

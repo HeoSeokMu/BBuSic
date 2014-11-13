@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>뿌숑뮤직 캐쉬구매</title>
 		
 		<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
 		<link rel="stylesheet" href="css/popup_login.css"></link>
@@ -32,7 +32,7 @@
 			}
 			
 			function money_Check() {
-				moneyIn = /^[a-zA-Z0-9!@#$%^&*_-.]{6,20}$/;
+				var moneyIn = /^[0-9]*$;
 				
 				if(!cashCharge.money_in.value) {
 					alert("값 입력");
@@ -108,7 +108,7 @@
 	
 		<div id="box">
 			<div id="box2">
-		    	
+				<div id="content">
 		    		<c:if test="${session.memId != null}">
 						<form name="cashCharge" action="buy_SendEmailForm.action" method="post" onsubmit="return money_Check();">
 							<br/><br/>
@@ -165,7 +165,7 @@
 						</form>
 						<br/><br/>
 					</c:if>
-			
+				</div>
 			<div id="box3"> 5번 </div>
 		</div>
 	</body>

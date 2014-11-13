@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>뿌숑뮤직 상품구매</title>
 		<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
 		<link rel="stylesheet" href="css/popup_login.css"></link>
 		<link rel="stylesheet" href="css/button.css"></link>

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>뿌숑뮤직 메인</title>
+<title>뿌숑뮤직</title>
 	<link rel="stylesheet" href="css/Mainpage_Frame.css"></link>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/header_jquery.js"></script>
