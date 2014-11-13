@@ -90,7 +90,7 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		return SUCCESS;
 	}
 	
-	/* 팝업 메서드 */
+	/* 듣기 팝업 메서드 */
 	public String popupEx() throws Exception {
 		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
 
@@ -114,18 +114,21 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		return SUCCESS;
 	}
 	
+
+	/* 팝업 리스트 삭제 */
+	public String deleteListAction() throws Exception{		
+		musicList2.clear();
+		return SUCCESS;
+	}
+	
+
+	
 	public String getBenefit() {
 		return benefit;
 	}
 
 	public void setBenefit(String benefit) {
 		this.benefit = benefit;
-	}
-
-	/* 팝업 리스트 삭제 */
-	public String deleteListAction() throws Exception{		
-		musicList2.clear();
-		return SUCCESS;
 	}
 	
 	public List<musicDTO> getList() {

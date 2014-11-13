@@ -2,6 +2,37 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
+function checkAll(checkFlag, blockCount){
+	var f = document.chartForm;
+	for(var i=1; i< blockCount; i++){
+		 if(f.elements[i].name == 'chkNo'){ 
+             f.elements[i].checked = checkFlag; 
+    	 } 
+	}
+}
+
+function checkAll2(blockCount){
+	var f = document.chartForm;
+	
+	if(!f.c_all.checked) {
+		f.c_all.checked = true;
+		
+		for(var i=1; i< blockCount; i++){
+			if(f.elements[i].name == 'chkNo'){ 
+                f.elements[i].checked = true; 
+         	}
+		}
+	} else {
+		f.c_all.checked = false;
+		
+		for(var i=1; i< blockCount; i++){
+			if(f.elements[i].name == 'chkNo'){ 
+                f.elements[i].checked = false; 
+         	}
+		}
+	}	
+}
+/*다운로드*/
 	function downLoad(){
 		var chkNo2 = document.getElementsByName("chkNo2");
 		var params = "";
@@ -26,10 +57,28 @@
 	}
 </script>
 <body>
-	<form method="get" name="vv" action="deleteListAction.action">
-		<table border="1" bordercolor="red">
+	<form method="get" name="chartForm" action="downloadAction.action">	
+		<table border="1" bordercolor="red" width="500">
+				<tr>
+					<td colspan="4">
+						<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;
+						<input type="submit" value="전체구매">&nbsp;
+						<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
+					</td>										
+				</tr>
+				<tr>
+					<th align="center">
+						<input type="checkbox" name="c_all" onclick="checkAll(this.checked,50)">
+					</th>
+					<th>제목</th>
+					<th>가수</th>
+					<th>노래</th>
+				</tr>
 				<c:forEach var="musicList2" items="${musicList2}" varStatus="checkValue">						
 						<tr>	
+							<td width="25px" height="10px">
+								<input type="checkbox" name="chkNo" value="${checkValue.index}">
+							</td>
 							<td>${musicList2.realname_music }</td>
 							<td>${musicList2.title }</td>
 							<c:if test="${benefit == '무제한 듣기'}">
@@ -39,8 +88,8 @@
 									</audio>
 									</td>
 									<td align="center">
-									<input type="button" value="다운" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
-								</td>										
+										<input type="button" value="다운" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
+									</td>																		
 							</c:if>														
 							<c:if test="${benefit == null}">
 								<td>
@@ -52,9 +101,10 @@
 						</tr>											
 				</c:forEach>
 				<tr>
-					<td colspan="4">
-						<input type="submit" value="목록삭제">&nbsp;&nbsp;
-						<input type="button" value="닫기" onclick="window.close()">&nbsp;&nbsp;&nbsp;
+					<td colspan="4">						
+						<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;
+						<input type="submit" value="전체구매">&nbsp;
+						<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
 					</td>
 				</tr>
 		</table>		
