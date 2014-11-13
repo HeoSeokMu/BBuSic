@@ -56,7 +56,7 @@
 			params = "chkNo="+a;
 		}
 		open("Chart_BoardAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800, height=400"); 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400"); 
 	}
 	
 	/* 다운로드 스크립트 */
@@ -79,7 +79,7 @@
 			params = "chkNo="+a;
 		}
 		open("downloadAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=700, height=400");
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
 </script>
 
@@ -96,43 +96,8 @@ center {
 	text-align: center
 }
 </style>
-	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="js/header_jquery.js"></script>
 </head>
-<div id="box">
-	      <div id="header">
-	         <div id="header_1">
-	            <ul class="menu">
-	               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
-	               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
-	   
-	               <li><a href="GenreChartBoard.action?category=genre"><img src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
-	                  <ul class="sub">
-	                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
-	                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
-	                  </ul>
-	               </li>
-	               <li>
-	                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
-	                  <ul class="sub">
-	                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
-	                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
-	                  </ul>
-	               </li>
-	            </ul>
-	         </div>
-	         <div id="header_2">
-	            <center>
-	               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
-	            </center>
-	         </div>
-	      </div>
-	   </div>
-	
-	   <div id="box">
-	      <div id="box2">
-	          <div id="content"> 2번 </div>
+
 <body>
 	<form method="post" name="chartForm">
 		<hr width="880px" size="1" color="gray" align="left" />
@@ -214,9 +179,5 @@ center {
 		<br>
 			<p align="center"><s:property value="pagingHtml" escape="false" /></p>
 	</form>
-						 </div>
-      <div id="box3"> <jsp:include page="/member/loginForm.jsp"/></div>
-      <div id="box4"> 5번 </div>
-   </div>
 </body>
 </html>

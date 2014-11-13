@@ -17,21 +17,17 @@ public class FindIdProAction implements Action, ModelDriven, Preparable, MemberA
 	private String subId;
 	private String fullId;
 	private String date;
-	private String check;
 	private MemberDTO dt;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public String execute() throws Exception {
 		
 		dt = (MemberDTO) sqlMapper.queryForObject("member.findID", mDTO);
+		date = sdf.format(dt.getRegdate());
 		
 		if(dt != null){
-			date = sdf.format(dt.getRegdate());
 			fullId = dt.getId();
 			subId = dt.getId().substring(0, 4);
-			check = "check";
-		}else{
-			check = "fail";
 		}
 		return SUCCESS;
 	}
@@ -58,9 +54,5 @@ public class FindIdProAction implements Action, ModelDriven, Preparable, MemberA
 	
 	public String getFullId(){
 		return fullId;
-	}
-	
-	public String getCheck(){
-		return check;
 	}
 }

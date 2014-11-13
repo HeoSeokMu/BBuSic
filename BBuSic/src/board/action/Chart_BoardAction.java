@@ -101,32 +101,24 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		mdto2 = new musicDTO2();
 		mdto2.setLimit(limit);
 		mdto2.setId(id);
-		benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", mdto2);
-		if(benefit !=null){			
+		try{
+			benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", mdto2);
 			benefit = benefit.substring(0, 6);			
-		}else{
-			
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		
 		for (int i = 0; i < cNo.length; i++) {		
 			musicList2.add(i, list.get(cNo[i]));				
 		}
+		
+		for (int i = 0; i < cNo.length; i++) {				
+			System.out.println(cNo[i]);
+			musicList2.add(i, list.get(cNo[i]));
+		}
 		return SUCCESS;
 	}
 	
-	public String getBenefit() {
-		return benefit;
-	}
-
-	public void setBenefit(String benefit) {
-		this.benefit = benefit;
-	}
-
-	/* 팝업 리스트 삭제 */
-	public String deleteListAction() throws Exception{		
-		musicList2.clear();
-		return SUCCESS;
-	}
 	
 	public List<musicDTO> getList() {
 		return list;

@@ -80,7 +80,7 @@
  -->
  
 <div id="box">
-	<div id="box1">
+	<div id="box1"> 
 		<input type="button" value="상품구매" onclick="loadXMLDoc(Buy)">
 		<input type="button" value="멜론캐쉬충전" onclick="loadXMLDoc(Cash)">
 		<input type="button" value="이벤트" onclick="loadXMLDoc(Event)">

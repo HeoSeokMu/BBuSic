@@ -6,6 +6,7 @@
 	<typeAlias alias="musicDTO" type="upload.dto.musicDTO"/>
 	<typeAlias alias="searchDTO" type="upload.dto.searchDTO"/>
 	<typeAlias alias="singerDTO" type="upload.dto.singerDTO"/>
+
 	<typeAlias alias="musicDTO2" type="upload.dto.musicDTO2"/>
 	<typeAlias alias="albumDTO" type="upload.dto.albumDTO"/>
 	<typeAlias alias="lyricsDTO" type="upload.dto.lyricsDTO"/>
@@ -53,6 +54,7 @@
 		<result property="publisher" column="publisher"/>
 		<result property="entertain" column="entertain"/>
 		<result property="genre" column="genre"/>
+
 	</resultMap>
 	
 	<resultMap id="lyricsRes" class="lyricsDTO">
@@ -107,6 +109,7 @@
 		<select id="SingerChk" resultClass="String" parameterClass="String">
 			SELECT singer FROM album_info where singer = #singer#
 		</select>
+		
 
 		<select id="benefit" resultClass="String" parameterClass="musicDTO2" >
 			select pay_benefit from bbu_paymyinfo where pay_benefit like '%' || #limit# || '%'  and my_id = #id#

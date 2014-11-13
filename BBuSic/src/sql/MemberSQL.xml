@@ -29,10 +29,6 @@
 			<result property="regdate" column="regdate"/>
 		</resultMap>
 		
-		<resultMap class="member" id="Regdate">
-			<result property="regdate" column="regdate"/>
-		</resultMap>
-		
 		<!-- 공통으로 사용할 select 절 정의 -->
 		<sql id="select-all">
 			SELECT * FROM bbu_member
@@ -76,9 +72,6 @@
 			WHERE name = #name# AND email = #email#
 		</select>
 		
-		<select id="resetPw" resultClass="String" parameterClass="member">
-			SELECT regdate FROM bbu_member WHERE id = #id# AND name = #name# AND email = #email#
-		</select>
 		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertMember" parameterClass="member">
