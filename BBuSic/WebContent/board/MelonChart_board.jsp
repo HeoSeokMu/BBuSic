@@ -2,7 +2,6 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
 <script type="text/javascript">
 	function checkAll(checkFlag, blockCount){
 		var f = document.chartForm;
