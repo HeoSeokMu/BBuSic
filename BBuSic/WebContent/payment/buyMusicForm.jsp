@@ -1,13 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-	<title>뿌숑뮤직 캐쉬구매</title>
-	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+<title>뿌숑뮤직 음악구매</title>
+	<link rel="stylesheet" href="css/Mainpage_Frame.css"></link>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/header_jquery.js"></script>
 	
@@ -52,19 +51,54 @@
 			</div>
 		</div>
 	</div>
-		
+
 	<div id="box">
 		<div id="box2">
 	    	<div id="content">
-	    		<center>
-		    		<h1>
-		    			캐쉬가 정상적으로 충전되었습니다.<br/>
-		    			5초뒤 메인으로 이동됩니다.
-		    		</h1>
-					<meta http-equiv="Refresh" content="5;url=bbusic.action">
-				</center>
-	    		<br/><br/>
-	   		</div>
+	    		<form action="buyMusic_confirm.action" method="post">
+		    		<center>
+		    		<table border="1" width="100%">
+		    			<tr>
+		    				<td colspan="2">다운로드 요청 <font color="">${m_count} 곡</font>     /     결제 곡 수 <font color="">${m_count} 곡</font></td>
+		    			</tr>
+		    			<tr><td height="50"></td></tr>
+		    			<tr>
+		    				<td colspan="2" align="left">
+		    					<ul>
+			    					<li>개별곡 구매 후 다운로드는 1개 ID당 PC 3대까지 다운로드 받을 수 있습니다.</li>
+									<li>다운로드 한 곡은 구매목록에서 1년 동안 재 다운로드 할 수 있습니다.</li>
+									<li>일부 음원은 권리사의 요청에 의해 다운로드 제한이 있을 수 있습니다</li>
+								</ul>
+		    				</td>
+		    			</tr>
+		    			<tr><td height="50"></td></tr>
+		    			<tr>
+		    				<td>결제 수단</td>
+		    				<td>
+		    					<input type="radio" name="payMethod" value="결제"/>결제
+		    					<input type="radio" name="payMethod" value="캐쉬"/>캐쉬
+		    				</td>
+		    			</tr>
+		    			<tr>
+		    				<td>구매자</td>
+		    				<td><input type="text" name="music_id" value="${music_id}"/>${music_id}</td>
+		    			</tr>
+		    			<tr>
+		    				<td>구매 음악</td>
+		    				<td><input type="text" name="title" value="${title}"/>${title}</td>
+		    			</tr>
+		    			<tr>
+		    				<td>가수명</td>
+		    				<td><input type="text" name="singer" value="${singer}"/>${singer}</td>
+		    			</tr>
+		    			<tr>
+		    				<td>앨범명</td>
+		    				<td><input type="text" name="album" value="${album}"/>${album}</td>
+		    			</tr>
+		    		</table>
+		    		</center>
+	    		</form>
+	    	</div>
 		</div>
 		<div id="box3"> 5번 </div>
 	</div>

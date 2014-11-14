@@ -75,13 +75,13 @@
 			<result>/payment/cashChargeForm.jsp</result>
 		</action>
 		
-		<action name="buy_SendEmailForm" class="payment.action.buy_SendEmailFormAction">
+		<action name="buyCash_SendEmailForm" class="payment.action.buyCash_SendEmailFormAction">
 			<interceptor-ref name="params"/>
-			<result>/payment/buy_confirm.jsp</result>
+			<result>/payment/buyCash_confirm.jsp</result>
 		</action>
-		<action name="buy_SendEmail" class="payment.action.buy_SendEmailAction">
+		<action name="buyCash_SendEmail" class="payment.action.buyCash_SendEmailAction">
 			<interceptor-ref name="params"/>
-			<result>/payment/buy_confirm.jsp</result>
+			<result>/payment/buyCash_confirm.jsp</result>
 		</action>
 		
 		<action name="cashUpdate" class="payment.action.cashUpdateAction">
@@ -90,6 +90,24 @@
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/payment/cashCharge_Update.jsp</result>
+		</action>
+		
+		<action name="buyMusic_SendEmailForm" class="payment.action.buyMusic_SendEmailFormAction">
+			<interceptor-ref name="params"/>
+			<result>/payment/buyMusic_confirm.jsp</result>
+		</action>
+		<action name="buyMusic_SendEmail" class="payment.action.buyMusic_SendEmailAction">
+			<interceptor-ref name="params"/>
+			<result>/payment/buyMusic_confirm.jsp</result>
+		</action>
+		
+		<action name="buyPayment_SendEmailForm" class="payment.action.buyPayment_SendEmailFormAction">
+			<interceptor-ref name="params"/>
+			<result>/payment/buyPayment_confirm.jsp</result>
+		</action>
+		<action name="buyPayment_SendEmail" class="payment.action.buyPayment_SendEmailAction">
+			<interceptor-ref name="params"/>
+			<result>/payment/buyPayment_confirm.jsp</result>
 		</action>
 	</package>	
 		

@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<haed>
-		<title>pay등록</title>
+		<title>뿌숑뮤직 상품등록</title>
 	</haed>
 	
 	<body>
@@ -21,6 +21,7 @@
 					<td><input type="text" name="amount"/></td>
 					<td><input type="text" name="day30amount"/></td>
 					<td><input type="text" name="sale"/></td>
+					<td><input type="text" name="download_count"/></td>
 				</tr>
 			</table>
 			<input type="submit" value="등록"/>

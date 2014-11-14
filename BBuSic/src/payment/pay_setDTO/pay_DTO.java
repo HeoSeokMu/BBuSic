@@ -7,6 +7,7 @@ public class pay_DTO {
 	private int amount;
 	private int day30amount;
 	private int sale;
+	private int download_count;
 	
 	public String getCategory() {
 		return category;
@@ -44,5 +45,10 @@ public class pay_DTO {
 	public void setPay_benefit(String pay_benefit) {
 		this.pay_benefit = pay_benefit;
 	}
-	
+	public int getDownload_count() {
+		return download_count;
+	}
+	public void setDownload_count(int download_count) {
+		this.download_count = download_count;
+	}
 }
