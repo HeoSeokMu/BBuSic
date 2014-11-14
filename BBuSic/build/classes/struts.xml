@@ -36,6 +36,7 @@
 		</action>
 		
 		<action name="payBuyOption" class="payment.action.payBuyOptionAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>

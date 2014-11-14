@@ -199,7 +199,7 @@
 						<input type="text" name="buy_date" value="${buy_date}"/>
 						<input type="text" name="content" value="음악구매"/>
 						<c:if test="${payMethod.equals("결제")}">
-							<input type="text" name="money_in" value="${600 * m_count}"/>
+							<input type="text" name="money_in" value="${money_in}"/>
 						</c:if>
 						<c:if test="${payMethod.equals("캐쉬")}">
 							<input type="text" name="delete_cash" value="${delete_cash}"/>

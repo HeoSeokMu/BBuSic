@@ -16,11 +16,11 @@
 		<script src="js/header_jquery.js"></script>
 		
 		<script type="text/javascript">
-			function buy(name, benefit, amount, sale) {
+			function buy(name, benefit, amount, sale, buy_id, buy_type) {
 				if(${session.memId != null}) {
 					
 					window.location = "payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
-									  "&amount="+amount+"&sale="+sale;
+									  "&amount="+amount+"&sale="+sale+"&buy_id="+buy_id+"&buy_type="+buy_type;
 					
 				} else {
 					jQuery(function($) {
@@ -135,8 +135,8 @@
 								<fmt:formatNumber value="${pay.day30amount}"/>
 							</td>
 							<td>
-				 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
-								<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
+				 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}', '${session.memId}', 'regular')"/><br/>
+								<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}', '${session.memId}', 'buy')"/>
 								<input type="button" value="선물" class="button02" onclick=""/>
 							</td>
 						</tr>
