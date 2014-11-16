@@ -46,32 +46,139 @@
 			function pay_Method(delete_cash, amount, type) {
 				var deleteCash = parseInt(delete_cash);
 				var Amount = parseInt(amount);
+				var form = document.payBuyOptionForm;
 				
 				if(type == "in"){
 					alert("type in");
-					document.payBuyOptionForm.money_in.value = "";
+					form.cash_in.disabled = false;
+					form.cash_in.value = 0;
 					
 					jQuery(function($) {
-						$('span').text(deleteCash);
+						$("#cash").text(deleteCash);
+						<%--
+						$("#add").hide();
+						--%>
 					});
 				} else if(type == "all"){
 					alert("type all");
 					if(deleteCash >= Amount) {
-						alert("캐쉬가 커!!");
-						document.payBuyOptionForm.money_in.value = Amount;
+						form.cash_in.value = Amount;
 						
 						jQuery(function($) {
-							$('span').text(deleteCash - Amount);
+							$("#cash").text(deleteCash - Amount);
+							<%--
+							$("#add").hide();
+							--%>
 						});
 						
 					} else if(deleteCash < Amount){
-						alert("상품가격이 더 커!!!");
-						document.payBuyOptionForm.money_in.value = deleteCash;
+						form.cash_in.value = deleteCash;
+						form.cash_in.disabled = true;
 						
 						jQuery(function($) {
-							$('span').text(0);
+							$("#cash").text(0);
+							<%--
+							$("#add").show();
+							--%>
 						});
 					}
+				}
+			}
+			
+			function cash_keyUp(delete_cash, amount) {
+				var form = document.payBuyOptionForm;
+				var deleteCash = parseInt(delete_cash);
+				var Amount = parseInt(amount);
+				var Cash_In = parseInt(form.cash_in.value);
+				
+				if(form.cash_in.value == "" || form.cash_in.value == null) {
+					jQuery(function($) {
+						$("#cash").text(deleteCash);
+					});
+				}
+				
+				if(deleteCash >= Cash_In) {
+					jQuery(function($) {
+						$("#cash").text(deleteCash - Cash_In);
+					});
+				} else if(deleteCash < Cash_In){
+					jQuery(function($) {
+						$("#cash").text(0);
+						form.cash_in.value = deleteCash;
+					});
+				}
+			}
+			
+			function formChk() {
+				var form = document.payBuyOptionForm;
+				var Cash_In = parseInt(form.cash_in.value);
+				var Money_In = parseInt(form.payment.value);
+				var Add_Money = parseInt(form.add_money.value);
+				var Amount = parseInt(form.amount.value);
+				var Delete_cash = parseInt(form.delete_cash.value);
+				var numIn = /^[0-9]*$/;
+				alert(form.cash_in.value + " / " + form.add_money.value)
+				
+				if(form.Yac_chk1.checked == false) {
+					alert("서비스 이용안내 내용을 확인해 주세요");
+					return false;
+				}
+				if(form.Yac_chk2.checked == false) {
+					alert("정기결제 이용안내 내용을 확인해 주세요");
+					return false;
+				}
+				if(form.event_chk.checked == false) {
+					alert("이벤트 동의 안내 내용을 확인해 주세요");
+					return false;
+				}
+				if(!numIn.test(form.cash_in.value)) {
+					alert("cash 숫자만 입력이 가능합니다.");
+					return false;
+				}
+				if(!numIn.test(form.add_money.value)) {
+					alert("add 숫자만 입력이 가능합니다.");
+					return false;
+				}
+				
+				if(form.cashMethod.value == "in") {
+					if((Cash_In + Add_Money) > Amount) {
+						alert("상품가격보다 크게 입력하셨습니다.");
+						form.payment.value = Amount;
+						if(Add_Money > Cash_In) {
+							form.cash_in.value = Amount - Add_Money;
+							jQuery(function($) {
+								$("#cash").text(Delete_cash - (Amount - Add_Money));
+							});
+						} else if (Add_Money < Cash_In) {
+							form.add_money.value = Amount - Cash_In;
+							jQuery(function($) {
+								$("#cash").text(Delete_cash - (Amount - Cash_In));
+							});
+						}
+						
+						return false;
+					} else if((Cash_In + Add_Money) < Amount) {
+						alert("입력하신 금액이 상품가격보다  적습니다.");
+						if(Add_Money > Cash_In) {
+							form.cash_in.value = Amount - Add_Money;
+							
+						} else if (Add_Money < Cash_In) {
+							form.add_money.value = Amount - Cash_In;
+						}
+						
+						return false;
+					}
+					form.payment.value = Cash_In + Add_Money;
+				} else if(form.cashMethod.value == "all") {
+					if((Cash_In + Add_Money) < Amount) {
+						alert("추가 금액을 적게 입력하셨습니다.");
+						return false;
+					} else if((Cash_In + Add_Money) > Amount) {
+						alert("추가 금액을 많게 입력하셨습니다.");
+						form.add_money.value = Amount - Cash_In;
+						return false;
+					}
+					form.payment.value = Cash_In + Add_Money;
 				}
 			}
 		
@@ -114,9 +221,11 @@
 		    	<div id="content">
 		    		<c:if test="${session.memId != null}">
 		    			<center>
-						<form name = "payBuyOptionForm" action="buyPayment_SendEmailForm.action" method="post">
+		    			<br/><br/>
+						<form name = "payBuyOptionForm" action="buyPayment_SendEmailForm.action" method="post" onsubmit="return formChk();">
 							<table width="90%">
-								<tr><td align="left">상품구매</td></tr>
+								<tr><td align="left"><font size="5"><b>상품구매</b></font></td></tr>
+								<tr height="15"><td></td></tr>
 								<tr>
 									<th class="t_line">상품명</th><th class="t_line">제공 서비스</th><th class="t_line">판매가(부가세 10% 별도)</th><th class="t_line">이용안내</th>
 								</tr>
@@ -173,25 +282,30 @@
 									<td colspan="4">
 										<table width="100%">
 											<tr>
-												<td colspan="2">결제 금액 확인</td>
+												<td colspan="2"><b>결제 금액 확인</b></td>
 												<td></td>
 											</tr>
 											<tr>
 												<th class="tt_line1">총 결제 금액</th>
-												<td class="tt_line2" align="right">${amount}</td>
+												<td class="tt_line2" align="right">
+													<input type="text" name="add_money" value="0" size="2"/> 원</span>
+												</td>
 												<td class="tt_line2"></td>
 											</tr>
 											<tr>
 												<th class="tr_line1">뿌숑 캐쉬 사용</th>
 												<td class="tr_line2" align="right">
-													<input type="text" name="money_in" value="0" size="2"/> 원
+													<input type="text" name="cash_in" value="0" size="2" onkeyup="cash_keyUp('${delete_cash}','${amount}');"/> 원
+													<!-- 
+													<span id="add" style="display: none;">&nbsp;+&nbsp;<input type="text" name="add_money" value="0" size="2"/> 원</span>
+													 -->
 												</td>
 												<td class="tr_line2">
-													&nbsp;&nbsp;현재보유 뿌숑 캐쉬 <span>${delete_cash}</span>
+													&nbsp;&nbsp;현재보유 뿌숑 캐쉬 <span id="cash">${delete_cash}</span>
 													&nbsp;&nbsp;
-													<input type="radio" name="cashMethod" onclick="pay_Method('${delete_cash}', '${amount}', 'in')"/>&nbsp;직접 입력
+													<input type="radio" name="cashMethod" value="in" onclick="pay_Method('${delete_cash}', '${amount}', 'in')" checked/>&nbsp;직접 입력
 													&nbsp;&nbsp;
-													<input type="radio" name="cashMethod" onclick="pay_Method('${delete_cash}', '${amount}', 'all')"/>&nbsp;전체 사용 
+													<input type="radio" name="cashMethod" value="all" onclick="pay_Method('${delete_cash}', '${amount}', 'all')"/>&nbsp;전체 사용 
 												</td>
 											</tr>
 											<tr>
@@ -240,7 +354,7 @@
 												<tr><td colspan="4">정기 결제 방법 선택<br/></td></tr>
 												<tr>
 													<td>
-														<input type="radio" name="buy_option" value="T_buy"/>
+														<input type="radio" name="buy_option" value="T_buy" checked/>
 														<font size="2">SKT T멤버십 할인한도<br/>30% 차감 + SKT 휴대폰</font>
 													</td>
 													<td align="center">
@@ -257,12 +371,8 @@
 											<c:if test="${buy_type == 'buy'}">
 											<tr><td>결제방법 선택 및 결제정보 입력<br/></td></tr>
 											<tr>
-												<td>
-													<input type="radio" name="buy_option" value="T_buy"/>
-													<font size="2">SKT T멤버십 할인한도<br/>30% 차감 + SKT 휴대폰</font>
-												</td>
 												<td align="center">
-													<input type="radio" name="buy_option" value="SKT_buy"/>
+													<input type="radio" name="buy_option" value="SKT_buy" checked/>
 													<font size="2">휴대폰 SKT</font>
 												</td>
 												<td align="center">
@@ -275,10 +385,16 @@
 									</td>
 								</tr>
 							</table>
-							<input type="submit" value="결제하기"/>
-							<input type="button" value="취소하기" onclick="javascript:window.history.go(-1) return false;"/>
+							<input type="hidden" name="buy_id" value="${buy_id}"/>
+							<input type="hidden" name="delete_cash" value="${delete_cash}"/>
+							<input type="hidden" name="payment" value="0"/>
+							<input type="hidden" name="cash_use" value="0"/>
+							<br></br>
+							<input type="submit" class="button03" value="결제하기"/>
+							<input type="button" class="button03" value="취소하기" onclick="javascript:window.history.go(-1) return false;"/>
 						</form>
 						</center>
+						<br></br><br></br>
 					</c:if>
 		    	</div>
 	<!--    	<div id="box2_2"> 3번 </div>  -->

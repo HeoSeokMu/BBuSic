@@ -4,8 +4,8 @@ public class payMyInfo_DTO {
 	private String id;
 	private int delete_cash;
 	private int download_count;
-	private String pay_name;
-	private String pay_benefit;
+	private String delete_payname;
+	private String delete_paybenefit;
 	
 	public String getId() {
 		return id;
@@ -25,16 +25,22 @@ public class payMyInfo_DTO {
 	public void setDownload_count(int download_count) {
 		this.download_count = download_count;
 	}
-	public String getPay_name() {
-		return pay_name;
+	public int getDelete_cash() {
+		return delete_cash;
 	}
-	public void setPay_name(String pay_name) {
-		this.pay_name = pay_name;
+	public void setDelete_cash(int delete_cash) {
+		this.delete_cash = delete_cash;
 	}
-	public String getPay_benefit() {
-		return pay_benefit;
+	public String getDelete_payname() {
+		return delete_payname;
 	}
-	public void setPay_benefit(String pay_benefit) {
-		this.pay_benefit = pay_benefit;
+	public void setDelete_payname(String delete_payname) {
+		this.delete_payname = delete_payname;
+	}
+	public String getDelete_paybenefit() {
+		return delete_paybenefit;
+	}
+	public void setDelete_paybenefit(String delete_paybenefit) {
+		this.delete_paybenefit = delete_paybenefit;
 	}
 }

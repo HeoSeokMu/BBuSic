@@ -105,15 +105,15 @@
 			</tr>
 			<tr>
 				<td align="center">
-	 								<c:if test="${myinfo_DTO.pay_name == null}">보유한 상품이 없습니다.</c:if>
-					   				<c:if test="${myinfo_DTO.pay_name != null}">${myinfo_DTO.pay_name}</c:if>
+	 								<c:if test="${myinfo_DTO.delete_payname == null}">보유한 상품이 없습니다.</c:if>
+					   				<c:if test="${myinfo_DTO.delete_payname != null}">${myinfo_DTO.delete_payname}</c:if>
 					<a href="#"><img value="상품구매" name="payment" /></a><br/>
 				</td>
 			</tr>
 			<tr>
 				<td>캐쉬 
-	 					<c:if test="${myinfo_DTO.cash == null}">0</c:if>
-					   	<c:if test="${myinfo_DTO.cash != null}">${myinfo_DTO.cash}</c:if>
+	 					<c:if test="${myinfo_DTO.delete_cash == null}">0</c:if>
+					   	<c:if test="${myinfo_DTO.delete_cash != null}">${myinfo_DTO.delete_cash}</c:if>
 				</td>
 			</tr>
 		</table>

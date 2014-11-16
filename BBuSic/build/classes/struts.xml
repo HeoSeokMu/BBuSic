@@ -103,12 +103,23 @@
 		</action>
 		
 		<action name="buyPayment_SendEmailForm" class="payment.action.buyPayment_SendEmailFormAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/payment/buyPayment_confirm.jsp</result>
 		</action>
 		<action name="buyPayment_SendEmail" class="payment.action.buyPayment_SendEmailAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/payment/buyPayment_confirm.jsp</result>
+		</action>
+		<action name="buyPamentUpdate" class="payment.action.buyPamentUpdate">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/payment/buyPament_Update.jsp</result>
 		</action>
 	</package>	
 		
