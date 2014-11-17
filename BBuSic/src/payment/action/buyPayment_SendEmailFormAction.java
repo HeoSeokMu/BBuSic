@@ -17,11 +17,12 @@ public class buyPayment_SendEmailFormAction implements Action, Preparable, Model
 		
 		System.out.println("buyPayment_SendEmailFormAction =============");
 		System.out.println("buy_id : "+ buyInfo.getBuy_id());
-		System.out.println("pay_name : "+buyInfo.getBuy_id());
+		System.out.println("pay_name : "+buyInfo.getPay_name());
 		System.out.println("pay_benefit : "+buyInfo.getPayment());
 		System.out.println("amount : "+buyInfo.getAmount());
 		System.out.println("payment : "+buyInfo.getPayment());
 		System.out.println("buy_option : "+buyInfo.getBuy_option());
+		System.out.println("download_count : "+buyInfo.getDownload_count());
 		return SUCCESS;
 	}
 

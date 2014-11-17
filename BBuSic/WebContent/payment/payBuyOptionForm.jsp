@@ -181,7 +181,10 @@
 					form.payment.value = Cash_In + Add_Money;
 				}
 			}
-		
+			function bbusic_main() {
+				document.bbu.action = "bbusic.action";
+				document.bbu.submit();
+			}
 		</script>
 	</head>
 	
@@ -210,7 +213,10 @@
 				</div>
 				<div id="header_2">
 					<center>
-						<a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+						<form name="bbu" method="post">
+							<input type="hidden" name="id" value="${session.memId}"/>
+							<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+						</form>
 					</center>
 				</div>
 			</div>
@@ -389,6 +395,7 @@
 							<input type="hidden" name="delete_cash" value="${delete_cash}"/>
 							<input type="hidden" name="payment" value="0"/>
 							<input type="hidden" name="cash_use" value="0"/>
+							<input type="hidden" name="download_count" value="${download_count}"/>
 							<br></br>
 							<input type="submit" class="button03" value="결제하기"/>
 							<input type="button" class="button03" value="취소하기" onclick="javascript:window.history.go(-1) return false;"/>

@@ -1,12 +1,15 @@
-﻿<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>뿌숑뮤직</title>
-	<link rel="stylesheet" href="css/Mainpage_Frame.css"></link>
+	<title>뿌숑뮤직 캐쉬구매</title>
+	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+	<link rel="stylesheet" href="css/button.css"></link>
+	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/header_jquery.js"></script>
 	
@@ -18,7 +21,6 @@
 				return false;
 			}
 		}
-		
 		function bbusic_main() {
 			document.bbu.action = "bbusic.action";
 			document.bbu.submit();
@@ -59,14 +61,21 @@
 			</div>
 		</div>
 	</div>
-
+		
 	<div id="box">
 		<div id="box2">
-	    	<div id="content"> 2번 </div>
-<!--    	<div id="box2_2"> 3번 </div>  -->
+	    	<div id="content">
+	    		<center>
+		    		<h1>상품이 정상적으로 구매되었습니다.</h1><br/>
+	    			<form name="bbusic_submit" method="post" action="bbusic.action">
+	    				<input type="hidden" name="id" value="${session.memId}"/>
+	    				<input type="submit" class="button03" value="메인으로 "/>
+	    			</form>
+				</center>
+	    		<br/><br/>
+	   		</div>
 		</div>
-		<div id="box3"> <jsp:include page="/member/loginForm.jsp"/></div>
-		<div id="box4"> 5번 </div>
+		<div id="box3"> 5번 </div>
 	</div>
 </body>
 </html>

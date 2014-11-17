@@ -39,6 +39,7 @@ public class buyPayment_SendEmailAction implements Action, Preparable, ModelDriv
 		System.out.println("benefit : "+buyinfo.getPay_benefit());
 		System.out.println("amount : "+buyinfo.getAmount());
 		System.out.println("buy_option : "+buyinfo.getBuy_option());
+		System.out.println("download_count : "+buyinfo.getDownload_count());
 		
 		System.out.println("email : "+email);
 		

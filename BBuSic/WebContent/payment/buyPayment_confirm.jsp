@@ -71,6 +71,11 @@
 				return false;
 			}
 		}
+		
+		function bbusic_main() {
+			document.bbu.action = "bbusic.action";
+			document.bbu.submit();
+		}
 	</script>
 </head>
 
@@ -99,7 +104,10 @@
 				</div>
 				<div id="header_2">
 					<center>
-						<a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+						<form name="bbu" method="post">
+							<input type="hidden" name="id" value="${session.memId}"/>
+							<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+						</form>
 					</center>
 				</div>
 			</div>
@@ -165,23 +173,27 @@
 									<input type="text" name="confirmNumber" size="20" maxlength="15" placeholder="인증번호를 입력해주세요"/>
 									<input type="hidden" name="cash_in" value="${cash_in}"/>
 									<input type="hidden" name="pay_benefit" value="${pay_benefit}"/>
+									<input type="hidden" name="download_count" value="${download_count}"/>
+									<input type="hidden" name="delete_cash" value="${delete_cash}"/>
 									<input type="button" value="인증하기" onclick="return checkConfirm(this.form)"/>
 								</td>
 							</tr>
 						</table>
 					</form>
 					<br/>
-					<form method="post" action="buyPamentUpdate.action" name="myform" onsubmit="return checkNum();">
-						<input type="text" name="buy_id" value="${buy_id}"/>
-						<input type="text" name="pay_name" value="${pay_name}"/>
-						<input type="text" name="pay_benefit" value="${pay_benefit}"/>
-						<input type="text" name="amount" value="${amount}"/>
-						<input type="text" name="payment" value="${payment}"/>
-						<input type="text" name="buy_option" value="${buy_option}"/>
+					<form method="post" action="buyPaymentUpdate.action" name="myform" onsubmit="return checkNum();">
+						<input type="hidden" name="buy_id" value="${buy_id}"/>
+						<input type="hidden" name="pay_name" value="${pay_name}"/>
+						<input type="hidden" name="pay_benefit" value="${pay_benefit}"/>
+						<input type="hidden" name="amount" value="${amount}"/>
+						<input type="hidden" name="payment" value="${payment}"/>
+						<input type="hidden" name="buy_option" value="${buy_option}"/>
 						<c:if test="${cash_in > 0}">
-							<input type="text" name="content" value="상품구매"/>
+							<input type="hidden" name="content" value="상품구매"/>
 						</c:if>
-						<input type="text" name="cash_in" value="${cash_in}"/>
+						<input type="hidden" name="cash_in" value="${cash_in}"/>
+						<input type="hidden" name="download_count" value="${download_count}"/>
+						<input type="hidden" name="delete_cash" value="${delete_cash}"/>
 						<input type="submit" class="next" name="confirm" value="인증완료"/>
 					</form>
 				</center>

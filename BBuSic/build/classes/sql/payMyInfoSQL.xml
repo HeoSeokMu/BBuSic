@@ -19,5 +19,6 @@
 			WHERE mem.id = #id# and cash.cash_id = #id# and buy.buy_id = #id#
 			GROUP BY mem.id, cash.delete_cash, cash.cashuse_date, buy.delete_payname, buy.delete_paybenefit, buy.download_count
 			HAVING max(cash.cashuse_date) = (select max(cash.cashuse_date) from bbu_cashuse cash where cash.cash_id = #id#)
+			   AND max(buy.settlement_date) = (select max(buy.settlement_date) from bbu_buyinfo buy where buy.buy_id = #id#)
 		</select>
 </sqlMap>

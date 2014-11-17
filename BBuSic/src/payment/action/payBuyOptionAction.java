@@ -22,6 +22,7 @@ public class payBuyOptionAction implements Action, Preparable, ModelDriven, BBuS
 		System.out.println("pay_benefit : " + payDTO.getPay_benefit());
 		System.out.println("amount : " + payDTO.getAmount());
 		System.out.println("sale : " + payDTO.getSale());
+		System.out.println("download_count : " + payDTO.getDownload_count());
 		
 		if(buy_id.equals(" ") || buy_id != null) {
 			delete_cash = (int)sqlMapper.queryForObject("payment_cash.selectCash_use", buy_id);
