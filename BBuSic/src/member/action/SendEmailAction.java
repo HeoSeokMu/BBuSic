@@ -12,14 +12,16 @@ import javax.mail.internet.*;
 import member.DTO.MemberDTO;
 
 public class SendEmailAction implements Action, ModelDriven, Preparable{
+	private String date;
 	private String check;
+	private String category;
 	MemberDTO mDTO;
 	private int num= (int) (Math.random()*8999)+1000;
 	private String host = "smtp.gmail.com";//smtp 서버
 	private String from = "BBuSic.com";
 	private String fromName = "BBUSIC";
 	private String to1;										//*보낼 이메일
-	private String subject = "이메일 인증메일 입니다.";			//*제목
+	private String subject = "[BBUSIC] 인증번호를 알려드립니다";			//*제목
 	private String body="본인 인증 번호는 : "+ num +"입니다.";		//*내용
 	
 	public String execute() throws Exception {
@@ -39,7 +41,7 @@ public class SendEmailAction implements Action, ModelDriven, Preparable{
 		Session mailSession = Session.getInstance(props,
 			  new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("ahnmyeongg", "alexgon1");
+					return new PasswordAuthentication("wjdwlsdlfody1", "ahfmrpT3");
 				}
 			  });
 
@@ -56,13 +58,17 @@ public class SendEmailAction implements Action, ModelDriven, Preparable{
 		} catch ( MessagingException ex ) {
 		    System.out.print("메일 발송에 실패 하였습니다.");
 		    ex.printStackTrace();
-		} catch ( Exception e ) {
+		} catch ( Exception e ){
 			System.out.print("메일 발송에 실패 하였습니다.");
 			e.printStackTrace();
 		}
-		
-		System.out.println("인증번호 : "+num);
-		return SUCCESS;
+		System.out.println("category : "+ category);
+		System.out.println("인증번호 : "+num );
+		if(category.equals("confirm")){
+			return "confirm";
+		}else{
+			return "resetPasswd";
+		}
 	}
 
 	public void prepare() throws Exception {
@@ -79,5 +85,17 @@ public class SendEmailAction implements Action, ModelDriven, Preparable{
 	
 	public String getCheck(){
 		return check;
+	}
+		
+	public void setCategory(String category){
+		this.category = category;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

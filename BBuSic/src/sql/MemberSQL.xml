@@ -24,6 +24,10 @@
 			<result property="nickname" column="nickname"/>
 		</resultMap>
 		
+		<resultMap class="member" id="memberEmail">
+			<result property="email" column="email"/>
+		</resultMap>
+		
 		<resultMap class="member" id="memberRegdate">
 			<result property="id" column="id"/>
 			<result property="regdate" column="regdate"/>
@@ -71,6 +75,10 @@
 			SELECT nickname FROM bbu_member
 		</select>
 		
+		<select id="selectEmail" resultMap="memberEmail">
+			SELECT email FROM bbu_member
+		</select>
+		
 		<select id="findID" resultMap="memberRegdate" parameterClass="member">
 			SELECT id, regdate FROM bbu_member
 			WHERE name = #name# AND email = #email#
@@ -112,6 +120,11 @@
 		<update id="updatePasswd" parameterClass="member">
     		UPDATE bbu_member SET NICKNAME = #nickname#,
                      		     EMAIL = #email#
+			<include refid="where-id" />
+		</update>
+		
+		<update id="resetPasswd" parameterClass="member">
+    		UPDATE bbu_member SET PASSWD = #passwd#
 			<include refid="where-id" />
 		</update>
 		

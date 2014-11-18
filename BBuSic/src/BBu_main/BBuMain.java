@@ -17,8 +17,6 @@ public class BBuMain implements Action, BBuSicAware{
 		System.out.println("id : "+(id != null));
 		if(id != null) {
 			myinfo_DTO = new payMyInfo_DTO();
-			System.out.println(sqlMapper);
-			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
 			/*
 			System.out.println("myinfoID : "+myinfo_DTO.getId());
 			System.out.println("myinfoCash : "+myinfo_DTO.getCash());

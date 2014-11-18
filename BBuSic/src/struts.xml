@@ -185,6 +185,11 @@
 			<interceptor-ref name="params"/>
 			<result>/member/confirmNick.jsp</result>
 		</action>
+		<action name="confirmEmail" class="member.action.ConfirmEmailAction">
+			<interceptor-ref name="DB"/>
+			<interceptor-ref name="params"/>
+			<result>/member/confirmEmail.jsp</result>
+		</action>
 		
 		<action name="deleteForm" class="member.action.DeleteFormAction">
 			<interceptor-ref name="servletConfig"/>
@@ -234,14 +239,18 @@
 		</action>
 		
 		<action name="sendEmail" class="member.action.SendEmailAction">
-			<result>/member/confirm.jsp</result>
+			<result name="confirm">/member/confirm.jsp</result>
+			<result name="resetPasswd">/member/resetPasswdPro.jsp</result>	
 		</action>
 		<action name="sendID" class="member.action.SendIdAction">
 			<result>/member/findIdPro.jsp</result>
 		</action>
 		
+		<action name="resetPasswd" class="member.action.resetPasswdAction">
+			<result>/member/resetPasswd.jsp</result>
+		</action>
 		<action name="resetPasswdForm" class="member.action.resetPasswdFormAction">
-			<result>/member/"resetPasswdForm".jsp</result>
+			<result>/member/resetPasswdForm.jsp</result>
 		</action>
 		<action name="resetPasswdPro" class="member.action.resetPasswdProAction">
 			<interceptor-ref name="DB"/>
@@ -250,9 +259,19 @@
 			<interceptor-ref name="params"/>
 			<result>/member/resetPasswdPro.jsp</result>
 		</action>
-		<action name="test" class="member.action.testAction">
-			<result>/member/test.jsp</result>
-		</action>		
+		<action name="resetPasswdFinish" class="member.action.resetPasswdFinishAction">
+			<interceptor-ref name="DB"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/member/resetPasswd.jsp</result>
+		</action>
+		
+		<action name="memberList" class="member.action.MemberListAction">
+			<interceptor-ref name="DB"/>
+			<interceptor-ref name="params"/>
+			<result>/member/memberList.jsp</result>
+		</action>	
 	</package>
 	
 	<!-- 안명곤 작업 -->

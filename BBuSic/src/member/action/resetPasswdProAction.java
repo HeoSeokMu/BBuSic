@@ -11,19 +11,17 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
 public class resetPasswdProAction implements Action, MemberAware, Preparable, ModelDriven{
-	Date Ddate;
 	String date;
+	String Sdate;
 	MemberDTO mDTO;
 	private SqlMapClient sqlMapper;
 	java.sql.Timestamp t;
+	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public String execute() throws Exception {
-		System.out.println(mDTO.getEmail());
-		System.out.println(mDTO.getId());
-		System.out.println(mDTO.getName());
-		date = (String) sqlMapper.queryForObject("member.resetPw", mDTO);
-		System.out.println(date);
+		Sdate = (String) sqlMapper.queryForObject("member.resetPw", mDTO);
+		t = java.sql.Timestamp.valueOf(Sdate);
 		date = sdf.format(t);
 		return SUCCESS;
 	}

@@ -44,7 +44,7 @@ public class SendIdAction implements Action, ModelDriven, Preparable {
 		Session mailSession = Session.getInstance(props,
 			  new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("ahnmyeongg", "alexgon1");
+					return new PasswordAuthentication("wjdwlsdlfody1", "ahfmrpT3");
 				}
 			  });
 
