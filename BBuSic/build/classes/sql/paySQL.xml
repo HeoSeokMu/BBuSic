@@ -12,6 +12,7 @@
 		<result property="amount" column="amount" />		<!-- property는 set메서드 column은 db의 컬럼 -->
 		<result property="day30amount" column="day30amount" />
 		<result property="sale" column="sale" />
+		<result property="download_count" column="download_count" />
 	</resultMap>
 	
 	<resultMap id="payRes_category" class="payDTO">
@@ -37,7 +38,8 @@
 			PAY_BENEFIT,
 			AMOUNT,
 			DAY30AMOUNT,
-			SALE
+			SALE,
+			DOWNLOAD_COUNT
 		)
 		VALUES (
 			#category#,
@@ -45,7 +47,8 @@
 			#pay_benefit#,
 			#amount#,
 			#day30amount#,
-			#sale#
+			#sale#,
+			#download_count#
 		)
 	</insert>
 

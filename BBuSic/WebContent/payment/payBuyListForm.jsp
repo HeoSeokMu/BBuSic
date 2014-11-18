@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>뿌숑뮤직 상품구매</title>
 		<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
 		<link rel="stylesheet" href="css/popup_login.css"></link>
 		<link rel="stylesheet" href="css/button.css"></link>
@@ -16,11 +16,11 @@
 		<script src="js/header_jquery.js"></script>
 		
 		<script type="text/javascript">
-			function buy(name, benefit, amount, sale) {
+			function buy(name, benefit, amount, sale, download_count, buy_id, buy_type) {
 				if(${session.memId != null}) {
 					
 					window.location = "payBuyOption.action?pay_name="+name+"&pay_benefit="+benefit+
-									  "&amount="+amount+"&sale="+sale;
+									  "&amount="+amount+"&sale="+sale+"&download_count="+download_count+"&buy_id="+buy_id+"&buy_type="+buy_type;
 					
 				} else {
 					jQuery(function($) {
@@ -86,6 +86,11 @@
 					return false;
 				}
 			}
+			
+			function bbusic_main() {
+				document.bbu.action = "bbusic.action";
+				document.bbu.submit();
+			}
 		</script>
 	</head>
 	
@@ -114,7 +119,10 @@
 				</div>
 				<div id="header_2">
 					<center>
-						<a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+						<form name="bbu" method="post">
+							<input type="hidden" name="id" value="${session.memId}"/>
+							<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+						</form>
 					</center>
 				</div>
 			</div>
@@ -135,8 +143,8 @@
 								<fmt:formatNumber value="${pay.day30amount}"/>
 							</td>
 							<td>
-				 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}')"/><br/>
-								<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}')"/>
+				 				<input type="button" value="구매" class="button01" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.amount}', '${pay.sale}', '${pay.download_count}','${session.memId}', 'regular')"/><br/>
+								<input type="button" value="구매" class="button02" onclick="buy('${pay.pay_name}', '${pay.pay_benefit}', '${pay.day30amount}', '${pay.sale}', '${pay.download_count}', '${session.memId}', 'buy')"/>
 								<input type="button" value="선물" class="button02" onclick=""/>
 							</td>
 						</tr>

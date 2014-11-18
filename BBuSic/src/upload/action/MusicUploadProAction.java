@@ -43,7 +43,7 @@ public class MusicUploadProAction extends ActionSupport{
 	private File uploadImage;
 	private String uploadImageContentType;
 	private String uploadImageFileName;
-	private String fileUploadPath="D:/upload/";
+	private String fileUploadPath="D:/hyosung/eclipse/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BBuSic/upload/";
 		
 	// »ý¼ºÀÚ
 	public MusicUploadProAction() throws IOException {

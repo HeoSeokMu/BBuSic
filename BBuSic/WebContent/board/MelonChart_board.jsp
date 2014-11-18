@@ -2,7 +2,6 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
 <script type="text/javascript">
 	function checkAll(checkFlag, blockCount){
 		var f = document.chartForm;
@@ -56,7 +55,7 @@
 			params = "chkNo="+a;
 		}
 		open("Chart_BoardAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400");
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
 	
 	/* 다운로드 스크립트 */

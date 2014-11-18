@@ -1,51 +1,115 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ include file="/view/color.jspf"%>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head><title>회원탈퇴</title>
-<link href="style.css" rel="stylesheet" type="text/css">
 
-   <script language="javascript">
-	function begin(){
-		document.myform.passwd.focus();
-	}
-		
-	function checkIt(){
-		if(!document.myform.passwd.value){
-			alert("비밀번호를 입력하지 않으셨습니다.");
-			document.myform.passwd.focus();
-			return false;
-		}
-		if(document.myform.passwd.value != ${passwd}){
-			alert("비밀번호가 다릅니다.");
-			document.myform.passwd.focus();
-			return false;
-		}
-	}
-
-   </script>
+<head>
+<title>뿌숑뮤직 메인</title>
+	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/header_jquery.js"></script>
 </head>
-<BODY onload="begin()">
-<form name="myform" action="deletePro.action" method="post" onSubmit="return checkIt()">
-<TABLE cellSpacing=1 cellPadding=1 width="260" border=1 align="center" >
-  
-  <TR height="30">
-    <TD colspan="2" align="middle" bgcolor="${title_c}">
-	  <font size="+1" ><b>회원 탈퇴</b></font></TD></TR>
-  
-  <TR height="30">
-    <TD width="110" bgcolor="${value_c}" align=center>비밀번호</TD>
-    <TD width="150" align=center>
-      <INPUT type=password name="passwd" size="15" maxlength="12"></TD></TR>
-  <TR height="30">
-    <TD colspan="2" align="middle" bgcolor="${value_c}" >
-      <INPUT type=submit value="회원탈퇴"> 
-      <input type="button" value="취  소" onclick="javascript:window.location='loginForm.action'"></TD></TR>
-</TABLE>
-</form>
-</BODY>
-</HTML>
+
+<script type="text/javascript">
+function begin(){
+	document.myform.passwd.focus();
+}
+	
+function checkIt(){
+	if(!document.myform.passwd.value){
+		alert("비밀번호를 입력하지 않으셨습니다.");
+		document.myform.passwd.focus();
+		return false;
+	}
+	if(document.myform.passwd.value != ${passwd}){
+		alert("비밀번호가 다릅니다.");
+		document.myform.passwd.focus();
+		return false;
+	}
+}
+
+function idCheck() {
+	if(${session.memId == null}) {
+		alert("로그인을 해주세요");
+		window.location = "bbusic.action";
+		return false;
+	}
+}
+function bbusic_main() {
+    document.bbu.action = "bbusic.action";
+    document.bbu.submit();
+ }
+</script>
+<style type="text/css">
+	.next{
+		background-color:#7eb813;
+		color:#ffffff;
+		border:1px #dddddd dashed;
+		width:70px;
+		height:40px;
+		text-align:center;
+		padding:3px;
+</style>
+
+<body style="overflow: hidden;">
+	<div id="box">
+      <div id="header">
+         <div id="header_1">
+            <ul class="menu">
+               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+   
+               <li><a href="GenreChartBoard.action?category=genre"><img src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+                  <ul class="sub">
+                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+                  <ul class="sub">
+                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+         <div id="header_2">
+            <center>
+               <form name="bbu" method="post">
+                  <input type="hidden" name="id" value="${session.memId}"/>
+                  <a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+               </form>
+            </center>
+         </div>
+      </div>
+   </div>
+
+	<div id="box">
+		<div id="box2">
+			<div id="content">				
+				<center>
+				<TABLE cellSpacing=1 cellPadding=1 width="260" border=1 align="center" rules="none">
+					<form name="myform" action="deletePro.action" method="post" onSubmit="return checkIt()">				  
+						  <TR height="30">
+						    <TD colspan="2" align="middle" bgcolor="${title_c}">
+							  <font size="+1" ><b>회원 탈퇴</b></font></TD></TR>
+						  
+						  <TR height="30">
+						    <TD width="110" bgcolor="${value_c}" align=center>비밀번호</TD>
+						    <TD width="150" align=center>
+						      <INPUT type=password name="passwd" size="15" maxlength="12"></TD></TR>
+						  <TR height="30">
+						    <TD colspan="2" align="middle" bgcolor="${value_c}" >
+						      <INPUT type=submit value="회원탈퇴"> 
+						      <input type="button" value="취  소" onclick="javascript:window.location='loginForm.action'"></TD></TR>		
+						</form>
+					</TABLE>
+				</center>
+			</div>
+		</div>
+		<div id="box3"> 5번 </div>
+	</div>
+</body>
+</html>

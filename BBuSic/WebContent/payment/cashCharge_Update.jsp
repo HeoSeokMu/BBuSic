@@ -6,8 +6,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Insert title here</title>
+	<title>뿌숑뮤직 캐쉬구매</title>
 	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+	<link rel="stylesheet" href="css/button.css"></link>
+	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/header_jquery.js"></script>
 	
@@ -18,6 +20,10 @@
 				window.location = "bbusic.action";
 				return false;
 			}
+		}
+		function bbusic_main() {
+			document.bbu.action = "bbusic.action";
+			document.bbu.submit();
 		}
 	</script>
 </head>
@@ -47,7 +53,10 @@
 			</div>
 			<div id="header_2">
 				<center>
-					<a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+					<form name="bbu" method="post">
+						<input type="hidden" name="id" value="${session.memId}"/>
+						<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+					</form>
 				</center>
 			</div>
 		</div>
@@ -57,11 +66,11 @@
 		<div id="box2">
 	    	<div id="content">
 	    		<center>
-		    		<h1>
-		    			캐쉬가 정상적으로 충전되었습니다.<br/>
-		    			5초뒤 메인으로 이동됩니다.
-		    		</h1>
-					<meta http-equiv="Refresh" content="5;url=bbusic.action">
+		    		<h1>캐쉬가 정상적으로 충전되었습니다.</h1><br/>
+	    			<form name="bbusic_submit" method="post" action="bbusic.action">
+	    				<input type="hidden" name="id" value="${session.memId}"/>
+	    				<input type="submit" class="button03" value="메인으로"/>
+	    			</form>
 				</center>
 	    		<br/><br/>
 	   		</div>

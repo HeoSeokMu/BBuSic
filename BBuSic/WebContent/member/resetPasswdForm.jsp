@@ -48,6 +48,10 @@
 			return false;
 		}
 	}
+	function bbusic_main() {
+        document.bbu.action = "bbusic.action";
+        document.bbu.submit();
+     }
 </script>
 
 <body style="overflow: hidden;">
@@ -75,7 +79,10 @@
          </div>
          <div id="header_2">
             <center>
-               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+               <form name="bbu" method="post">
+                  <input type="hidden" name="id" value="${session.memId}"/>
+                  <a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+               </form>
             </center>
          </div>
       </div>

@@ -10,6 +10,10 @@ public class buyInfo_DTO {
 	private int payment;
 	private Date settlement_date;
 	private Date expiration_date;
+	private String delete_payname;
+	private String delete_paybenefit;
+	private int amount;
+	private String buy_option;
 	
 	public String getBuy_id() {
 		return buy_id;
@@ -52,5 +56,29 @@ public class buyInfo_DTO {
 	}
 	public void setPayment(int payment) {
 		this.payment = payment;
+	}
+	public String getDelete_payname() {
+		return delete_payname;
+	}
+	public void setDelete_payname(String delete_payname) {
+		this.delete_payname = delete_payname;
+	}
+	public String getDelete_paybenefit() {
+		return delete_paybenefit;
+	}
+	public void setDelete_paybenefit(String delete_paybenefit) {
+		this.delete_paybenefit = delete_paybenefit;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public String getBuy_option() {
+		return buy_option;
+	}
+	public void setBuy_option(String buy_option) {
+		this.buy_option = buy_option;
 	}
 }

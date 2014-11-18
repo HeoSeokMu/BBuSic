@@ -28,7 +28,10 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 		// 유효기간 설정
 		Calendar date = Calendar.getInstance();
 		date.set(Calendar.MONTH, date.get(Calendar.MONTH));
-		date.set(Calendar.DATE, date.getActualMaximum(Calendar.DATE));
+		date.set(Calendar.DATE, date.getActualMaximum(Calendar.DATE)+1);
+		date.set(Calendar.HOUR, 0);
+		date.set(Calendar.MINUTE, 0);
+		date.set(Calendar.SECOND, 0);
 		Date expirationDate = date.getTime();
 		
 		// 캐쉬 충전일자
