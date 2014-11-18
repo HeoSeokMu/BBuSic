@@ -10,6 +10,15 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/header_jquery.js"></script>
 </head>
+<script type="text/javascript">
+		function idCheck() {
+			if(${session.memId == null}) {
+				alert("로그인을 해주세요");
+				window.location = "bbusic.action";
+				return false;
+			}
+		}
+	</script>
 
 <style type="text/css">
 	.next{

@@ -39,6 +39,7 @@
 	<sqlMap resource="/sql/musicSQL.xml"/>
 	<sqlMap resource="/sql/MemberSQL.xml"/>
 	<sqlMap resource="/sql/RecordSQL.xml"/>
+	<sqlMap resource="/sql/MemListSQL.xml"/>
 	<!--
 		Ex)
 		<sqlMap resource="/sql/boardSQL.xml"/> 

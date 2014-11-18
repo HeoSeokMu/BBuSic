@@ -47,10 +47,16 @@ function checkNum(){
 function checkCK(){
 	if("${check}" == "check"){
 		alert("이메일을 발송했습니다. 인증번호를 기입해주세요.");
-		return false;
 	}
 }
 
+function idCheck() {
+	if(${session.memId == null}) {
+		alert("로그인을 해주세요");
+		window.location = "bbusic.action";
+		return false;
+	}
+}
 </script>
 <style type="text/css">
 	.next{
@@ -63,7 +69,7 @@ function checkCK(){
 		padding:3px;
 </style>
 
-<body style="overflow: hidden;">
+<body style="overflow: hidden;" onload="checkCK()">
 	<div id="box">
       <div id="header">
          <div id="header_1">
@@ -110,6 +116,7 @@ function checkCK(){
 				</table>
 				<br/>
 				<form method="post" action="sendEmail.action" name="userinput" onSubmit="return checkIt()">
+					<input type="hidden" name="category" value="confirm" />
 					<input type="hidden" name="name" value="${name}" />
 					<input type="hidden" name="birth" value="${birth}" />
 					<input type="hidden" name="sex" value="${sex}" />

@@ -14,15 +14,15 @@ public class ConfirmNickAction implements Action, MemberAware{
 	private String nickname;
 	private int check = 0;
 	private List<MemberDTO> list;
-	private List<String> idList = new ArrayList<String>();
+	private List<String> nickList = new ArrayList<String>();
 	
 	public String execute() throws Exception {
 		list = sqlMapper.queryForList("member.selectNick");
 		for(MemberDTO dt : list) {
-			idList.add(dt.getNickname());
+			nickList.add(dt.getNickname());
 		}
 		
-		if(idList.contains(nickname)){
+		if(nickList.contains(nickname)){
 			check = 1;	//중복된 닉네임이 있는경우
 		}else{
 			check = 0;	//중복된 닉네임이 없는경우

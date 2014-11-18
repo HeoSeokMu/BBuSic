@@ -32,6 +32,13 @@
 			}
 		}
 		
+		function idCheck() {
+			if(${session.memId == null}) {
+				alert("로그인을 해주세요");
+				window.location = "bbusic.action";
+				return false;
+			}
+		}
 	</script>
 <style type="text/css">
 	.next{

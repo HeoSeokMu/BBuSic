@@ -11,6 +11,14 @@
 	<script src="js/header_jquery.js"></script>
 </head>
 <script language="JavaScript">
+function idChecked() {
+	if(${session.memId == null}) {
+		alert("로그인을 해주세요");
+		window.location = "bbusic.action";
+		return false;
+	}
+}
+
 function checkIt() {	
 	var userinput = eval("document.userinput");
 	userinput.birth.value=userinput.year.value +"/"+ userinput.month.value +"/"+ userinput.date.value;
@@ -49,6 +57,10 @@ function checkIt() {
 		return false;
 	}
 	
+	if(userinput.email_check.value != "check"){
+		alert("이메일 중복체크를 해주세요");
+		return false;
+	}
 	if(userinput.id_check.value != "check"){
 		alert("아이디 중복체크를 해주세요");
 		return false;
@@ -68,6 +80,12 @@ function idCheck(){
 function nickCheck(){
 	if(document.userinput.nick_check.value == "check") {
 		document.userinput.nick_check.value = "no";
+	}
+}
+
+function emailCheck(){
+	if(document.userinput.email_check.value == "check") {
+		document.userinput.email_check.value = "no";
 	}
 }
 
@@ -94,7 +112,7 @@ function nickCheck(){
  
  function openConfirmNick(userinput) {
         // 아이디를 입력했는지 검사
-        if (userinput.id.value == "") {
+        if (userinput.nickname.value == "") {
             alert("닉네임을 입력하세요");
             return;
         }
@@ -106,6 +124,26 @@ function nickCheck(){
         open(url, "confirmNick", 
         "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
     }
+ 
+ function openConfirmEmail(userinput) {
+	 mailform = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+     // 아이디를 입력했는지 검사
+     if (userinput.email.value == "") {
+         alert("이메일을 입력하세요");
+         return;
+     }
+     
+     if(!mailform.test(userinput.email.value)){
+         alert("이메일이 형식에 맞지 않습니다..");
+         return false;
+      }
+     // url과 사용자 입력 id를 조합합니다.
+     url = "/BBuSic/confirmEmail.action?email=" + userinput.email.value;
+     
+     // 새로운 윈도우를 엽니다.
+     open(url, "confirmEmail", 
+     "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+ }
 	</script>
 <style type="text/css">
 	.next{
@@ -136,7 +174,7 @@ function nickCheck(){
                   <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
                   <ul class="sub">
                      <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
-                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idChecked();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
                   </ul>
                </li>
             </ul>
@@ -196,13 +234,15 @@ function nickCheck(){
 				<tr>
 					<td width="200" align="left">이메일</td>
 					<td width="400" align="left">
-						<input type="text" name="email" size="40" maxlength="30"/>
+						<input type="text" name="email" size="40" maxlength="30" onkeydown="emailCheck()"/>
+						<input type="button" name="confirm_email" value="중복체크" OnClick="return openConfirmEmail(this.form)"/>
+						<input type="hidden" name="email_check" value = "no"/>
 					</td>
 				</tr>
 				<tr>
 					<td width="200" align="left">아이디</td>
 					<td width="400" align="left">
-						<input type="text" name="id" size="20" maxlength="10" onkeydown="idCheck()"/>
+						<input type="text" name="id" size="20" maxlength="14" onkeydown="idCheck()"/>
 						<input type="button" name="confirm_id" value="중복체크" OnClick="return openConfirmid(this.form)"/>
 						<input type="hidden" name="id_check" value = "no"/>
 					</td>
