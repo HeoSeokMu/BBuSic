@@ -10,6 +10,7 @@ public class buyPayment_SendEmailFormAction implements Action, Preparable, Model
 	
 	buyInfo_DTO buyInfo;
 	private int cash_in;
+	private int delete_cash;
 	
 	@Override
 	public String execute() throws Exception {
@@ -43,5 +44,13 @@ public class buyPayment_SendEmailFormAction implements Action, Preparable, Model
 
 	public void setCash_in(int cash_in) {
 		this.cash_in = cash_in;
+	}
+
+	public int getDelete_cash() {
+		return delete_cash;
+	}
+
+	public void setDelete_cash(int delete_cash) {
+		this.delete_cash = delete_cash;
 	}
 }

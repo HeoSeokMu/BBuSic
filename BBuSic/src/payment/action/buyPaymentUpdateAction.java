@@ -30,14 +30,23 @@ public class buyPaymentUpdateAction implements Action, Preparable, ModelDriven, 
 		System.out.println(buy_DTO.getPayment());
 		System.out.println("cash_in : "+cash_in);
 		
-		// 유효기간 설정
-		Calendar date = Calendar.getInstance();
-		date.set(Calendar.MONTH, date.get(Calendar.MONTH));
-		date.set(Calendar.DATE, date.getActualMaximum(Calendar.DATE)+1);
-		date.set(Calendar.HOUR, 0);
-		date.set(Calendar.MINUTE, 0);
-		date.set(Calendar.SECOND, 0);
-		Date expirationDate = date.getTime();
+		// 상품 유효기간 설정
+		Calendar pay_date = Calendar.getInstance();
+		pay_date.set(Calendar.MONTH, pay_date.get(Calendar.MONTH));
+		pay_date.set(Calendar.DATE, pay_date.get(Calendar.DAY_OF_MONTH)+30);
+		pay_date.set(Calendar.HOUR, 0);
+		pay_date.set(Calendar.MINUTE, 0);
+		pay_date.set(Calendar.SECOND, 0);
+		Date pay_expirationDate = pay_date.getTime();
+		
+		// 캐쉬 유효기간 설정
+		Calendar cash_date = Calendar.getInstance();
+		cash_date.set(Calendar.MONTH, cash_date.get(Calendar.MONTH));
+		cash_date.set(Calendar.DATE, cash_date.getActualMaximum(Calendar.DATE)+1);
+		cash_date.set(Calendar.HOUR, 0);
+		cash_date.set(Calendar.MINUTE, 0);
+		cash_date.set(Calendar.SECOND, 0);
+		Date cash_expirationDate = cash_date.getTime();
 		
 		Calendar today = Calendar.getInstance();
 		Date cashuseDate = today.getTime();
@@ -47,7 +56,7 @@ public class buyPaymentUpdateAction implements Action, Preparable, ModelDriven, 
 			cash_DTO.setCash_id(buy_DTO.getBuy_id());
 			cash_DTO.setCashuse_date(cashuseDate);
 			cash_DTO.setContent("상품구매");
-			cash_DTO.setExpiration_date(expirationDate);
+			cash_DTO.setExpiration_date(cash_expirationDate);
 			cash_DTO.setSub_cash(cash_in);
 			cash_DTO.setDelete_cash(delete_cash - cash_in);
 			sqlMapper.update("payment_cash.updateChargeCash_delete", cash_DTO);
@@ -58,14 +67,14 @@ public class buyPaymentUpdateAction implements Action, Preparable, ModelDriven, 
 		buy_DTO.setDelete_payname(buy_DTO.getPay_name());
 		buy_DTO.setDelete_paybenefit(buy_DTO.getPay_benefit());
 		buy_DTO.setSettlement_date(cashuseDate);
-		buy_DTO.setExpiration_date(expirationDate);
+		buy_DTO.setExpiration_date(pay_expirationDate);
 		sqlMapper.insert("payment_buy.insertBuyInfo", buy_DTO);
 		
-		long l =  expirationDate.getTime() - cashuseDate.getTime();
+		long l =  pay_expirationDate.getTime() - cashuseDate.getTime();
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		System.out.println("날짜 : " + sdf.format(cashuseDate));
-		System.out.println("유효기간 : " + sdf.format(expirationDate));
+		System.out.println("유효기간 : " + sdf.format(pay_expirationDate));
 		
 		//long minute = (l / 1000) / 60; 	// 분
 		//long hour = (l / 1000) / (60*60); // 시간

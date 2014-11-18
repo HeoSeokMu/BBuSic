@@ -23,6 +23,7 @@ public class buyPayment_SendEmailAction implements Action, Preparable, ModelDriv
 	
 	buyInfo_DTO buyinfo;
 	private int cash_in;
+	private int delete_cash;
 	
 	private int num= (int) (Math.random()*8999)+1000;
 	private String host = "smtp.gmail.com";//smtp ¼­¹ö
@@ -129,5 +130,13 @@ public class buyPayment_SendEmailAction implements Action, Preparable, ModelDriv
 
 	public void setCash_in(int cash_in) {
 		this.cash_in = cash_in;
+	}
+
+	public int getDelete_cash() {
+		return delete_cash;
+	}
+
+	public void setDelete_cash(int delete_cash) {
+		this.delete_cash = delete_cash;
 	}
 }

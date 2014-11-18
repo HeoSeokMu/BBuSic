@@ -122,7 +122,7 @@
 			<div id="box2">
 				<div id="content">
 		    		<c:if test="${session.memId != null}">
-						<form name="cashCharge" action="buy_SendEmailForm.action" method="post" onsubmit="return money_Check();">
+						<form name="cashCharge" action="buyCash_SendEmailForm.action" method="post" onsubmit="return money_Check();">
 							<br/><br/>
 							<table border="1">
 								<tr>

@@ -25,6 +25,10 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 		System.out.println(cash_DTO.getDelete_cash());
 		System.out.println(cash_DTO.getContent());
 		
+		// 캐쉬 충전일자
+		Calendar today = Calendar.getInstance();
+		Date cashuseDate = today.getTime();
+				
 		// 유효기간 설정
 		Calendar date = Calendar.getInstance();
 		date.set(Calendar.MONTH, date.get(Calendar.MONTH));
@@ -34,13 +38,9 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 		date.set(Calendar.SECOND, 0);
 		Date expirationDate = date.getTime();
 		
-		// 캐쉬 충전일자
-		Calendar today = Calendar.getInstance();
-		Date cashuseDate = today.getTime();
-		
 		long l =  expirationDate.getTime() - cashuseDate.getTime();
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		System.out.println("날짜 : " + sdf.format(cashuseDate));
 		System.out.println("유효기간 : " + sdf.format(expirationDate));
 		

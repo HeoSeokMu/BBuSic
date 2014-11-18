@@ -194,6 +194,7 @@
 						<input type="hidden" name="cash_in" value="${cash_in}"/>
 						<input type="hidden" name="download_count" value="${download_count}"/>
 						<input type="hidden" name="delete_cash" value="${delete_cash}"/>
+						<input type="hidden" name="check" value="no"/>
 						<input type="submit" class="next" name="confirm" value="인증완료"/>
 					</form>
 				</center>

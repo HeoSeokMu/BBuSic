@@ -127,7 +127,7 @@
 						</tr>
 					</table>
 					<br/>
-					<form method="post" action="buy_SendEmail.action" name="userinput" onsubmit="return checkIt();">
+					<form method="post" action="buyCash_SendEmail.action" name="userinput" onsubmit="return checkIt();">
 						<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
 							<tr>
 								<td>사용자 아이디</td>
@@ -152,7 +152,7 @@
 									<input type="text" name="email" size="20" maxlength="25" placeholder="이메일을 입력해주세요" value="${email}"/>
 									<input type="submit" name="send" value="인증번호 발송"/><br/>
 									<input type="text" name="confirmNumber" size="20" maxlength="15" placeholder="인증번호를 입력해주세요"/>
-									<input type="button" value="인증하기" onclick="return checkConfirm(this.form)"/>
+									<input type="button" value="인증하기" onclick="return checkConfirm(this.form);"/>
 								</td>
 							</tr>
 						</table>
@@ -163,6 +163,7 @@
 						<input type="hidden" name="money_in" value="${money_in}"/>
 						<input type="hidden" name="content" value="캐쉬충전"/>
 						<input type="hidden" name="delete_cash" value="${delete_cash}"/>
+						<input type="hidden" name="check" value="no"/>
 						<input type="submit" class="next" name="confirm" value="인증완료"/>
 					</form>
 				</center>
