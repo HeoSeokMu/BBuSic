@@ -51,7 +51,7 @@
 			</div>
 			<div id="header_2">
 				<center>
-					<form name="bbu" method="post">
+		<form name="bbu" method="post">
 						<input type="hidden" name="id" value="${session.memId}"/>
 						<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
 					</form>
