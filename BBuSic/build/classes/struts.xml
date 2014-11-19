@@ -9,7 +9,6 @@
 	<constant name="struts.multipart.maxSize" value="20971520" />
 	
 	<package name="bbu_main" extends="struts-default">
-<<<<<<< HEAD
 		<interceptors>
 			<interceptor name="BBuSicInterceptor" class="payment.action.BBuSicInterceptor"/>
 		</interceptors>
@@ -19,12 +18,6 @@
 			<interceptor-ref name="BBuSicInterceptor"/>
 			<interceptor-ref name="params"/>
 			<result>/main/bbu_main.jsp?id</result>
-=======
-		<action name="bbusic" class="BBu_main.BBuMain">
-			<interceptor-ref name="chain"/>
-			<interceptor-ref name="params"/>
-			<result>/main/bbu_main.jsp</result>
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 		</action>
 	</package>
 	
@@ -48,10 +41,7 @@
 		</action>
 		
 		<action name="payBuyOption" class="payment.action.payBuyOptionAction">
-<<<<<<< HEAD
 			<interceptor-ref name="BBuSicInterceptor"/>
-=======
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
@@ -118,16 +108,12 @@
 		</action>
 		
 		<action name="buyPayment_SendEmailForm" class="payment.action.buyPayment_SendEmailFormAction">
-<<<<<<< HEAD
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
-=======
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 			<interceptor-ref name="params"/>
 			<result>/payment/buyPayment_confirm.jsp</result>
 		</action>
 		<action name="buyPayment_SendEmail" class="payment.action.buyPayment_SendEmailAction">
-<<<<<<< HEAD
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
@@ -140,11 +126,6 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/buyPayment_Update.jsp</result>
 		</action>
-=======
-			<interceptor-ref name="params"/>
-			<result>/payment/buyPayment_confirm.jsp</result>
-		</action>
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 	</package>	
 		
 	<!-- 김정진 작업 -->
@@ -204,14 +185,11 @@
 			<interceptor-ref name="params"/>
 			<result>/member/confirmNick.jsp</result>
 		</action>
-<<<<<<< HEAD
 		<action name="confirmEmail" class="member.action.ConfirmEmailAction">
 			<interceptor-ref name="DB"/>
 			<interceptor-ref name="params"/>
 			<result>/member/confirmEmail.jsp</result>
 		</action>
-=======
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 		
 		<action name="deleteForm" class="member.action.DeleteFormAction">
 			<interceptor-ref name="servletConfig"/>
@@ -261,27 +239,18 @@
 		</action>
 		
 		<action name="sendEmail" class="member.action.SendEmailAction">
-<<<<<<< HEAD
 			<result name="confirm">/member/confirm.jsp</result>
 			<result name="resetPasswd">/member/resetPasswdPro.jsp</result>	
-=======
-			<result>/member/confirm.jsp</result>
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 		</action>
 		<action name="sendID" class="member.action.SendIdAction">
 			<result>/member/findIdPro.jsp</result>
 		</action>
 		
-<<<<<<< HEAD
 		<action name="resetPasswd" class="member.action.resetPasswdAction">
 			<result>/member/resetPasswd.jsp</result>
 		</action>
 		<action name="resetPasswdForm" class="member.action.resetPasswdFormAction">
 			<result>/member/resetPasswdForm.jsp</result>
-=======
-		<action name="resetPasswdForm" class="member.action.resetPasswdFormAction">
-			<result>/member/"resetPasswdForm".jsp</result>
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 		</action>
 		<action name="resetPasswdPro" class="member.action.resetPasswdProAction">
 			<interceptor-ref name="DB"/>
@@ -290,7 +259,6 @@
 			<interceptor-ref name="params"/>
 			<result>/member/resetPasswdPro.jsp</result>
 		</action>
-<<<<<<< HEAD
 		<action name="resetPasswdFinish" class="member.action.resetPasswdFinishAction">
 			<interceptor-ref name="DB"/>
 			<interceptor-ref name="prepare"/>
@@ -304,11 +272,6 @@
 			<interceptor-ref name="params"/>
 			<result>/member/memberList.jsp</result>
 		</action>	
-=======
-		<action name="test" class="member.action.testAction">
-			<result>/member/test.jsp</result>
-		</action>		
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 	</package>
 	
 	<!-- 안명곤 작업 -->
@@ -317,11 +280,7 @@
 		<interceptors>
 			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
 		</interceptors>
-<<<<<<< HEAD
-		<action name="Chart_BoardAction" class="board.action.Chart_BoardAction" method="popupEx">
-=======
 		<action name="PopupAction" class="board.action.PopupAction">
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>
@@ -330,11 +289,7 @@
 			<result>/board/MusicListForm.jsp</result>
 		</action>
 		<!-- 팝업 리스트 삭제 -->
-<<<<<<< HEAD
-		<action name="deleteListAction" class="board.action.Chart_BoardAction" method="deleteListAction">
-=======
 		<action name="deleteListAction" class="board.action.PopupAction" method="deleteListAction">
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
@@ -349,8 +304,6 @@
 			<interceptor-ref name="params"/>
 			<result>/board/DownLoadForm.jsp</result>
 		</action>
-<<<<<<< HEAD
-=======
 		<action name="downLoadPayAction" class="download.action.downLoadPayAction">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>
@@ -358,7 +311,6 @@
 			<interceptor-ref name="params"/>
 			<result>/board/downLoadPayForm.jsp</result>
 		</action>
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 		<action name="downloadAction2" class="download.action.downloadAction" method="downLoad">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>

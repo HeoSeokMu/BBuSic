@@ -23,10 +23,7 @@
 		<result property="realname_music" column="realname_music" />
 		<result property="realname_image" column="realname_image" />
 		<result property="minute" column="minute" />
-<<<<<<< HEAD
-=======
 		<result property="price" column="price"/>
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 	</resultMap>
 	
 	<resultMap id="musicSearchRes" class="searchDTO">
@@ -119,11 +116,6 @@
 		<select id="AlbumChk" resultClass="String" parameterClass="String">
 			SELECT album FROM album_info where album = #album#
 		</select>
-<<<<<<< HEAD
-		
-		
-=======
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 	<!-- insert 쿼리문 정의 -->
 	<insert id="insertMusic" parameterClass="musicDTO">
 		INSERT INTO BBU_BOARD (NUM,
@@ -136,12 +128,8 @@
 							HIT,
 							REALNAME_MUSIC,
 							REALNAME_IMAGE,
-<<<<<<< HEAD
-							MINUTE
-=======
 							MINUTE,
 							PRICE
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 							)
 					VALUES (bbu_seq.NEXTVAL,
 							#music_name#,
@@ -153,12 +141,8 @@
 							0,
 							#realname_music#,
 							#realname_image#,
-<<<<<<< HEAD
-							#minute#
-=======
 							#minute#,
 							#price#
->>>>>>> 6c32807554179d2caf38efbd5367b4e4b48d0da0
 							)
 	</insert>
 	<insert id="insertSinger" parameterClass="singerDTO">

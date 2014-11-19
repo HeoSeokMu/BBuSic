@@ -8,7 +8,7 @@ import member.DTO.MemberDTO;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 
-public class ConfirmEmailAction implements Actio n, MemberAware{
+public class ConfirmEmailAction implements Action, MemberAware{
 
 	private SqlMapClient sqlMapper;
 	private String email;
