@@ -1,0 +1,62 @@
+package member.DTO;
+
+import java.util.Date;
+
+public class MemListDTO {
+	private String name;
+	private String birth;
+	private String sex;
+	private String email;
+	private String id;
+	private String nickname;
+	private int delete_cash;
+	private Date regdate;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name.trim();
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email.trim();
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public int getDelete_cash() {
+		return delete_cash;
+	}
+	public void setDelete_cash(int delete_cash) {
+		this.delete_cash = delete_cash;
+	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+}

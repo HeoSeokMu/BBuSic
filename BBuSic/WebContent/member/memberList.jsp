@@ -1,0 +1,113 @@
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>뿌숑뮤직 메인</title>
+	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/header_jquery.js"></script>
+</head>
+<script type="text/javascript">
+		function idCheck() {
+			if(${session.memId == null}) {
+				alert("로그인을 해주세요");
+				window.location = "bbusic.action";
+				return false;
+			}
+		}
+		function bbusic_main() {
+	         document.bbu.action = "bbusic.action";
+	         document.bbu.submit();
+	      }
+
+	</script>
+
+<style type="text/css">
+	.next{
+		background-color:#7eb813;
+		color:#ffffff;
+		border:1px #dddddd dashed;
+		width:70px;
+		height:40px;
+		text-align:center;
+		padding:3px;
+</style>
+
+<body style="overflow: hidden;">
+	<div id="box">
+      <div id="header">
+         <div id="header_1">
+            <ul class="menu">
+               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+   
+               <li><a href="GenreChartBoard.action?category=genre"><img src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+                  <ul class="sub">
+                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+                  <ul class="sub">
+                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+        <div id="header_2">
+			<center>
+				<form name="bbu" method="post">
+					<input type="hidden" name="id" value="${session.memId}"/>
+ 					<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+				</form>
+			</center>
+		</div>
+      </div>
+   </div>
+
+	<div id="box">
+		<div id="box2">
+			<div id="content">
+			<img src="member/image/img_inputForm.png"/>
+		<center>
+			<h2>회원정보</h2>
+
+			<table border="1" cellspacing="0" cellpadding="2" align="center">
+				<tr>
+					<td width="700" align="left">아이디</td>
+					<td width="500" align="left">이름</td>
+					<td width="1000" align="left">이메일</td>
+					<td width="700" align="left">닉네임</td>
+					<td width="700" align="left">가입일자</td>
+					<td width="500" align="left">캐쉬</td>
+					<td width="500"  align="left">상품구매내역</td>
+				</tr>
+  				
+				<c:forEach items="${list}" var="dt">
+					<tr>
+						<td width="700" align="left">${dt.id}</td>
+						<td width="500" align="left">${dt.name}</td>
+						<td width="1000" align="left">${dt.email}</td>
+						<td width="700" align="left">${dt.nickname}</td>
+						<td width="700" align="left">${dt.regdate}</td>
+						<td width="500" align="left">${dt.delete_cash}</td>
+						<td width="500" align="left">상품구매내역</td>
+					</tr>
+				</c:forEach>
+
+			</table>
+			<input type="button" class="next" value="멜론홈" onclick="javascript:window.location='bbusic.action'"/>
+		</form>
+		</center>
+		<br/>
+			</div>
+		</div>
+		<div id="box3"> 5번 </div>
+	</div>
+</body>
+</html>
