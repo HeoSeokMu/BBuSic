@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="payment_my">
+	<typeAlias alias="mDTO" type="payment.pay_setDTO.payMyInfo_DTO" />
+
+		<!-- 리절트 맵 정의 -->
+	  	<resultMap id="myRes" class="mDTO">
+	  		<result property="id" column="id"/>								<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="delete_cash" column="delete_cash"/>							<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="download_count" column="download_count"/>		<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="delete_payname" column="delete_payname"/>					<!-- property는 set메서드 column은 db의 컬럼 -->
+	  		<result property="delete_paybenefit" column="delete_paybenefit"/>			<!-- property는 set메서드 column은 db의 컬럼 -->
+		</resultMap>
+		
+		<select id="selectMyInfo" resultMap="myRes">
+			SELECT mem.id, cash.delete_cash, cash.cashuse_date, buy.delete_payname, buy.delete_paybenefit, buy.download_count
+			FROM bbu_member mem, bbu_cashuse cash, bbu_buyinfo buy
+			WHERE mem.id = #id# and cash.cash_id = #id# and buy.buy_id = #id#
+			GROUP BY mem.id, cash.delete_cash, cash.cashuse_date, buy.delete_payname, buy.delete_paybenefit, buy.download_count
+			HAVING max(cash.cashuse_date) = (select max(cash.cashuse_date) from bbu_cashuse cash where cash.cash_id = #id#)
+			   AND max(buy.settlement_date) = (select max(buy.settlement_date) from bbu_buyinfo buy where buy.buy_id = #id#)
+		</select>
+</sqlMap>
