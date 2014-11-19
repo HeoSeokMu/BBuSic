@@ -28,6 +28,7 @@ public class downloadAction implements Action,Preparable,ModelDriven,musicAware{
 	String fileName;
 	InputStream inputStream; //이 변수명은 struts.xml의  <param name="inputName">으로 정의됨
 	
+	int sum = 0;
 	/*다운로드 폼에 목록 띄우는 execute()*/
 	@Override
 	public String execute() throws Exception {				
@@ -37,6 +38,7 @@ public class downloadAction implements Action,Preparable,ModelDriven,musicAware{
 		
 		for (int i = 0; i < cNo.length; i++) {	
 			musicList2.add(i, list.get(cNo[i]));//list i번째 에 담긴 음악을 musicList2 i 번째에 넣는다. 
+			sum += musicList2.get(i).getPrice();			
 		}
 	return SUCCESS;	
 	}
@@ -113,7 +115,6 @@ public class downloadAction implements Action,Preparable,ModelDriven,musicAware{
 	public void setSqlMapper(SqlMapClient sqlMapper) {
 		this.sqlMapper = sqlMapper;		
 	}
-
 	public Object getModel() {
 		return mdto;
 	}

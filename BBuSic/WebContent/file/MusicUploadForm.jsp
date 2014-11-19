@@ -44,6 +44,10 @@
 					<td><input type="text" name="title" /></td>
 				</tr>
 				<tr>
+					<td align="center">가격</td>
+					<td><input type="text" name="price" /></td>
+				</tr>
+				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="전송" />
 					</td>

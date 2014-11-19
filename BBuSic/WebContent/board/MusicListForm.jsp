@@ -32,16 +32,15 @@ function checkAll2(blockCount){
 		}
 	}	
 }
-/*다운로드*/
+/*다운로드 결재*/
 	function downLoad(){
-		var chkNo2 = document.getElementsByName("chkNo2");
-		var params = "";
-		
+		var chkNo = document.getElementsByName("chkNo");
+		var params = "";		
 		if(a == "s"){
 			var countChk = 0;
-			for (var i = 0; i < chkNo2.length; i++) {					
+			for (var i = 0; i < chkNo.length; i++) {					
 				if(chkNo[i].checked){
-					params+= "chkNo2="+i +"&";
+					params+= "chkNo="+chkNo[i].value +"&";
 					countChk+=1;
 				}				
 			}
@@ -50,19 +49,49 @@ function checkAll2(blockCount){
 				return false;
 			}
 		}else{
-			params = "chkNo2="+a;
+			params = "chkNo="+a;
 		}
 		open("downloadAction2.action?"+params, "confirm", 
 	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
+/*Confirm 창을 통해 Yes 일경우 musicPay 로 이동*/	
+	function musicConfirm(a){	
+		if(confirm("결재하시겠습니까?")){
+			musicPay(a);
+		}else{
+			alert("취소되었습니다.");
+		}
+	}
+
+	function musicPay(a){		
+		var chkNo = document.getElementsByName("chkNo");		
+		var params = "";
+			if(a == "s"){
+				var countChk = 0;
+				for (var i = 0; i < chkNo.length; i++) {
+					if(chkNo[i].checked){						
+						params+= "chkNo="+ chkNo[i].value +"&";
+						countChk+=1;							
+					}				
+				}
+				if(countChk == 0){ //서버로 넘어가기전에 사전에 막기위해 사용.
+					alert("선택해라!!!");
+					return false;
+				}				
+			}else{
+				params = "chkNo="+a;
+			}
+			open("downLoadPayAction.action?"+params, "confirm", 
+		       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");		
+	}
 </script>
 <body>
-	<form method="get" name="chartForm" action="downloadAction.action">	
+	<form method="get" name="chartForm" onSubmit="musicConfirm('s');">	
 		<table border="1" bordercolor="red" width="500">
 				<tr>
-					<td colspan="4">
+					<td colspan="5">
 						<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;
-						<input type="submit" value="전체구매">&nbsp;
+						<input type="button" value="구매" onClick="musicConfirm('s')">&nbsp;
 						<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
 					</td>										
 				</tr>
@@ -70,14 +99,15 @@ function checkAll2(blockCount){
 					<th align="center">
 						<input type="checkbox" name="c_all" onclick="checkAll(this.checked,50)">
 					</th>
-					<th>제목</th>
-					<th>가수</th>
-					<th>노래</th>
+					<th>제 목</th>
+					<th>가 수</th>
+					<th>노 래</th>
+					<th>구 매</th>
 				</tr>
 				<c:forEach var="musicList2" items="${musicList2}" varStatus="checkValue">						
 						<tr>	
 							<td width="25px" height="10px">
-								<input type="checkbox" name="chkNo" value="${checkValue.index}">
+								<input type="checkbox" name="chkNo" value="${indexlist[checkValue.index]}">
 							</td>
 							<td>${musicList2.realname_music }</td>
 							<td>${musicList2.title }</td>
@@ -88,22 +118,22 @@ function checkAll2(blockCount){
 									</audio>
 									</td>
 									<td align="center">
-										<input type="button" value="다운" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
+										<input type="button" value="다음" onclick="musicConfirm('s')">
 									</td>																		
 							</c:if>														
 							<c:if test="${benefit == null}">
 								<td>
-									<audio auto="false"  controls="true" id="myAudio${aa.index}" >
-											<source src="/BBuSic/upload/${musicList2.minute}">									
+									<audio auto="false"  controls="true" id="myAudio${checkValue.index}" >
+											<source src="/BBuSic/upload/${musicList2.minute}">					
 									</audio>
 								</td>
 							</c:if>							
 						</tr>											
 				</c:forEach>
 				<tr>
-					<td colspan="4">						
+					<td colspan="5">						
 						<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;
-						<input type="submit" value="전체구매">&nbsp;
+						<input type="button" value="전체구매" onClick="musicConfirm('s')">&nbsp;
 						<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
 					</td>
 				</tr>
