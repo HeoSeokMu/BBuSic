@@ -47,10 +47,20 @@ function checkNum(){
 function checkCK(){
 	if("${check}" == "check"){
 		alert("이메일을 발송했습니다. 인증번호를 기입해주세요.");
-		return false;
 	}
 }
 
+function idCheck() {
+	if(${session.memId == null}) {
+		alert("로그인을 해주세요");
+		window.location = "bbusic.action";
+		return false;
+	}
+}
+function bbusic_main() {
+    document.bbu.action = "bbusic.action";
+    document.bbu.submit();
+ }
 </script>
 <style type="text/css">
 	.next{
@@ -63,7 +73,7 @@ function checkCK(){
 		padding:3px;
 </style>
 
-<body style="overflow: hidden;">
+<body style="overflow: hidden;" onload="checkCK()">
 	<div id="box">
       <div id="header">
          <div id="header_1">
@@ -88,7 +98,10 @@ function checkCK(){
          </div>
          <div id="header_2">
             <center>
-               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+               <form name="bbu" method="post">
+                  <input type="hidden" name="id" value="${session.memId}"/>
+                  <a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+               </form>
             </center>
          </div>
       </div>
@@ -96,8 +109,7 @@ function checkCK(){
 
 	<div id="box">
 		<div id="box2">
-			<div id="content">		
-			<img src="member/image/img_confirm.png"/>		
+			<div id="content">			
 				<center>
 				<h2>가입인증</h2>
 				<table>
@@ -110,6 +122,7 @@ function checkCK(){
 				</table>
 				<br/>
 				<form method="post" action="sendEmail.action" name="userinput" onSubmit="return checkIt()">
+					<input type="hidden" name="category" value="confirm" />
 					<input type="hidden" name="name" value="${name}" />
 					<input type="hidden" name="birth" value="${birth}" />
 					<input type="hidden" name="sex" value="${sex}" />

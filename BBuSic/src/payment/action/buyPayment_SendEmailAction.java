@@ -11,14 +11,18 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
-import com.opensymphony.xwork2.Action;
+import payment.pay_setDTO.buyInfo_DTO;
 
-public class buyPayment_SendEmailAction implements Action{
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
+
+public class buyPayment_SendEmailAction implements Action, Preparable, ModelDriven{
 	private String check;
 	private String email;
 	
-	private String cash_id;
-	private int money_in;
+	buyInfo_DTO buyinfo;
+	private int cash_in;
 	private int delete_cash;
 	
 	private int num= (int) (Math.random()*8999)+1000;
@@ -30,8 +34,14 @@ public class buyPayment_SendEmailAction implements Action{
 	
 	public String execute() throws Exception {
 		System.out.println("buyPayment_SendEmailAction ===============================");
-		System.out.println("my_id : "+cash_id);
-		System.out.println("money_in : "+money_in);
+		System.out.println("buy_id : "+buyinfo.getBuy_id());
+		System.out.println("payment : "+buyinfo.getPayment());
+		System.out.println("payname : "+buyinfo.getPay_name());
+		System.out.println("benefit : "+buyinfo.getPay_benefit());
+		System.out.println("amount : "+buyinfo.getAmount());
+		System.out.println("buy_option : "+buyinfo.getBuy_option());
+		System.out.println("download_count : "+buyinfo.getDownload_count());
+		
 		System.out.println("email : "+email);
 		
 		try{
@@ -78,25 +88,20 @@ public class buyPayment_SendEmailAction implements Action{
 		
 		return SUCCESS;
 	}
-
-	public String getCash_id() {
-		return cash_id;
+	
+	@Override
+	public void prepare() throws Exception {
+		buyinfo = new buyInfo_DTO();
 	}
-	public void setCash_id(String cash_id) {
-		this.cash_id = cash_id;
-	}
-	public int getMoney_in() {
-		return money_in;
-	}
-	public void setMoney_in(int money_in) {
-		this.money_in = money_in;
-	}
-	public int getDelete_cash() {
-		return delete_cash;
+	
+	@Override
+	public Object getModel() {
+		// TODO Auto-generated method stub
+		return buyinfo;
 	}
 
-	public void setDelete_cash(int delete_cash) {
-		this.delete_cash = delete_cash;
+	public buyInfo_DTO getBuyinfo() {
+		return buyinfo;
 	}
 
 	public int getNum(){
@@ -117,5 +122,21 @@ public class buyPayment_SendEmailAction implements Action{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getCash_in() {
+		return cash_in;
+	}
+
+	public void setCash_in(int cash_in) {
+		this.cash_in = cash_in;
+	}
+
+	public int getDelete_cash() {
+		return delete_cash;
+	}
+
+	public void setDelete_cash(int delete_cash) {
+		this.delete_cash = delete_cash;
 	}
 }

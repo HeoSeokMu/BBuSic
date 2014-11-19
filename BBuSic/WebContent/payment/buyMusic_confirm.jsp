@@ -71,6 +71,10 @@
 				return false;
 			}
 		}
+		function bbusic_main() {
+			document.bbu.action = "bbusic.action";
+			document.bbu.submit();
+		}
 	</script>
 </head>
 

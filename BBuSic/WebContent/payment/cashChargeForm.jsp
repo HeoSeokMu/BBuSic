@@ -70,6 +70,10 @@
 					return false;
 				}
 			}
+			function bbusic_main() {
+				document.bbu.action = "bbusic.action";
+				document.bbu.submit();
+			}
 		</script>
 	</head>
 	
@@ -105,7 +109,10 @@
 				</div>
 				<div id="header_2">
 					<center>
-						<a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+						<form name="bbu" method="post">
+							<input type="hidden" name="id" value="${session.memId}"/>
+							<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+						</form>
 					</center>
 				</div>
 			</div>
@@ -115,7 +122,7 @@
 			<div id="box2">
 				<div id="content">
 		    		<c:if test="${session.memId != null}">
-						<form name="cashCharge" action="buy_SendEmailForm.action" method="post" onsubmit="return money_Check();">
+						<form name="cashCharge" action="buyCash_SendEmailForm.action" method="post" onsubmit="return money_Check();">
 							<br/><br/>
 							<table border="1">
 								<tr>

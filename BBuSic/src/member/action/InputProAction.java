@@ -45,10 +45,14 @@ public class InputProAction implements MemberAware, Action, Preparable, ModelDri
 		buy_DTO.setBuy_id(mDTO.getId());
 		buy_DTO.setPay_name("보유한 상품이 없습니다.");
 		buy_DTO.setPay_benefit("없음");
+		buy_DTO.setDelete_payname("보유한 상품이 없습니다.");
+		buy_DTO.setDelete_paybenefit("없음");
 		buy_DTO.setSettlement_date(today.getTime());
 		buy_DTO.setExpiration_date(today.getTime());
 		buy_DTO.setPayment(0);
 		buy_DTO.setDownload_count(0);
+		buy_DTO.setAmount(0);
+		buy_DTO.setBuy_option("없음");
 		sqlMapper.insert("payment_buy.insertBuyInfo", buy_DTO);
 		
 		return SUCCESS;

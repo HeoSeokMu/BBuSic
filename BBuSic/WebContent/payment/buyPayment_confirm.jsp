@@ -71,6 +71,11 @@
 				return false;
 			}
 		}
+		
+		function bbusic_main() {
+			document.bbu.action = "bbusic.action";
+			document.bbu.submit();
+		}
 	</script>
 </head>
 
@@ -99,7 +104,10 @@
 				</div>
 				<div id="header_2">
 					<center>
-						<a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0"/></a>
+						<form name="bbu" method="post">
+							<input type="hidden" name="id" value="${session.memId}"/>
+							<a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+						</form>
 					</center>
 				</div>
 			</div>
@@ -109,6 +117,7 @@
 		<div id="box2">
 	    	<div id="content">
 	    		<center>
+	    		<br/>
 					<h2>본인 인증</h2>
 					<table>
 						<tr>
@@ -119,91 +128,73 @@
 						</tr>
 					</table>
 					<br/>
-					<form method="post" action="buy_SendEmail.action" name="userinput" onsubmit="return checkIt();">
+					<form method="post" action="buyPayment_SendEmail.action" name="userinput" onsubmit="return checkIt();">
 						<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
 							<tr>
-								<td>사용자 아이디</td>
+								<td>구매자 아이디</td>
 								<td>
-									<input type="hidden" name="music_id" value="${music_id}"/>
-									${music_id}
+									<input type="hidden" name="buy_id" value="${buy_id}"/>
+									${buy_id}
 								</td>
 							</tr>
 							<tr>
-								<td>곡명</td>
+								<td>상품명</td>
 								<td>
-									<input type="hidden" name="title" value="${title}"/>
-									${title}
+									<input type="hidden" name="pay_name" value="${pay_name}"/>
+									${pay_name}
 								</td>
 							</tr>
 							<tr>
-								<td>가수</td>
+								<td>가격</td>
 								<td>
-									<input type="hidden" name="singer" value="${singer}"/>
-									${singer}
+									<input type="hidden" name="amount" value="${amount}"/>
+									${amount}
 								</td>
 							</tr>
 							<tr>
-								<td>앨범</td>
+								<td>지불한 금액</td>
 								<td>
-									<input type="hidden" name="album" value="${album}"/>
-									${album}
+									<input type="hidden" name="payment" value="${payment}"/>
+									${payment}
 								</td>
 							</tr>
 							<tr>
-								<td>구매일</td>
+								<td>결제방법</td>
 								<td>
-									<input type="hidden" name="buy_date" value="${buy_date}"/>
-									${buy_date}
+									<input type="hidden" name="buy_option" value="${buy_option}"/>
+									${buy_option}
 								</td>
 							</tr>
-							<c:if test="${payMethod.equals("캐쉬")}">
-								<tr>
-									<td>
-										차감 캐쉬
-									</td>
-									<td>
-										<input type="hidden" name="delete_cash" value="${cash_price}" />
-										&nbsp;/&nbsp;잔여캐쉬&nbsp;&nbsp;${delete_cash -  (cash_price * m_count)}
-									</td>
-								</tr>
-							</c:if>
-							<c:if test="${payMethod.equals("결제")}">
-								<tr>
-									<td>
-										결제 금액
-									</td>
-									<td>
-										<input type="hidden" name="money_in" value="${money_in}" />
-										<fmt:formatNumber value="${money_in + (money_in * 0.1)}"/> 원
-										<input type="hidden" name="delete_cash" value="${delete_cash}" />
-									</td>
-								</tr>
-							</c:if>
 							<tr>
 								<td width="200">이메일</td>
 								<td width="400" align="left">
 									<input type="text" name="email" size="20" maxlength="25" placeholder="이메일을 입력해주세요" value="${email}"/>
 									<input type="submit" name="send" value="인증번호 발송"/><br/>
 									<input type="text" name="confirmNumber" size="20" maxlength="15" placeholder="인증번호를 입력해주세요"/>
+									<input type="hidden" name="cash_in" value="${cash_in}"/>
+									<input type="hidden" name="pay_benefit" value="${pay_benefit}"/>
+									<input type="hidden" name="download_count" value="${download_count}"/>
+									<input type="hidden" name="delete_cash" value="${delete_cash}"/>
 									<input type="button" value="인증하기" onclick="return checkConfirm(this.form)"/>
 								</td>
 							</tr>
 						</table>
 					</form>
 					<br/>
-					<form method="post" action="cashUpdate_sub.action" name="myform" onsubmit="return checkNum();">
-						<input type="text" name="music_id" value="${music_id}"/>
-						<input type="text" name="title" value="${title}"/>
-						<input type="text" name="singer" value="${singer}"/>
-						<input type="text" name="album" value="${album}"/>
-						<input type="text" name="buy_date" value="${buy_date}"/>
-						<input type="text" name="content" value="음악구매"/>
-						<c:if test="${payMethod.equals("결제")}">
-							<input type="text" name="money_in" value="${600 * m_count}"/>
+					<form method="post" action="buyPaymentUpdate.action" name="myform" onsubmit="return checkNum();">
+						<input type="hidden" name="buy_id" value="${buy_id}"/>
+						<input type="hidden" name="pay_name" value="${pay_name}"/>
+						<input type="hidden" name="pay_benefit" value="${pay_benefit}"/>
+						<input type="hidden" name="amount" value="${amount}"/>
+						<input type="hidden" name="payment" value="${payment}"/>
+						<input type="hidden" name="buy_option" value="${buy_option}"/>
+						<c:if test="${cash_in > 0}">
+							<input type="hidden" name="content" value="상품구매"/>
 						</c:if>
-						<c:if test="${payMethod.equals("캐쉬")}">
-							<input type="text" name="delete_cash" value="${delete_cash}"/>
-						</c:if>
+						<input type="hidden" name="cash_in" value="${cash_in}"/>
+						<input type="hidden" name="download_count" value="${download_count}"/>
+						<input type="hidden" name="delete_cash" value="${delete_cash}"/>
+						<input type="hidden" name="check" value="no"/>
 						<input type="submit" class="next" name="confirm" value="인증완료"/>
 					</form>
 				</center>
