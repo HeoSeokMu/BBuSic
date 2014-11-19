@@ -33,6 +33,7 @@ public class MusicUploadProAction extends ActionSupport{
 	private String realname_image;
 	private String realname_music;
 	private String minute;
+	private int price;
 	
 	private File uploadMusic;
 	private String uploadMusicContentType;
@@ -68,6 +69,7 @@ public class MusicUploadProAction extends ActionSupport{
 		paramClass.setSinger(getSinger());
 		paramClass.setRealname_music(uploadMusicFileName);
 		paramClass.setRealname_image(uploadImageFileName);
+		paramClass.setPrice(getPrice());
 		
 		if(sqlMapper.queryForObject("musicSQL.selectLastNum")==null){
 			lastNum = 0;
@@ -295,6 +297,15 @@ public class MusicUploadProAction extends ActionSupport{
 	public void setUploadMusic_minuteFileName(String uploadMusic_minuteFileName) {
 		this.uploadMusic_minuteFileName = uploadMusic_minuteFileName;
 	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	
 	
 }

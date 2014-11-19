@@ -15,8 +15,16 @@ public class musicDTO {
 	private String minute;
 	private int[] chkNo;
 	private int[] chkNo2;
-	
+	private int price;
 
+	
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public int[] getChkNo2() {
 		return chkNo2;
 	}

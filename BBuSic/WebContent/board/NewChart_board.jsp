@@ -40,11 +40,12 @@
 	function list_add(a){
 		var params = "";
 		var chkNo = document.getElementsByName("chkNo");
+		
 		if(a == "s"){
 			var countChk = 0;
 			for (var i = 0; i < chkNo.length; i++) {					
 				if(chkNo[i].checked){
-					params+= "chkNo="+i +"&";
+					params+= "chkNo="+chkNo[i].value +"&";
 					countChk+=1;
 				}				
 			}
@@ -55,8 +56,8 @@
 		}else{
 			params = "chkNo="+a;
 		}
-		open("Chart_BoardAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400"); 
+		open("PopupAction.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=650, height=400"); 
 	}
 	
 	/* 다운로드 스크립트 */
@@ -171,7 +172,7 @@ center {
 				<table>
 					<tr align="center" height="70px">																	
 						<td width="25px" height="10px">
-							<input type="checkbox" name="chkNo" value="${checkValue.index}">
+							<input type="checkbox" name="chkNo" value="${((currentPage-1) * 10 + (checkValue.index + 1))-1}">
 							</td>
 						<!-- No -->
 						<td width="30px">
@@ -183,7 +184,7 @@ center {
 						</td>
 						<!--곡정보-->
 						<td width="100px" align="center">
-							<input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png" onclick="list_add(${checkValue.index });">
+							<input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png" onclick="list_add(${((currentPage-1) * 10 + (checkValue.index + 1))-1});">
 							<input type="image" name="m_add_btt" src="http://localhost:8000/BBuSic/board/images/m_add_button.png"> &nbsp;
 							<input type="image" name="m_page_btt" src="http://localhost:8000/BBuSic/board/images/m_page_button.png">
 						</td>

@@ -280,7 +280,7 @@
 		<interceptors>
 			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
 		</interceptors>
-		<action name="Chart_BoardAction" class="board.action.Chart_BoardAction" method="popupEx">
+		<action name="PopupAction" class="board.action.PopupAction">
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>
@@ -289,7 +289,7 @@
 			<result>/board/MusicListForm.jsp</result>
 		</action>
 		<!-- 팝업 리스트 삭제 -->
-		<action name="deleteListAction" class="board.action.Chart_BoardAction" method="deleteListAction">
+		<action name="deleteListAction" class="board.action.PopupAction" method="deleteListAction">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
@@ -303,6 +303,13 @@
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/board/DownLoadForm.jsp</result>
+		</action>
+		<action name="downLoadPayAction" class="download.action.downLoadPayAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/downLoadPayForm.jsp</result>
 		</action>
 		<action name="downloadAction2" class="download.action.downloadAction" method="downLoad">
 			<interceptor-ref name="ibatis"/>
