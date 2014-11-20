@@ -145,10 +145,19 @@
 						alert("상품가격보다 크게 입력하셨습니다.");
 						form.payment.value = Amount;
 						if(Add_Money > Cash_In) {
-							form.cash_in.value = Amount - Add_Money;
-							jQuery(function($) {
-								$("#cash").text(Delete_cash - (Amount - Add_Money));
-							});
+							if(Cash_In == 0) {
+								form.cash_in.value = 0;
+								form.add_money.value = Amount;
+								jQuery(function($) {
+									$("#cash").text(Delete_cash);
+								});
+							} else {
+								form.cash_in.value = Amount - Add_Money;
+								jQuery(function($) {
+									$("#cash").text(Delete_cash - (Amount - Add_Money));
+								});
+							}
+							
 						} else if (Add_Money < Cash_In) {
 							form.add_money.value = Amount - Cash_In;
 							jQuery(function($) {

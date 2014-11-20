@@ -28,14 +28,14 @@ public class cash_useFormAction implements Action, BBuSicAware {
 	private int blockPage = 5; // 한 화면에 보여줄 페이지 수
 	private pagingAction page; // 페이징 클래스
 	private String pagingHtml; // 페이징을 구현한 HTML
-	private String type; // 장르
+	private String id; 
 
 	@Override
 	public String execute() throws Exception {
-		System.out.println("execute" + sqlMapper);
-		System.out.println("type : " + type);
+		System.out.println("cash_useFormAction ====================");
+		System.out.println("id : " + id);
 		
-		list = sqlMapper.queryForList("payment_cash.genreSelectAll", type);
+		list = sqlMapper.queryForList("payment_cash.selectCash_all", id);
 		
 		totalCount = list.size(); // 전체 글 갯수를 구한다.
 
@@ -110,13 +110,13 @@ public class cash_useFormAction implements Action, BBuSicAware {
 	public void setPagingHtml(String pagingHtml) {
 		this.pagingHtml = pagingHtml;
 	}
-
-	public String getType() {
-		return type;
+	
+	public String getId() {
+		return id;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public void setSqlMapper(SqlMapClient sqlMapper) {
