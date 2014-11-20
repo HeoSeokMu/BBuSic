@@ -78,22 +78,22 @@
 
 			<table border="1" cellspacing="0" cellpadding="2" align="center">
 				<tr>
-					<td width="400" align="center">아이디</td>
+					<td width="300" align="center">아이디</td>
 					<td width="900" align="center">일시</td>
-					<td width="400" align="center">접속 서비스</td>
+					<td width="300" align="center">접속 서비스</td>
 					<td width="400" align="center">상태</td>
-					<td width="400" align="center">결과</td>
-					<td width="700" align="center">접속IP</td>
+					<td width="300" align="center">결과</td>
+					<td width="400" align="center">접속IP</td>
 				</tr>
   				
 				<c:forEach items="${list}" var="dt">
 					<tr>
-						<td width="400" align="center">${dt.id}</td>
+						<td width="300" align="center">${dt.id}</td>
 						<td width="900" align="center">${dt.login_date}</td>
-						<td width="400" align="center">PC(웹)</td>
+						<td width="300" align="center">PC(웹)</td>
 						<td width="400" align="center">일반로그인</td>
-						<td width="400" align="center">${dt.login_result}</td>
-						<td width="700" align="center">${dt.ip}</td>
+						<td width="300" align="center">${dt.login_result}</td>
+						<td width="400" align="center">${dt.ip}</td>
 					</tr>
 				</c:forEach>
 

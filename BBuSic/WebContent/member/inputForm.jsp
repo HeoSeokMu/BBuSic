@@ -260,8 +260,8 @@ function emailCheck(){
 				<tr>
 					<td width="200" align="left">비밀번호</td>
 					<td width="400" align="left">
-						<input type="passwd" name="passwd" size="20" maxlength="10"/><br/>
-						<input type="passwd2" name="passwd2" size="20" maxlength="10"/>
+						<input type="password" name="passwd" size="20" maxlength="10"/><br/>
+						<input type="password" name="passwd2" size="20" maxlength="10"/>
 					</td>
 				</tr>
 				<tr>

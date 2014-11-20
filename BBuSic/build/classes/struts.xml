@@ -138,6 +138,7 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/pay_useForm.jsp</result>
 		</action>
+		
 	</package>	
 		
 	<!-- 김정진 작업 -->
@@ -165,7 +166,6 @@
 			<interceptor-ref name="params"/>
  			<result>/member/inputPro.jsp</result>
 		</action>
-		
 		
 		<action name="loginForm" class="member.action.LoginFormAction">
 			<result>/member/loginForm.jsp</result>
