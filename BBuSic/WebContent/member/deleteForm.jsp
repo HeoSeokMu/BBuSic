@@ -16,17 +16,22 @@ function begin(){
 	document.myform.passwd.focus();
 }
 	
-function checkIt(){
+function checkIt(){  
 	if(!document.myform.passwd.value){
 		alert("비밀번호를 입력하지 않으셨습니다.");
 		document.myform.passwd.focus();
 		return false;
 	}
-	if(document.myform.passwd.value != ${passwd}){
+	if(document.myform.passwd.value != "${passwd}"){
 		alert("비밀번호가 다릅니다.");
 		document.myform.passwd.focus();
 		return false;
 	}
+	
+	var del=confirm("정말 탈퇴하시겠습니까?");
+    if(del==false){
+    	return false;
+    }
 }
 
 function idCheck() {
@@ -50,6 +55,13 @@ function bbusic_main() {
 		height:40px;
 		text-align:center;
 		padding:3px;
+	}
+		.id{
+		background-color:#dddddd;
+		border:1px #dddddd dashed;
+		text-align:center;
+		padding:3px;
+	}
 </style>
 
 <body style="overflow: hidden;">
@@ -87,26 +99,48 @@ function bbusic_main() {
    </div>
 
 	<div id="box">
+			<a href="modify.action"><img src="member/image/img_myInform.png" name="chart" border="0"/></a>
+			<a href="passwdForm.action"><img src="member/image/img_change_pw.png" name="chart" border="0"/></a>
+			<a href="myLoginListForm.action"><img src="member/image/img_login_inform.png" name="chart" border="0"/></a>
+			<a href="deleteForm.action"><img src="member/image/img_delete.png" name="chart" border="0"/></a>
 		<div id="box2">
-			<div id="content">				
-				<center>
-				<TABLE cellSpacing=1 cellPadding=1 width="260" border=1 align="center" rules="none">
-					<form name="myform" action="deletePro.action" method="post" onSubmit="return checkIt()">				  
-						  <TR height="30">
-						    <TD colspan="2" align="middle" bgcolor="${title_c}">
-							  <font size="+1" ><b>회원 탈퇴</b></font></TD></TR>
-						  
-						  <TR height="30">
-						    <TD width="110" bgcolor="${value_c}" align=center>비밀번호</TD>
-						    <TD width="150" align=center>
-						      <INPUT type=password name="passwd" size="15" maxlength="12"></TD></TR>
-						  <TR height="30">
-						    <TD colspan="2" align="middle" bgcolor="${value_c}" >
-						      <INPUT type=submit value="회원탈퇴"> 
-						      <input type="button" value="취  소" onclick="javascript:window.location='loginForm.action'"></TD></TR>		
-						</form>
-					</TABLE>
-				</center>
+			<div id="content">
+				<center><br/>
+				<h1>회원탈퇴</h1>
+					<br/>
+					<table width="850" border="0" cellspacing="10" cellpadding="3" align="center" class="id">
+						<tr><td></td></tr>
+						<tr>
+							<td align="left">·본인확인을 위해 비밀번호를 한 번 더 입력해 주세요.</td>
+						</tr>
+						<tr>
+							<td align="left">·항상 비밀번호는 타인에게 노출되지 않도록 주의해 주세요.</td>
+						</tr>
+						<tr><td></td></tr>
+				    </table>
+				    <br/>
+					<form name="myform" action="deletePro.action" method="post" onSubmit="return checkIt()">
+						<table width="850" border="0" cellspacing="0" cellpadding="3" align="center" class="id">
+							<tr>
+								<td align="right">
+									아이디
+								</td>
+								<td>
+									<c:out value="${session.memId}"/>
+								</td>
+								<td >
+									비밀번호
+								</td>
+								<td align="left">
+									<input type=password name="passwd" size="15" maxlength="12">
+								</td>
+							</tr>
+					    </table><br/>
+						      <input type=submit class="next" value="회원탈퇴">
+						      <input type="button" class="next" value="취  소" onclick="bbusic_main()">
+					</form>
+					<br/>
+				</center>	
 			</div>
 		</div>
 		<div id="box3"> 5번 </div>

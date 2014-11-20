@@ -73,7 +73,7 @@
 	<div id="box">
 		<div id="box2">
 			<div id="content">		
-			<img src="member/image/img_inputForm.png"/>		
+			<img src="member/image/img_inputPro.png"/>		
 		<center>			
 			<h2>가입완료</h2>
 
@@ -106,6 +106,7 @@
 			<br/>
 			<input type="button" class="next" value="멜론홈" onclick="javascript:window.location='bbusic.action'"/>
 		</form>
+		<br/>
 		<br/>
 		</center>
 			</div>

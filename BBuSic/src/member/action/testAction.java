@@ -9,5 +9,4 @@ public class testAction implements Action{
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
-
 }

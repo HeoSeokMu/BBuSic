@@ -87,7 +87,9 @@
 			<include refid="select-all" />
 			 where genre = #type# ORDER BY num DESC
 		</select>
-		
+		<select id="mainPicture" resultMap="musicRes" parameterClass="int">		
+			<![CDATA[ SELECT * FROM (SELECT * FROM BBU_BOARD ORDER BY num DESC) where rownum <= 7 ]]>		
+		</select>
 		<select id="search_Test" resultMap="musicSearchRes" parameterClass="searchDTO">
 			<include refid="select-all" />
 			where genre like '%' || #genre# || '%'

@@ -23,7 +23,6 @@ public class ModifyFormAction implements Action, MemberAware, Preparable, ModelD
 	public String execute() throws Exception {
 		id = (String) session.get("memId");	
 		mDTO = (MemberDTO) sqlMapper.queryForObject("member.selectMember", id);
-		System.out.println("mDTO : " + mDTO.getId());
 		return SUCCESS;
 	}
 	

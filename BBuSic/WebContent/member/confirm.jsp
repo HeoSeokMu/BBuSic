@@ -14,11 +14,18 @@
 <script type="text/javascript">
 
 function checkIt(){
-	if(!document.userinput.email.value){
-		alert("이메일을 입력하지 않으셨습니다.");
-		document.userinput.eamil.focus();
-		return false;
-	}
+	mailform = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+    // 아이디를 입력했는지 검사
+    if (document.userinput.email.value == "") {
+        alert("이메일을 입력하세요");
+        document.userinput.eamil.focus();
+        return false;
+    }
+    
+    if(!mailform.test(document.userinput.email.value)){
+        alert("이메일이 형식에 맞지 않습니다..");
+        return false;
+     }
 }
 
 function checkConfirm(userinput){
@@ -45,9 +52,25 @@ function checkNum(){
 }
 
 function checkCK(){
+	if("${check}" == "overlap"){
+		alert("중복된 이메일이 있습니다. 다른 이메일을 입력해주세요.");
+	}
 	if("${check}" == "check"){
 		alert("이메일을 발송했습니다. 인증번호를 기입해주세요.");
 	}
+}
+function openConfirmEmail(userinput) {
+	 mailform = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+    // 아이디를 입력했는지 검사
+    if (userinput.email.value == "") {
+        alert("이메일을 입력하세요");
+        return;
+    }
+    
+    if(!mailform.test(userinput.email.value)){
+        alert("이메일이 형식에 맞지 않습니다..");
+        return false;
+     }
 }
 
 function idCheck() {
@@ -71,6 +94,13 @@ function bbusic_main() {
 		height:40px;
 		text-align:center;
 		padding:3px;
+	}
+	.id{
+		background-color:#dddddd;
+		border:1px #dddddd dashed;
+		text-align:center;
+		padding:3px;
+	}
 </style>
 
 <body style="overflow: hidden;" onload="checkCK()">
@@ -109,10 +139,11 @@ function bbusic_main() {
 
 	<div id="box">
 		<div id="box2">
-			<div id="content">			
+			<div id="content">		
+			<img src="member/image/img_confirm.png"/>	
 				<center>
 				<h2>가입인증</h2>
-				<table>
+				<table width="700" border="0" cellspacing="0" cellpadding="3" align="center" class="id">
 					<tr>
 						<td align="left">· 아이디/비밀번호 분실 등 본인여부 확인이 필요한 경우 사용됩니다.</td>
 					</tr>

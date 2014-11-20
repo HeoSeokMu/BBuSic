@@ -9,7 +9,7 @@ import payment.pay_setDTO.cashCharge_DTO;
 import upload.dto.musicDTO;
 import upload.dto.musicDTO2;
 import BBusic.Aware.musicAware;
-import board.action.pagingAction;
+import payment.action.pagingAction;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
@@ -28,22 +28,28 @@ public class cash_useFormAction implements Action, BBuSicAware {
 	private int blockPage = 5; // 한 화면에 보여줄 페이지 수
 	private pagingAction page; // 페이징 클래스
 	private String pagingHtml; // 페이징을 구현한 HTML
-	private String id; 
-
+	private String id;
+	private int delete_cash;
+	
 	@Override
 	public String execute() throws Exception {
 		System.out.println("cash_useFormAction ====================");
 		System.out.println("id : " + id);
 		
-		list = sqlMapper.queryForList("payment_cash.selectCash_all", id);
+		list = sqlMapper.queryForList("payment_cash.selectCash_use1", id);
+		if(id != null) {
+			delete_cash = list.get(0).getDelete_cash();
+		} else {
+			delete_cash = 0;
+		}
 		
 		totalCount = list.size(); // 전체 글 갯수를 구한다.
-
-
-		setPagingHtml(page.getPagingHtml().toString()); // 페이지 HTML 생성.
+		
+		
 		// paging
-
+		page = new pagingAction(currentPage, totalCount, blockCount, blockPage); // pagingAction 객체 생성.
 		int lastCount = totalCount;
+		setPagingHtml(page.getPagingHtml().toString()); // 페이지 HTML 생성.
 
 		// 현재 페이지의 마지막 글의 번호가 전체의 마지막 글 번호보다 작으면 lastCount를 +1 번호로 설정.
 		if (page.getEndCount() < totalCount)
@@ -121,6 +127,9 @@ public class cash_useFormAction implements Action, BBuSicAware {
 
 	public void setSqlMapper(SqlMapClient sqlMapper) {
 		this.sqlMapper = sqlMapper;
+	}
 
+	public int getDelete_cash() {
+		return delete_cash;
 	}
 }

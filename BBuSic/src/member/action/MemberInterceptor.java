@@ -19,7 +19,6 @@ public class MemberInterceptor implements Interceptor {
 			sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 			reader.close();
 		} catch (IOException e) {
-			System.out.println("catch");
 			e.printStackTrace();
 		}
 	}

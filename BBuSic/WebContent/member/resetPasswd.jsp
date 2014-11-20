@@ -1,16 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-
-<%@ include file="/view/color.jspf"%>
-
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>회원가입</title>
+<title>뿌숑뮤직 메인</title>
+	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/header_jquery.js"></script>
 </head>
+
+
 <style>
 .next {
 	background-color: #7eb813;
@@ -29,39 +30,85 @@
 	}
 </style>
 <script language="JavaScript">
-	function checkCK() {
-		if ("${check}"=="check") {
-			alert("비밀번호 변경이 완료되었습니다.");
-			window:location="/BBuSic/bbusic.action";
-		}
-	}
-	
-	function checkIt() {
-		var userinput = eval("document.userinput");
-		
-		if (!userinput.id.value) {
-			alert("아이디을 입력하세요.");
-			return false;
+		function checkCK() {
+			if ("${check}"=="check") {
+				alert("비밀번호 변경이 완료되었습니다.");
+				window:location="/BBuSic/bbusic.action";
+			}
 		}
 		
-		if (!userinput.passwd.value) {
-			alert("새 비밀번호를 입력하세요.");
-			return false;
-		}
+		function checkIt() {
+			var userinput = eval("document.userinput");
+			
+			if (!userinput.passwd.value) {
+				alert("새 비밀번호를 입력하세요.");
+				return false;
+			}
 
-		if (!userinput.passwd2.value) {
-			alert("새 비밀번호 확인을 입력하세요.");
-			return false;
+			if (!userinput.passwd2.value) {
+				alert("새 비밀번호 확인을 입력하세요.");
+				return false;
+			}
+			
+			if(userinput.passwd.value != userinput.passwd2.value){
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
 		}
-		
-		if(userinput.passwd.value != userinput.passwd2.value){
-			alert("비밀번호가 일치하지 않습니다.");
+	function idCheck() {
+		if(${session.memId == null}) {
+			alert("로그인을 해주세요");
+			window.location = "bbusic.action";
 			return false;
 		}
 	}
+	function bbusic_main() {
+        document.bbu.action = "bbusic.action";
+        document.bbu.submit();
+     }
 </script>
-<body onload="checkCK()">
-	<center>
+
+<body style="overflow: hidden;" onload="checkCK()">
+	<div id="box">
+      <div id="header">
+         <div id="header_1">
+            <ul class="menu">
+               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" name="chart" border="0" class="rollover"/></a></li>
+               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  name="new" border="0" class="rollover"/></a></li>
+   
+               <li><a href="GenreChartBoard.action?category=genre"><img src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+                  <ul class="sub">
+                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
+                  <ul class="sub">
+                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+         <div id="header_2">
+            <center>
+               <form name="bbu" method="post">
+                  <input type="hidden" name="id" value="${session.memId}"/>
+                  <a href="#"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" onclick="bbusic_main()"/></a>
+               </form>
+            </center>
+         </div>
+      </div>
+   </div>
+
+	<div id="box">
+			<a href="findIdForm.action"><img src="member/image/findId.png" name="chart" border="0"/></a>
+			<a href="resetPasswdForm.action"><img src="member/image/resetPasswd.png" name="chart" border="0"/></a>
+		<div id="box2">
+			
+			<div id="content">		
+				<center>
 		<h2>비밀번호 재설정</h2>
 		<p>본인확인 절차가 모두 완료되었습니다. 새로운 비밀번호를 등록해 주시기 바랍니다.</p>
 				<table width="850" border="0" cellspacing="0" cellpadding="3" align="center" class="id">
@@ -101,5 +148,9 @@
 		</form>
 		<br />
 	</center>
+			</div>
+		</div>
+		<div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>
+	</div>
 </body>
 </html>

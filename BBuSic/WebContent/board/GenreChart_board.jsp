@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <script type="text/javascript">
 	function checkAll(checkFlag, blockCount){
@@ -36,7 +37,7 @@
 		
 	}
 	
-	/* ÆË¾÷ ½ºÅ©¸³Æ® */
+	/* íŒì—… ìŠ¤í¬ë¦½íŠ¸ */
 	function list_add(a){
 		var params = "";
 		var chkNo = document.getElementsByName("chkNo");
@@ -48,8 +49,8 @@
 					countChk+=1;
 				}				
 			}
-			if(countChk == 0){ //¼­¹ö·Î ³Ñ¾î°¡±âÀü¿¡ »çÀü¿¡ ¸·±âÀ§ÇØ »ç¿ë.
-				alert("¼±ÅÃÇØ¶ó!!!");
+			if(countChk == 0){ //ì„œë²„ë¡œ ë„˜ì–´ê°€ê¸°ì „ì— ì‚¬ì „ì— ë§‰ê¸°ìœ„í•´ ì‚¬ìš©.
+				alert("ì„ íƒí•´ë¼!!!");
 				return false;
 			}
 		}else{
@@ -59,33 +60,41 @@
 	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
 	
-	/* ´Ù¿î·Îµå ½ºÅ©¸³Æ® */
-	function music_down(a){
+	/*Confirm ì°½ì„ í†µí•´ Yes ì¼ê²½ìš° down_list ë¡œ ì´ë™*/	
+	function musicConfirm2(a){	
+		if(confirm("ê²°ì¬í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")){
+			down_list(a);
+		}else{
+			alert("ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+		}
+	}
+	/* ë‹¤ìš´ë¡œë“œ ìŠ¤í¬ë¦½íŠ¸ */
+	function down_list(a){
 		var params = "";
 		var chkNo = document.getElementsByName("chkNo");
+		
 		if(a == "s"){
 			var countChk = 0;
 			for (var i = 0; i < chkNo.length; i++) {					
 				if(chkNo[i].checked){
-					params+= "chkNo="+i +"&";
+					params+= "chkNo="+chkNo[i].value +"&";
 					countChk+=1;
 				}				
 			}
-			if(countChk == 0){ //¼­¹ö·Î ³Ñ¾î°¡±âÀü¿¡ »çÀü¿¡ ¸·±âÀ§ÇØ »ç¿ë.
-				alert("¼±ÅÃÇØ¶ó!!!");
+			if(countChk == 0){ //ì„œë²„ë¡œ ë„˜ì–´ê°€ê¸°ì „ì— ì‚¬ì „ì— ë§‰ê¸°ìœ„í•´ ì‚¬ìš©.
+				alert("ì„ íƒí•´ë¼!!!");
 				return false;
 			}
 		}else{
 			params = "chkNo="+a;
 		}
-		open("downloadAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
+		open("downPopUp.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=650, height=400"); 
 	}
 </script>
 
-<html>
 <head>
-<title>»Ñ¼õ¹ÂÁ÷</title>
+<title>ë¿Œìˆ‘ë®¤ì§</title>
 <style type="text/css">
 g {
 	color: black;
@@ -132,7 +141,7 @@ center {
 	
 	   <div id="box">
 	      <div id="box2">
-	          <div id="content"> 2¹ø </div>
+	          <div id="content"> 2ë²ˆ </div>
 				<body>
 					<form method="post" name="chartForm">
 						<hr width="880px" size="1" color="gray" align="left" />
@@ -143,9 +152,9 @@ center {
 						<hr width="880px" size="1" color="gray" align="left" />
 				
 				
-						<input type="button" name="h_selectall_btt" value="ÀüÃ¼¼±ÅÃ" width="50px" onClick="checkAll2(${blockCount})">
-						<input type="button" name="h_listen_btt" value="µè±â" onClick="list_add('s')">
-						<input type="button" name="h_download_btt" value="´Ù¿î" onClick="music_down('s')">
+						<input type="button" name="h_selectall_btt" value="ì „ì²´ì„ íƒ" width="50px" onClick="checkAll2(${blockCount})">
+						<input type="button" name="h_listen_btt" value="ë“£ê¸°" onClick="list_add('s')">
+						<input type="button" name="h_download_btt" value="ë‹¤ìš´" onClick="musicConfirm2('s');">
 				
 						<hr width="880px" size="1" align="left">
 						<table align="left">
@@ -155,11 +164,11 @@ center {
 								</td>
 								<td width="25px"><g>NO</g></td>
 								<td width="70px"></td>
-								<td width="300px"><g>°î¸í</g></td>
-								<td width="125px"><g>¾ÆÆ¼½ºÆ®</g></td>
-								<td width="125px"><g>¾Ù¹ü</g></td>
-								<td width="105px"><g>ÁÁ¾Æ¿ä</g></td>
-								<td width="80px"><g>´Ù¿î</g></td>
+								<td width="300px"><g>ê³¡ëª…</g></td>
+								<td width="125px"><g>ì•„í‹°ìŠ¤íŠ¸</g></td>
+								<td width="125px"><g>ì•¨ë²”</g></td>
+								<td width="105px"><g>ì¢‹ì•„ìš”</g></td>
+								<td width="80px"><g>ë‹¤ìš´</g></td>
 							</tr>
 						</table>
 						<hr width="880px" size="3" color="#CC3D3D" align="left" />
@@ -169,7 +178,7 @@ center {
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<table>
 								<tr>
-									<td align="left">°Ô½Ã¹°ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.</td>
+									<td align="left">ê²Œì‹œë¬¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</td>
 								</tr>
 							</table>
 						</c:if>
@@ -184,11 +193,11 @@ center {
 										<td width="25px">
 											${(currentPage-1) * 10 + (checkValue.index + 1)}
 										</td>
-										<!--ÀÌ¹ÌÁö-->
+										<!--ì´ë¯¸ì§€-->
 										<td width="70px">
 											<input type="image" onClick=""/>
 										</td>
-										<!--°îÁ¤º¸-->
+										<!--ê³¡ì •ë³´-->
 										<td width="300px" align="left">
 											<input type="image" name="m_play_btt" src="main/bbu_main_img/m_play_button.png" onclick="list_add(${checkValue.index });">
 											<input type="image" name="m_add_btt" src="main/bbu_main_img/m_add_button.png"> &nbsp;
@@ -201,13 +210,13 @@ center {
 										<td width="125px">
 											<a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
 										</td>
-										<!--ÁÁ¾Æ¿ä-->
+										<!--ì¢‹ì•„ìš”-->
 										<td width="105px">
 											<input type="image" name="m_like_btt" src="main/bbu_main_img/m_like_button.png"> ${list.hit}
 										</td>
-										<!--´Ù¿î·Îµå-->
+										<!--ë‹¤ìš´ë¡œë“œ-->
 										<td td width="80px">
-											<input type="image" name="m_download_img" src="main/bbu_main_img/m_download_button.png" onclick="music_down(${checkValue.index });">
+											<input type="image" name="m_download_img" src="main/bbu_main_img/m_download_button.png" onclick="musicConfirm2('s');">
 										</td>
 									</tr>
 								</table>
@@ -215,17 +224,17 @@ center {
 							</c:forEach>
 						</c:if>
 						
-						<!-- ÀüÃ¼¼±ÅÃ -->
-						<input type="button" name="h_selectall_btt" value="ÀüÃ¼¼±ÅÃ" width="50px" onClick="checkAll2(${blockCount})">
-						<input type="button" name="h_listen_btt" value="µè±â" onClick="list_add('s')">
-						<input type="button" name="h_download_btt" value="´Ù¿î" onClick="music_down('s')">
+						<!-- ì „ì²´ì„ íƒ -->
+						<input type="button" name="h_selectall_btt" value="ì „ì²´ì„ íƒ" width="50px" onClick="checkAll2(${blockCount})">
+						<input type="button" name="h_listen_btt" value="ë“£ê¸°" onClick="list_add('s')">
+						<input type="button" name="h_download_btt" value="ë‹¤ìš´" onClick="musicConfirm2('s');">
 				
 						<hr width="880px" size="1" align="left" />
 						<br>
 						<p align="center"><s:property value="pagingHtml" escape="false" /></p>
 					</form>
 					 </div>
-      <div id="box3"> 5¹ø </div>
+      <div id="box3"> <center><br/><br/>ë¿Œìˆ‘ë®¤ì§ : ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 823-24 ë‚¨ë„ë¹Œë”© 2ì¸µ / ë¿Œìˆ‘ë®¤ì§ëŒ€í‘œì´ì‚¬ : í—ˆíš¨ì„± / ë¬¸ì˜ì „í™”(í‰ì¼ 09:00~24:00) : 010-9136-3540(ë¬´ë£Œ) /<br/> Â©ë¿Œìˆ‘ì—”í„°í…Œì¸ë¨¼íŠ¸, Inc. All rights reserved.</center> </div>
    </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 
 <sqlMap namespace="payment_cash">
 	<typeAlias alias="cDTO" type="payment.pay_setDTO.cashCharge_DTO" />
+	<typeAlias alias="dDTO" type="download.dto.downLoadDTO" />
 
 		<!-- 리절트 맵 정의 -->
 	  	<resultMap id="cashRes" class="cDTO">
@@ -43,11 +44,15 @@
 			HAVING max(cashuse_date) = (SELECT max(cashuse_date) FROM bbu_cashuse where cash_id = #cash_id#)
 		</select>
 		
-		<select id="selectCash_all" resultClass="int" parameterClass="String">
+		<select id="selectCash_use1" resultMap="cashRes" parameterClass="String">
 			SELECT * FROM bbu_cashuse WHERE CASH_ID = #cash_id# ORDER BY cashuse_date desc
 		</select>
 		
 		<update id="updateChargeCash_delete" parameterClass="cDTO">
 			UPDATE bbu_cashuse SET DELETE_CASH = #delete_cash# WHERE CASH_ID = #cash_id#
 		</update>
+		<!-- CASH,SUB_CASH 업데이트 -->
+		<update id="updateDownLoad" parameterClass="dDTO">
+			UPDATE bbu_cashuse SET CASH=CASH-#sum#,SUB_CASH=#sum# WHERE CASH_ID = #id#
+		</update>		
 </sqlMap>

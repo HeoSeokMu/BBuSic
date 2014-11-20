@@ -159,10 +159,26 @@
 							}
 							
 						} else if (Add_Money < Cash_In) {
-							form.add_money.value = Amount - Cash_In;
-							jQuery(function($) {
-								$("#cash").text(Delete_cash - (Amount - Cash_In));
-							});
+							if(Add_Money == 0) {
+								form.add_money.value = 0;
+								form.cash_in.value = Cash_In - (Cash_In - Amount);
+								
+								jQuery(function($) {
+									$("#cash").text(Delete_cash - Cash_In);
+								});
+							} else {
+								if(Cash_In == Amount) {
+									form.add_money.value = 0;
+									jQuery(function($) {
+										$("#cash").text(Delete_cash - Cash_In);
+									});	
+								} else {
+									form.add_money.value = Amount - Cash_In;
+									jQuery(function($) {
+										$("#cash").text(Delete_cash - Cash_In);
+									});	
+								}
+							}
 						}
 						
 						return false;
@@ -415,7 +431,7 @@
 		    	</div>
 	<!--    	<div id="box2_2"> 3번 </div>  -->
 			</div>
-			<div id="box3"> 5번 </div>
+			<div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>
 		</div>
 	</body>
 </html>

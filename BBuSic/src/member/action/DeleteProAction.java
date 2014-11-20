@@ -12,11 +12,13 @@ public class DeleteProAction implements Action, MemberAware, SessionAware{
 	private SqlMapClient sqlMapper;
 	private Map session;
 	private String id;
+	private String check;
 
 	public String execute() throws Exception {
 		id = (String) session.get("memId");
 		sqlMapper.update("member.deleteMember", id);
 		session.remove("memId");
+		check = "delete";
 		return SUCCESS;
 	}
 	
@@ -27,5 +29,4 @@ public class DeleteProAction implements Action, MemberAware, SessionAware{
 	public void setSession(Map session) {
 		this.session = session;
 	}
-	
 }
