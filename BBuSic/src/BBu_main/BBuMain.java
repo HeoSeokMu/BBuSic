@@ -55,22 +55,23 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 
 		if (id != null) {
 			myinfo_DTO = new payMyInfo_DTO();
-			/*
+			
 			buy_DTO = new buyInfo_DTO();
 			cash_DTO = new cashCharge_DTO();
 			
 			buy_DTO = (buyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
-			long buy_date = buy_DTO.getExpiration_date().getTime() - buy_DTO.getSettlement_date().getTime();
+			long buy_day = buy_DTO.getExpiration_date().getTime() - buy_DTO.getSettlement_date().getTime();
+			long buy_date = (buy_day / 1000) / (60*60*24);				// ¿œ
 			if(buy_date <= 0) {
-				sqlMapper.update("", buy_DTO.getSettlement_date());
+				sqlMapper.update("payment_buy.update_resetPay", buy_DTO.getSettlement_date());
 			}
 			
 			cash_DTO = (cashCharge_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
-			long cash_date = cash_DTO.getExpiration_date().getTime() - cash_DTO.getCashuse_date().getTime();
+			long cash_day = cash_DTO.getExpiration_date().getTime() - cash_DTO.getCashuse_date().getTime();
+			long cash_date = (cash_day / 1000) / (60*60*24);				// ¿œ
 			if(cash_date <= 0) {
-				sqlMapper.update("", cash_DTO.getCashuse_date());
+				sqlMapper.update("payment_cash.update_resetCash", cash_DTO.getCashuse_date());
 			}
-			*/
 			
 			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
 		}
