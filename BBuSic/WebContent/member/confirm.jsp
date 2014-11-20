@@ -94,6 +94,13 @@ function bbusic_main() {
 		height:40px;
 		text-align:center;
 		padding:3px;
+	}
+	.id{
+		background-color:#dddddd;
+		border:1px #dddddd dashed;
+		text-align:center;
+		padding:3px;
+	}
 </style>
 
 <body style="overflow: hidden;" onload="checkCK()">
@@ -136,7 +143,7 @@ function bbusic_main() {
 			<img src="member/image/img_confirm.png"/>	
 				<center>
 				<h2>가입인증</h2>
-				<table>
+				<table width="700" border="0" cellspacing="0" cellpadding="3" align="center" class="id">
 					<tr>
 						<td align="left">· 아이디/비밀번호 분실 등 본인여부 확인이 필요한 경우 사용됩니다.</td>
 					</tr>

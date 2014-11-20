@@ -4,14 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import BBusic.Aware.musicAware;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
@@ -22,8 +28,12 @@ import payment.action.BBuSicAware;
 import payment.pay_setDTO.payMyInfo_DTO;
 import upload.dto.musicDTO;
 
+<<<<<<< HEAD
 	
 	
+=======
+
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 public class BBuMain implements Action, BBuSicAware, ServletRequestAware, ServletResponseAware, ModelDriven, Preparable,musicAware {
 	payMyInfo_DTO myinfo_DTO;
 	public static SqlMapClient sqlMapper;
@@ -31,7 +41,10 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	private String cooId = null;
 	private HttpServletResponse res;
 	private HttpServletRequest req;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 	private List<musicDTO> musicPictureList = new ArrayList<musicDTO>();
 	private musicDTO mdto;
 	String file1;
@@ -41,7 +54,11 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	String file5;
 	String file6;
 	String file7;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 	public String execute() throws Exception {
 		Cookie[] cookies = req.getCookies();
 		if(cookies != null){
@@ -91,7 +108,11 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	public payMyInfo_DTO getMyinfo_DTO() {
 		return myinfo_DTO;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 	@Override
 	public Object getModel() {		
 		return mdto;
@@ -165,7 +186,10 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	public void setFile7(String file7) {
 		this.file7 = file7;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 	
 	public void setServletResponse(HttpServletResponse res) {
 		this.res = res;
@@ -174,5 +198,8 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	public void setServletRequest(HttpServletRequest req) {
 		this.req = req;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 32c6b6b8fbc9a57852d36bc7649d1676ec803863
 }

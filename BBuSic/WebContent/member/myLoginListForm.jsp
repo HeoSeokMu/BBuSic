@@ -27,11 +27,6 @@ function checkIt(){
 		document.myform.passwd.focus();
 		return false;
 	}
-	
-	var del=confirm("정말 탈퇴하시겠습니까?");
-    if(del==false){
-    	return false;
-    }
 }
 
 function bbusic_main() {
