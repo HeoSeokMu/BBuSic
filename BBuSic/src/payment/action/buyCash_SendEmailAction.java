@@ -18,7 +18,7 @@ public class buyCash_SendEmailAction implements Action{
 	private String host = "smtp.gmail.com";//smtp 서버
 	private String from = "BBuSic.com";
 	private String fromName = "BBUSIC";
-	private String subject = "이메일 인증메일 입니다.";			//*제목
+	private String subject = "[BBUSIC] 이메일 인증메일 입니다.";			//*제목
 	private String body="본인 인증 번호는 : "+ num +"입니다.";		//*내용
 	
 	public String execute() throws Exception {

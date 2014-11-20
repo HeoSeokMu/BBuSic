@@ -17,12 +17,16 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
 import payment.action.BBuSicAware;
+import payment.pay_setDTO.buyInfo_DTO;
+import payment.pay_setDTO.cashCharge_DTO;
 import payment.pay_setDTO.payMyInfo_DTO;
 import upload.dto.musicDTO;
 
 
 public class BBuMain implements Action, BBuSicAware, ServletRequestAware, ServletResponseAware, ModelDriven, Preparable,musicAware {
 	payMyInfo_DTO myinfo_DTO;
+	buyInfo_DTO buy_DTO;
+	cashCharge_DTO cash_DTO;
 	public static SqlMapClient sqlMapper;
 	private String id;
 	private String cooId = null;
@@ -37,7 +41,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	String file5;
 	String file6;
 	String file7;
-	
+
 	public String execute() throws Exception {
 		Cookie[] cookies = req.getCookies();
 		if(cookies != null){
@@ -48,12 +52,29 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 				}
 			}
 		}
-		
+
 		if (id != null) {
 			myinfo_DTO = new payMyInfo_DTO();
-			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);			
+			/*
+			buy_DTO = new buyInfo_DTO();
+			cash_DTO = new cashCharge_DTO();
+			
+			buy_DTO = (buyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
+			long buy_date = buy_DTO.getExpiration_date().getTime() - buy_DTO.getSettlement_date().getTime();
+			if(buy_date <= 0) {
+				sqlMapper.update("", buy_DTO.getSettlement_date());
+			}
+			
+			cash_DTO = (cashCharge_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
+			long cash_date = cash_DTO.getExpiration_date().getTime() - cash_DTO.getCashuse_date().getTime();
+			if(cash_date <= 0) {
+				sqlMapper.update("", cash_DTO.getCashuse_date());
+			}
+			*/
+			
+			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
 		}
-		
+
 		
 		musicPictureList = sqlMapper.queryForList("musicSQL.mainPicture");
 		file1 = musicPictureList.get(0).getMusic_image();
@@ -79,7 +100,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	public String getCooId() {
 		return cooId;
 	}
@@ -91,7 +112,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	@Override
 	public Object getModel() {		
 		return mdto;
-	}
+}
 
 	@Override
 	public void prepare() throws Exception {

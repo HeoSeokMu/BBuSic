@@ -89,10 +89,14 @@ function checkIt(){
    </div>
 
 	<div id="box">
+		<center>
 			<a href="modify.action"><img src="member/image/img_myInform.png" name="chart" border="0"/></a>
 			<a href="passwdForm.action"><img src="member/image/img_change_pw.png" name="chart" border="0"/></a>
 			<a href="myLoginListForm.action"><img src="member/image/img_login_inform.png" name="chart" border="0"/></a>
 			<a href="deleteForm.action"><img src="member/image/img_delete.png" name="chart" border="0"/></a>
+			<a href="cash_useForm.action?id=${session.memId}"><img src="member/image/cash.png" name="chart" border="0"/></a>
+			<a href="pay_useForm.action?id=${session.memId}&type=보유"><img src="member/image/payment.png" name="chart" border="0"/></a>
+		</center>
 		<div id="box2">
 			
 			<div id="content">		
@@ -134,7 +138,7 @@ function checkIt(){
 				</center>
 			</div>
 		</div>
-		<div id="box3"> 5번 </div>
+		<div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>
 	</div>
 </body>
 </html>

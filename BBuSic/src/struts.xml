@@ -127,6 +127,18 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/buyPayment_Update.jsp</result>
 		</action>
+		
+		<action name="cash_useForm" class="payment.action.cash_useFormAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="params"/>
+			<result>/payment/cash_useForm.jsp</result>
+		</action>
+		<action name="pay_useForm" class="payment.action.pay_useFormAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="params"/>
+			<result>/payment/pay_useForm.jsp</result>
+		</action>
+		
 	</package>	
 		
 	<!-- 김정진 작업 -->
@@ -134,10 +146,6 @@
 		<interceptors>
 			<interceptor name="DB" class="member.action.MemberInterceptor" />
 		</interceptors>	
-		
-		<action name="admin" class="member.action.AdminAction">
-			<result>/member/admin.jsp</result>
-		</action>
 		
 		<action name="agreement" class="member.action.AgreementAction">
 			<result>/member/agreement.jsp</result>
@@ -158,7 +166,6 @@
 			<interceptor-ref name="params"/>
  			<result>/member/inputPro.jsp</result>
 		</action>
-		
 		
 		<action name="loginForm" class="member.action.LoginFormAction">
 			<result>/member/loginForm.jsp</result>
