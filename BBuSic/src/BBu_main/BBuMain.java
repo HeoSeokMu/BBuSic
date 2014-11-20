@@ -1,9 +1,18 @@
 package BBu_main;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
 import BBusic.Aware.musicAware;
+=======
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
+>>>>>>> 91538a8a3aaf8f80ae1751f0e3627adac3c3d189
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
@@ -14,6 +23,7 @@ import payment.action.BBuSicAware;
 import payment.pay_setDTO.payMyInfo_DTO;
 import upload.dto.musicDTO;
 
+<<<<<<< HEAD
 public class BBuMain implements Action, BBuSicAware, ModelDriven, Preparable,musicAware {
 	payMyInfo_DTO myinfo_DTO;
 	public static SqlMapClient sqlMapper;
@@ -30,10 +40,27 @@ public class BBuMain implements Action, BBuSicAware, ModelDriven, Preparable,mus
 	String file6;
 	String file7;
 
+=======
+public class BBuMain implements Action, BBuSicAware, ServletRequestAware, ServletResponseAware {
+	payMyInfo_DTO myinfo_DTO;
+	public static SqlMapClient sqlMapper;
+	private String id;
+	private String cooId = null;
+	private HttpServletResponse res;
+	private HttpServletRequest req;
+	
+>>>>>>> 91538a8a3aaf8f80ae1751f0e3627adac3c3d189
 	public String execute() throws Exception {
-
-		System.out.println("id : " + id);
-		System.out.println("id : " + (id != null));
+		Cookie[] cookies = req.getCookies();
+		if(cookies != null){
+			for(int i=0;i<cookies.length; i++){
+				if(cookies[i].getName().equals("memId")){
+					System.out.println("cookie=" + cookies[i].getValue());
+					cooId = cookies[i].getValue();
+				}
+			}
+		}
+		
 		if (id != null) {
 			myinfo_DTO = new payMyInfo_DTO();
 			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);			
@@ -64,10 +91,15 @@ public class BBuMain implements Action, BBuSicAware, ModelDriven, Preparable,mus
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public String getCooId() {
+		return cooId;
+	}
 
 	public payMyInfo_DTO getMyinfo_DTO() {
 		return myinfo_DTO;
 	}
+<<<<<<< HEAD
 	@Override
 	public Object getModel() {		
 		return mdto;
@@ -143,4 +175,14 @@ public class BBuMain implements Action, BBuSicAware, ModelDriven, Preparable,mus
 	}
 	
 	
+=======
+	
+	public void setServletResponse(HttpServletResponse res) {
+		this.res = res;
+	}
+
+	public void setServletRequest(HttpServletRequest req) {
+		this.req = req;
+	}
+>>>>>>> 91538a8a3aaf8f80ae1751f0e3627adac3c3d189
 }

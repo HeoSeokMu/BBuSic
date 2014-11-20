@@ -59,7 +59,7 @@
                </li>
             </ul>
          </div>
-		<div id="header_2">
+        <div id="header_2">
 			<center>
 				<form name="bbu" method="post">
 					<input type="hidden" name="id" value="${session.memId}"/>
@@ -72,43 +72,36 @@
 
 	<div id="box">
 		<div id="box2">
-			<div id="content">		
-			<img src="member/image/img_inputPro.png"/>		
-		<center>			
-			<h2>가입완료</h2>
+			<div id="content">
+		<center>
+			<h2>로그인 기록</h2>
 
-			<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
+			<table border="1" cellspacing="0" cellpadding="2" align="center">
 				<tr>
-					<td width="200" align="left">이름</td>
-					<td width="400" align="left">
-						<c:out value="${name}"/>
-					</td>
+					<td width="400" align="center">아이디</td>
+					<td width="900" align="center">일시</td>
+					<td width="400" align="center">접속 서비스</td>
+					<td width="400" align="center">상태</td>
+					<td width="400" align="center">결과</td>
+					<td width="700" align="center">접속IP</td>
 				</tr>
-				<tr>
-					<td width="200" align="left">아이디</td>
-					<td width="200" align="left">
-						<c:out value="${id}"/>
-					</td>
-				</tr>
-				<tr>
-					<td width="200" align="left">닉네임</td>
-					<td width="400" align="left">
-						<c:out value="${nickname}"/>
-					</td>
-				</tr>
-				<tr>
-					<td width="200" align="left">이메일</td>
-					<td width="400" align="left">
-						<c:out value="${email}"/>
-					</td>
-				</tr>
+  				
+				<c:forEach items="${list}" var="dt">
+					<tr>
+						<td width="400" align="center">${dt.id}</td>
+						<td width="900" align="center">${dt.login_date}</td>
+						<td width="400" align="center">PC(웹)</td>
+						<td width="400" align="center">일반로그인</td>
+						<td width="400" align="center">${dt.login_result}</td>
+						<td width="700" align="center">${dt.ip}</td>
+					</tr>
+				</c:forEach>
+
 			</table>
-			<br/>
 			<input type="button" class="next" value="멜론홈" onclick="javascript:window.location='bbusic.action'"/>
 		</form>
-		<br/>
-		<br/>
 		</center>
+		<br/>
 			</div>
 		</div>
 		<div id="box3"> 5번 </div>

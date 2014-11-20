@@ -7,26 +7,27 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 
-public class DeleteProAction implements Action, MemberAware, SessionAware{
+public class MyLoginListFormAction implements Action, MemberAware, SessionAware{
 
 	private SqlMapClient sqlMapper;
 	private Map session;
 	private String id;
-	private String check;
+	private String passwd;
 
 	public String execute() throws Exception {
 		id = (String) session.get("memId");
-		sqlMapper.update("member.deleteMember", id);
-		session.remove("memId");
-		check = "delete";
+		passwd = (String) sqlMapper.queryForObject("member.selectPasswd", id);
 		return SUCCESS;
-	}
-	
-	public void setSqlMapper(SqlMapClient sqlMapper) {
-		this.sqlMapper = sqlMapper;
 	}
 
 	public void setSession(Map session) {
 		this.session = session;
+	}
+
+	public void setSqlMapper(SqlMapClient sqlMapper) {
+		this.sqlMapper = sqlMapper;
+	}
+	public String getPasswd(){
+		return passwd;
 	}
 }

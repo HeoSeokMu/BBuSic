@@ -6,7 +6,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,16 +18,18 @@ import com.opensymphony.xwork2.Preparable;
 import member.DTO.LoginRecDTO;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import payment.pay_setDTO.*;
 
-public class LoginProAction extends ActionSupport implements SessionAware, MemberAware, ServletRequestAware{
+public class LoginProAction extends ActionSupport implements SessionAware, MemberAware, ServletRequestAware, ServletResponseAware{
 	private int check;
 	private Map session;
 	private String id;
 	private String passwd;
 	private String passwd2;
+	private String loginCheck;
 	private LoginRecDTO rDTO;
 	
 	//////////////////////////////////////////
@@ -35,21 +39,35 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 	
 	public static SqlMapClient sqlMapper;
 	private HttpServletRequest req;
+	private HttpServletResponse res;
 	Calendar today = Calendar.getInstance();
+	
 
 	public String execute() throws Exception {
 		rDTO = new LoginRecDTO();
-		System.out.println(id);
 		passwd2 = (String)sqlMapper.queryForObject("member.selectPasswd", id);
-		System.out.println(req);
-		System.out.println(req.getRemoteAddr());
 		rDTO.setIp(req.getRemoteAddr());
 		rDTO.setLogin_date(today.getTime());
 		rDTO.setId(id);
 		
+		
 		if(passwd.equals(passwd2)){
 			session.put("memId", id);
 			rDTO.setLogin_result("성공");
+			
+			if(loginCheck != null){			//cookie
+				Cookie cidcookie = new Cookie("memId", id);
+				cidcookie.setMaxAge(20 * 60);
+				res.addCookie(cidcookie);
+			}else{
+				Cookie[] cookies = req.getCookies();
+				for(int i=0;i<cookies.length; i++){
+					if(cookies[i].getName().equals("memId")){
+						cookies[i].setMaxAge(0);
+						res.addCookie(cookies[i]);
+					}
+				}
+			}
 			
 			// 결제관련 소스 추가 /////////////////////////////////////////////////
 			myinfo_DTO = new payMyInfo_DTO();
@@ -62,8 +80,6 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 			check = 1;
 		}
 		sqlMapper.insert("login.record", rDTO);
-		
-		System.out.println("check : "+check);
 		return SUCCESS;
 	}
 
@@ -77,6 +93,10 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 	
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
+	}
+	
+	public void setLoginCheck(String loginCheck){
+		this.loginCheck = loginCheck;
 	}
 	
 	public void setSqlMapper(SqlMapClient sqlMapper) {
@@ -93,5 +113,9 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 
 	public payMyInfo_DTO getMyinfo_DTO() {
 		return myinfo_DTO;
+	}
+
+	public void setServletResponse(HttpServletResponse res) {
+		this.res = res;
 	}
 }

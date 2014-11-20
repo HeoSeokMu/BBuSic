@@ -8,13 +8,13 @@ import member.DTO.MemListDTO;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
 
-public class MemberListAction implements Action, MemberAware{
-
+public class MyLoginListProAction implements Action, MemberAware{
+	private String id;
 	private SqlMapClient sqlMapper;
 	private List<MemListDTO> list = new ArrayList<MemListDTO>();
 	
 	public String execute() throws Exception {
-		list = sqlMapper.queryForList("memList.selectMemList");
+		list = sqlMapper.queryForList("login.selectLoginList", id);
 		return SUCCESS;
 	}
 
@@ -24,5 +24,9 @@ public class MemberListAction implements Action, MemberAware{
 
 	public List<MemListDTO> getList(){
 		return list;
+	}
+	
+	public void setId(String id){
+		this.id = id;
 	}
 }

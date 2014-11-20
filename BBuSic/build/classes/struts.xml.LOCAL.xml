@@ -14,7 +14,6 @@
 		</interceptors>
 		
 		<action name="bbusic" class="BBu_main.BBuMain">
-			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="chain"/>
 			<interceptor-ref name="BBuSicInterceptor"/>
 			<interceptor-ref name="params"/>
@@ -202,9 +201,7 @@
 			<interceptor-ref name="servletConfig"/>
 			<interceptor-ref name="DB"/>
 			<interceptor-ref name="params"/>
-			<result name="success" type="chain">
-	          	<param name="actionName">bbusic</param>
-	        </result>
+			<result>/member/deletePro.jsp</result>
 		</action>
 		
 		<action name="modify" class="member.action.ModifyAction">
@@ -242,17 +239,11 @@
 		</action>
 		
 		<action name="sendEmail" class="member.action.SendEmailAction">
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/member/confirm.jsp</result>
+			<result name="confirm">/member/confirm.jsp</result>
+			<result name="resetPasswd">/member/resetPasswdPro.jsp</result>	
 		</action>
 		<action name="sendID" class="member.action.SendIdAction">
 			<result>/member/findIdPro.jsp</result>
-		</action>
-		<action name="sendPwConfirm" class="member.action.SendPwConfirmAction">
-			<result>/member/resetPasswdPro.jsp</result>	
 		</action>
 		
 		<action name="resetPasswd" class="member.action.resetPasswdAction">
@@ -280,40 +271,52 @@
 			<interceptor-ref name="DB"/>
 			<interceptor-ref name="params"/>
 			<result>/member/memberList.jsp</result>
-		</action>
-		
-		<action name="passwdForm" class="member.action.PasswdFormAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="params"/>
-			<result>/member/passwdForm.jsp</result>
-		</action>
-		<action name="passwdPro" class="member.action.PasswdProAction">
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/member/passwdForm.jsp</result>
-		</action>
-		
-		<action name="myLoginListForm" class="member.action.MyLoginListFormAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="params"/>
-			<result>/member/myLoginListForm.jsp</result>
-		</action>
-		<action name="myLoginListPro" class="member.action.MyLoginListProAction">
-			<interceptor-ref name="DB"/>
-			<interceptor-ref name="params"/>
-			<result>/member/myLoginListPro.jsp</result>
-		</action>
+		</action>	
 	</package>
 	
 	<!-- 안명곤 작업 -->
 	<package name="gon_bbu" extends="struts-default">
+		<!-- 팝업 -->
 		<interceptors>
 			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
 		</interceptors>
+		<action name="Chart_BoardAction" class="board.action.Chart_BoardAction" method="popupEx">
+			<interceptor-ref name="servletConfig"/>
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/MusicListForm.jsp</result>
+		</action>
+		<!-- 팝업 리스트 삭제 -->
+		<action name="deleteListAction" class="board.action.Chart_BoardAction" method="deleteListAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/MusicListForm.jsp</result>
+		</action>
+		<!--다운로드-->
+		<action name="downloadAction" class="download.action.downloadAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/DownLoadForm.jsp</result>
+		</action>
+		<action name="downloadAction2" class="download.action.downloadAction" method="downLoad">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="staticParams"/>
+			<param name="dir">d:/Upload</param>
+			<result  type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment; filename=${fileName}</param>
+				<param name="bufferSize">10240000</param>
+			</result>						
+		</action>
 		<!-- 업로드 부분-->
 		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
 			<interceptor-ref name="prepare" />
@@ -388,59 +391,6 @@
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/SearchResult_board.jsp</result>
-		</action>
-		<!-- 허효성 작업 -->
-		<!-- 팝업 -->		
-		<action name="PopupAction" class="board.action.PopupAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/MusicListForm.jsp</result>
-		</action>
-		<!-- 팝업 리스트 삭제 -->
-		<action name="deleteListAction" class="board.action.PopupAction" method="deleteListAction">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/MusicListForm.jsp</result>
-		</action>
-		<!--다운로드-->
-		<action name="downloadAction" class="download.action.downloadAction">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/DownLoadForm.jsp</result>
-		</action>
-		<action name="downLoadPayAction" class="download.action.downLoadPayAction">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/downLoadPayForm.jsp</result>
-		</action>
-		<action name="downPopUp" class="board.action.downPopUpAction">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/DownLoadForm.jsp</result>
-		</action>
-		<action name="downloadAction2" class="download.action.downloadAction" method="downLoad">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<interceptor-ref name="staticParams"/>
-			<param name="dir">d:/Upload</param>
-			<result  type="stream">
-				<param name="inputName">inputStream</param>
-				<param name="contentDisposition">attachment; filename=${fileName}</param>
-				<param name="bufferSize">10240000</param>
-			</result>						
 		</action>
 	</package>
 </struts>
