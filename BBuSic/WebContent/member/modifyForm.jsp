@@ -155,15 +155,11 @@ function checkCK(){
 		<div id="box2">
 			
 			<div id="content">		
-				<center>
+				<center><br/>
+					<h2>정보 수정</h2>
+				<br/>
 					<form method="post" action="modifyPro.action" name="userinput" onSubmit="return checkIt()">
-						<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
-							<tr>
-								<td colspan="2" height="39" align="center" bgcolor="${value_c}">
-									<font size="+1"><b>회원가입</b></font>
-								</td>
-							</tr>
-			
+						<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">			
 							<tr>
 								<td width="200">아이디</td>
 								<td width="400">
@@ -196,9 +192,10 @@ function checkCK(){
 									<input type="text" name="email" value="${mDTO.email}"/>
 								</td>
 							</tr>
-						</table>
-						<input type="submit" name="soaka" value="정보수정"/>
+						</table><br/>
+						<input type="submit" class="next" name="soaka" value="정보수정"/>
 					</form>
+					<br/>
 					</center>
 			</div>
 		</div>
