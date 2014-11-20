@@ -125,11 +125,16 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td>
 				캐쉬 
 	 					<c:if test="${myinfo_DTO.delete_cash == null}">0</c:if>
 					   	<c:if test="${myinfo_DTO.delete_cash != null}">${myinfo_DTO.delete_cash}</c:if>
 				</td>
+				<c:if test="${session.memId == 'admin1'}">
+					<td align="right">
+						<a href="javascript:window.location='admin.action'">관리자 페이지</a>
+					</td>
+				</c:if>
 			</tr>
 		</table>
 	</c:if>
