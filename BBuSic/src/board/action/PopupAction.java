@@ -47,9 +47,7 @@ public class PopupAction implements Action, Preparable,ModelDriven,musicAware{
 		benefit = (String)sqlMapper.queryForObject("musicSQL.benefit", mdto2);
 		if(benefit !=null){			
 			benefit = benefit.substring(0, 6);			
-		}else{
-			
-		}
+		}else{	}
 		
 		for (int i = 0; i < cNo.length; i++) {		
 			musicList2.add(i, list.get(cNo[i]));	

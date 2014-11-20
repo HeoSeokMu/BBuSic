@@ -11,7 +11,7 @@
 			var countChk = 0;
 			for (var i = 0; i < chkNo2.length; i++) {					
 				if(chkNo[i].checked){
-					params+= "chkNo2="+chkNo[i].value +"&";
+					params+= "chkNo2="+i +"&";
 					countChk+=1;
 				}				
 			}
@@ -30,18 +30,15 @@
 	<table border="1" width="500">
 		<c:forEach var="musicList2" items="${musicList2}" varStatus="checkValue">		
 			<tr align="center">
-				<td><input type="checkbox" name="chkNo2" value="${((currentPage-1) * 10 + (checkValue.index + 1))-1}"></td>
-				<td>${musicList2.music_name }</td>
+				<td><input type="checkbox" name="chkNo2" value="${checkValue.index}"></td>
 				<td>${musicList2.realname_music }</td>
 				<td>${musicList2.singer }</td>
 				<td>${musicList2.album }</td>
+				<td>${musicList2.price }</td>
 				<td align="center">
-					<input type="button" value="다음" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
+					<input type="button" value="구매" onclick="javascript:window.location='downloadAction2.action?fileName=${musicList2.realname_music}'">
 				</td>				
 			</tr>		
 		</c:forEach>
-			<tr>
-				<td colspan="6" align="center"><input type="button" value="다음" onClick="downLoad('s')"></td>							
-			</tr>
 	</table>
 </form>
