@@ -2,7 +2,7 @@ package payment.action;
 
 public class pagingAction {
 
-	private int currentPage;   // 현재페이지
+	private int currentPage; // 현재페이지
 	private int totalCount;	 // 전체 게시물 수
 	private int totalPage;	 // 전체 페이지 수
 	private int blockCount;	 // 한 페이지의  게시물의 수

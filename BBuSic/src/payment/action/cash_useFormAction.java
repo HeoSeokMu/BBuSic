@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import payment.pay_setDTO.buyInfo_DTO;
+import payment.pay_setDTO.cashCharge_DTO;
 import upload.dto.musicDTO;
 import upload.dto.musicDTO2;
 import BBusic.Aware.musicAware;
@@ -15,79 +17,49 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-public class cash_useFormAction implements Action, BBuSicAware{
-	
-	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
+public class cash_useFormAction implements Action, BBuSicAware {
 
-	private static List<musicDTO> list = new ArrayList<musicDTO>();
-	
-	private int currentPage = 1;	//현재 페이지
-	private int totalCount;			// 총 게시물의 수
-	private int blockCount = 10;	// 한 페이지의  게시물의 수
-	private int blockPage = 5; 		// 한 화면에 보여줄 페이지 수
-	private pagingAction page; 		// 페이징 클래스
-	private String pagingHtml; 		// 페이징을 구현한 HTML
-	private String category;		// 해당 차트
-	private String type;			// 장르
-	
+	public static SqlMapClient sqlMapper;
+	private static List<cashCharge_DTO> list = new ArrayList<cashCharge_DTO>();
+
+	private int currentPage = 1; // 현재 페이지
+	private int totalCount; // 총 게시물의 수
+	private int blockCount = 10; // 한 페이지의 게시물의 수
+	private int blockPage = 5; // 한 화면에 보여줄 페이지 수
+	private pagingAction page; // 페이징 클래스
+	private String pagingHtml; // 페이징을 구현한 HTML
+	private String type; // 장르
+
 	@Override
 	public String execute() throws Exception {
-		System.out.println("execute"+sqlMapper);
-		if(category == "genre"){
-			System.out.println("ifcategory : " + category);
-			System.out.println("iftype : " + type);
-		}else{
-			System.out.println("elsecategory : " + category);
-			System.out.println("elsetype : " + type);
-		}
-				if(category.equals("genre")) {
-					if(type != null){
-						list = sqlMapper.queryForList("musicSQL.genreSelectAll", type);
-					}else{
-						list = sqlMapper.queryForList("musicSQL.newSelectAll");
-					}
-					totalCount = list.size(); // 전체 글 갯수를 구한다.
-				} else if (category.equals("new")) {
-					list = sqlMapper.queryForList("musicSQL.newSelectAll");
-					totalCount = list.size(); // 전체 글 갯수를 구한다.
-				}
-				
-				if(category.equals("chart")){
-					
-					list = sqlMapper.queryForList("musicSQL.selectAll");
-					
-					blockCount = 50;
-					blockPage = 2;
-					totalCount = list.size();
-					
-					setCurrentPage(currentPage);
-					page = new pagingAction(currentPage, totalCount, blockCount, blockPage, category); // pagingAction 객체 생성.
-					
-				}else{
-					setCurrentPage(currentPage);
-					page = new pagingAction(currentPage, totalCount, blockCount, blockPage, category); // pagingAction 객체 생성.
-				}
-				
-				setPagingHtml(page.getPagingHtml().toString());  // 페이지 HTML 생성.
-				//paging
-					
-				int lastCount = totalCount;
-					
-				// 현재 페이지의 마지막 글의 번호가 전체의 마지막 글 번호보다 작으면 lastCount를 +1 번호로 설정.
-				if (page.getEndCount() < totalCount)
-					lastCount = page.getEndCount() + 1;
+		System.out.println("execute" + sqlMapper);
+		System.out.println("type : " + type);
+		
+		list = sqlMapper.queryForList("payment_cash.genreSelectAll", type);
+		
+		totalCount = list.size(); // 전체 글 갯수를 구한다.
 
-				// 전체 리스트에서 현재 페이지만큼의 리스트만 가져온다.
-				list = list.subList(page.getStartCount(), lastCount);
-				
+
+		setPagingHtml(page.getPagingHtml().toString()); // 페이지 HTML 생성.
+		// paging
+
+		int lastCount = totalCount;
+
+		// 현재 페이지의 마지막 글의 번호가 전체의 마지막 글 번호보다 작으면 lastCount를 +1 번호로 설정.
+		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+
+		// 전체 리스트에서 현재 페이지만큼의 리스트만 가져온다.
+		list = list.subList(page.getStartCount(), lastCount);
+
 		return SUCCESS;
 	}
-	
-	public List<musicDTO> getList() {
+
+	public List<cashCharge_DTO> getList() {
 		return list;
 	}
 
-	public void setList(List<musicDTO> list) {
+	public void setList(List<cashCharge_DTO> list) {
 		this.list = list;
 	}
 
@@ -134,7 +106,7 @@ public class cash_useFormAction implements Action, BBuSicAware{
 	public String getPagingHtml() {
 		return pagingHtml;
 	}
-	
+
 	public void setPagingHtml(String pagingHtml) {
 		this.pagingHtml = pagingHtml;
 	}
@@ -147,16 +119,8 @@ public class cash_useFormAction implements Action, BBuSicAware{
 		this.type = type;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	
 	public void setSqlMapper(SqlMapClient sqlMapper) {
-		this.sqlMapper = sqlMapper; 
-		
+		this.sqlMapper = sqlMapper;
+
 	}
 }

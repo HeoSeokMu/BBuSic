@@ -53,6 +53,10 @@
 			SELECT * FROM bbu_buyinfo WHERE BUY_ID = #buy_id#
 		</select>
 		
+		<select id="selectBuyInfo_all" resultClass="int" parameterClass="String">
+			SELECT * FROM bbu_cashuse WHERE CASH_ID = #cash_id# ORDER BY cashuse_date desc
+		</select>
+		
 		<update id="updateBuyInfo" parameterClass="bDTO">
 			UPDATE bbu_buyinfo SET DOWNLOAD_COUNT = DOWNLOAD_COUNT + #download_count# WHERE BUY_ID = #buy_id#
 		</update>
