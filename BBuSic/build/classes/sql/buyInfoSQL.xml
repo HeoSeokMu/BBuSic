@@ -3,6 +3,7 @@
 
 <sqlMap namespace="payment_buy">
 	<typeAlias alias="bDTO" type="payment.pay_setDTO.buyInfo_DTO" />
+	<typeAlias alias="downDTO" type="download.dto.downLoadCountDTO" />
 
 		<!-- 리절트 맵 정의 -->
 	  	<resultMap id="buyInfoRes" class="bDTO">
@@ -51,9 +52,17 @@
 		
 		<select id="selectBuyInfo" resultMap="buyInfoRes">
 			SELECT * FROM bbu_buyinfo WHERE BUY_ID = #buy_id#
-		</select>
+		</select>		
 		
 		<update id="updateBuyInfo" parameterClass="bDTO">
 			UPDATE bbu_buyinfo SET DOWNLOAD_COUNT = DOWNLOAD_COUNT + #download_count# WHERE BUY_ID = #buy_id#
+		</update>
+		
+		<!--downLoadPayAction.java 에서 사용 -->
+		<select id="selectDownloadCount" resultClass="int">
+			SELECT download_count FROM bbu_buyinfo WHERE BUY_ID=#id# AND PAY_NAME=#pay_name#
+		</select>
+		<update id="updateDownloadCount" parameterClass="downDTO">
+			UPDATE bbu_buyinfo SET download_count=download_count-#count# WHERE BUY_ID=#id#	
 		</update>
 </sqlMap>

@@ -59,15 +59,24 @@
 	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
 	
+	/*Confirm 창을 통해 Yes 일경우 down_list 로 이동*/	
+	function musicConfirm2(a){	
+		if(confirm("결재하시겠습니까?")){
+			down_list(a);
+		}else{
+			alert("취소되었습니다.");
+		}
+	}
 	/* 다운로드 스크립트 */
-	function music_down(a){
+	function down_list(a){
 		var params = "";
 		var chkNo = document.getElementsByName("chkNo");
+		
 		if(a == "s"){
 			var countChk = 0;
 			for (var i = 0; i < chkNo.length; i++) {					
 				if(chkNo[i].checked){
-					params+= "chkNo="+i +"&";
+					params+= "chkNo="+chkNo[i].value +"&";
 					countChk+=1;
 				}				
 			}
@@ -78,8 +87,8 @@
 		}else{
 			params = "chkNo="+a;
 		}
-		open("downloadAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
+		open("downPopUp.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=650, height=400"); 
 	}
 </script>
 
@@ -145,7 +154,7 @@ center {
 				
 						<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 						<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-						<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
+						<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');">
 				
 						<hr width="880px" size="1" align="left">
 						<table align="left">
@@ -207,7 +216,7 @@ center {
 										</td>
 										<!--다운로드-->
 										<td td width="80px">
-											<input type="image" name="m_download_img" src="main/bbu_main_img/m_download_button.png" onclick="music_down(${checkValue.index });">
+											<input type="image" name="m_download_img" src="main/bbu_main_img/m_download_button.png" onclick="musicConfirm2('s');">
 										</td>
 									</tr>
 								</table>
@@ -218,7 +227,7 @@ center {
 						<!-- 전체선택 -->
 						<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
 						<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-						<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
+						<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');">
 				
 						<hr width="880px" size="1" align="left" />
 						<br>

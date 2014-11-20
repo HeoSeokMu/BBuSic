@@ -276,54 +276,9 @@
 	
 	<!-- 안명곤 작업 -->
 	<package name="gon_bbu" extends="struts-default">
-		<!-- 팝업 -->
 		<interceptors>
 			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
 		</interceptors>
-		<action name="PopupAction" class="board.action.PopupAction">
-			<interceptor-ref name="servletConfig"/>
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/MusicListForm.jsp</result>
-		</action>
-		<!-- 팝업 리스트 삭제 -->
-		<action name="deleteListAction" class="board.action.PopupAction" method="deleteListAction">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/MusicListForm.jsp</result>
-		</action>
-		<!--다운로드-->
-		<action name="downloadAction" class="download.action.downloadAction">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/DownLoadForm.jsp</result>
-		</action>
-		<action name="downLoadPayAction" class="download.action.downLoadPayAction">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<result>/board/downLoadPayForm.jsp</result>
-		</action>
-		<action name="downloadAction2" class="download.action.downloadAction" method="downLoad">
-			<interceptor-ref name="ibatis"/>
-			<interceptor-ref name="prepare"/>
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
-			<interceptor-ref name="staticParams"/>
-			<param name="dir">d:/Upload</param>
-			<result  type="stream">
-				<param name="inputName">inputStream</param>
-				<param name="contentDisposition">attachment; filename=${fileName}</param>
-				<param name="bufferSize">10240000</param>
-			</result>						
-		</action>
 		<!-- 업로드 부분-->
 		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
 			<interceptor-ref name="prepare" />
@@ -398,6 +353,59 @@
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/SearchResult_board.jsp</result>
+		</action>
+		<!-- 허효성 작업 -->
+		<!-- 팝업 -->		
+		<action name="PopupAction" class="board.action.PopupAction">
+			<interceptor-ref name="servletConfig"/>
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/MusicListForm.jsp</result>
+		</action>
+		<!-- 팝업 리스트 삭제 -->
+		<action name="deleteListAction" class="board.action.PopupAction" method="deleteListAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/MusicListForm.jsp</result>
+		</action>
+		<!--다운로드-->
+		<action name="downloadAction" class="download.action.downloadAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/DownLoadForm.jsp</result>
+		</action>
+		<action name="downLoadPayAction" class="download.action.downLoadPayAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/downLoadPayForm.jsp</result>
+		</action>
+		<action name="downPopUp" class="board.action.downPopUpAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/board/DownLoadForm.jsp</result>
+		</action>
+		<action name="downloadAction2" class="download.action.downloadAction" method="downLoad">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="staticParams"/>
+			<param name="dir">d:/Upload</param>
+			<result  type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment; filename=${fileName}</param>
+				<param name="bufferSize">10240000</param>
+			</result>						
 		</action>
 	</package>
 </struts>

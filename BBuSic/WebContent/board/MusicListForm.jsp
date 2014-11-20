@@ -90,9 +90,11 @@ function checkAll2(blockCount){
 		<table border="1" bordercolor="red" width="500">
 				<tr>
 					<td colspan="5">
-						<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;
-						<input type="button" value="구매" onClick="musicConfirm('s')">&nbsp;
-						<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
+							<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;
+						<c:if test="${benefit == '무제한 듣기'}">
+							<input type="button" value="구매" onClick="musicConfirm('s')">&nbsp;
+						</c:if>
+							<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
 					</td>										
 				</tr>
 				<tr>
@@ -107,7 +109,7 @@ function checkAll2(blockCount){
 				<c:forEach var="musicList2" items="${musicList2}" varStatus="checkValue">						
 						<tr>	
 							<td width="25px" height="10px">
-								<input type="checkbox" name="chkNo" value="${indexlist[checkValue.index]}">
+								<input type="checkbox" name="chkNo" value="${checkValue.index}">
 							</td>
 							<td>${musicList2.realname_music }</td>
 							<td>${musicList2.title }</td>
@@ -118,7 +120,7 @@ function checkAll2(blockCount){
 									</audio>
 									</td>
 									<td align="center">
-										<input type="button" value="다음" onclick="musicConfirm('s')">
+										<input type="button" value="구매" onclick="musicConfirm('s')">
 									</td>																		
 							</c:if>														
 							<c:if test="${benefit == null}">
@@ -128,13 +130,15 @@ function checkAll2(blockCount){
 									</audio>
 								</td>
 							</c:if>							
-						</tr>											
-				</c:forEach>
-				<tr>
-					<td colspan="5">						
-						<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;
-						<input type="button" value="전체구매" onClick="musicConfirm('s')">&nbsp;
-						<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
+						</tr>																
+				</c:forEach>	
+					<tr>
+						<td colspan="5">
+								<input type="button" name="h_selectall_btt" value="전체선택" onClick="checkAll2(50)">&nbsp;	
+							<c:if test="${benefit == '무제한 듣기'}">		
+								<input type="button" value="구매" onClick="musicConfirm('s')">&nbsp;
+							</c:if>						
+								<input type="button" value="목록삭제" onclick="window.location='deleteListAction.action'">
 					</td>
 				</tr>
 		</table>		
