@@ -94,10 +94,10 @@
 				</tr>
 				<tr>
 						<td colspan="2" class="lineX">
-						<font size="1">
-						<input type="checkbox" name="loginCheck" value="check"/><font >아이디저장</font>
-						&nbsp;<a href="findIdForm.action" title="아이디/비밀번호 찾기" style="color: gray">아이디/비밀번호 찾기</a>
-						&nbsp;<a href="agreement.action" title="회원가입" style="color: gray"><strong>회원가입</strong></a>
+						<font style="font-size: 8pt">
+						<input type="checkbox" name="loginCheck" value="check"/>아이디저장
+						&nbsp;<a href="findIdForm.action" title="아이디/비밀번호 찾기" style="color: gray;">아이디/비밀번호 찾기</a>
+						&nbsp;<a href="agreement.action" title="회원가입" style="color: gray;"><strong>회원가입</strong></a>
 						</font>
 					</td>
 				</tr>
