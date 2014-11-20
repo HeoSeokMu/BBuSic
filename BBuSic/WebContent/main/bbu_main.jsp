@@ -62,7 +62,7 @@
 
 	<div id="box">
 		<div id="box2">
-	    	<div id="content"> 2번 </div>
+	    	<div id="content"><jsp:include page="/main/center.jsp" /></div>
 <!--    	<div id="box2_2"> 3번 </div>  -->
 		</div>
 		<div id="box3"> <jsp:include page="/member/loginForm.jsp"/></div>
