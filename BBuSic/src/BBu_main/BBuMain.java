@@ -1,9 +1,11 @@
 package BBu_main;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import BBusic.Aware.musicAware;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +27,10 @@ import upload.dto.musicDTO;
 
 public class BBuMain implements Action, BBuSicAware, ServletRequestAware, ServletResponseAware, ModelDriven, Preparable,musicAware {
 	payMyInfo_DTO myinfo_DTO;
-	buyInfo_DTO buy_DTO;
-	cashCharge_DTO cash_DTO;
+	
+	private List<String> categorylist = new ArrayList<String>();
+	private List<buyInfo_DTO> buyList = new ArrayList<buyInfo_DTO>();
+	private List<cashCharge_DTO> cashList = new ArrayList<cashCharge_DTO>();
 	public static SqlMapClient sqlMapper;
 	private String id;
 	private String cooId = null;
@@ -52,27 +56,45 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 				}
 			}
 		}
-
-		if (id != null) {
+		
+		if (id != null || id !="") {
 			myinfo_DTO = new payMyInfo_DTO();
 			
-			buy_DTO = new buyInfo_DTO();
-			cash_DTO = new cashCharge_DTO();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			
-			buy_DTO = (buyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
-			long buy_day = buy_DTO.getExpiration_date().getTime() - buy_DTO.getSettlement_date().getTime();
-			long buy_date = (buy_day / 1000) / (60*60*24);				// 일
-			if(buy_date <= 0) {
-				sqlMapper.update("payment_buy.update_resetPay", buy_DTO.getSettlement_date());
+			buyList = sqlMapper.queryForList("payment_buy.selectBuyInfo_buy", id);
+			for(int i = 0; i<buyList.size(); i++) {
+				if(buyList.get(i).getPay_benefit().equals("없음")) {
+					buyList.remove(i);
+				}
+			}
+			for(buyInfo_DTO buy_DTO : buyList) {
+				long buy_day = buy_DTO.getExpiration_date().getTime() - buy_DTO.getSettlement_date().getTime();
+				long buy_date = (buy_day / 1000) / (60*60*24);				// 일
+				if(buy_date <= 0) {
+					buy_DTO.setDelete_payname("보유한 상품이 없습니다.");
+					buy_DTO.setDelete_paybenefit("없음");
+					sqlMapper.update("payment_buy.update_resetPay", buy_DTO);
+				}
+				
+				System.out.println("buy_date : " + buy_date);
 			}
 			
-			cash_DTO = (cashCharge_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
-			long cash_day = cash_DTO.getExpiration_date().getTime() - cash_DTO.getCashuse_date().getTime();
-			long cash_date = (cash_day / 1000) / (60*60*24);				// 일
-			if(cash_date <= 0) {
-				sqlMapper.update("payment_cash.update_resetCash", cash_DTO.getCashuse_date());
+			cashList = sqlMapper.queryForList("payment_cash.selectCashInfo_cash", id);
+			for(int i = 0; i<cashList.size(); i++) {
+				if(cashList.get(i).getContent().equals("없음")) {
+					cashList.remove(i);
+				}
 			}
-			
+			for(cashCharge_DTO cash_DTO : cashList) {
+				long cash_day = cash_DTO.getExpiration_date().getTime() - cash_DTO.getCashuse_date().getTime();
+				long cash_date = (cash_day / 1000) / (60*60*24);				// 일
+				
+				if(cash_date <= 0) {
+					sqlMapper.update("payment_cash.update_resetCash", cash_DTO);
+				}
+				System.out.println("cash_date : " + cash_date);
+			}
 			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
 		}
 

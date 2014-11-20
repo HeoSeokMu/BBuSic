@@ -60,7 +60,7 @@ public class buyPaymentUpdateAction implements Action, Preparable, ModelDriven, 
 			cash_DTO.setSub_cash(cash_in);
 			cash_DTO.setDelete_cash(delete_cash - cash_in);
 			sqlMapper.update("payment_cash.updateChargeCash_delete", cash_DTO);
-			cash_DTO.setCash(cash_in);
+			cash_DTO.setCash(0);
 			sqlMapper.insert("payment_cash.insertCashInfo", cash_DTO);
 		}
 		

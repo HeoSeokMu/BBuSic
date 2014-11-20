@@ -43,10 +43,17 @@
 			GROUP BY cashuse_date, delete_cash
 			HAVING max(cashuse_date) = (SELECT max(cashuse_date) FROM bbu_cashuse where cash_id = #cash_id#)
 		</select>
-		
 		<select id="selectCash_use1" resultMap="cashRes" parameterClass="String">
 			SELECT * FROM bbu_cashuse WHERE CASH_ID = #cash_id# ORDER BY cashuse_date desc
 		</select>
+		
+		<select id="selectCashInfo_cash" resultMap="cashRes" parameterClass="String">
+			select * from bbu_cashuse where cash_id = #cash_id# and content != '없음'
+		</select>
+		<update id="update_resetCash" parameterClass="String">
+			update bbu_cashuse set delete_cash=#delete_cash# where cash_id = #cash_id#
+		</update>
+		
 		
 		<update id="updateChargeCash_delete" parameterClass="cDTO">
 			UPDATE bbu_cashuse SET DELETE_CASH = #delete_cash# WHERE CASH_ID = #cash_id#
