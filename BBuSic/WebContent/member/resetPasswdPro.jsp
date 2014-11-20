@@ -122,11 +122,10 @@
 						    </table>
 						    <br/>
 						    <table>
-							  	<form method="post" action="sendEmail.action" name="userinput">
+							  	<form method="post" action="sendPwConfirm.action" name="userinput">
 							  		<tr>
 										<td width="200">이메일</td>
 										<td width="400" align="left">
-										<input type="hidden" name="category" value="resetPasswd"/>
 										<input type="hidden" name="date" value="${date}"/>
 										<input type="hidden" name="id" value="${id}"/>
 										<input type="text" name="email" value="${email}" size="20" maxlength="25" readonly="readonly"/>

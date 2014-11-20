@@ -79,8 +79,6 @@
 	.id{
 		background-color:#dddddd;
 		border:1px #dddddd dashed;
-		width:400px;
-		height:40px;
 		text-align:center;
 		padding:3px;
 	}
@@ -121,18 +119,31 @@
    </div>
 
 	<div id="box">
-			<a href="findIdForm.action"><img src="member/image/findId.png" name="chart" border="0"/></a>
-			<a href="resetPasswdForm.action"><img src="member/image/resetPasswd.png" name="chart" border="0"/></a>
+			<a href="modify.action"><img src="member/image/img_myInform.png" name="chart" border="0"/></a>
+			<a href="passwdForm.action"><img src="member/image/img_change_pw.png" name="chart" border="0"/></a>
+			<a href="myLoginListForm.action"><img src="member/image/img_login_inform.png" name="chart" border="0"/></a>
+			<a href="deleteForm.action"><img src="member/image/img_delete.png" name="chart" border="0"/></a>
 		<div id="box2">
 			<div id="content">		
-				<center>
+				<center><br/>
+				<h1>비밀번호 변경</h1>
+					<br/>
+					<table width="850" border="0" cellspacing="10" cellpadding="3" align="center" class="id">
+						<tr><td></td></tr>
+						<tr>
+							<td align="left">·주기적으로 비밀번호 변경은 개인정보를 안전하게 보호하고, 개인정보도용 피해를 예방합니다.</td>
+						</tr>
+						<tr>
+							<td align="left">·전화번호, 생년월일 등 개인정보와 관련된 숫자 등 다른 사람이 알아낼 수 있는 비밀번호는 사용하지 마세요.</td>
+						</tr>
+						<tr>
+							<td align="left">·영문(대소문자 구분), 특수기호를 혼합하여 비밀번호를 설정하시면, 더욱 안전한 비밀번호를 만드실 수 있습니다.</td>
+						</tr>
+						<tr><td></td></tr>
+				    </table>
+				    <br/>
 					<form method="post" name="userinput" action="passwdPro.action" onsubmit="return checkIt();">
 						<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
-							<tr>
-								<td colspan="2" height="39" align="center" bgcolor="${value_c}">
-									<font size="+1"><b>비밀번호 변경</b></font>
-								</td>
-							</tr>
 							<tr>
 								<td width="200">아이디</td>
 								<td width="400">
@@ -160,56 +171,14 @@
 								</td>
 							</tr>
 					    </table>
-					    
-						<input type="submit" value="비밀번호 변경"/>
+					    <br/>
+						<input type="submit" class="next" value="비밀번호 변경"/>
 					</form>
+					<br/>
 					</center>
 				</div>
 			</div>
 		<div id="box3"> 5번 </div>
 	</div>
 </body>
-</html>
-	
-	<body onload = "successMOD()">
-		<center>
-		<form method="get" name="userinput" action="passwdPro.action" onsubmit="return checkIt();">
-			<table width="600" border="1" cellspacing="0" cellpadding="3" align="center">
-				<tr>
-					<td colspan="2" height="39" align="center" bgcolor="${value_c}">
-						<font size="+1"><b>비밀번호 변경</b></font>
-					</td>
-				</tr>
-				<tr>
-					<td width="200">아이디</td>
-					<td width="400">
-						<c:out value="${id}"/>
-						<input type="hidden" name="id" value="${id}"/>
-						<input type="hidden" name="check"/>
-					</td>
-				</tr>
-				<tr>
-					<td width="200">현재 비밀번호</td>
-					<td width="200">
-						<input type="password" name="oldPasswd"/>
-					</td>
-				</tr>
-				<tr>
-					<td width="200">새 비밀번호</td>
-					<td width="400">
-						<input type="password" name="passwd"/>
-					</td>
-				</tr>
-				<tr>
-					<td width="200">새 비밀번호 확인</td>
-					<td width="400">
-						<input type="password" name="passwd2"/>
-					</td>
-				</tr>
-		    </table>
-		    
-			<input type="submit" class="next" value="비밀번호 변경"/>
-		</form>
-		</center>
-	</body>
 </html>

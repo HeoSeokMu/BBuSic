@@ -87,6 +87,8 @@ function bbusic_main() {
    </div>
 
 	<div id="box">
+			<a href="findIdForm.action"><img src="member/image/findId.png" name="chart" border="0"/></a>
+			<a href="resetPasswdForm.action"><img src="member/image/resetPasswd.png" name="chart" border="0"/></a>
 		<div id="box2">
 			<div id="content">				
 				<center>
@@ -121,7 +123,10 @@ function bbusic_main() {
 						<c:if test="${subId == null}">
 							입력하신 정보와 일치하는 아이디가 없습니다.<br/><br/>
 							<input type="button" class="next" style="width: 100px" value="아이디 찾기" onclick="javascript:window.location='findIdForm.action'"/>
+							<input type="button" class="next" style="width: 80px" value="회원가입" onclick="javascript:window.location='agreement.action'"/>
+							<br/>
 						</c:if>
+						<br/>
 					</center>
 			</div>
 		</div>

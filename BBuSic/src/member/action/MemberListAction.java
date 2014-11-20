@@ -15,10 +15,6 @@ public class MemberListAction implements Action, MemberAware{
 	
 	public String execute() throws Exception {
 		list = sqlMapper.queryForList("memList.selectMemList");
-		
-		for(int i = 0; i<list.size(); i++) {
-			System.out.println(list.get(i).getId());
-		}
 		return SUCCESS;
 	}
 

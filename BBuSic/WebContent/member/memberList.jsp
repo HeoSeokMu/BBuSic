@@ -73,30 +73,29 @@
 	<div id="box">
 		<div id="box2">
 			<div id="content">
-			<img src="member/image/img_inputForm.png"/>
 		<center>
 			<h2>회원정보</h2>
 
 			<table border="1" cellspacing="0" cellpadding="2" align="center">
 				<tr>
-					<td width="700" align="left">아이디</td>
-					<td width="500" align="left">이름</td>
-					<td width="1000" align="left">이메일</td>
-					<td width="700" align="left">닉네임</td>
-					<td width="700" align="left">가입일자</td>
-					<td width="500" align="left">캐쉬</td>
-					<td width="500"  align="left">상품구매내역</td>
+					<td width="700" align="center">아이디</td>
+					<td width="500" align="center">이름</td>
+					<td width="1000" align="center">이메일</td>
+					<td width="700" align="center">닉네임</td>
+					<td width="700" align="center">가입일자</td>
+					<td width="500" align="center">캐쉬</td>
+					<td width="500"  align="center">상품구매내역</td>
 				</tr>
   				
 				<c:forEach items="${list}" var="dt">
 					<tr>
-						<td width="700" align="left">${dt.id}</td>
-						<td width="500" align="left">${dt.name}</td>
-						<td width="1000" align="left">${dt.email}</td>
-						<td width="700" align="left">${dt.nickname}</td>
-						<td width="700" align="left">${dt.regdate}</td>
-						<td width="500" align="left">${dt.delete_cash}</td>
-						<td width="500" align="left">상품구매내역</td>
+						<td width="700" align="center">${dt.id}</td>
+						<td width="500" align="center">${dt.name}</td>
+						<td width="1000" align="center">${dt.email}</td>
+						<td width="700" align="center">${dt.nickname}</td>
+						<td width="700" align="center">${dt.regdate}</td>
+						<td width="500" align="center">${dt.delete_cash}</td>
+						<td width="500" align="center">상품구매내역</td>
 					</tr>
 				</c:forEach>
 

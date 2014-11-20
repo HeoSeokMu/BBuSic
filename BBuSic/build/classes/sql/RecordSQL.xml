@@ -4,13 +4,17 @@
 
 	<typeAlias alias="login" type="member.DTO.LoginRecDTO" />
 
-		<!-- 리절트 맵 정의 -select -->
 	  	<resultMap id="memberRes" class="login">
 		  	<result property="id" column="id"/>
 		  	<result property="ip" column="ip"/>
 		  	<result property="login_result" column="login_result"/>
 		  	<result property="login_date" column="login_date"/>
 		</resultMap>
+
+		<select id="selectLoginList" resultMap="memberRes" parameterClass="String">
+			SELECT * FROM bbu_memberlogin WHERE id = #id#
+		</select>
+
 
 		<insert id="record" parameterClass="login">
 		
