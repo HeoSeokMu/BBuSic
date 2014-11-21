@@ -7,8 +7,8 @@
 		var f = document.chartForm;
 		for(var i=1; i< blockCount; i++){
 			 if(f.elements[i].name == 'chkNo'){ 
-	             f.elements[i].checked = checkFlag; 
-	     } 
+                 f.elements[i].checked = checkFlag; 
+         } 
 		}
 	}
 	
@@ -39,11 +39,12 @@
 	function list_add(a){
 		var params = "";
 		var chkNo = document.getElementsByName("chkNo");
+		
 		if(a == "s"){
 			var countChk = 0;
 			for (var i = 0; i < chkNo.length; i++) {					
 				if(chkNo[i].checked){
-					params+= "chkNo="+i +"&";
+					params+= "chkNo="+chkNo[i].value +"&";
 					countChk+=1;
 				}				
 			}
@@ -54,8 +55,8 @@
 		}else{
 			params = "chkNo="+a;
 		}
-		open("Chart_BoardAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
+		open("PopupAction.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=650, height=400"); 
 	}
 	
 	/*Confirm 창을 통해 Yes 일경우 down_list 로 이동*/	
@@ -88,8 +89,8 @@
 		}
 		open("downPopUp.action?"+params, "confirm", 
 	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=650, height=400"); 
-	}
-</script>
+	}	
+	</script>
 
 <html>
 <head>
@@ -124,7 +125,7 @@ center {
 	               <li>
 	                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
 	                  <ul class="sub">
-	                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+	                     <li><a href="payBuyList.action?buy_id=${session.memId}"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
 	                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
 	                  </ul>
 	               </li>

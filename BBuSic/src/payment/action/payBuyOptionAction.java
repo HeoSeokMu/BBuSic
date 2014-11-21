@@ -1,5 +1,8 @@
 package payment.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import payment.pay_setDTO.pay_DTO;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -27,6 +30,7 @@ public class payBuyOptionAction implements Action, Preparable, ModelDriven, BBuS
 		if(buy_id.equals(" ") || buy_id != null) {
 			delete_cash = (int)sqlMapper.queryForObject("payment_cash.selectCash_use", buy_id);
 		}
+		
 		
 		return SUCCESS;
 	}

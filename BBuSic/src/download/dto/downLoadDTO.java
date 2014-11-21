@@ -5,7 +5,6 @@ public class downLoadDTO {
 	private int sum;
 	
 	
-	
 	public String getId() {
 		return id;
 	}
@@ -17,7 +16,5 @@ public class downLoadDTO {
 	}
 	public void setSum(int sum) {
 		this.sum = sum;
-	}
-	
-	
+	}	
 }

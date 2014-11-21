@@ -138,7 +138,17 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/pay_useForm.jsp</result>
 		</action>
-		
+		<action name="AgreementOfUtilization" class="payment.action.AgreementOfUtilizationAction">
+			<interceptor-ref name="params"/>
+			<result>/payment/AgreementOfUtilization.jsp</result>
+		</action>
+		 <!-- 
+		<action name="confirmBuy" class="payment.action.ConfirmBuyAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="params"/>
+			<result>/payment/confirmBuy.jsp</result>
+		</action>
+		  -->
 	</package>	
 		
 	<!-- 김정진 작업 -->

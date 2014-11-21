@@ -50,7 +50,7 @@
 		<select id="selectCashInfo_cash" resultMap="cashRes" parameterClass="String">
 			select * from bbu_cashuse where cash_id = #cash_id# and content != '없음'
 		</select>
-		<update id="update_resetCash" parameterClass="String">
+		<update id="update_resetCash" parameterClass="cDTO">
 			update bbu_cashuse set delete_cash=#delete_cash# where cash_id = #cash_id#
 		</update>
 		
@@ -60,6 +60,6 @@
 		</update>
 		<!-- CASH,SUB_CASH 업데이트 -->
 		<update id="updateDownLoad" parameterClass="dDTO">
-			UPDATE bbu_cashuse SET CASH=CASH-#sum#,SUB_CASH=#sum# WHERE CASH_ID = #id#
-		</update>		
+			UPDATE bbu_cashuse SET DELETE_CASH=DELETE_CASH-#sum#,SUB_CASH=#sum# WHERE CASH_ID = #id#
+		</update>				
 </sqlMap>
