@@ -24,7 +24,6 @@ import payment.pay_setDTO.cashCharge_DTO;
 import payment.pay_setDTO.payMyInfo_DTO;
 import upload.dto.musicDTO;
 
-
 public class BBuMain implements Action, BBuSicAware, ServletRequestAware, ServletResponseAware, ModelDriven, Preparable,musicAware {
 	payMyInfo_DTO myinfo_DTO;
 	
@@ -36,6 +35,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	private String cooId = null;
 	private HttpServletResponse res;
 	private HttpServletRequest req;
+	
 	private List<musicDTO> musicPictureList = new ArrayList<musicDTO>();
 	private musicDTO mdto;
 	String file1;
@@ -131,7 +131,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	public payMyInfo_DTO getMyinfo_DTO() {
 		return myinfo_DTO;
 	}
-	
+
 	@Override
 	public Object getModel() {		
 		return mdto;
@@ -205,6 +205,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	public void setFile7(String file7) {
 		this.file7 = file7;
 	}
+
 	
 	public void setServletResponse(HttpServletResponse res) {
 		this.res = res;
