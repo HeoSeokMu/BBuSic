@@ -147,6 +147,10 @@
 			<interceptor name="DB" class="member.action.MemberInterceptor" />
 		</interceptors>	
 		
+		<action name="admin" class="member.action.AdminAction">
+			<result>/member/admin.jsp</result>
+		</action>
+		
 		<action name="agreement" class="member.action.AgreementAction">
 			<result>/member/agreement.jsp</result>
 		</action>
