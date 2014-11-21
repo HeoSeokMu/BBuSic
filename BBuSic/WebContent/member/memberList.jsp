@@ -95,7 +95,7 @@
 						<td width="500" align="center">${dt.nickname}</td>
 						<td width="1000" align="center">${dt.regdate}</td>
 						<td width="400" align="center">${dt.delete_cash}</td>
-						<td width="600" align="center"><a href=".action?id=${dt.id}">상품구매내역</a></td>
+						<td width="600" align="center"><a href="cash_useForm.action?id=${dt.id}">상품구매내역</a></td>
 					</tr>
 				</c:forEach>
 
