@@ -27,12 +27,13 @@ public class downLoadPayAction  implements Action,Preparable,ModelDriven,musicAw
 	int[] cNo;
 	int sum;
 	
-	private downLoadDTO downloadDTO; //id, sum
+	private downLoadDTO downloadDTO; //id, sum, content
 	private downLoadCountDTO dCountDTO; //id, count
 	private downLoadCountDTO2 dCountDTO2; //id, pay_name
 	private Map session;
 	private String id;
 	private int dCount;
+	private String content;
 	
 
 	private musicDTO mdto;
@@ -43,9 +44,11 @@ public class downLoadPayAction  implements Action,Preparable,ModelDriven,musicAw
 		id = (String) session.get("memId");
 		cNo = mdto.getChkNo();  		//musicDTO 에 선언한 chkNo를 cNo에 담는다.
 		String pay_name	="프리클럽";
+		content="음악구매";
 		
 		downloadDTO = new downLoadDTO();		
 		downloadDTO.setId(id);
+		downloadDTO.setContent(content);
 		
 		/*count 감소*/
 		dCountDTO = new downLoadCountDTO();
