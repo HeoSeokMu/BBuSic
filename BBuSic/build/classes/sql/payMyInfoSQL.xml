@@ -13,7 +13,7 @@
 	  		<result property="delete_paybenefit" column="delete_paybenefit"/>			<!-- property는 set메서드 column은 db의 컬럼 -->
 		</resultMap>
 		
-		<select id="selectMyInfo" resultMap="myRes">
+		<select id="selectMyInfo" resultMap="myRes" parameterClass="String">
 			SELECT mem.id, cash.delete_cash, cash.cashuse_date, buy.delete_payname, buy.delete_paybenefit, buy.download_count
 			FROM bbu_member mem, bbu_cashuse cash, bbu_buyinfo buy
 			WHERE mem.id = #id# and cash.cash_id = #id# and buy.buy_id = #id#

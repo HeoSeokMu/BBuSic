@@ -78,35 +78,36 @@
 
 			<table border="1" cellspacing="0" cellpadding="2" align="center">
 				<tr>
-					<td width="700" align="center">아이디</td>
+					<td width="600" align="center">아이디</td>
 					<td width="500" align="center">이름</td>
-					<td width="1000" align="center">이메일</td>
-					<td width="700" align="center">닉네임</td>
-					<td width="700" align="center">가입일자</td>
-					<td width="500" align="center">캐쉬</td>
-					<td width="500"  align="center">상품구매내역</td>
+					<td width="800" align="center">이메일</td>
+					<td width="500" align="center">닉네임</td>
+					<td width="1000" align="center">가입일자</td>
+					<td width="400" align="center">캐쉬</td>
+					<td width="600"  align="center">상품구매내역</td>
 				</tr>
   				
 				<c:forEach items="${list}" var="dt">
 					<tr>
-						<td width="700" align="center">${dt.id}</td>
+						<td width="600" align="center">${dt.id}</td>
 						<td width="500" align="center">${dt.name}</td>
-						<td width="1000" align="center">${dt.email}</td>
-						<td width="700" align="center">${dt.nickname}</td>
-						<td width="700" align="center">${dt.regdate}</td>
-						<td width="500" align="center">${dt.delete_cash}</td>
-						<td width="500" align="center"><a href=".action?id=${dt.id}">상품구매내역</a></td>
+						<td width="800" align="center">${dt.email}</td>
+						<td width="500" align="center">${dt.nickname}</td>
+						<td width="1000" align="center">${dt.regdate}</td>
+						<td width="400" align="center">${dt.delete_cash}</td>
+						<td width="600" align="center"><a href=".action?id=${dt.id}">상품구매내역</a></td>
 					</tr>
 				</c:forEach>
 
 			</table>
+			<br/>
 			<input type="button" class="next" value="멜론홈" onclick="javascript:window.location='bbusic.action'"/>
 		</form>
 		</center>
 		<br/>
 			</div>
 		</div>
-		<div id="box3"> 5번 </div>
+		<div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>
 	</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package BBu_main;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +19,17 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
 import payment.action.BBuSicAware;
+import payment.pay_setDTO.buyInfo_DTO;
+import payment.pay_setDTO.cashCharge_DTO;
 import payment.pay_setDTO.payMyInfo_DTO;
 import upload.dto.musicDTO;
 
 public class BBuMain implements Action, BBuSicAware, ServletRequestAware, ServletResponseAware, ModelDriven, Preparable,musicAware {
 	payMyInfo_DTO myinfo_DTO;
+	
+	private List<String> categorylist = new ArrayList<String>();
+	private List<buyInfo_DTO> buyList = new ArrayList<buyInfo_DTO>();
+	private List<cashCharge_DTO> cashList = new ArrayList<cashCharge_DTO>();
 	public static SqlMapClient sqlMapper;
 	private String id;
 	private String cooId = null;
@@ -50,11 +57,47 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 			}
 		}
 		
-		if (id != null) {
+		if (id != null || id !="") {
 			myinfo_DTO = new payMyInfo_DTO();
-			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);			
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			
+			buyList = sqlMapper.queryForList("payment_buy.selectBuyInfo_buy", id);
+			for(int i = 0; i<buyList.size(); i++) {
+				if(buyList.get(i).getPay_benefit().equals("없음")) {
+					buyList.remove(i);
+				}
+			}
+			for(buyInfo_DTO buy_DTO : buyList) {
+				long buy_day = buy_DTO.getExpiration_date().getTime() - buy_DTO.getSettlement_date().getTime();
+				long buy_date = (buy_day / 1000) / (60*60*24);				// 일
+				if(buy_date <= 0) {
+					buy_DTO.setDelete_payname("보유한 상품이 없습니다.");
+					buy_DTO.setDelete_paybenefit("없음");
+					sqlMapper.update("payment_buy.update_resetPay", buy_DTO);
+				}
+				
+				System.out.println("buy_date : " + buy_date);
+			}
+			
+			cashList = sqlMapper.queryForList("payment_cash.selectCashInfo_cash", id);
+			for(int i = 0; i<cashList.size(); i++) {
+				if(cashList.get(i).getContent().equals("없음")) {
+					cashList.remove(i);
+				}
+			}
+			for(cashCharge_DTO cash_DTO : cashList) {
+				long cash_day = cash_DTO.getExpiration_date().getTime() - cash_DTO.getCashuse_date().getTime();
+				long cash_date = (cash_day / 1000) / (60*60*24);				// 일
+				
+				if(cash_date <= 0) {
+					sqlMapper.update("payment_cash.update_resetCash", cash_DTO);
+				}
+				System.out.println("cash_date : " + cash_date);
+			}
+			myinfo_DTO = (payMyInfo_DTO)sqlMapper.queryForObject("payment_my.selectMyInfo", id);
 		}
-		
+
 		
 		musicPictureList = sqlMapper.queryForList("musicSQL.mainPicture");
 		file1 = musicPictureList.get(0).getMusic_image();
@@ -80,7 +123,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	public String getCooId() {
 		return cooId;
 	}
@@ -92,7 +135,7 @@ public class BBuMain implements Action, BBuSicAware, ServletRequestAware, Servle
 	@Override
 	public Object getModel() {		
 		return mdto;
-	}
+}
 
 	@Override
 	public void prepare() throws Exception {

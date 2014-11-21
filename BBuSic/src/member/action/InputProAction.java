@@ -29,12 +29,11 @@ public class InputProAction implements MemberAware, Action, Preparable, ModelDri
 		
 		/////////////////////////////////////
 		Calendar today = Calendar.getInstance();
-		String content = "없음";
 		
 		cash_DTO = new cashCharge_DTO();
 		cash_DTO.setCash_id(mDTO.getId());
 		cash_DTO.setCashuse_date(today.getTime());
-		cash_DTO.setContent(content);
+		cash_DTO.setContent("없음");
 		cash_DTO.setCash(0);
 		cash_DTO.setSub_cash(0);
 		cash_DTO.setDelete_cash(0);

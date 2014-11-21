@@ -88,57 +88,18 @@ function checkIt(){
       </div>
    </div>
 
-	<div id="box">
-		<center>
-			<a href="modify.action"><img src="member/image/img_myInform.png" name="chart" border="0"/></a>
-			<a href="passwdForm.action"><img src="member/image/img_change_pw.png" name="chart" border="0"/></a>
-			<a href="myLoginListForm.action"><img src="member/image/img_login_inform.png" name="chart" border="0"/></a>
-			<a href="deleteForm.action"><img src="member/image/img_delete.png" name="chart" border="0"/></a>
-			<a href="cash_useForm.action?id=${session.memId}"><img src="member/image/cash.png" name="chart" border="0"/></a>
-			<a href="pay_useForm.action?id=${session.memId}&type=보유"><img src="member/image/payment.png" name="chart" border="0"/></a>
-		</center>
+	<div id="box">	
 		<div id="box2">
-			
 			<div id="content">		
-				<center><br/>
-					<h1>기본정보 관리</h1>
-					<br/>
-					<table width="850" border="0" cellspacing="10" cellpadding="3" align="center" class="id">
-						<tr><td></td></tr>
-						<tr>
-							<td align="left">·본인확인을 위해 비밀번호를 한 번 더 입력해 주세요.</td>
-						</tr>
-						<tr>
-							<td align="left">·항상 비밀번호는 타인에게 노출되지 않도록 주의해 주세요.</td>
-						</tr>
-						<tr><td></td></tr>
-				    </table>
-				    <br/>
-					<form name="myform" action="modifyForm.action" method="post" onSubmit="return checkIt()">
-						<table width="850" border="0" cellspacing="0" cellpadding="3" align="center" class="id">
-							<tr>
-								<td align="right">
-									아이디
-								</td>
-								<td>
-									<c:out value="${session.memId}"/>
-								</td>
-								<td >
-									비밀번호
-								</td>
-								<td align="left">
-									<input type=password name="passwd" size="15" maxlength="12">
-								</td>
-							</tr>
-					    </table><br/>
-						      <input type=submit class="next" value="정보수정">
-						      <input type="button" class="next" value="취  소" onclick="bbusic_main()">
-					</form>
-					<br/>
+				<center>
+					<a href="memberList.action">회원관리페이지</a>
+					<a href="passwdForm.action">2</a>
+					<a href="myLoginListForm.action">3</a>
+					<a href="deleteForm.action">4</a>
 				</center>
 			</div>
 		</div>
-		<div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>
+		<div id="box3"> 5번 </div>
 	</div>
 </body>
 </html>

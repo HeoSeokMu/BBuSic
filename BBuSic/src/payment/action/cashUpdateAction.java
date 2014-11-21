@@ -44,17 +44,10 @@ public class cashUpdateAction implements Action, Preparable, ModelDriven, BBuSic
 		System.out.println("날짜 : " + sdf.format(cashuseDate));
 		System.out.println("유효기간 : " + sdf.format(expirationDate));
 		
-		//long minute = (l / 1000) / 60; 	// 분
-		//long hour = (l / 1000) / (60*60); // 시간
-		//long day = (l / 1000) / (60*60*24); // 일
-		//long month = (l / 1000) / (60*60*24*lastday); // 월
-		/*
-		if(day1 > 0) {
-			System.out.println("prev : "+sdf.format(prev)+" / "+"t2 : "+sdf.format(t2.getTime()));
-		}
-		*/
 		cash_DTO.setCashuse_date(cashuseDate);
 		cash_DTO.setExpiration_date(expirationDate);
+		
+		System.out.println(money_in + cash_DTO.getDelete_cash());
 		
 		cash_DTO.setDelete_cash(money_in + cash_DTO.getDelete_cash());
 		sqlMapper.update("payment_cash.updateChargeCash_delete", cash_DTO);

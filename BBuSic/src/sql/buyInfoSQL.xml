@@ -54,8 +54,22 @@
 			SELECT * FROM bbu_buyinfo WHERE BUY_ID = #buy_id#
 		</select>		
 		
+		<select id="selectBuyInfo_use1" resultMap="buyInfoRes" parameterClass="String">
+			SELECT * FROM bbu_buyinfo WHERE BUY_ID = #buy_id# ORDER BY settlement_date desc
+		</select>
+		<select id="selectBuyInfo_pay" resultMap="buyInfoRes" parameterClass="String">
+			SELECT * FROM bbu_buyinfo WHERE BUY_ID = #buy_id# ORDER BY settlement_date desc
+		</select>
+		
 		<update id="updateBuyInfo" parameterClass="bDTO">
 			UPDATE bbu_buyinfo SET DOWNLOAD_COUNT = DOWNLOAD_COUNT + #download_count# WHERE BUY_ID = #buy_id#
+		</update>
+		
+		<select id="selectBuyInfo_buy" resultMap="buyInfoRes" parameterClass="String">
+			select * from bbu_buyinfo where buy_id = #buy_id# and delete_paybenefit != '없음' 
+		</select>
+		<update id="update_resetPay" parameterClass="bDTO">
+			update bbu_buyinfo set delete_payname=#delete_payname#, delete_paybenefit=#delete_paybenefit# where buy_id = #buy_id# and settlement_date=#settlement_date#  
 		</update>
 		
 		<!--downLoadPayAction.java 에서 사용 -->
