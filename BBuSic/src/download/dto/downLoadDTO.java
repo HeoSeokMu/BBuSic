@@ -6,7 +6,6 @@ public class downLoadDTO {
 	private String content;
 	
 	
-	
 	public String getId() {
 		return id;
 	}
