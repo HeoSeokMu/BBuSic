@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="memList">
+
+	<typeAlias alias="memList" type="member.DTO.MemListDTO" />
+
+		<!-- 리절트 맵 정의 -select -->
+	  	<resultMap id="memberList" class="memList">
+		  	<result property="name" column="name"/>
+		  	<result property="birth" column="birth"/>
+		  	<result property="sex" column="sex"/>
+		  	<result property="email" column="email"/>
+		  	<result property="id" column="id"/>
+		  	<result property="nickname" column="nickname"/>
+		  	<result property="delete_cash" column="delete_cash"/>
+		  	<result property="regdate" column="regdate"/>
+		</resultMap>
+		
+		<select id="selectMemList" resultMap="memberList">
+			select distinct mem.id, mem.name, mem.birth, mem.sex, mem.email, mem.nickname, mem.regdate, cash.delete_cash
+			from bbu_cashuse cash, bbu_member mem
+			where mem.id = cash.cash_id
+		</select>
+		
+</sqlMap>
