@@ -138,6 +138,10 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/pay_useForm.jsp</result>
 		</action>
+		<action name="AgreementOfUtilization" class="payment.action.AgreementOfUtilizationAction">
+			<interceptor-ref name="params"/>
+			<result>/payment/AgreementOfUtilization.jsp</result>
+		</action>
 		
 	</package>	
 		

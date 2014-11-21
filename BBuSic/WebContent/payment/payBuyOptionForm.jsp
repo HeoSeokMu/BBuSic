@@ -264,7 +264,7 @@
 									<td class="r_line"><input type="hidden" name="pay_name"  value="${pay_name}"/>${pay_name}</td>
 									<td class="r_line"><input type="hidden" name="pay_benefit"  value="${pay_benefit}"/>${pay_benefit}</td>
 									<td class="r_line"><input type="hidden" name="amount"  value="${amount}"/><fmt:formatNumber value="${amount}"/></td>
-									<td class="b_line" align="center"><input type="button" name="an" value="이용안내"/></td>
+									<td class="b_line" align="center"><input type="button" name="an" value="이용안내" onclick="javascript:window.location='AgreementOfUtilization.action'"/></td>
 								</tr>
 								<tr height="15"><td></td></tr>
 								<c:if test="${ sale != 0 }">

@@ -99,10 +99,14 @@ function bbusic_main() {
    </div>
 
 	<div id="box">
+		<center>
 			<a href="modify.action"><img src="member/image/img_myInform.png" name="chart" border="0"/></a>
 			<a href="passwdForm.action"><img src="member/image/img_change_pw.png" name="chart" border="0"/></a>
 			<a href="myLoginListForm.action"><img src="member/image/img_login_inform.png" name="chart" border="0"/></a>
 			<a href="deleteForm.action"><img src="member/image/img_delete.png" name="chart" border="0"/></a>
+			<a href="cash_useForm.action?id=${session.memId}"><img src="member/image/cash.png" name="chart" border="0"/></a>
+			<a href="pay_useForm.action?id=${session.memId}&type=보유"><img src="member/image/payment.png" name="chart" border="0"/></a>
+		</center>
 		<div id="box2">
 			<div id="content">
 				<center><br/>
