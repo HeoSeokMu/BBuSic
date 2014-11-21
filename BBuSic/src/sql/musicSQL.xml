@@ -112,7 +112,7 @@
 		</select>
 
 		<select id="benefit" resultClass="String" parameterClass="musicDTO2" >
-			select pay_benefit from bbu_buyinfo where pay_benefit like '%' || #limit# || '%'  and buy_id = #id#
+			select delete_benefit from bbu_buyinfo where delete_benefit like '%' || #limit# || '%'  and buy_id = #id#
 		</select>
 
 		<select id="AlbumChk" resultClass="String" parameterClass="String">
