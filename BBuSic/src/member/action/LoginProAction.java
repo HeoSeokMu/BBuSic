@@ -57,7 +57,7 @@ public class LoginProAction extends ActionSupport implements SessionAware, Membe
 			
 			if(loginCheck != null){			//cookie
 				Cookie cidcookie = new Cookie("memId", id);
-				cidcookie.setMaxAge(20 * 60);
+				cidcookie.setMaxAge(24 * 60 * 60);
 				res.addCookie(cidcookie);
 			}else{
 				Cookie[] cookies = req.getCookies();

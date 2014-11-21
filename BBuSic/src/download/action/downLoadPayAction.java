@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import board.action.PopupAction;
+import payment.pay_setDTO.cashCharge_DTO;
 import upload.dto.musicDTO;
 import BBusic.Aware.musicAware;
+import board.action.PopupAction;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
@@ -27,13 +28,13 @@ public class downLoadPayAction  implements Action,Preparable,ModelDriven,musicAw
 	int[] cNo;
 	int sum;
 	
-	private downLoadDTO downloadDTO; //id, sum
+	private downLoadDTO downloadDTO; //id, sum, content
 	private downLoadCountDTO dCountDTO; //id, count
 	private downLoadCountDTO2 dCountDTO2; //id, pay_name
 	private Map session;
 	private String id;
 	private int dCount;
-	
+	private cashCharge_DTO cash_DTO;
 
 	private musicDTO mdto;
 	
@@ -58,7 +59,7 @@ public class downLoadPayAction  implements Action,Preparable,ModelDriven,musicAw
 				
 		dCount =(int) sqlMapper.queryForObject("payment_buy.selectDownloadCount",dCountDTO2);
 		//SELECT download_count FROM bbu_buyinfo where buy_id=#id#  AND PAY_NAME=#pay_name#
-		
+	
 		int count = 0;
 		try{
 				for (int i = 0; i < cNo.length; i++) {
@@ -68,8 +69,6 @@ public class downLoadPayAction  implements Action,Preparable,ModelDriven,musicAw
 				}
 				downloadDTO.setSum(sum);
 				sqlMapper.update("payment_cash.updateDownLoad",downloadDTO); //cash , sub_cash 업데이트
-				
-				dCountDTO.setCount(count);
 				
 				if(dCount != 0){
 					sqlMapper.update("payment_buy.updateDownloadCount", dCountDTO); //카운트 값 감소

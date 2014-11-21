@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="login">
+
+	<typeAlias alias="login" type="member.DTO.LoginRecDTO" />
+
+	  	<resultMap id="memberRes" class="login">
+		  	<result property="id" column="id"/>
+		  	<result property="ip" column="ip"/>
+		  	<result property="login_result" column="login_result"/>
+		  	<result property="login_date" column="login_date"/>
+		</resultMap>
+
+		<select id="selectLoginList" resultMap="memberRes" parameterClass="String">
+			SELECT * FROM bbu_memberlogin WHERE id = #id#
+		</select>
+
+
+		<insert id="record" parameterClass="login">
+		
+      		INSERT INTO bbu_memberlogin (
+      						id,
+      						ip,
+      						login_result,
+      						login_date
+                         )
+                	 VALUES (#id#,
+      						#ip#,
+      						#login_result#,
+      						#login_date#
+                         )
+		</insert>
+</sqlMap>
