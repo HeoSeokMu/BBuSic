@@ -4,12 +4,11 @@
 <sqlMap namespace="musicSQL">
 	
 	<typeAlias alias="musicDTO" type="upload.dto.musicDTO"/>
-	<typeAlias alias="searchDTO" type="upload.dto.searchDTO"/>
 	<typeAlias alias="singerDTO" type="upload.dto.singerDTO"/>
 	<typeAlias alias="musicDTO2" type="upload.dto.musicDTO2"/>
 	<typeAlias alias="albumDTO" type="upload.dto.albumDTO"/>
 	<typeAlias alias="lyricsDTO" type="upload.dto.lyricsDTO"/>
-
+	<typeAlias alias="likeDTO" type="upload.dto.likeDTO"/>
 	
 	<resultMap id="musicRes" class="musicDTO">
 		<result property="num" column="num"/>
@@ -23,21 +22,9 @@
 		<result property="realname_music" column="realname_music" />
 		<result property="realname_image" column="realname_image" />
 		<result property="minute" column="minute" />
-		<result property="price" column="price"/>
+		<result property="price" column="price" />
 	</resultMap>
 	
-	<resultMap id="musicSearchRes" class="searchDTO">
-		<result property="genre" column="genre"/>
-		<result property="singer" column="singer"/>
-		<result property="album" column="album"/>
-		<result property="title" column="title"/>
-	</resultMap>
-	
-	<resultMap id="musicRes2" class="musicDTO2">
-		<result property="id" column="id"/>
-		<result property="limit" column="limit"/>
-	</resultMap>
-
 	<resultMap id="singerRes" class="singerDTO">
 		<result property="singer" column="singer"/>
 		<result property="year" column="year"/>
@@ -59,6 +46,11 @@
 	<resultMap id="lyricsRes" class="lyricsDTO">
 		<result property="name" column="name"/>
 		<result property="lyrics" column="lyrics"/>
+	</resultMap>
+	
+	<resultMap id="likeRes" class="likeDTO">
+		<result property="num" column="num"/>
+		<result property="id" column="id"/>
 	</resultMap>
 	
 	<!-- 공통적으로 사용할 select 절 정의 -->
@@ -87,16 +79,20 @@
 			<include refid="select-all" />
 			 where genre = #type# ORDER BY num DESC
 		</select>
-		<select id="mainPicture" resultMap="musicRes" parameterClass="int">		
-			<![CDATA[ SELECT * FROM (SELECT * FROM BBU_BOARD ORDER BY num DESC) where rownum <= 7 ]]>		
-		</select>
-		<select id="search_Test" resultMap="musicSearchRes" parameterClass="searchDTO">
+		
+		<select id="searchWithArtist" resultMap="musicRes" parameterClass="String">
 			<include refid="select-all" />
-			where genre like '%' || #genre# || '%'
-			or singer like '%' || #singer# || '%'
-			or album like '%' || #album# || '%'
-			or title like '%' || #title# || '%'
-			ORDER BY num DESC
+			 where singer like '%' || #searchWord# || '%' and ROWNUM <![CDATA[ <= ]]> 10 order by num desc
+		</select>
+		
+		<select id="searchWithSong" resultMap="musicRes" parameterClass="String">
+			<include refid="select-all" />
+			 where title like '%' || #searchWord# || '%' and ROWNUM <![CDATA[ <= ]]> 10 order by num desc
+		</select>
+		
+		<select id="searchWithAlbum" resultMap="musicRes" parameterClass="String">
+			<include refid="select-all" />
+			 where album like '%' || #searchWord# || '%' and ROWNUM <![CDATA[ <= ]]> 10 order by num desc
 		</select>
 		
 		<select id="selectWithSinger" resultMap="singerRes" parameterClass="String">
@@ -104,19 +100,42 @@
 		</select>
 		
 		<select id="selectWithAlbum" resultMap="albumRes" parameterClass="String">
-			 SELECT * FROM album_info where album = #album#
+			 SELECT * FROM album_info where name = #album#
 		</select>
 		
-		<select id="SingerChk" resultClass="String" parameterClass="String">
-			SELECT singer FROM album_info where singer = #singer#
+		<select id="selectWithLyrics" resultClass="String" parameterClass="int">
+			SELECT lyrics FROM lyrics_info where num = #num#
 		</select>
-
+		
+		<select id="selectWithAlbum_one" resultClass="String" parameterClass="String">
+			select board.music_image from album_info album, bbu_board board
+			where board.album = #album# and album.name = #album#
+		</select>
+		
+		<select id="selectWithSinger_one" resultClass="String" parameterClass="String">
+			select board.music_image from singer_info singer, bbu_board board
+			where board.singer = #singer# and singer.singer = #singer#
+		</select>
+		
+		<select id="likeCheck" resultClass="String" parameterClass="String">
+			SELECT id FROM hit_info where num = #likeNum# 
+		</select>
+		
+		<select id="getAlbumList" resultMap="musicRes" parameterClass="String">
+			SELECT * FROM bbu_board where album = #album#
+		</select>
+		
+		<select id="getSingerList" resultMap="musicRes" parameterClass="String">
+			SELECT * FROM bbu_board where singer = #singer#
+		</select>
+		<select id="getAlbum" resultClass="String" parameterClass="int">
+			SELECT album FROM bbu_board where num = #num#
+		</select>
+		<select id="mainPicture" resultMap="musicRes" parameterClass="int">		
+			<![CDATA[ SELECT * FROM (SELECT * FROM BBU_BOARD ORDER BY num DESC) where rownum <= 7 ]]>		
+		</select>
 		<select id="benefit" resultClass="String" parameterClass="musicDTO2" >
 			select delete_paybenefit from bbu_buyinfo where delete_paybenefit like '%' || #limit# || '%'  and buy_id = #id#
-		</select>
-
-		<select id="AlbumChk" resultClass="String" parameterClass="String">
-			SELECT album FROM album_info where album = #album#
 		</select>
 	<!-- insert 쿼리문 정의 -->
 	<insert id="insertMusic" parameterClass="musicDTO">
@@ -130,8 +149,7 @@
 							HIT,
 							REALNAME_MUSIC,
 							REALNAME_IMAGE,
-							MINUTE,
-							PRICE
+							MINUTE
 							)
 					VALUES (bbu_seq.NEXTVAL,
 							#music_name#,
@@ -143,8 +161,7 @@
 							0,
 							#realname_music#,
 							#realname_image#,
-							#minute#,
-							#price#
+							#minute#
 							)
 	</insert>
 	<insert id="insertSinger" parameterClass="singerDTO">
@@ -187,7 +204,22 @@
 								#lyrics#
 								)
 	</insert>
+	<insert id="insertMHit" parameterClass="likeDTO">
+		INSERT INTO HIT_INFO (NUM,
+							  ID
+						     )
+					  VALUES (#num#,
+							  #id#
+							 )
+	</insert>
+	<!-- update 쿼리문 정의 -->
+	<update id="musicHitUp" parameterClass="int">
+		UPDATE BBU_BOARD SET HIT = HIT + 1 where num = #num#
+	</update>
 	<!-- delete 쿼리문 정의 -->
+	<delete id="deleteMusic" parameterClass="String">
+		DELETE FROM bbu_board where title = #title#
+	</delete>
 	<delete id="deleteSinger" parameterClass="String">
 		DELETE FROM SINGER_INFO where singer = #singer#
 	</delete>

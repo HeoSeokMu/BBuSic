@@ -5,6 +5,7 @@ import java.util.List;
 
 import upload.dto.musicDTO;
 import BBusic.Aware.musicAware;
+import board.action.pagingAction;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.opensymphony.xwork2.Action;
@@ -16,7 +17,7 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 
 	private static List<musicDTO> list = new ArrayList<musicDTO>();
-	private musicDTO mdto;
+	private static List<musicDTO> musicList2 = new ArrayList<musicDTO>();
 	
 	private int currentPage = 1;	//현재 페이지
 	private int totalCount;			// 총 게시물의 수
@@ -27,9 +28,11 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	private String category;		// 해당 차트
 	private String type;			// 장르
 	
+	private musicDTO mdto;
+	
+		
 	@Override
-	public String execute() throws Exception {
-		System.out.println("execute"+sqlMapper);
+	public String execute() throws Exception{
 		if(category == "genre"){
 			System.out.println("ifcategory : " + category);
 			System.out.println("iftype : " + type);
@@ -53,7 +56,7 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 					
 					list = sqlMapper.queryForList("musicSQL.selectAll");
 					
-					blockCount = 50;
+					blockCount = 10;
 					blockPage = 2;
 					totalCount = list.size();
 					
@@ -64,7 +67,7 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 					setCurrentPage(currentPage);
 					page = new pagingAction(currentPage, totalCount, blockCount, blockPage, category); // pagingAction 객체 생성.
 				}
-				
+				System.out.println("list f : " + list);
 				setPagingHtml(page.getPagingHtml().toString());  // 페이지 HTML 생성.
 				//paging
 					
@@ -80,6 +83,15 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		return SUCCESS;
 	}
 	
+	/* 팝업 메서드 */
+	public String popupEx() throws Exception {
+		int[] cNo = mdto.getChkNo();   			//musicDTO 에 선언한 chkNo를 cNo에 담는다.
+			for (int i = 0; i < cNo.length; i++) {				
+				System.out.println(cNo[i]);
+				musicList2.add(i, list.get(cNo[i]));
+			}
+		return SUCCESS;
+	}
 	
 	
 	public List<musicDTO> getList() {
@@ -154,9 +166,12 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 		this.category = category;
 	}
 	
-	public void setSqlMapper(SqlMapClient sqlMapper) {
-		this.sqlMapper = sqlMapper; 
-		
+	public static List<musicDTO> getMusicList2() {
+		return musicList2;
+	}
+
+	public static void setMusicList2(List<musicDTO> musicList2) {
+		Chart_BoardAction.musicList2 = musicList2;
 	}
 
 	@Override
@@ -167,6 +182,12 @@ public class Chart_BoardAction implements Action, Preparable, ModelDriven, music
 	@Override
 	public void prepare() throws Exception {
 		mdto = new musicDTO();
+	}
+
+	
+	public void setSqlMapper(SqlMapClient sqlMapper) {
+		this.sqlMapper = sqlMapper; 
+		
 	}
 	
 	

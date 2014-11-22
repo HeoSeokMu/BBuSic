@@ -1,65 +1,72 @@
 package board.action;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import upload.dto.likeDTO;
 import upload.dto.musicDTO;
+import upload.dto.singerDTO;
+import BBusic.Aware.musicAware;
 import board.action.pagingAction;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.Action;
 
-public class SingerPageAction implements Action{
+public class SingerPageAction implements Action, musicAware{
 	
-	public static Reader reader;			//파일 스트림을 위한 reader.
-	public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
+public static SqlMapClient sqlMapper;	//SqlMapClient API를 사용하기 위한 sqlMapper 객체.
 	
-	private List<musicDTO> list = new ArrayList<musicDTO>();;
+	private singerDTO singerInfo;
+	private static List<musicDTO> list = new ArrayList<musicDTO>();
+	private static List<String> image = new ArrayList<String>();
+	private static List<likeDTO> like = new ArrayList<likeDTO>();
 	
-	private int currentPage = 1; 	//현재 페이지
-	private int totalCount;			//총 게시물의 수
-	private int blockCount = 10;	//한 페이지에 보여줄 게시물 수
-	private int blockPage = 10;		//한 페이지에 보여줄 페이지 수
-	private pagingAction page;		//페이징 클래스
-	private String pagingHtml;		//페이징을 구현한 HTML
-	private String singer;			//파라미터 - 가수 이름
-	private String category;		//파라미터 - singerPage를 받아온다
+	private String imagePath;
+	private int currentPage = 1;
+	private int totalCount;
+	private int blockCount = 10;
+	private int blockPage = 5;
+	private pagingAction page;
+	private String pagingHtml;
+	private String category;
+	private String singer;
 	
-	public SingerPageAction() throws IOException{
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml 파일의 설정내용을 가져온다.
-		if(reader != null) {System.out.println("SingerPageAction reader pass");}
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	// sqlMapConfig.xml의 내용을 적용한 sqlMapper 객체 생성.
-		if(sqlMapper != null) {System.out.println("SingerPageAction sqlMapper pass");}
-		reader.close();
-	}
-	
-	@Override
 	public String execute() throws Exception {
-		list = sqlMapper.queryForList("musicSQL.selectWithSinger", singer);
-		setTotalCount(list.size());
 		
-		System.out.println("category : " + category);
+		singerInfo = new singerDTO();
+		//System.out.println("singer : " + singer);
+		//System.out.println("category : " + category);
+		list = sqlMapper.queryForList("musicSQL.getSingerList", singer);
+		//if(list.get(0) == null){System.out.println("list null!!!!!!!");}
+		singerInfo = (singerDTO) sqlMapper.queryForObject("musicSQL.selectWithSinger", singer);
+		//if(singerInfo.getSinger() == null){System.out.println("singerInfo null!!!!!!!");}else{System.out.println("singerInfo not null !!!!!!");}
+		image = sqlMapper.queryForList("musicSQL.selectWithSinger_one", singer);
+		//if(image == null){System.out.println("singer null!!!!!!!");}else{System.out.println("image : " + image);}
+		if(image.size() != 0){
+			imagePath = image.get(0);
+			//System.out.println("image yeah!!!!!!!!!!!" + imagePath);
+		}else{
+			//System.out.println("image null!!!!!!");
+		}
+		
+		totalCount = list.size();
 		
 		setCurrentPage(currentPage);
-		page = new pagingAction(currentPage, totalCount, blockCount, blockPage, category);
 		
-		System.out.println("list : " + list);
-		
-		//페이지 HTML 생성
+		page 	= new pagingAction(currentPage, totalCount, blockCount, blockPage, category);
 		setPagingHtml(page.getPagingHtml().toString());
 		
 		int lastCount = totalCount;
 		
-		if(page.getEndCount() < totalCount){
+		if (page.getEndCount() < totalCount){
 			lastCount = page.getEndCount() + 1;
 		}
 		
 		list = list.subList(page.getStartCount(), lastCount);
 		
+/*		like = list*/
+		
+		//for(int i=0; i < list.size(); i++){ System.out.println("list" + list.get(i)); }
 		return SUCCESS;
 	}
 
@@ -69,6 +76,10 @@ public class SingerPageAction implements Action{
 
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
+	}
+	
+	public void setSqlMapper(SqlMapClient sqlMapper) {
+		this.sqlMapper = sqlMapper;
 	}
 
 	public pagingAction getPage() {
@@ -86,15 +97,7 @@ public class SingerPageAction implements Action{
 	public void setPagingHtml(String pagingHtml) {
 		this.pagingHtml = pagingHtml;
 	}
-
-	public static SqlMapClient getSqlMapper() {
-		return sqlMapper;
-	}
-
-	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		SingerPageAction.sqlMapper = sqlMapper;
-	}
-
+	
 	public List<musicDTO> getList() {
 		return list;
 	}
@@ -127,6 +130,30 @@ public class SingerPageAction implements Action{
 		this.blockPage = blockPage;
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public singerDTO getSingerInfo() {
+		return singerInfo;
+	}
+
+	public void setSingerInfo(singerDTO singerInfo) {
+		this.singerInfo = singerInfo;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
 	public String getSinger() {
 		return singer;
 	}
@@ -135,14 +162,12 @@ public class SingerPageAction implements Action{
 		this.singer = singer;
 	}
 
-	public String getCategory() {
-		return category;
+	public static List<likeDTO> getLike() {
+		return like;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public static void setLike(List<likeDTO> like) {
+		SingerPageAction.like = like;
 	}
 	
-	
-
 }
