@@ -175,7 +175,6 @@ border="0"/></a>
 	
 	   <div id="box">
 	      <div id="box2">
-<<<<<<< HEAD
 	          <div id="content"></div>
 				<body>
 					<form method="post" name="chartForm">
@@ -266,105 +265,11 @@ border="0"/></a>
 				
 						<hr width="880px" size="1" align="left" />
 						<br>
-						<p align="center"><s:property value="pagingHtml" escape="false" /></p>
+						<div style="table-layout: auto;width: 885px;" align="center">
+							<s:property value="pagingHtml" escape="false" />
+						</div>
 					</form>
 					 </div>
       <div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>
-=======
-	          <div id="content"> 2번 </div>
-	<form method="post" name="chartForm">
-
-		<hr width="885px" size="1" color="gray" align="left" />
-
-
-		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');" />
-
-		<hr width="885px" size="1" align="left">
-		<table align="left">
-			<tr align="center">
-				<td width="30px" height="10px">
-					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
-				</td>
-				<td width="30px"><g>NO</g></td>
-				<td width="70px"></td>
-				<td width="300px"><g>곡명</g></td>
-				<td width="125px"><g>아티스트</g></td>
-				<td width="125px"><g>앨범</g></td>
-				<td width="105px"><g>좋아요</g></td>
-				<td width="80px"><g>다운</g></td>
-			</tr>
-		</table>
-		<hr width="880px" size="3" color="#CC3D3D" align="left" />
-
-	<c:if test="${totalCount < 1}">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<table>
-				<tr>
-					<td align="left">게시물이 존재하지 않습니다.</td>
-				</tr>
-			</table>
-		</c:if>
-
-		<c:if test="${totalCount > 0}">
-			<c:forEach var="list" items="${list}" varStatus="checkValue">
-				<table>
-					<tr align="center" height="25px">
-						<td width="30px" height="25px">
-							<input type="checkbox" name="chkNo" value="${list}">
-						</td>
-						<td width="30px">
-							${(currentPage-1) * 10 + (checkValue.index + 1)}
-						</td>
-						<!--곡정보-->
-						<td width="370px" align="left">
-							&nbsp;
-							<img src="board/images/m_play_button.png" onclick=""> 
-							<img src="board/images/m_add_button.png" onclick=""> &nbsp;
-							<img src="board/images/m_page_button.png" onclick="location.href='LyricsPage.action?num=${list.num}'">
-							${list.title}
-						</td>
-						<td width="125px">
-							<a href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a>
-						</td>
-						<td width="125px">
-							<a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
-						</td>
-						<!--좋아요-->
-						<td width="105px">
-							<c:if test="${session.memId != null}">
-								<input type="image" name="m_like_btt" src="board/images/m_like_button.png" onclick="m_like(${num});" /> ${list.hit}
-							</c:if>
-							<c:if test="${session.memId == null}">
-								<input type="image" name="m_like_btt" src="board/images/m_like_button.png" onclick="login();" /> ${list.hit}
-							</c:if>
-						</td>
-						<!--다운로드-->
-						<td td width="80px">
-							<input type="image" src="board/images/m_download_button.png" onclick="musicConfirm2('s');">
-						</td>
-					</tr>
-				</table>
-				<hr width="885px" size="1" color="gray" align="left" />
-			</c:forEach>
-		</c:if>
-		
-		<!-- 전체선택 -->
-		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');" />
-
-		<hr width="885px" size="1" align="left" />
-		<br>
-		<div style="table-layout: auto;width: 885px;" align="center">
-			<s:property value="pagingHtml" escape="false" />
-		</div>
-		<br /><br />		
-	</form>
-						 </div>
-      <div id="box3"></div>
->>>>>>> 21e17d0cd99c5fa77590c66bfd7d592c61c3bcaa
-   </div>
 </body>
 </html>
