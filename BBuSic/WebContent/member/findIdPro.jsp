@@ -130,7 +130,7 @@ function bbusic_main() {
 					</center>
 			</div>
 		</div>
-		<div id="box3"> 5번 </div>
+		<div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>
 	</div>
 </body>
 </html>

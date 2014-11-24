@@ -57,6 +57,9 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/TEST.jsp</result>
 		</action>
+		<action name="paySetting" class="payment.action.paySettingAction">
+			<result>/payment/Pay_setting.jsp</result>
+		</action>
 		
 		<!-- 
 		<action name="payMyInfoInsert" class="payment.action.payMyInfo_InsertAction">
@@ -142,6 +145,7 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/AgreementOfUtilization.jsp</result>
 		</action>
+		
 		 <!-- 
 		<action name="confirmBuy" class="payment.action.ConfirmBuyAction">
 			<interceptor-ref name="BBuSicInterceptor"/>
