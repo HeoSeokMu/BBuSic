@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <TITLE> </TITLE>
+  <style>
+  boby{
+	background:#dcd8d9;
+	color:#2c2c2c;
+	font:100% cambria,georgia,serif;
+  }
+  h1{
+	font-size:1.5em; /*24px/16px=1.5em*/
+	font-style:italic;
+  }
+  h1 a {
+	color: #747474;
+	font:bold 0.6875em calibri,optima,arial,sans-serif;
+	letter-spacing:0.15em;
+	text-transform:uppercase;
+	text-decoration:none;
+  }
+  </style>
+ </HEAD>
+
+ <BODY>
+
+  <!-- 원한다면 타입을 px값으로 정한다고 해도 아무 문제가 없다. 그러나 우리의 상대적인 타입 세팅을 실험하기 위해 비례적인 관점을 태입하여 픽셀 기반의 font-size값을 상대적 수치로 나타낼수 있다. 따라서  px대신 em을 사용한다 -->
+  <!-- body 엘리먼트의 기본 font-size는 100%값이 16px임을 가정할때 h1의 타겟(target) 폰트크기(24px)를 컨텍스트(context)인 16px에 비례하도록 나타낸다.
+  24px/16px=1.5em 
+  따라서 폰트의 크기는 1.5em이 된다
+  (css 수치 우측에 계산법을 남겨두면 나중에 더 쉽게 수정할 수 있다)
+  read more 텍스트의 경우 h1에서 지정한 1.5em을 그대로 사용한다
+  따라서 타겟을 11px로 잡고 body에 지정된 기준크기 16px로 나누는 것이 아니라
+  새로운 컨텍스트에 해당하는 헤드라인 폰트 크기인 24px로 나누어야한다
+  
+  11px/24px=0.458333333333333em
+
+  여기서 반올림하지 말고 그대로 두는 편이 좋다 왜냐하면 이 수치는 우리가 원하는 이상적인 폰트 크기를 완벽하게 비례적 수치로 나타낸 것이다.
+  게다가 이 브라우저는 이 값을 픽셀로 표현하여 내부적으로 변환하고 남는 소수점을 완벽하게 반올림하여 처리하기 때문에 우리가 더 많은 정보를 줄 수록 더 나은 결과를 얻게된다. -->
+  <h1>achieve sentience with skynet!<a href="#">read more& raquo;</a></h1>
+ </BODY>
+</HTML>
+
