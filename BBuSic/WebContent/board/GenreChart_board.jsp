@@ -142,7 +142,7 @@ center {
 	
 	   <div id="box">
 	      <div id="box2">
-	          <div id="content"> 2번 </div>
+	          <div id="content"></div>
 				<body>
 					<form method="post" name="chartForm">
 						<hr width="880px" size="1" color="gray" align="left" />
@@ -196,7 +196,7 @@ center {
 										</td>
 										<!--이미지-->
 										<td width="70px">
-											<input type="image" onClick=""/>
+											
 										</td>
 										<!--곡정보-->
 										<td width="300px" align="left">
