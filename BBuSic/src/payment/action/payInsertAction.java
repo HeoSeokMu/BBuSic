@@ -13,30 +13,13 @@ public class payInsertAction implements Action, Preparable, ModelDriven, BBuSicA
 	pay_DTO payDTO;
 	public static SqlMapClient sqlMapper;
 	
-	/*
-	public payInsertAction() {
-		try{
-			System.out.println("try 실행");
-			reader = Resources.getResourceAsReader("sqlMapConfig.xml"); // sqlMapConfig.xml 파일의 설정내용을 가져온다.
-			if(reader != null) { System.out.println("reader pass"); } 	// sqlMapConfig.xml의 내용을 적용한 sqlMapper 객체 생성.
-			sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);	
-			if(sqlMapper != null) { System.out.println("sqlMapper pass"); }
-			reader.close();	
-		} catch(Exception e) {
-			System.out.println("catch() 실행");
-		}
-	}
-	*/
-	
 	public String execute() throws Exception {
-		System.out.println(payDTO.getCategory());
-		System.out.println(payDTO.getPay_name());
-		System.out.println(payDTO.getPay_benefit());
-		System.out.println(payDTO.getAmount());
-		System.out.println(payDTO.getDay30amount());
-		System.out.println(payDTO.getSale());
+		
+		payDTO = new pay_DTO();
 		
 		sqlMapper.insert("payment.insertPay", payDTO);
+		
+		
 		
 		return SUCCESS;
 	}
