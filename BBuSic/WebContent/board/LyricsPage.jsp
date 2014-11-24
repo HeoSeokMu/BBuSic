@@ -50,7 +50,7 @@
 	<div style="font-weight:bold; font-size:24px; line-height:30px; font-family:"맑은 고딕", "Malgun Gothic","돋움", Dotum,"Apple Gothic", sans-serif;0 letter-spacing:-2px;">앨범 정보</div>
 	<br /><br />
 	<c:if test="${albumInfo.name == null}">
-		<table style="width: 880px;height: 290px" border="1" rules="none">
+		<table style="width: 880px;height: 290px" border="1" rules="none" align="center">
 			<tr>
 				<td align="center">
 					등록된 정보가 없습니다.
@@ -59,10 +59,10 @@
 		</table>
 	</c:if>
 	<c:if test="${albumInfo.name != null}">
-	<table style="width: 880px;height: 290px" border="1" rules="none">
+	<table style="width: 880px;height: 290px" border="1" rules="none" align="center">
 		<tr>
 			<td rowspan="7" width="250px"  align="center">
-				<table style="width: 200px;height: 220px" border="1">
+				<table style="width: 200px;height: 220px" border="1" align="center">
 					<tr>
 						<td>
 							<img src="/BBusic/upload/${imagePath}" width="200px" height="220px" />
@@ -138,7 +138,7 @@
 	<br />
 	<font size="5"><strong>가사</strong></font>
 	<br />
-	<hr width="880px" size="1" color="gray" align="left" />
+	<hr width="880px" size="1" color="gray" align="center" />
 	<br />
 	<c:if test="${lyrics == null}">
 		가사 정보가 없습니다
@@ -148,7 +148,7 @@
 		${lyrics}
 	</c:if>
 	<br />
-	<hr width="880px" size="1" color="gray" align="left" />
+	<hr width="880px" size="1" color="gray" align="center" />
 						 </div>
       <div id="box3"></div>
    </div>

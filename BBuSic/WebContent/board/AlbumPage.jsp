@@ -171,10 +171,18 @@ border="0"/></a>
 	   <div id="box">
 	      <div id="box2">
 	          <div id="content"></div>
-	<div style="font-weight:bold; font-size:24px; line-height:30px; font-family:"맑은 고딕", "Malgun Gothic","돋움", Dotum,"Apple Gothic", sans-serif;0 letter-spacing:-2px;">앨범 정보</div>
+	<table style="width: 880px;" rules="none" align="center">
+		<tr>
+			<td>
+				<div style="font-weight:bold; font-size:24px; line-height:30px;">
+					앨범정보
+				</div>
+			</td>
+		</tr>
+	</table>
 	<br /><br />
 	<c:if test="${albumInfo.name == null}">
-	<table style="width: 880px;height: 290px" border="1" rules="none">
+	<table style="width: 880px;height: 290px" border="1" rules="none" align="center">
 	<tr>
 		<td align="center">
 			등록된 앨범 정보가 없습니다.
@@ -183,7 +191,7 @@ border="0"/></a>
 	</table>
 	</c:if>
 	<c:if test="${albumInfo.name != null}">
-	<table style="width: 880px;height: 290px" border="1" rules="none">
+	<table style="width: 880px;height: 290px" border="1" rules="none" align="center">
 		<tr>
 			<td rowspan="7" width="250px"  align="center">
 				<table style="width: 200px;height: 220px" border="1">
@@ -260,19 +268,31 @@ border="0"/></a>
 	</c:if>
 	<br />
 	<br />
-	수록곡 (<strong>${totalCount}</strong>)
+	<table style="width: 880px;" rules="none" align="center">
+		<tr>
+			<td>
+					수록곡 (<strong>${totalCount}</strong>)
+			</td>
+		</tr>
+	</table>
 	
 	<br />
 	
-	<hr width="885px" size="1" align="left" />
-	<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-	<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-	<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');" />
-	<hr width="885px" size="1" align="left" />
+	<hr width="885px" size="1" align="center" />
+	<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
+	<hr width="885px" size="1" align="center" />
 	
 	
 	<form method="post" name="chartForm">
-		<table align="left">
+		<table align="center">
 			<tr align="center">
 				<td width="30px" height="10px">
 					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
@@ -284,7 +304,7 @@ border="0"/></a>
 				<td width="80px"><g>다운</g></td>
 			</tr>
 		</table>
-		<hr width="885px" size="3" color="#CC3D3D" align="left" />
+		<hr width="885px" size="3" color="#CC3D3D" align="center" />
 	<c:if test="${totalCount < 1}">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<table>
@@ -298,7 +318,7 @@ border="0"/></a>
 	
 	<c:if test="${totalCount > 0}">
 	<c:forEach var="list" items="${list}" varStatus="checkValue">
-	<table>
+	<table align="center">
 		<tr align="center" height="25px">
 			<td width="30px" height="25px">
 				<input type="checkbox" name="chkNo" value="${list}" />
@@ -331,20 +351,26 @@ border="0"/></a>
 			</td>
 		</tr>
 	</table>
-	<hr width="880px" size="1" color="gray" align="left" />
+	<hr width="880px" size="1" color="gray" align="center" />
 	</c:forEach>
 	</c:if>
 		
 	<!-- 전체선택 -->
-	<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-	<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-	<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');" />
+	<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
 
-	<hr width="880px" size="1" align="left" />
+	<hr width="880px" size="1" align="center" />
 	<br>
-	<div style="table-layout: auto;width: 880px;" align="center">
-			<s:property value="pagingHtml" escape="false" />
-		</div>
+	<center>
+														<s:property value="pagingHtml" escape="false" />
+												</center>
 		
 		<br /><br />
 	</form>

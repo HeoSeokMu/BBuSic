@@ -183,16 +183,20 @@ center {
 	<div id="box2">
 		<div id="content"></div>
 		<form method="post" name="chartForm">
-			<hr width="885px" size="1" color="gray" align="left" />
+			<hr width="885px" size="1" color="gray" align="center" />
 
-			<input type="button" name="h_selectall_btt" value="전체선택" width="50px"
-				onClick="checkAll2(${blockCount})" /> <input type="button"
-				name="h_listen_btt" value="듣기" onClick="list_add('s')" /> <input
-				type="button" name="h_download_btt" value="다운"
-				onClick="musicConfirm2('s');" />
+			<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
 
-			<hr width="885px" size="1" align="left">
-			<table align="left">
+			<hr width="885px" size="1" align="center">
+			<table align="center">
 				<tr align="center">
 					<td width="25px" height="10px"><input type="checkbox"
 						name="c_all" onclick="checkAll(this.checked, ${blockCount})">
@@ -204,7 +208,7 @@ center {
 					<td width="70px"><g>다운</g></td>
 				</tr>
 			</table>
-			<hr width="885px" size="3" color="#CC3D3D" align="left" />
+			<hr width="885px" size="3" color="#CC3D3D" align="center" />
 
 			<c:if test="${totalCount < 1}">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -217,7 +221,7 @@ center {
 
 			<c:if test="${totalCount > 0}">
 				<c:forEach var="list" items="${list}" varStatus="checkValue">
-					<table>
+					<table align="center">
 						<tr align="center" height="70px">
 							<td width="25px" height="10px"><input type="checkbox"
 								name="chkNo" value="${list}"></td>
@@ -253,23 +257,27 @@ center {
 								onclick="musicConfirm2('s');"></td>
 						</tr>
 					</table>
-					<hr width="885px" size="1" color="gray" align="left" />
+					<hr width="885px" size="1" color="gray" align="center" />
 				</c:forEach>
 			</c:if>
 
 			<!-- 전체선택 -->
-			<input type="button" name="h_selectall_btt" value="전체선택" width="50px"
-				onClick="checkAll2(${blockCount})" /> <input type="button"
-				name="h_listen_btt" value="듣기" onClick="list_add('s')" /> <input
-				type="button" name="h_download_btt" value="다운"
-				onClick="musicConfirm2('s');" />
+			<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
 
-			<hr width="885px" size="1" align="left" />
+			<hr width="885px" size="1" align="center" />
 			<br />
 
-			<div style="table-layout: auto; width: 885px;" align="center">
+			<center>
 				<s:property value="pagingHtml" escape="false" />
-			</div>
+			</center>
 			<br />
 			<br />
 		</form>

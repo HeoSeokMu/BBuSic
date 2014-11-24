@@ -178,20 +178,22 @@ border="0"/></a>
 	          <div id="content"></div>
 				<body>
 					<form method="post" name="chartForm">
-						<hr width="880px" size="1" color="gray" align="left" />
-						<br /><br />
-					
-						<hr width="880px" size="1" color="gray" align="left" />
 				
-						<hr width="880px" size="1" color="gray" align="left" />
+						<hr width="880px" size="1" color="gray" align="center" />
 				
 				
-						<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-						<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-						<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');">
+						<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
 				
-						<hr width="880px" size="1" align="left">
-						<table align="left">
+						<hr width="880px" size="1" align="center" />
+						<table align="center">
 							<tr align="center">
 								<td width="30px" height="10px">
 									<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
@@ -205,9 +207,8 @@ border="0"/></a>
 								<td width="80px"><g>다운</g></td>
 							</tr>
 						</table>
-						<hr width="880px" size="3" color="#CC3D3D" align="left" />
+						<hr width="880px" size="3" color="#CC3D3D" align="center" />
 				
-						<c:set var="count" value="0" />
 						<c:if test="${totalCount < 1}">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<table>
@@ -219,7 +220,7 @@ border="0"/></a>
 				
 						<c:if test="${totalCount > 0}">
 							<c:forEach var="list" items="${list}" varStatus="checkValue">
-								<table>
+								<table align="center">
 									<tr align="center" height="25px">
 										<td width="30px" height="25px">
 											<input type="checkbox" name="chkNo" value="${checkValue.index}">
@@ -228,11 +229,8 @@ border="0"/></a>
 											${(currentPage-1) * 10 + (checkValue.index + 1)}
 										</td>
 										<!--이미지-->
-										<td width="70px">
-											
-										</td>
 										<!--곡정보-->
-										<td width="300px" align="left">
+										<td width="370px" align="left">
 											<input type="image" name="m_play_btt" src="main/bbu_main_img/m_play_button.png" onclick="list_add(${checkValue.index });">
 											<input type="image" name="m_add_btt" src="main/bbu_main_img/m_add_button.png"> &nbsp;
 											<input type="image" name="m_page_btt" src="main/bbu_main_img/m_page_button.png">
@@ -254,20 +252,26 @@ border="0"/></a>
 										</td>
 									</tr>
 								</table>
-								<hr width="880px" size="1" color="gray" align="left" />
+								<hr width="880px" size="1" color="gray" align="center" />
 							</c:forEach>
 						</c:if>
 						
 						<!-- 전체선택 -->
-						<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-						<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-						<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');">
+						<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
 				
-						<hr width="880px" size="1" align="left" />
+						<hr width="880px" size="1" align="center" />
 						<br>
-						<div style="table-layout: auto;width: 885px;" align="center">
+						<center>
 							<s:property value="pagingHtml" escape="false" />
-						</div>
+						</center>
 					</form>
 					 </div>
       <div id="box3"> <center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center> </div>

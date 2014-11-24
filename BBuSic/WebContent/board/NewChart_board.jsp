@@ -119,155 +119,175 @@ center {
 	text-align: center
 }
 </style>
-	<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="js/header_jquery.js"></script>
+<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/header_jquery.js"></script>
 </head>
 
 <body style="overflow: hidden;">
 	<div id="box">
-	      <div id="header">
-	         <div id="header_1">
-	            <ul class="menu">
-	               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" 
+		<div id="header">
+			<div id="header_1">
+				<ul class="menu">
+					<li><a href="ChartBoard.action?category=chart"><img
+							src="main/bbu_main_img/chart.png" name="chart" border="0"
+							class="rollover" /></a></li>
+					<li><a href="NewChartBoard.action?category=new"><img
+							src="main/bbu_main_img/new.png" name="new" border="0"
+							class="rollover" /></a></li>
 
-name="chart" border="0" class="rollover"/></a></li>
-	               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  
+					<li><a href="GenreChartBoard.action?category=genre"><img
+							src="main/bbu_main_img/genre.png" name="genre" border="0"
+							class="rollover" /></a>
+						<ul class="sub">
+							<li><a
+								href="GenreChartBoard.action?category=genre&type=dance"><img
+									src="main/bbu_main_img/dance.png" name="dance" border="0"
+									class="rollover" /></a></li>
+							<li><a
+								href="GenreChartBoard.action?category=genre&type=balad"><img
+									src="main/bbu_main_img/balad.png" name="balad" border="0"
+									class="rollover" /></a></li>
+						</ul></li>
+					<li><a href="#"><img src="main/bbu_main_img/payment.png"
+							name="payment_buy" class="rollover" border="0" /></a>
+						<ul class="sub">
+							<li><a href="payBuyList.action"><img
+									src="main/bbu_main_img/bbu_payment.png" name="payment"
+									border="0" class="rollover" /></a></li>
+							<li><a href="cashCharge.action?my_id=${session.memId}"
+								onclick="return idCheck
 
-name="new" border="0" class="rollover"/></a></li>
-	   
-	               <li><a href="GenreChartBoard.action?category=genre"><img 
-
-src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
-	                  <ul class="sub">
-	                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img 
-
-src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
-	                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img 
-
-src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
-	                  </ul>
-	               </li>
-	               <li>
-	                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" 
-
-class="rollover" border="0"/></a>
-	                  <ul class="sub">
-	                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" 
-
-name="payment" border="0" class="rollover"/></a></li>
-	                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck
-
-();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
-	                  </ul>
-	               </li>
-	            </ul>
-	         </div>
-	         <div id="header_2">
-	            <center>
-	               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" 
-
-border="0"/></a>
-	            </center>
-	         </div>
-	      </div>
-	   </div>
-	
-	   <div id="box">
-	      <div id="box2">
-	          <div id="content"></div>
-
-<body>
-	<form method="post" name="chartForm">
-		<hr width="885px" size="1" color="gray" align="left" />
-
-		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')">
-
-		<hr width="885px" size="1" align="left">
-		<table align="left">
-			<tr align="center">
-				<td width="25px" height="10px">
-					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
-				</td>
-				<td width="35px"><g>NO</g></td>
-				<td width="80px"></td>
-				<td width="520px"><g>곡정보</g></td>
-				<td width="120px"><g>좋아요</g></td>
-				<td width="70px"><g>다운</g></td>
-			</tr>
-		</table>
-		<hr width="885px" size="3" color="#CC3D3D" align="left" />
-
-		<c:set var="count" value="0" />
-		<c:if test="${totalCount < 1}">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<table border="0">
-				<tr>
-					<td align="left">게시물이 존재하지 않습니다.</td>
-				</tr>
-			</table>
-		</c:if>
-
-		<c:if test="${totalCount > 0}">
-			<c:forEach var="list" items="${list}" varStatus="checkValue">
-				<table>
-					<tr align="center" height="70px">																	
-						<td width="25px" height="10px">
-							<input type="checkbox" name="chkNo" value="${checkValue.index}">
-							</td>
-						<!-- No -->
-						<td width="35px">
-							${(currentPage-1) * 10 + (checkValue.index + 1)}
-						</td>
-						<!--이미지-->
-						<td width="80px">
-							<img src="/BBusic/upload/${list.music_image}" width="50px" height="50px">
-						</td>
-						<!--곡정보-->
-						<td width="100px" align="center">
-							<input type="image" name="m_play_btt" src="board/images/m_play_button.png" onclick="list_add(${checkValue.index });">
-							<input type="image" name="m_add_btt" src="board/images/m_add_button.png"> &nbsp;
-							<input type="image" name="m_page_btt" src="board/images/m_page_button.png">
-						</td>
-						<td width="420px" align="left">
-							${list.title}<br /> <a href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a> | <a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
-						</td>
-						<!--좋아요-->
-						<td width="120px">
-							<c:if test="${session.memId != null}">
-								<img src="board/images/m_like_button.png" onclick="like(${list.num})" /> ${list.hit}
-							</c:if>
-							<c:if test="${session.memId == null}">
-								<img src="board/images/m_like_button.png" onclick="return alert('로그인해주세요')" /> ${list.hit}
-							</c:if>
-						</td>
-						<!--다운로드-->
-						<td td width="70px">
-							<input type="image" src="board/images/m_download_button.png" onclick="musicConfirm2('s');">
-						</td>
-					</tr>
-				</table>
-				<hr width="885px" size="1" color="gray" align="left" />
-			</c:forEach>
-		</c:if>
-
-		<!-- 전체선택 -->
-		<input type="button" name="h_selectall_btt" value="전체선택" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')">
-		<input type="button" name="h_download_btt" value="다운" onClick="musicConfirm2('s');" />
-
-		<hr width="885px" size="1" align="left" />
-		<br>
-		
-		<div style="table-layout: auto;width: 885px;" align="center">
-			<s:property value="pagingHtml" escape="false" />
+();"><img
+									src="main/bbu_main_img/cash.png" name="cash" border="0"
+									class="rollover" /></a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<div id="header_2">
+				<center>
+					<a href="bbusic.action"><img
+						src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" border="0" /></a>
+				</center>
+			</div>
 		</div>
-		<br /><br />
-	</form>
-						 </div>
-      <div id="box3"><center><br/><br/>뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일 09:00~24:00) : 010-9136-3540(무료) /<br/> ©뿌숑엔터테인먼트, Inc. All rights reserved.</center></div>
-   </div>
+	</div>
+
+	<div id="box">
+		<div id="box2">
+			<div id="content">
+					<form method="post" name="chartForm">
+						<hr width="885px" size="1" color="gray" align="center" />
+						<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
+
+									<hr width="885px" size="1" align="center" />
+										<table align="center">
+											<tr align="center">
+												<td width="25px" height="10px"><input type="checkbox"
+													name="c_all"
+													onclick="checkAll(this.checked, ${blockCount})"/></td>
+												<td width="35px"><g>NO</g></td>
+												<td width="80px"></td>
+												<td width="520px"><g>곡정보</g></td>
+												<td width="120px"><g>좋아요</g></td>
+												<td width="70px"><g>다운</g></td>
+											</tr>
+										</table>
+										<hr width="885px" size="3" color="#CC3D3D" align="center" />
+										<c:set var="count" value="0" />
+										<c:if test="${totalCount < 1}">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<table border="0">
+												<tr>
+													<td align="left">게시물이 존재하지 않습니다.</td>
+												</tr>
+											</table>
+										</c:if>
+
+										<c:if test="${totalCount > 0}">
+											<c:forEach var="list" items="${list}" varStatus="checkValue">
+												<center>
+												<table align="center">
+													<tr align="center" height="70px">
+														<td width="25px" height="10px"><input type="checkbox"
+															name="chkNo" value="${checkValue.index}"/></td>
+														<!-- No -->
+														<td width="35px">${(currentPage-1) * 10 + (checkValue.index + 1)}
+														</td>
+														<!--이미지-->
+														<td width="80px"><img
+															src="/BBusic/upload/${list.music_image}" width="50px"
+															height="50px"/></td>
+														<!--곡정보-->
+														<td width="100px" align="center"><input type="image"
+															name="m_play_btt" src="board/images/m_play_button.png"
+															onclick="list_add(${checkValue.index });"/> <input
+																type="image" name="m_add_btt"
+																src="board/images/m_add_button.png"/> &nbsp; <input
+																	type="image" name="m_page_btt"
+																	src="board/images/m_page_button.png"/></td>
+														<td width="420px" align="left">${list.title}<br /> <a
+															href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a>
+															| <a
+															href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
+														</td>
+														<!--좋아요-->
+														<td width="120px"><c:if
+																test="${session.memId != null}">
+																<img src="board/images/m_like_button.png"
+																	onclick="like(${list.num})" /> ${list.hit}
+							</c:if> <c:if test="${session.memId == null}">
+																<img src="board/images/m_like_button.png"
+																	onclick="return alert('로그인해주세요')" /> ${list.hit}
+							</c:if></td>
+														<!--다운로드-->
+														<td td width="70px"><input type="image"
+															src="board/images/m_download_button.png"
+															onclick="musicConfirm2('s');"/></td>
+													</tr>
+												</table>
+												</center>
+												<hr width="885px" size="1" color="gray" align="center" />
+											</c:forEach>
+										</c:if>
+
+										<!-- 전체선택 -->
+										<table width="885px" align="center">
+							<tr>
+								<td align="left">
+									<input type="button" name="h_selectall_btt" value="전체선택" 	width="50px" onClick="checkAll2(${blockCount})"/>
+									<input type="button" name="h_listen_btt" value="듣기" onClick="list_add('s')"/>
+									<input type="button" name="h_download_btt" value="다운" onClick="music_down('s')"/>
+								</td>
+							</tr>
+						</table>
+
+												<hr width="885px" size="1" align="center" /> <br>
+												<center>
+														<s:property value="pagingHtml" escape="false" />
+												</center>
+														<br />
+												<br />
+					</form>
+			</div>
+		</div>
+		<div id="box3">
+			<center>
+				<br />
+				<br />뿌숑뮤직 : 서울특별시 강남구 역삼동 823-24 남도빌딩 2층 / 뿌숑뮤직대표이사 : 허효성 / 문의전화(평일
+				09:00~24:00) : 010-9136-3540(무료) /<br /> ©뿌숑엔터테인먼트, Inc. All rights
+				reserved.
+			</center>
+		</div>
+	</div>
 </body>
 </html>
