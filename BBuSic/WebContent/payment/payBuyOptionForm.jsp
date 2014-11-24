@@ -230,7 +230,7 @@
 						<li>
 							<a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
 							<ul class="sub">
-								<li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+								<li><a href="payBuyList.action?buy_id=${session.memId}"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
 								<li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
 							</ul>
 						</li>
@@ -264,7 +264,7 @@
 									<td class="r_line"><input type="hidden" name="pay_name"  value="${pay_name}"/>${pay_name}</td>
 									<td class="r_line"><input type="hidden" name="pay_benefit"  value="${pay_benefit}"/>${pay_benefit}</td>
 									<td class="r_line"><input type="hidden" name="amount"  value="${amount}"/><fmt:formatNumber value="${amount}"/></td>
-									<td class="b_line" align="center"><input type="button" name="an" value="이용안내"/></td>
+									<td class="b_line" align="center"><input type="button" name="an" value="이용안내" onclick="javascript:window.location='AgreementOfUtilization.action'"/></td>
 								</tr>
 								<tr height="15"><td></td></tr>
 								<c:if test="${ sale != 0 }">

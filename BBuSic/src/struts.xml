@@ -138,7 +138,17 @@
 			<interceptor-ref name="params"/>
 			<result>/payment/pay_useForm.jsp</result>
 		</action>
-		
+		<action name="AgreementOfUtilization" class="payment.action.AgreementOfUtilizationAction">
+			<interceptor-ref name="params"/>
+			<result>/payment/AgreementOfUtilization.jsp</result>
+		</action>
+		 <!-- 
+		<action name="confirmBuy" class="payment.action.ConfirmBuyAction">
+			<interceptor-ref name="BBuSicInterceptor"/>
+			<interceptor-ref name="params"/>
+			<result>/payment/confirmBuy.jsp</result>
+		</action>
+		  -->
 	</package>	
 		
 	<!-- 김정진 작업 -->
@@ -330,11 +340,11 @@
 			<interceptor name="ibatis" class="BBusic.Aware.musicInterceptor"></interceptor>
 		</interceptors>
 		<!-- 업로드 부분-->
-		<action name="MusicUploadMain" class="upload.action.MusicUploadMainAction">
+		<action name="UploadMain" class="upload.action.UploadMainAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
-			<result>/file/MusicUploadMain.jsp</result>
+			<result>/file/UploadMain.jsp</result>
 		</action>
 		<action name="MusicUploadForm" class="upload.action.MusicUploadFormAction">
 			<interceptor-ref name="prepare" />
@@ -349,14 +359,101 @@
 			<interceptor-ref name="params" />
 			<result>/file/MusicUploadPro.jsp</result>
 		</action>
-		<action name="" class="board.action.ChartMainAction">
+		<action name="SingerUploadForm" class="upload.action.SingerUploadFormAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<result>/file/SingerUploadForm.jsp</result>
+		</action>
+		<action name="SingerUploadPro" class="upload.action.SingerUploadProAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<result>/file/SingerUploadPro.jsp</result>
+		</action>
+		<action name="AlbumUploadForm" class="upload.action.AlbumUploadFormAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<result>/file/AlbumUploadForm.jsp</result>
+		</action>
+		<action name="AlbumUploadPro" class="upload.action.AlbumUploadProAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<result>/file/AlbumUploadPro.jsp</result>
+		</action>
+		<action name="LyricsUploadForm" class="upload.action.LyricsUploadFormAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<result>/file/LyricsUploadForm.jsp</result>
+		</action>
+		<action name="LyricsUploadPro" class="upload.action.LyricsUploadProAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="fileUpload" />
+			<interceptor-ref name="params" />
+			<result>/file/LyricsUploadPro.jsp</result>
+		</action>
+		<!--삭제-->
+		<action name="MusicDeleteForm" class="upload.action.MusicDeleteFormAction">
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
-			<result>/board/ChartMain.jsp</result>
+			<result>/file/MusicDeleteForm.jsp</result>
+		</action>
+		<action name="MusicDeletePro" class="upload.action.MusicDeleteProAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/MusicDeletePro.jsp</result>
+		</action>
+		<action name="SingerDeleteForm" class="upload.action.SingerDeleteFormAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/SingerDeleteForm.jsp</result>
+		</action>
+		<action name="SingerDeletePro" class="upload.action.SingerDeleteProAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/SingerDeletePro.jsp</result>
+		</action>
+		<action name="AlbumDeleteForm" class="upload.action.AlbumDeleteFormAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/AlbumDeleteForm.jsp</result>
+		</action>
+		<action name="AlbumDeletePro" class="upload.action.AlbumDeleteProAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/AlbumDeletePro.jsp</result>
+		</action>
+		<action name="LyricsDeleteForm" class="upload.action.LyricsDeleteFormAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/LyricsDeleteForm.jsp</result>
+		</action>
+		<action name="LyricsDeletePro" class="upload.action.LyricsDeleteProAction">
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/file/LyricsDeletePro.jsp</result>
 		</action>
 		<!--보드-->
 		<action name="ChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="chain"/>
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -364,6 +461,7 @@
 			<result>/board/MelonChart_board.jsp</result>
 		</action>
 		<action name="NewChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="chain"/>
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -371,6 +469,7 @@
 			<result>/board/NewChart_board.jsp</result>
 		</action>
 		<action name="GenreChartBoard" class="board.action.Chart_BoardAction">
+			<interceptor-ref name="chain"/>
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
@@ -378,19 +477,42 @@
 			<result>/board/GenreChart_board.jsp</result>
 		</action>
 		<action name="SingerPage" class="board.action.SingerPageAction">
+			<interceptor-ref name="chain"/>
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/SingerPage.jsp</result>
 		</action>
-		<!--<action name="AlbumPage" class="board.action.AlbumPageAction">
+		<action name="AlbumPage" class="board.action.AlbumPageAction">
+			<interceptor-ref name="chain"/>
 			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="chain"/>
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/AlbumPage.jsp</result>
-		</action>-->
+		</action>
+		<action name="LyricsPage" class="board.action.LyricsPageAction">
+			<interceptor-ref name="chain"/>
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result>/board/LyricsPage.jsp</result>
+		</action>
+		<action name="m_like" class="board.action.m_likeAction">
+			<interceptor-ref name="ibatis"/>
+			<interceptor-ref name="prepare" />
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
+			<result name="album" type="chain"><param name="actionName">AlbumPage</param></result>
+        	<result name="singer" type="chain"><param name="actionName">SingerPage</param></result>
+			<result name="chart" type="chain"><param name="actionName">MelonChart_board</param></result>
+			<result name="new" type="chain"><param name="actionName">NewChart_board</param></result>
+			<result name="genre" type="chain"><param name="actionName">GenreChart_board</param></result>
+			<result name="search" type="chain"><param name="actionName">SearchResult</param></result>
+		</action>
 		<!--검색-->
 		<action name="Search" class="search.action.SearchAction">
 			<interceptor-ref name="prepare" />
@@ -399,12 +521,13 @@
 			<result>/board/Search.jsp</result>
 		</action>
 		<action name="SearchResult" class="search.action.SearchResult_boardAction">
+			<interceptor-ref name="ibatis" />
 			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result>/board/SearchResult_board.jsp</result>
 		</action>
-		<!-- 허효성 작업 -->
+<!-- 허효성 작업 -->
 		<!-- 팝업 -->		
 		<action name="PopupAction" class="board.action.PopupAction">
 			<interceptor-ref name="servletConfig"/>
@@ -413,8 +536,7 @@
 			<interceptor-ref name="modelDriven"/>
 			<interceptor-ref name="params"/>
 			<result>/board/MusicListForm.jsp</result>
-		</action>
-		<!-- 팝업 리스트 삭제 -->
+		</action>		<!-- 팝업 리스트 삭제 -->
 		<action name="deleteListAction" class="board.action.PopupAction" method="deleteListAction">
 			<interceptor-ref name="ibatis"/>
 			<interceptor-ref name="prepare"/>

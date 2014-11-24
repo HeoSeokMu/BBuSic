@@ -101,7 +101,7 @@
                <li>
                   <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" class="rollover" border="0"/></a>
                   <ul class="sub">
-                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
+                     <li><a href="payBuyList.action?buy_id=${session.memId}"><img src="main/bbu_main_img/bbu_payment.png" name="payment" border="0" class="rollover"/></a></li>
                      <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
                   </ul>
                </li>
@@ -119,10 +119,14 @@
    </div>
 
 	<div id="box">
+		<center>
 			<a href="modify.action"><img src="member/image/img_myInform.png" name="chart" border="0"/></a>
 			<a href="passwdForm.action"><img src="member/image/img_change_pw.png" name="chart" border="0"/></a>
 			<a href="myLoginListForm.action"><img src="member/image/img_login_inform.png" name="chart" border="0"/></a>
 			<a href="deleteForm.action"><img src="member/image/img_delete.png" name="chart" border="0"/></a>
+			<a href="cash_useForm.action?id=${session.memId}"><img src="member/image/cash.png" name="chart" border="0"/></a>
+			<a href="pay_useForm.action?id=${session.memId}&type=보유"><img src="member/image/payment.png" name="chart" border="0"/></a>
+		</center>
 		<div id="box2">
 			<div id="content">		
 				<center><br/>

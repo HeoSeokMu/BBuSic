@@ -20,6 +20,10 @@
 	  		<result property="buy_option" column="buy_option"/>					<!-- property는 set메서드 column은 db의 컬럼 -->
 		</resultMap>
 		
+		<resultMap id="buyInfo_buy" class="bDTO">
+			<result property="delete_payname" column="delete_payname" />		<!-- property는 set메서드 column은 db의 컬럼 -->
+		</resultMap>
+		
 		<!-- insert 쿼리문 정의 -->
 		<insert id="insertBuyInfo" parameterClass="bDTO">
       		INSERT INTO bbu_buyinfo (
@@ -52,7 +56,7 @@
 		
 		<select id="selectBuyInfo" resultMap="buyInfoRes">
 			SELECT * FROM bbu_buyinfo WHERE BUY_ID = #buy_id#
-		</select>		
+		</select>
 		
 		<select id="selectBuyInfo_use1" resultMap="buyInfoRes" parameterClass="String">
 			SELECT * FROM bbu_buyinfo WHERE BUY_ID = #buy_id# ORDER BY settlement_date desc
@@ -71,6 +75,10 @@
 		<update id="update_resetPay" parameterClass="bDTO">
 			update bbu_buyinfo set delete_payname=#delete_payname#, delete_paybenefit=#delete_paybenefit# where buy_id = #buy_id# and settlement_date=#settlement_date#  
 		</update>
+		
+		<select id="selectBuyInfo_payInfo" resultMap="buyInfo_buy" parameterClass="String">
+			<![CDATA[SELECT delete_payname FROM bbu_buyinfo WHERE BUY_ID=#buy_id# and settlement_date < expiration_date]]>
+		</select>
 		
 		<!--downLoadPayAction.java 에서 사용 -->
 		<select id="selectDownloadCount" resultClass="int">
