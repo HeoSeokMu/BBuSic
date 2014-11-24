@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-
-<script type="text/javascript">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script>
 	function checkAll(checkFlag, blockCount){
 		var f = document.chartForm;
 		for(var i=1; i< blockCount; i++){
@@ -35,7 +38,7 @@
 		
 	}
 	
-	/* ÆË¾÷ ½ºÅ©¸³Æ® */
+	/* íŒì—… ìŠ¤í¬ë¦½íŠ¸ */
 	function list_add(a){
 		var params = "";
 		var chkNo = document.getElementsByName("chkNo");
@@ -47,164 +50,300 @@
 					countChk+=1;
 				}				
 			}
-			if(countChk == 0){ //¼­¹ö·Î ³Ñ¾î°¡±âÀü¿¡ »çÀü¿¡ ¸·±âÀ§ÇØ »ç¿ë.
-				alert("¼±ÅÃÇØ¶ó!!!");
+			if(countChk == 0){ //ì„œë²„ë¡œ ë„˜ì–´ê°€ê¸°ì „ì— ì‚¬ì „ì— ë§‰ê¸°ìœ„í•´ ì‚¬ìš©.
+				alert("ì„ íƒí•´ë¼!!!");
 				return false;
 			}
 		}else{
 			params = "chkNo="+a;
 		}
 		open("Chart_BoardAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=400");
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
 	}
 	
-	/* ´Ù¿î·Îµå ½ºÅ©¸³Æ® */
-	function music_down(a){
+	/*Confirm ì°½ì„ í†µí•´ Yes ì¼ê²½ìš° down_list ë¡œ ì´ë™*/	
+	function musicConfirm2(a){	
+		if(confirm("ê²°ì¬í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")){
+			down_list(a);
+		}else{
+			alert("ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+		}
+	}
+	/* ë‹¤ìš´ë¡œë“œ ìŠ¤í¬ë¦½íŠ¸ */
+	function down_list(a){
 		var params = "";
 		var chkNo = document.getElementsByName("chkNo");
+		
 		if(a == "s"){
 			var countChk = 0;
 			for (var i = 0; i < chkNo.length; i++) {					
 				if(chkNo[i].checked){
-					params+= "chkNo="+i +"&";
+					params+= "chkNo="+chkNo[i].value +"&";
 					countChk+=1;
 				}				
 			}
-			if(countChk == 0){ //¼­¹ö·Î ³Ñ¾î°¡±âÀü¿¡ »çÀü¿¡ ¸·±âÀ§ÇØ »ç¿ë.
-				alert("¼±ÅÃÇØ¶ó!!!");
+			if(countChk == 0){ //ì„œë²„ë¡œ ë„˜ì–´ê°€ê¸°ì „ì— ì‚¬ì „ì— ë§‰ê¸°ìœ„í•´ ì‚¬ìš©.
+				alert("ì„ íƒí•´ë¼!!!");
 				return false;
 			}
 		}else{
 			params = "chkNo="+a;
 		}
-		open("downloadAction.action?"+params, "confirm", 
-	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600, height=400");
+		open("downPopUp.action?"+params, "confirm", 
+	       "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=650, height=400"); 
 	}
-</script>
-
-<html>
-<head>
-	<title></title>
-	<style type="text/css">
-		g {
-			color: black;
-			font-size: 10pt;
+	
+		function like(num){
+			if(confirm("ì¶”ì²œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == true){
+				location.href = "m_like.action?category=singer&singer=${singerInfo.singer}&id=${session.memId}&num=" + num;
+			}else{
+				return false;
 			}
+		}
+		
+		function lyrics(num){
+			window.location= "LyricsPage.action?num=" + num;
+		}
+	
+	</script>
+		<link rel="stylesheet" href="css/Subpage_Frame.css"></link>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/header_jquery.js"></script>
+	<style type="text/css">
+	g{
+		color: black;
+		font-size: 10pt;
+	}
 	</style>
 </head>
-<body>
-	<table border="1">
-		<tr height="30px">
-			<td rowspan="6" width="300px"><img name="" /></td>
-			<td>${singer}</td>
+
+<body style="overflow: hidden;">
+	<div id="box">
+	      <div id="header">
+	         <div id="header_1">
+	            <ul class="menu">
+	               <li><a href="ChartBoard.action?category=chart"><img src="main/bbu_main_img/chart.png" 
+
+name="chart" border="0" class="rollover"/></a></li>
+	               <li><a href="NewChartBoard.action?category=new"><img src="main/bbu_main_img/new.png"  
+
+name="new" border="0" class="rollover"/></a></li>
+	   
+	               <li><a href="GenreChartBoard.action?category=genre"><img 
+
+src="main/bbu_main_img/genre.png" name="genre" border="0" class="rollover"/></a>
+	                  <ul class="sub">
+	                     <li><a href="GenreChartBoard.action?category=genre&type=dance"><img 
+
+src="main/bbu_main_img/dance.png" name="dance" border="0" class="rollover"/></a></li>
+	                     <li><a href="GenreChartBoard.action?category=genre&type=balad"><img 
+
+src="main/bbu_main_img/balad.png" name="balad" border="0" class="rollover"/></a></li>
+	                  </ul>
+	               </li>
+	               <li>
+	                  <a href="#"><img src="main/bbu_main_img/payment.png" name="payment_buy" 
+
+class="rollover" border="0"/></a>
+	                  <ul class="sub">
+	                     <li><a href="payBuyList.action"><img src="main/bbu_main_img/bbu_payment.png" 
+
+name="payment" border="0" class="rollover"/></a></li>
+	                     <li><a href="cashCharge.action?my_id=${session.memId}" onclick="return idCheck
+
+();"><img src="main/bbu_main_img/cash.png" name="cash" border="0" class="rollover"/></a></li>
+	                  </ul>
+	               </li>
+	            </ul>
+	         </div>
+	         <div id="header_2">
+	            <center>
+	               <a href="bbusic.action"><img src="main/bbu_main_img/BBuMainLogo.png" name="bbuMain" 
+
+border="0"/></a>
+	            </center>
+	         </div>
+	      </div>
+	   </div>
+	
+	   <div id="box">
+	      <div id="box2">
+	          <div id="content"></div>
+	<div style="font-weight:bold; font-size:24px; line-height:30px; font-family:"ë§‘ì€ ê³ ë”•", "Malgun Gothic","ë‹ì›€", Dotum,"Apple Gothic", sans-serif;0 letter-spacing:-2px;">ì•„í‹°ìŠ¤íŠ¸ ì±„ë„</div>
+	<br /><br />
+	<c:if test="${singerInfo.singer == null}">
+	<table style="width: 880px;height: 290px" border="1" rules="none">
+	<tr>
+		<td align="center">
+			ë“±ë¡ëœ ê°€ìˆ˜ ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.
+		</td>
+	</tr>
+	</table>
+	</c:if>
+	<c:if test="${singerInfo.singer != null}">
+	<table style="width: 880px;height: 270px" border="1" rules="none">
+		<tr>
+			<td rowspan="6" width="250px"  align="center">
+				<table style="width: 200px;height: 220px" border="1">
+					<tr>
+						<td>
+							<img src="/BBusic/upload/${imagePath}" style="width: 100%;height: 100%;" />
+						</td>
+					</tr>
+				</table>
+					<input type="button" value="ì•¨ë²”ë“£ê¸°" onclick="" />
+					<input type="button" value="ë‹¤ìš´ë¡œë“œ" onclick="" />
+			</td>
+			<td width="20px">
+			</td>
+			<td width="410px" height="45px" colspan="2">
+				<font size="6"><strong>${singerInfo.singer}</strong></font>
+			</td>
+			<td width="220px" rowspan="6" align="center" >
+				<!-- <input type="button" value="íŒ¬ë§ºê¸°" style="width: 100px;height: 40px;" onclick="p_hitup();"/> -->
+				<%-- <input type="text" readonly="readonly" value="${singerInfo.p_hit}" style="width: 100px;height: 34px;text-align: center;"/> --%>
+			</td>
 		</tr>
-		<tr height="30px">
-			<td width="530px">${year}</td>
+		<tr>
+			<td width="20px">
+			</td>
+			<td width="100px">
+				ë°ë·”
+			</td>
+			<td height="1px">
+				${singerInfo.year}
+			</td>
 		</tr>
-		<tr height="30px">
-			<td width="530px">${birth}</td>
+		<tr>
+			<td width="20px">
+			</td>
+			<td width="100px">
+				ìƒì¼
+			</td>
+			<td height="1px">
+				${singerInfo.birth}
+			</td>
 		</tr>
-		<tr height="30px">
-			<td width="530px">${maingenre}</td>
+		<tr>
+			<td width="20px">
+			</td>
+			<td width="100px">
+				í™œë™ìœ í˜•
+			</td>
+			<td height="1px">
+				${singerInfo.maingenre}
+			</td>
 		</tr>
-		<tr height="30px">
-			<td width="530px">${entertain}</td>
+		<tr>
+			<td width="20px">
+			</td>
+			<td width="100px">
+				ì†Œì†ì‚¬
+			</td>
+			<td height="1px">
+				${singerInfo.entertain}
+			</td>
 		</tr>
-		<tr height="30px">
-			<td width="530px">${hit}</td>
+		<tr>
+			<td colspan="3" height="50px">
+			</td>
 		</tr>
 	</table>
+	</c:if>
+	
+	<br />
+	<br />
+	
+	ë°œë§¤ê³¡ (<strong>${totalCount}</strong>)
 	
 	<br />
 	
 	<form method="post" name="chartForm">
-		<br />
-		<p>${singer} ÀÇ °îµé</p>
-		<br /><br />
 	
-		<hr width="880px" size="1" color="gray" align="left" />
-
-		<input type="button" name="h_selectall_btt" value="ÀüÃ¼¼±ÅÃ" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="µè±â" onClick="">
-		<input type="button" name="h_download_btt" value="´Ù¿î" onClick="">
-
-		<hr width="880px" size="1" align="left">
+	<hr width="885px" size="1" align="left" />
+	<input type="button" name="h_selectall_btt" value="ì „ì²´ì„ íƒ" width="50px" onClick="checkAll2(${blockCount})">
+	<input type="button" name="h_listen_btt" value="ë“£ê¸°" onClick="list_add('s')">
+	<input type="button" name="h_download_btt" value="ë‹¤ìš´" onClick="musicConfirm2('s');" />
+	<hr width="885px" size="1" align="left" />
+	
+	
+	
 		<table align="left">
 			<tr align="center">
 				<td width="30px" height="10px">
 					<input type="checkbox" name="c_all" onclick="checkAll(this.checked, ${blockCount})">
 				</td>
-				<td width="25px"><g>NO</g></td>
-				<td width="70px"></td>
-				<td width="300px"><g>°î¸í</g></td>
-				<td width="125px"><g>¾ÆÆ¼½ºÆ®</g></td>
-				<td width="125px"><g>¾Ù¹ü</g></td>
-				<td width="105px"><g>ÁÁ¾Æ¿ä</g></td>
-				<td width="80px"><g>´Ù¿î</g></td>
+				<td width="35px"><g>NO</g></td>
+				<td width="370px"><g>ê³¡ëª…</g></td>
+				<td width="250px"><g>ì•¨ë²”</g></td>
+				<td width="105px"><g>ì¢‹ì•„ìš”</g></td>
+				<td width="80px"><g>ë‹¤ìš´</g></td>
 			</tr>
 		</table>
-		<hr width="880px" size="3" color="#CC3D3D" align="left" />
-
-		<c:set var="count" value="0" />
-		<c:if test="${totalCount < 1}">
+		<hr width="885px" size="3" color="#CC3D3D" align="left" />
+	<c:if test="${totalCount < 1}">
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<table>
-				<tr>
-					<td align="left">°Ô½Ã¹°ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.</td>
-				</tr>
-			</table>
-		</c:if>
+		<tr>
+			<td align="left">ê²Œì‹œë¬¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</td>
+		</tr>
+	</table>
+	<br />
+	<br />
+	</c:if>
+	
+	<c:if test="${totalCount > 0}">
+	<c:forEach var="list" items="${list}" varStatus="checkValue">
+	<table>
+		<tr align="center">
+			<td width="30px" height="25px">
+				<input type="checkbox" name="chkNo" value="${list}" />
+			</td>
+			<td width="35px">
+				${(currentPage-1) * 10 + (checkValue.index + 1)}
+			</td>
+			<!--ê³¡ì •ë³´-->
+			<td width="370px" align="left">
+				<img src="board/images/m_play_button.png" />
+				<img src="board/images/m_add_button.png" /> &nbsp;
+				<img src="board/images/m_page_button.png" />
+				${list.title}
+			</td>
+			<td width="250px">
+				<a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
+			</td>
+			<!--ì¢‹ì•„ìš”-->
+			<td width="105px">
+				<c:if test="${session.memId != null}">
+					<img src="board/images/m_like_button.png" onclick="like(${list.num})" /> ${list.hit}
+				</c:if>
+				<c:if test="${session.memId == null}">
+					<img src="board/images/m_like_button.png" onclick="return alert('ë¡œê·¸ì¸í•´ì£¼ì„¸ìš”')" /> ${list.hit}
+				</c:if>
+			</td>
+			<!--ë‹¤ìš´ë¡œë“œ-->
+			<td td width="80px">
+				<img name="m_download_img" src="board/images/m_download_button.png" onclick="musicConfirm2('s');"/>
+			</td>
+		</tr>
+	</table>
+	<hr width="880px" size="1" color="gray" align="left" />
+	</c:forEach>
+	</c:if>
+		
+	<!-- ì „ì²´ì„ íƒ -->
+	<input type="button" name="h_selectall_btt" value="ì „ì²´ì„ íƒ" width="50px" onClick="checkAll2(${blockCount})">
+	<input type="button" name="h_listen_btt" value="ë“£ê¸°"  onClick="list_add('s')">
+	<input type="button" name="h_download_btt" value="ë‹¤ìš´" onClick="musicConfirm2('s');" />
 
-		<c:if test="${totalCount > 0}">
-			<c:forEach var="list" items="${list}" varStatus="checkValue">
-				<table>
-					<tr align="center" height="25px">
-						<td width="30px" height="25px">
-							<input type="checkbox" name="chkNo" value="${list}">
-						</td>
-						<td width="25px">
-							${(currentPage-1) * 10 + (checkValue.index + 1)}
-						</td>
-						<!--ÀÌ¹ÌÁö-->
-						<td width="70px">
-							<input type="image" src="http://localhost:8000/BBuSic/upload/${music_image}"/>
-						</td>
-						<!--°îÁ¤º¸-->
-						<td width="300px" align="left">
-							<input type="image" name="m_play_btt" src="http://localhost:8000/BBuSic/board/images/m_play_button.png">
-							<input type="image" name="m_add_btt" src="http://localhost:8000/BBuSic/board/images/m_add_button.png"> &nbsp;
-							<input type="image" name="m_page_btt" src="http://localhost:8000/BBuSic/board/images/m_page_button.png">
-							${list.title}
-						</td>
-						<td width="125px">
-							<a href="SingerPage.action?category=singerPage&singer=${list.singer}">${list.singer}</a>
-						</td>
-						<td width="125px">
-							<a href="AlbumPage.action?category=albumPage&album=${list.album}">${list.album}</a>
-						</td>
-						<!--ÁÁ¾Æ¿ä-->
-						<td width="105px">
-							<input type="image" name="m_like_btt" src="http://localhost:8000/BBuSic/board/images/m_like_button.png"> ${list.hit}
-						</td>
-						<!--´Ù¿î·Îµå-->
-						<td td width="80px">
-							<input type="image" name="m_download_img" src="http://localhost:8000/BBuSic/board/images/m_download_button.png">
-						</td>
-					</tr>
-				</table>
-				<hr width="880px" size="1" color="gray" align="left" />
-			</c:forEach>
-		</c:if>
-
-		<hr width="880px" size="1" color="gray" align="left" />
-		<!-- ÀüÃ¼¼±ÅÃ -->
-		<input type="button" name="h_selectall_btt" value="ÀüÃ¼¼±ÅÃ" width="50px" onClick="checkAll2(${blockCount})">
-		<input type="button" name="h_listen_btt" value="µè±â" onClick="">
-		<input type="button" name="h_download_btt" value="´Ù¿î" onClick="">
-
-		<hr width="880px" size="1" align="left" />
-		<br>
-		<p align="center"><s:property value="pagingHtml" escape="false" /></p>
+	<hr width="880px" size="1" align="left" />
+	<br />
+	<div style="table-layout: auto;width: 880px;" align="center">
+			<s:property value="pagingHtml" escape="false" />
+		</div>
 	</form>
+						 </div>
+      <div id="box3"></div>
+   </div>
 </body>
 </html>
